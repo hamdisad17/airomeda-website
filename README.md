@@ -32,5 +32,28 @@ Open http://localhost:3000 (TR default) and http://localhost:3000/en.
 - Services: `content/services/{tr,en}/*.mdx`
 - Static pages: `content/pages/{tr,en}/*.mdx`
 
+## Status
+
+| Plan | Status | Notes |
+| --- | --- | --- |
+| 1. Foundation | ✅ Done | Bilingual marketing shell, home + 7 service pages, static pages, CI workflow |
+| 2. Content collections | ⏳ Next | Case studies, blog, careers (lists + details) |
+| 3. Forms & integrations | ⏳ | Resend, Turnstile, Blob, contact/demo/career forms |
+| 4. SEO + polish + launch | ⏳ | Sitemap, hreflang, JSON-LD, analytics, KVKK, prod deploy |
+
+## Deployment
+
+Plan 1 deployment to Vercel preview is pending the user installing the Vercel CLI:
+
+```bash
+npm i -g vercel
+vercel login
+vercel link --yes --project airomeda-website
+vercel env pull .env.local
+vercel
+```
+
+Once linked, every push to `feat/plan-1-foundation` produces a preview URL.
+
 ## Spec & Plans
 See `docs/superpowers/specs/` and `docs/superpowers/plans/`.
