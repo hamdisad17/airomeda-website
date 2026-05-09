@@ -1,0 +1,89 @@
+name: Deploy to Hostinger VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
+
+      - name: Prepare standalone bundle
+        run: |
+          # Next.js standalone output requires static + public to be copied alongside server.js
+          cp -r .next/static .next/standalone/.next/static
+          if [ -d public ]; then cp -r public .next/standalone/public; fi
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H -p ${{ vars.VPS_PORT || 22 }} ${{ vars.VPS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: rsync release to VPS
+        env:
+          RELEASE: ${{ github.sha }}-${{ github.run_number }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -p ${{ vars.VPS_PORT || 22 }} ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} "mkdir -p /var/www/airomeda/releases/${RELEASE}"
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ vars.VPS_PORT || 22 }}" \
+            .next/standalone/ \
+            ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }}:/var/www/airomeda/releases/${RELEASE}/
+
+      - name: Activate release and reload PM2
+        env:
+          RELEASE: ${{ github.sha }}-${{ github.run_number }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -p ${{ vars.VPS_PORT || 22 }} ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} bash <<EOF
+            set -e
+            cd /var/www/airomeda
+
+            # Symlink shared .env into the new release
+            ln -sfn /var/www/airomeda/shared/.env.production releases/${RELEASE}/.env.production || true
+
+            # Switch current symlink and reload PM2
+            ln -sfn releases/${RELEASE} current
+            cd current
+            pm2 reload /var/www/airomeda/current/ecosystem.config.cjs --update-env 2>/dev/null \
+              || pm2 start /var/www/airomeda/current/ecosystem.config.cjs
+
+            # Keep the last 5 releases, delete older ones
+            cd /var/www/airomeda/releases
+            ls -1tr | head -n -5 | xargs -r rm -rf
+          EOF
+
+      - name: Smoke check
+        run: |
+          for i in 1 2 3 4 5; do
+            STATUS=$(curl -sf -o /dev/null -w "%{http_code}" https://${{ vars.PUBLIC_HOSTNAME }}/ || echo "000")
+            if [ "$STATUS" = "200" ]; then
+              echo "✓ site healthy ($STATUS)"
+              exit 0
+            fi
+            echo "Attempt $i: status $STATUS — retrying..."
+            sleep 5
+          done
+          echo "Site failed health check"
+          exit 1

@@ -7,6 +7,7 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 const withMDX = createMDX();
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   experimental: { typedRoutes: false },
   images: {
