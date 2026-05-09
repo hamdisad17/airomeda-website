@@ -112,13 +112,13 @@ Hero'da sabit başlık tercih edilir (rotating headline yerine) — daha güvenl
 
 İçerik git'te MDX olarak tutulur, frontmatter Zod şemalarıyla doğrulanır.
 
-| Koleksiyon       | Konum                              | Frontmatter alanları                                                                                                |
-|------------------|------------------------------------|---------------------------------------------------------------------------------------------------------------------|
-| Hizmetler        | `/content/services/{tr,en}/`       | title, slug, excerpt, hero_subtitle, problem_md, approach_md, capabilities[], tech_stack[], related_cases[], faq[], cta_text, seo |
-| Vaka çalışmaları | `/content/case-studies/{tr,en}/`   | title, client, slug, industry, year, services[], hero_image, metrics[], excerpt, testimonial, gallery[], related_cases[], seo    |
-| Blog             | `/content/blog/{tr,en}/`           | title, slug, excerpt, cover, author, published_at, reading_time, categories[], seo                                  |
-| Kariyer          | `/content/jobs/{tr,en}/`           | title, slug, location, department, employment_type, posted_at, requirements[], responsibilities[], benefits[], active |
-| Statik sayfalar  | `/content/pages/{tr,en}/`          | title, slug, seo                                                                                                    |
+| Koleksiyon       | Konum                            | Frontmatter alanları                                                                                                              |
+| ---------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Hizmetler        | `/content/services/{tr,en}/`     | title, slug, excerpt, hero_subtitle, problem_md, approach_md, capabilities[], tech_stack[], related_cases[], faq[], cta_text, seo |
+| Vaka çalışmaları | `/content/case-studies/{tr,en}/` | title, client, slug, industry, year, services[], hero_image, metrics[], excerpt, testimonial, gallery[], related_cases[], seo     |
+| Blog             | `/content/blog/{tr,en}/`         | title, slug, excerpt, cover, author, published_at, reading_time, categories[], seo                                                |
+| Kariyer          | `/content/jobs/{tr,en}/`         | title, slug, location, department, employment_type, posted_at, requirements[], responsibilities[], benefits[], active             |
+| Statik sayfalar  | `/content/pages/{tr,en}/`        | title, slug, seo                                                                                                                  |
 
 ### 6.1 Eşik dilden eşik dile çeviri
 
@@ -151,6 +151,7 @@ Her dosya, aynı `slug`'a sahip eşdeğer locale dosyasıyla eşleşir. Eşleşm
 ## 9. SEO, analytics, performans
 
 ### SEO
+
 - `generateMetadata` ile sayfa-bazlı title/description/OG
 - OG görseli `next/og` ile dinamik üretim (başlık + Airomeda logosu üzerine)
 - `app/sitemap.ts` — tüm MDX'leri ve locale'leri tarar, `hreflang` linkleriyle XML üretir
@@ -159,10 +160,12 @@ Her dosya, aynı `slug`'a sahip eşdeğer locale dosyasıyla eşleşir. Eşleşm
 - Canonical URL'ler locale farkındalığıyla
 
 ### Analytics
+
 - Vercel Analytics + Speed Insights (zero-config)
 - Plausible isteğe bağlı (privacy-first ek opsiyon)
 
 ### Performans
+
 - Hedef: Core Web Vitals tüm sayfalarda yeşil
 - Next.js 16 Cache Components — statik kabuk + sadece dinamik kısımlar (form, kullanıcıya özel öğeler) Server Component sınırında
 - `<Image>` otomatik optimize, AVIF/WebP, lazy
@@ -170,6 +173,7 @@ Her dosya, aynı `slug`'a sahip eşdeğer locale dosyasıyla eşleşir. Eşleşm
 - Core marketing sayfaları full statik / ISR yok (gerek yok)
 
 ### Erişilebilirlik
+
 - WCAG AA hedefi
 - shadcn/ui + Radix UI primitives — klavye navigasyonu ve ARIA hazır
 - `prefers-reduced-motion` desteği
@@ -190,21 +194,21 @@ Her dosya, aynı `slug`'a sahip eşdeğer locale dosyasıyla eşleşir. Eşleşm
 
 ### Yığın
 
-| Alan          | Seçim                                       |
-|---------------|---------------------------------------------|
-| Framework     | Next.js 16 App Router, TypeScript strict    |
-| Bundler       | Turbopack                                   |
-| Styling       | Tailwind CSS + shadcn/ui (Radix UI)         |
-| Content       | MDX via `@next/mdx` + `gray-matter`         |
-| i18n          | next-intl                                   |
-| Form          | React Hook Form + Zod                       |
-| Mail          | Resend SDK                                  |
-| File upload   | Vercel Blob (private)                       |
-| Spam          | Cloudflare Turnstile                        |
-| Analytics     | Vercel Analytics + Speed Insights           |
-| Hosting       | Vercel (Fluid Compute default)              |
-| Config        | `vercel.ts` (`@vercel/config`)              |
-| Error tracking| Sentry (opsiyonel, env'e bağlı)             |
+| Alan           | Seçim                                    |
+| -------------- | ---------------------------------------- |
+| Framework      | Next.js 16 App Router, TypeScript strict |
+| Bundler        | Turbopack                                |
+| Styling        | Tailwind CSS + shadcn/ui (Radix UI)      |
+| Content        | MDX via `@next/mdx` + `gray-matter`      |
+| i18n           | next-intl                                |
+| Form           | React Hook Form + Zod                    |
+| Mail           | Resend SDK                               |
+| File upload    | Vercel Blob (private)                    |
+| Spam           | Cloudflare Turnstile                     |
+| Analytics      | Vercel Analytics + Speed Insights        |
+| Hosting        | Vercel (Fluid Compute default)           |
+| Config         | `vercel.ts` (`@vercel/config`)           |
+| Error tracking | Sentry (opsiyonel, env'e bağlı)          |
 
 ### Klasör yapısı
 

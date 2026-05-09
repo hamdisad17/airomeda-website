@@ -89,6 +89,7 @@ tests/
 ### Task 1: Initialize Next.js 16 project
 
 **Files:**
+
 - Create: `package.json`, `tsconfig.json`, `next.config.ts`, `postcss.config.mjs`, `app/layout.tsx`, `app/globals.css`, `app/page.tsx` (temporary)
 
 - [ ] **Step 1: Run create-next-app non-interactively**
@@ -166,6 +167,7 @@ git commit -m "chore: bootstrap Next.js 16 app with strict TypeScript"
 ### Task 2: Add ESLint + Prettier baseline
 
 **Files:**
+
 - Create/Modify: `eslint.config.mjs`, `.prettierrc`, `.prettierignore`, `package.json` (scripts)
 
 - [ ] **Step 1: Install Prettier and Tailwind plugin**
@@ -268,6 +270,7 @@ git commit -m "chore: add eslint + prettier baseline and scripts"
 ### Task 3: Add testing infrastructure (Vitest + Playwright)
 
 **Files:**
+
 - Create: `vitest.config.ts`, `playwright.config.ts`, `tests/.gitkeep`, `tests/setup.ts`
 - Modify: `package.json`, `.gitignore`
 
@@ -394,6 +397,7 @@ git commit -m "test: add vitest + playwright infrastructure with sanity test"
 ### Task 4: Add Vercel TypeScript config
 
 **Files:**
+
 - Create: `vercel.ts`, `.env.local.example`
 
 - [ ] **Step 1: Install @vercel/config**
@@ -458,6 +462,7 @@ git commit -m "chore: add vercel.ts config and env example"
 ### Task 5: Update root README
 
 **Files:**
+
 - Create: `README.md`
 
 - [ ] **Step 1: Write project README**
@@ -470,6 +475,7 @@ Create `README.md`:
 Bilingual (TR/EN) Next.js 16 corporate website for Airomeda.
 
 ## Stack
+
 Next.js 16 App Router, TypeScript strict, Tailwind CSS, shadcn/ui, MDX, next-intl, Vitest, Playwright, Vercel.
 
 ## Develop
@@ -484,15 +490,15 @@ Open http://localhost:3000 (TR default) and http://localhost:3000/en.
 
 ## Scripts
 
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Dev server (Turbopack) |
-| `npm run build` | Production build |
-| `npm run lint` | ESLint |
-| `npm run typecheck` | TypeScript check |
-| `npm run format` | Prettier write |
-| `npm test` | Vitest unit tests |
-| `npm run test:e2e` | Playwright E2E tests |
+| Command             | Purpose                |
+| ------------------- | ---------------------- |
+| `npm run dev`       | Dev server (Turbopack) |
+| `npm run build`     | Production build       |
+| `npm run lint`      | ESLint                 |
+| `npm run typecheck` | TypeScript check       |
+| `npm run format`    | Prettier write         |
+| `npm test`          | Vitest unit tests      |
+| `npm run test:e2e`  | Playwright E2E tests   |
 
 ## Content
 
@@ -500,6 +506,7 @@ Open http://localhost:3000 (TR default) and http://localhost:3000/en.
 - Static pages: `content/pages/{tr,en}/*.mdx`
 
 ## Spec & Plans
+
 See `docs/superpowers/specs/` and `docs/superpowers/plans/`.
 ````
 
@@ -517,6 +524,7 @@ git commit -m "docs: add project README"
 ### Task 6: Define color and typography tokens in Tailwind
 
 **Files:**
+
 - Modify: `tailwind.config.ts`, `app/globals.css`
 
 - [ ] **Step 1: Install Inter font helper deps**
@@ -535,11 +543,7 @@ Overwrite `tailwind.config.ts`:
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  content: [
-    './app/**/*.{ts,tsx,mdx}',
-    './components/**/*.{ts,tsx}',
-    './content/**/*.{md,mdx}',
-  ],
+  content: ['./app/**/*.{ts,tsx,mdx}', './components/**/*.{ts,tsx}', './content/**/*.{md,mdx}'],
   theme: {
     container: {
       center: true,
@@ -565,7 +569,10 @@ const config: Config = {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'display-1': ['clamp(2.5rem, 6vw, 4.5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
+        'display-1': [
+          'clamp(2.5rem, 6vw, 4.5rem)',
+          { lineHeight: '1.05', letterSpacing: '-0.02em' },
+        ],
         'display-2': ['clamp(2rem, 4vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.015em' }],
       },
       borderRadius: {
@@ -591,11 +598,11 @@ Overwrite `app/globals.css`:
 @layer base {
   :root {
     /* Defaults: dark corporate. Foreground/background are HSL triplets. */
-    --background: 215 50% 7%;        /* deep navy/graphite */
+    --background: 215 50% 7%; /* deep navy/graphite */
     --foreground: 0 0% 98%;
     --muted: 215 20% 16%;
     --muted-foreground: 215 15% 70%;
-    --accent: 24 95% 53%;            /* orange #f97316 */
+    --accent: 24 95% 53%; /* orange #f97316 */
     --accent-foreground: 0 0% 100%;
     --border: 215 20% 18%;
     --ring: 24 95% 53%;
@@ -659,9 +666,9 @@ Replace `app/page.tsx` temporarily with:
 export default function Page() {
   return (
     <main className="container py-24">
-      <h1 className="font-sans text-display-1 font-bold">Airomeda</h1>
-      <p className="mt-4 text-muted-foreground">Tokens canlı.</p>
-      <button className="mt-6 rounded-lg bg-accent px-5 py-3 text-accent-foreground">
+      <h1 className="text-display-1 font-sans font-bold">Airomeda</h1>
+      <p className="text-muted-foreground mt-4">Tokens canlı.</p>
+      <button className="bg-accent text-accent-foreground mt-6 rounded-lg px-5 py-3">
         CTA preview
       </button>
     </main>
@@ -690,6 +697,7 @@ git commit -m "feat: define design tokens (colors, typography) in tailwind"
 ### Task 7: Add cn() utility and Container component
 
 **Files:**
+
 - Create: `lib/utils.ts`, `components/layout/Container.tsx`
 
 - [ ] **Step 1: Install dependencies**
@@ -739,6 +747,7 @@ git commit -m "feat: add cn() util and Container component"
 ### Task 8: Initialize shadcn/ui and install primitives
 
 **Files:**
+
 - Modify: `components.json` (created by shadcn)
 - Create: `components/ui/button.tsx`, `components/ui/accordion.tsx`, `components/ui/sheet.tsx`, `components/ui/navigation-menu.tsx`
 
@@ -776,6 +785,7 @@ git commit -m "feat: initialize shadcn/ui with core primitives"
 ### Task 9: Define brand Logo component
 
 **Files:**
+
 - Create: `components/layout/Logo.tsx`
 
 - [ ] **Step 1: Write Logo component**
@@ -801,7 +811,7 @@ export function Logo({ href, className, variant = 'wordmark' }: Props) {
     >
       <span
         aria-hidden
-        className="grid h-7 w-7 place-items-center rounded-md bg-accent text-accent-foreground"
+        className="bg-accent text-accent-foreground grid h-7 w-7 place-items-center rounded-md"
       >
         <span className="text-sm">A</span>
       </span>
@@ -829,6 +839,7 @@ git commit -m "feat: add Logo component"
 ### Task 10: Install and configure next-intl
 
 **Files:**
+
 - Create: `i18n/routing.ts`, `i18n/request.ts`, `messages/tr.json`, `messages/en.json`
 - Modify: `next.config.ts`
 
@@ -1022,6 +1033,7 @@ git commit -m "feat: configure next-intl with TR/EN routing and base messages"
 ### Task 11: Add locale middleware
 
 **Files:**
+
 - Create: `middleware.ts`
 
 - [ ] **Step 1: Write middleware**
@@ -1059,6 +1071,7 @@ git commit -m "feat: add locale-aware middleware"
 ### Task 12: Create app/[locale] layout shell
 
 **Files:**
+
 - Create: `app/[locale]/layout.tsx`, `app/[locale]/page.tsx`
 - Delete: `app/page.tsx`
 
@@ -1149,11 +1162,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
 
-export default async function Home({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('home.hero');
@@ -1161,7 +1170,7 @@ export default async function Home({
   return (
     <main className="container py-24">
       <h1 className="text-display-1 font-bold">{t('title')}</h1>
-      <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{t('subtitle')}</p>
+      <p className="text-muted-foreground mt-6 max-w-2xl text-lg">{t('subtitle')}</p>
     </main>
   );
 }
@@ -1179,6 +1188,7 @@ git commit -m "feat: add app/[locale] layout shell with locale-aware HTML lang"
 ### Task 13: Write E2E test for locale routing
 
 **Files:**
+
 - Create: `tests/e2e/locale-routing.spec.ts`
 
 - [ ] **Step 1: Write test**
@@ -1227,6 +1237,7 @@ git commit -m "test: e2e for locale routing"
 ### Task 14: Slug map utility for service URLs
 
 **Files:**
+
 - Create: `lib/i18n/slug-map.ts`, `tests/unit/lib/i18n/slug-map.test.ts`
 
 - [ ] **Step 1: Write the failing test first**
@@ -1341,6 +1352,7 @@ git commit -m "feat: add service slug map between TR and EN"
 ### Task 15: LangSwitcher component
 
 **Files:**
+
 - Create: `components/layout/LangSwitcher.tsx`
 
 - [ ] **Step 1: Implement**
@@ -1370,7 +1382,9 @@ export function LangSwitcher({ className }: { className?: string }) {
           aria-current={current === loc ? 'page' : undefined}
           className={cn(
             'rounded px-2 py-1 transition-colors',
-            current === loc ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground',
+            current === loc
+              ? 'bg-muted text-foreground'
+              : 'text-muted-foreground hover:text-foreground',
           )}
         >
           {LABELS[loc]}
@@ -1389,8 +1403,7 @@ Create `i18n/navigation.ts`:
 import { createNavigation } from 'next-intl/navigation';
 import { routing } from './routing';
 
-export const { Link, redirect, usePathname, useRouter, getPathname } =
-  createNavigation(routing);
+export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation(routing);
 ```
 
 - [ ] **Step 3: Typecheck**
@@ -1413,6 +1426,7 @@ git commit -m "feat: add LangSwitcher and typed i18n navigation helpers"
 ### Task 16: Header with primary nav
 
 **Files:**
+
 - Create: `components/layout/Header.tsx`
 
 - [ ] **Step 1: Implement**
@@ -1438,7 +1452,7 @@ export async function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
+    <header className="border-border bg-background/80 sticky top-0 z-40 border-b backdrop-blur">
       <Container as="div" className="flex h-16 items-center justify-between">
         <Logo href="/" />
         <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
@@ -1446,7 +1460,7 @@ export async function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             >
               {item.label}
             </Link>
@@ -1473,6 +1487,7 @@ git commit -m "feat: add desktop Header with primary nav and LangSwitcher"
 ### Task 17: Footer
 
 **Files:**
+
 - Create: `components/layout/Footer.tsx`
 
 - [ ] **Step 1: Implement**
@@ -1491,12 +1506,12 @@ export async function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 border-t border-border bg-background">
+    <footer className="border-border bg-background mt-24 border-t">
       <Container as="div" className="py-12">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-1">
             <Logo href="/" />
-            <p className="mt-4 max-w-xs text-sm text-muted-foreground">{t('tagline')}</p>
+            <p className="text-muted-foreground mt-4 max-w-xs text-sm">{t('tagline')}</p>
           </div>
           <FooterColumn title={t('company')}>
             <FooterLink href="/hakkimizda">{tnav('about')}</FooterLink>
@@ -1512,8 +1527,10 @@ export async function Footer() {
             <FooterLink href="/cerez-politikasi">{t('cookies')}</FooterLink>
           </FooterColumn>
         </div>
-        <div className="mt-10 flex flex-col items-start justify-between gap-2 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
-          <p>© {year} Airomeda. {t('rights')}</p>
+        <div className="border-border text-muted-foreground mt-10 flex flex-col items-start justify-between gap-2 border-t pt-6 text-xs md:flex-row md:items-center">
+          <p>
+            © {year} Airomeda. {t('rights')}
+          </p>
         </div>
       </Container>
     </footer>
@@ -1523,7 +1540,7 @@ export async function Footer() {
 function FooterColumn({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-foreground">{title}</h3>
+      <h3 className="text-foreground text-xs font-semibold tracking-wider uppercase">{title}</h3>
       <ul className="mt-4 space-y-2 text-sm">{children}</ul>
     </div>
   );
@@ -1534,7 +1551,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
     <li>
       <Link
         href={href as never}
-        className="text-muted-foreground transition-colors hover:text-foreground"
+        className="text-muted-foreground hover:text-foreground transition-colors"
       >
         {children}
       </Link>
@@ -1555,6 +1572,7 @@ git commit -m "feat: add Footer with company/services/legal columns"
 ### Task 18: Wire Header + Footer into [locale]/layout
 
 **Files:**
+
 - Modify: `app/[locale]/layout.tsx`
 
 - [ ] **Step 1: Update layout**
@@ -1619,6 +1637,7 @@ git commit -m "feat: render Header and Footer in locale layout"
 ### Task 19: Install MDX dependencies
 
 **Files:**
+
 - Modify: `package.json`, `next.config.ts`
 
 - [ ] **Step 1: Install**
@@ -1670,6 +1689,7 @@ git commit -m "chore: install MDX, gray-matter, remark/rehype plugins, zod"
 ### Task 20: Zod schemas for content frontmatter
 
 **Files:**
+
 - Create: `lib/schemas/service.ts`, `lib/schemas/page.ts`, `tests/unit/lib/schemas/service.test.ts`
 
 - [ ] **Step 1: Write the failing schema test**
@@ -1789,6 +1809,7 @@ git commit -m "feat: add Zod schemas for service + page frontmatter"
 ### Task 21: Content loader
 
 **Files:**
+
 - Create: `lib/mdx.ts`, `tests/unit/lib/mdx.test.ts`, `content/services/tr/.gitkeep`
 
 - [ ] **Step 1: Write the failing test**
@@ -1858,14 +1879,8 @@ Create `lib/mdx.ts`:
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
-import {
-  ServiceFrontmatterSchema,
-  type ServiceFrontmatter,
-} from '@/lib/schemas/service';
-import {
-  PageFrontmatterSchema,
-  type PageFrontmatter,
-} from '@/lib/schemas/page';
+import { ServiceFrontmatterSchema, type ServiceFrontmatter } from '@/lib/schemas/service';
+import { PageFrontmatterSchema, type PageFrontmatter } from '@/lib/schemas/page';
 import type { Locale } from '@/i18n/routing';
 
 const ROOT = path.join(process.cwd(), 'content');
@@ -1984,6 +1999,7 @@ git commit -m "feat: add MDX content loader with frontmatter validation"
 ### Task 22: MDX components for content rendering
 
 **Files:**
+
 - Create: `components/mdx/MDXContent.tsx`, `components/mdx/Callout.tsx`, `components/mdx/Quote.tsx`
 
 - [ ] **Step 1: Implement Callout**
@@ -2009,7 +2025,7 @@ export function Callout({ variant = 'info', title, children }: Props) {
       )}
     >
       {title && <p className="mb-1 font-semibold">{title}</p>}
-      <div className="text-sm text-muted-foreground">{children}</div>
+      <div className="text-muted-foreground text-sm">{children}</div>
     </div>
   );
 }
@@ -2024,10 +2040,10 @@ type Props = { author?: string; role?: string; children: React.ReactNode };
 
 export function Quote({ author, role, children }: Props) {
   return (
-    <figure className="my-8 rounded-lg border border-border bg-muted/30 p-6">
-      <blockquote className="text-lg italic text-foreground">{children}</blockquote>
+    <figure className="border-border bg-muted/30 my-8 rounded-lg border p-6">
+      <blockquote className="text-foreground text-lg italic">{children}</blockquote>
       {(author || role) && (
-        <figcaption className="mt-4 text-sm text-muted-foreground">
+        <figcaption className="text-muted-foreground mt-4 text-sm">
           — {author}
           {role && <span>, {role}</span>}
         </figcaption>
@@ -2058,16 +2074,16 @@ const components = {
     <h3 className="mt-8 text-xl font-semibold tracking-tight" {...props} />
   ),
   p: (props: React.ComponentProps<'p'>) => (
-    <p className="mt-4 leading-7 text-muted-foreground" {...props} />
+    <p className="text-muted-foreground mt-4 leading-7" {...props} />
   ),
   a: (props: React.ComponentProps<'a'>) => (
     <a className="text-accent underline-offset-4 hover:underline" {...props} />
   ),
   ul: (props: React.ComponentProps<'ul'>) => (
-    <ul className="mt-4 list-disc pl-6 text-muted-foreground" {...props} />
+    <ul className="text-muted-foreground mt-4 list-disc pl-6" {...props} />
   ),
   ol: (props: React.ComponentProps<'ol'>) => (
-    <ol className="mt-4 list-decimal pl-6 text-muted-foreground" {...props} />
+    <ol className="text-muted-foreground mt-4 list-decimal pl-6" {...props} />
   ),
 };
 
@@ -2112,6 +2128,7 @@ git commit -m "feat: add MDX rendering components (Callout, Quote, MDXContent)"
 ### Task 23: Author Turkish service MDX content (all 7)
 
 **Files:**
+
 - Create: `content/services/tr/finans.mdx`, `sans-oyunlari.mdx`, `e-ticaret.mdx`, `entegrasyon.mdx`, `seo-reklam.mdx`, `sosyal-medya.mdx`, `crm.mdx`
 
 - [ ] **Step 1: Author finans.mdx (template + full content example)**
@@ -2155,7 +2172,7 @@ related_cases: []
 Finans alanı, hata maliyetinin en yüksek olduğu sektörlerden biri. Biz bu nedenle her finans projesini regülasyon haritasıyla başlatır, mimari kararlarımızı denetlenebilirlik üzerinden kuruyoruz.
 
 <Callout title="Bizim yaklaşımımız">
-Düzenleyici gereklilikler önce, hız sonra. Ama düzenli teslim ederiz.
+  Düzenleyici gereklilikler önce, hız sonra. Ama düzenli teslim ederiz.
 </Callout>
 
 ## Hangi sorunları çözüyoruz?
@@ -2175,9 +2192,7 @@ Create the following files. Each must have the same frontmatter shape as `finans
 
 [2-3 paragraflık anlatım — bu hizmet alanında deneyimimiz, yaklaşımımız]
 
-<Callout title="Bizim yaklaşımımız">
-[Tek cümlede metodolojinin özü]
-</Callout>
+<Callout title="Bizim yaklaşımımız">[Tek cümlede metodolojinin özü]</Callout>
 
 ## Hangi sorunları çözüyoruz?
 
@@ -2248,21 +2263,22 @@ git commit -m "content: author 7 Turkish service MDX pages"
 ### Task 24: Author English service MDX content (all 7)
 
 **Files:**
+
 - Create: `content/services/en/finance.mdx`, `gaming.mdx`, `ecommerce.mdx`, `integration.mdx`, `seo-ads.mdx`, `social-media.mdx`, `crm.mdx`
 
 - [ ] **Step 1: Author each EN file as 1:1 translation**
 
 Create each file as the English translation of its TR counterpart:
 
-| TR file              | EN file                         | EN slug         |
-|----------------------|---------------------------------|-----------------|
-| finans.mdx           | content/services/en/finance.mdx | finance         |
-| sans-oyunlari.mdx    | gaming.mdx                      | gaming          |
-| e-ticaret.mdx        | ecommerce.mdx                   | ecommerce       |
-| entegrasyon.mdx      | integration.mdx                 | integration     |
-| seo-reklam.mdx       | seo-ads.mdx                     | seo-ads         |
-| sosyal-medya.mdx     | social-media.mdx                | social-media    |
-| crm.mdx              | crm.mdx                         | crm             |
+| TR file           | EN file                         | EN slug      |
+| ----------------- | ------------------------------- | ------------ |
+| finans.mdx        | content/services/en/finance.mdx | finance      |
+| sans-oyunlari.mdx | gaming.mdx                      | gaming       |
+| e-ticaret.mdx     | ecommerce.mdx                   | ecommerce    |
+| entegrasyon.mdx   | integration.mdx                 | integration  |
+| seo-reklam.mdx    | seo-ads.mdx                     | seo-ads      |
+| sosyal-medya.mdx  | social-media.mdx                | social-media |
+| crm.mdx           | crm.mdx                         | crm          |
 
 For each, translate `title`, `excerpt`, `hero_subtitle`, `capabilities` (`title`+`description`), `faq` items, `cta_text`, and the body. Keep `tech_stack` identical (proper nouns). Use the new EN slug in the frontmatter.
 
@@ -2270,13 +2286,15 @@ Example head of `content/services/en/finance.mdx`:
 
 ```mdx
 ---
+
 title: Financial Software
 slug: finance
 excerpt: Secure, auditable software for regulated finance.
 hero_subtitle: End-to-end software for banking, payments and fintech.
 capabilities:
-  - title: Core Banking modules
-    description: Accounts, transactions, reconciliation, reporting.
+
+- title: Core Banking modules
+  description: Accounts, transactions, reconciliation, reporting.
   ...
 ```
 
@@ -2304,6 +2322,7 @@ git commit -m "content: author 7 English service MDX pages"
 ### Task 25: Hero section
 
 **Files:**
+
 - Create: `components/sections/Hero.tsx`
 
 - [ ] **Step 1: Implement**
@@ -2320,16 +2339,16 @@ export async function Hero() {
   const t = await getTranslations();
 
   return (
-    <section className="relative overflow-hidden border-b border-border">
+    <section className="border-border relative overflow-hidden border-b">
       <div
         aria-hidden
         className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--accent)/0.18),transparent_55%)]"
       />
       <Container as="div" className="relative py-24 md:py-36">
-        <h1 className="max-w-4xl text-display-1 font-bold leading-[1.05] tracking-tight">
+        <h1 className="text-display-1 max-w-4xl leading-[1.05] font-bold tracking-tight">
           {t('home.hero.title')}
         </h1>
-        <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+        <p className="text-muted-foreground mt-6 max-w-2xl text-lg md:text-xl">
           {t('home.hero.subtitle')}
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
@@ -2358,6 +2377,7 @@ git commit -m "feat: add Hero section"
 ### Task 26: ServicesGrid section
 
 **Files:**
+
 - Create: `components/sections/ServicesGrid.tsx`
 
 - [ ] **Step 1: Implement**
@@ -2376,24 +2396,22 @@ export async function ServicesGrid({ locale }: { locale: Locale }) {
   const services = await listServices(locale);
 
   return (
-    <section className="border-b border-border">
+    <section className="border-border border-b">
       <Container as="div" className="py-20">
         <div className="mb-12 max-w-2xl">
           <h2 className="text-display-2 font-semibold tracking-tight">{t('title')}</h2>
-          <p className="mt-3 text-muted-foreground">{t('subtitle')}</p>
+          <p className="text-muted-foreground mt-3">{t('subtitle')}</p>
         </div>
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <li key={s.slug}>
               <Link
                 href={{ pathname: '/hizmetler/[slug]', params: { slug: s.slug } }}
-                className="group flex h-full flex-col rounded-lg border border-border bg-muted/20 p-6 transition-colors hover:border-accent hover:bg-muted/40"
+                className="group border-border bg-muted/20 hover:border-accent hover:bg-muted/40 flex h-full flex-col rounded-lg border p-6 transition-colors"
               >
                 <h3 className="text-lg font-semibold">{s.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.excerpt}</p>
-                <span className="mt-4 text-sm font-medium text-accent">
-                  Detay →
-                </span>
+                <p className="text-muted-foreground mt-2 flex-1 text-sm">{s.excerpt}</p>
+                <span className="text-accent mt-4 text-sm font-medium">Detay →</span>
               </Link>
             </li>
           ))}
@@ -2416,6 +2434,7 @@ git commit -m "feat: add ServicesGrid pulling from MDX content"
 ### Task 27: ProcessSteps section
 
 **Files:**
+
 - Create: `components/sections/ProcessSteps.tsx`
 
 - [ ] **Step 1: Implement**
@@ -2432,17 +2451,15 @@ export async function ProcessSteps() {
   const t = await getTranslations('home.process');
 
   return (
-    <section className="border-b border-border">
+    <section className="border-border border-b">
       <Container as="div" className="py-20">
         <h2 className="text-display-2 font-semibold tracking-tight">{t('title')}</h2>
         <ol className="mt-12 grid gap-8 md:grid-cols-4">
           {STEP_KEYS.map((key, i) => (
-            <li key={key} className="rounded-lg border border-border bg-muted/20 p-6">
-              <span className="text-sm font-mono text-muted-foreground">0{i + 1}</span>
+            <li key={key} className="border-border bg-muted/20 rounded-lg border p-6">
+              <span className="text-muted-foreground font-mono text-sm">0{i + 1}</span>
               <h3 className="mt-3 text-lg font-semibold">{t(`steps.${key}.title`)}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {t(`steps.${key}.description`)}
-              </p>
+              <p className="text-muted-foreground mt-2 text-sm">{t(`steps.${key}.description`)}</p>
             </li>
           ))}
         </ol>
@@ -2464,6 +2481,7 @@ git commit -m "feat: add ProcessSteps section"
 ### Task 28: IndustryStrip + Testimonials placeholders
 
 **Files:**
+
 - Create: `components/sections/IndustryStrip.tsx`, `components/sections/Testimonials.tsx`, `components/sections/FeaturedCase.tsx`, `components/sections/BlogPreview.tsx`, `components/sections/CTABlock.tsx`
 
 - [ ] **Step 1: IndustryStrip**
@@ -2489,12 +2507,12 @@ export async function IndustryStrip() {
   const t = await getTranslations('home.industries');
 
   return (
-    <section className="border-b border-border">
+    <section className="border-border border-b">
       <Container as="div" className="py-12">
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
           {t('title')}
         </p>
-        <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-base font-medium text-foreground/80">
+        <ul className="text-foreground/80 mt-6 flex flex-wrap gap-x-8 gap-y-3 text-base font-medium">
           {INDUSTRIES.map((i) => (
             <li key={i}>{i}</li>
           ))}
@@ -2514,7 +2532,8 @@ import { Container } from '@/components/layout/Container';
 
 const QUOTES = [
   {
-    quote: 'Airomeda ekibi 4 ayda ödeme altyapımızı yenileyip canlıya aldı. Hız ve kalite el ele geldi.',
+    quote:
+      'Airomeda ekibi 4 ayda ödeme altyapımızı yenileyip canlıya aldı. Hız ve kalite el ele geldi.',
     author: 'Ad Soyad',
     role: 'CTO, Müşteri A',
   },
@@ -2527,13 +2546,13 @@ const QUOTES = [
 
 export function Testimonials() {
   return (
-    <section className="border-b border-border">
+    <section className="border-border border-b">
       <Container as="div" className="py-20">
         <ul className="grid gap-6 md:grid-cols-2">
           {QUOTES.map((q) => (
-            <li key={q.author} className="rounded-lg border border-border bg-muted/20 p-6">
+            <li key={q.author} className="border-border bg-muted/20 rounded-lg border p-6">
               <blockquote className="text-base italic">“{q.quote}”</blockquote>
-              <p className="mt-4 text-sm text-muted-foreground">
+              <p className="text-muted-foreground mt-4 text-sm">
                 — {q.author}, {q.role}
               </p>
             </li>
@@ -2554,12 +2573,12 @@ import { Container } from '@/components/layout/Container';
 
 export function FeaturedCase() {
   return (
-    <section className="border-b border-border">
+    <section className="border-border border-b">
       <Container as="div" className="py-20">
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
           Öne çıkan vaka
         </p>
-        <div className="mt-6 rounded-lg border border-dashed border-border bg-muted/10 p-12 text-center text-muted-foreground">
+        <div className="border-border bg-muted/10 text-muted-foreground mt-6 rounded-lg border border-dashed p-12 text-center">
           (Vaka çalışmaları Plan 2'de eklenecek.)
         </div>
       </Container>
@@ -2575,12 +2594,12 @@ import { Container } from '@/components/layout/Container';
 
 export function BlogPreview() {
   return (
-    <section className="border-b border-border">
+    <section className="border-border border-b">
       <Container as="div" className="py-20">
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
           Son yazılar
         </p>
-        <div className="mt-6 rounded-lg border border-dashed border-border bg-muted/10 p-12 text-center text-muted-foreground">
+        <div className="border-border bg-muted/10 text-muted-foreground mt-6 rounded-lg border border-dashed p-12 text-center">
           (Blog Plan 2'de eklenecek.)
         </div>
       </Container>
@@ -2606,9 +2625,9 @@ export async function CTABlock() {
   return (
     <section>
       <Container as="div" className="py-20">
-        <div className="rounded-lg border border-border bg-muted/30 p-10 text-center md:p-16">
+        <div className="border-border bg-muted/30 rounded-lg border p-10 text-center md:p-16">
           <h2 className="text-display-2 font-semibold tracking-tight">{t('title')}</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">{t('subtitle')}</p>
+          <p className="text-muted-foreground mx-auto mt-3 max-w-2xl">{t('subtitle')}</p>
           <div className="mt-8 flex justify-center">
             <Button asChild size="lg">
               <Link href="/iletisim">{tc('primary_cta')}</Link>
@@ -2633,6 +2652,7 @@ git commit -m "feat: add IndustryStrip, Testimonials, FeaturedCase, BlogPreview,
 ### Task 29: Compose home page
 
 **Files:**
+
 - Modify: `app/[locale]/page.tsx`
 
 - [ ] **Step 1: Update home page**
@@ -2651,11 +2671,7 @@ import { Testimonials } from '@/components/sections/Testimonials';
 import { BlogPreview } from '@/components/sections/BlogPreview';
 import { CTABlock } from '@/components/sections/CTABlock';
 
-export default async function Home({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
 
@@ -2698,6 +2714,7 @@ git commit -m "feat: compose home page from sections"
 ### Task 30: Home E2E test
 
 **Files:**
+
 - Create: `tests/e2e/home.spec.ts`
 
 - [ ] **Step 1: Write test**
@@ -2710,7 +2727,10 @@ import { test, expect } from '@playwright/test';
 test('TR home renders 7 service cards', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { name: 'Hizmetlerimiz' })).toBeVisible();
-  const cards = page.locator('section').filter({ has: page.getByRole('heading', { name: 'Hizmetlerimiz' }) }).getByRole('link');
+  const cards = page
+    .locator('section')
+    .filter({ has: page.getByRole('heading', { name: 'Hizmetlerimiz' }) })
+    .getByRole('link');
   await expect(cards).toHaveCount(7);
 });
 
@@ -2748,6 +2768,7 @@ git commit -m "test: e2e for home page sections"
 ### Task 31: Service detail components
 
 **Files:**
+
 - Create: `components/service/ServiceHero.tsx`, `components/service/ServiceCapabilities.tsx`, `components/service/ServiceTechStrip.tsx`, `components/service/ServiceFAQ.tsx`
 
 - [ ] **Step 1: ServiceHero**
@@ -2767,10 +2788,10 @@ type Props = {
 
 export function ServiceHero({ title, subtitle, ctaText }: Props) {
   return (
-    <section className="border-b border-border">
+    <section className="border-border border-b">
       <Container as="div" className="py-20 md:py-28">
-        <h1 className="max-w-3xl text-display-2 font-bold tracking-tight">{title}</h1>
-        <p className="mt-5 max-w-2xl text-lg text-muted-foreground">{subtitle}</p>
+        <h1 className="text-display-2 max-w-3xl font-bold tracking-tight">{title}</h1>
+        <p className="text-muted-foreground mt-5 max-w-2xl text-lg">{subtitle}</p>
         <div className="mt-8">
           <Button asChild size="lg">
             <Link href="/iletisim">{ctaText}</Link>
@@ -2792,14 +2813,14 @@ import type { ServiceFrontmatter } from '@/lib/schemas/service';
 
 export function ServiceCapabilities({ items }: { items: ServiceFrontmatter['capabilities'] }) {
   return (
-    <section className="border-b border-border">
+    <section className="border-border border-b">
       <Container as="div" className="py-20">
         <h2 className="text-display-2 font-semibold tracking-tight">Yetkinliklerimiz</h2>
         <ul className="mt-12 grid gap-6 md:grid-cols-2">
           {items.map((item) => (
-            <li key={item.title} className="rounded-lg border border-border bg-muted/20 p-6">
+            <li key={item.title} className="border-border bg-muted/20 rounded-lg border p-6">
               <h3 className="text-lg font-semibold">{item.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
+              <p className="text-muted-foreground mt-2 text-sm">{item.description}</p>
             </li>
           ))}
         </ul>
@@ -2818,12 +2839,12 @@ import { Container } from '@/components/layout/Container';
 
 export function ServiceTechStrip({ items }: { items: string[] }) {
   return (
-    <section className="border-b border-border">
+    <section className="border-border border-b">
       <Container as="div" className="py-12">
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
           Kullandığımız teknolojiler
         </p>
-        <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-base font-medium text-foreground/80">
+        <ul className="text-foreground/80 mt-6 flex flex-wrap gap-x-8 gap-y-3 text-base font-medium">
           {items.map((tech) => (
             <li key={tech}>{tech}</li>
           ))}
@@ -2852,7 +2873,7 @@ export function ServiceFAQ({ items }: { items: ServiceFrontmatter['faq'] }) {
   if (items.length === 0) return null;
 
   return (
-    <section className="border-b border-border">
+    <section className="border-border border-b">
       <Container as="div" className="py-20">
         <h2 className="text-display-2 font-semibold tracking-tight">Sıkça sorulan sorular</h2>
         <Accordion type="single" collapsible className="mt-10">
@@ -2881,6 +2902,7 @@ git commit -m "feat: add service detail components (Hero, Capabilities, TechStri
 ### Task 32: Service detail page
 
 **Files:**
+
 - Create: `app/[locale]/hizmetler/[slug]/page.tsx`
 
 - [ ] **Step 1: Implement page**
@@ -2976,6 +2998,7 @@ git commit -m "feat: add service detail page"
 ### Task 33: Service overview page (/hizmetler)
 
 **Files:**
+
 - Create: `app/[locale]/hizmetler/page.tsx`
 
 - [ ] **Step 1: Implement**
@@ -2989,21 +3012,13 @@ import { Container } from '@/components/layout/Container';
 import { ServicesGrid } from '@/components/sections/ServicesGrid';
 import { CTABlock } from '@/components/sections/CTABlock';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'nav' });
   return { title: t('services') };
 }
 
-export default async function ServicesIndex({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export default async function ServicesIndex({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
 
@@ -3038,7 +3053,7 @@ Update the page to use `getTranslations` for the title:
 ```tsx
 const t = await getTranslations({ locale, namespace: 'services_index' });
 // ...
-<h1>{t('title')}</h1>
+<h1>{t('title')}</h1>;
 ```
 
 - [ ] **Step 3: Commit**
@@ -3053,6 +3068,7 @@ git commit -m "feat: add /hizmetler overview page with all services"
 ### Task 34: Service E2E
 
 **Files:**
+
 - Create: `tests/e2e/service-page.spec.ts`
 
 - [ ] **Step 1: Write test**
@@ -3114,6 +3130,7 @@ git commit -m "test: e2e for service detail pages (all 7 TR + sample EN)"
 ### Task 35: MegaMenu — services dropdown in Header
 
 **Files:**
+
 - Create: `components/layout/MegaMenu.tsx`
 - Modify: `components/layout/Header.tsx`
 
@@ -3135,21 +3152,21 @@ export async function MegaMenu({ locale }: { locale: Locale }) {
     <div className="group relative">
       <button
         type="button"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+        className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
         aria-haspopup="menu"
       >
         {t('services')} ▾
       </button>
-      <div className="invisible absolute left-1/2 z-50 mt-3 w-[640px] -translate-x-1/2 rounded-lg border border-border bg-background p-4 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+      <div className="border-border bg-background invisible absolute left-1/2 z-50 mt-3 w-[640px] -translate-x-1/2 rounded-lg border p-4 opacity-0 shadow-lg transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
         <ul className="grid grid-cols-2 gap-1">
           {services.map((s) => (
             <li key={s.slug}>
               <Link
                 href={{ pathname: '/hizmetler/[slug]', params: { slug: s.slug } }}
-                className="block rounded p-3 hover:bg-muted"
+                className="hover:bg-muted block rounded p-3"
               >
                 <span className="font-medium">{s.title}</span>
-                <span className="mt-1 block text-xs text-muted-foreground line-clamp-2">
+                <span className="text-muted-foreground mt-1 line-clamp-2 block text-xs">
                   {s.excerpt}
                 </span>
               </Link>
@@ -3180,24 +3197,39 @@ export async function Header() {
   const locale = (await getLocale()) as Locale;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
+    <header className="border-border bg-background/80 sticky top-0 z-40 border-b backdrop-blur">
       <Container as="div" className="flex h-16 items-center justify-between">
         <Logo href="/" />
         <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
           <MegaMenu locale={locale} />
-          <Link href="/calismalarimiz" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+          <Link
+            href="/calismalarimiz"
+            className="text-muted-foreground hover:text-foreground text-sm font-medium"
+          >
             {t('work')}
           </Link>
-          <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+          <Link
+            href="/blog"
+            className="text-muted-foreground hover:text-foreground text-sm font-medium"
+          >
             {t('blog')}
           </Link>
-          <Link href="/hakkimizda" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+          <Link
+            href="/hakkimizda"
+            className="text-muted-foreground hover:text-foreground text-sm font-medium"
+          >
             {t('about')}
           </Link>
-          <Link href="/kariyer" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+          <Link
+            href="/kariyer"
+            className="text-muted-foreground hover:text-foreground text-sm font-medium"
+          >
             {t('careers')}
           </Link>
-          <Link href="/iletisim" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+          <Link
+            href="/iletisim"
+            className="text-muted-foreground hover:text-foreground text-sm font-medium"
+          >
             {t('contact')}
           </Link>
         </nav>
@@ -3235,6 +3267,7 @@ git commit -m "feat: add services MegaMenu in Header"
 ### Task 36: Static page route + content
 
 **Files:**
+
 - Create: `app/[locale]/hakkimizda/page.tsx`, `app/[locale]/iletisim/page.tsx`, `app/[locale]/kvkk/page.tsx`, `app/[locale]/cerez-politikasi/page.tsx`
 - Create: `content/pages/tr/hakkimizda.mdx`, `iletisim.mdx`, `kvkk.mdx`, `cerez-politikasi.mdx`
 - Create: `content/pages/en/about.mdx`, `contact.mdx`, `privacy.mdx`, `cookies.mdx`
@@ -3427,20 +3460,12 @@ Create `app/[locale]/hakkimizda/page.tsx`:
 import type { Locale } from '@/i18n/routing';
 import { renderStaticPage, staticPageMetadata } from '@/lib/page-route';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   return staticPageMetadata('about', locale);
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export default async function Page({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   return renderStaticPage('about', locale);
 }
@@ -3452,20 +3477,12 @@ Repeat the same shape for the other three. Create `app/[locale]/iletisim/page.ts
 import type { Locale } from '@/i18n/routing';
 import { renderStaticPage, staticPageMetadata } from '@/lib/page-route';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   return staticPageMetadata('contact', locale);
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export default async function Page({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   return renderStaticPage('contact', locale);
 }
@@ -3477,20 +3494,12 @@ Create `app/[locale]/kvkk/page.tsx`:
 import type { Locale } from '@/i18n/routing';
 import { renderStaticPage, staticPageMetadata } from '@/lib/page-route';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   return staticPageMetadata('privacy', locale);
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export default async function Page({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   return renderStaticPage('privacy', locale);
 }
@@ -3502,20 +3511,12 @@ Create `app/[locale]/cerez-politikasi/page.tsx`:
 import type { Locale } from '@/i18n/routing';
 import { renderStaticPage, staticPageMetadata } from '@/lib/page-route';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   return staticPageMetadata('cookies', locale);
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export default async function Page({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   return renderStaticPage('cookies', locale);
 }
@@ -3640,6 +3641,7 @@ Expected: deploy succeeds, prints a preview URL.
 - [ ] **Step 5: Smoke-check the preview URL**
 
 Visit the URL printed by `vercel`. Verify:
+
 - TR home loads, all 7 service cards visible
 - EN locale via `/en` works
 - Click into one service detail page; verify content renders
@@ -3658,6 +3660,7 @@ Note the preview URL in the team channel or PR description.
 ### Task 39: Add CI workflow
 
 **Files:**
+
 - Create: `.github/workflows/ci.yml`
 
 - [ ] **Step 1: Write workflow**
@@ -3705,6 +3708,7 @@ git commit -m "ci: add github actions workflow (lint, typecheck, test, build, e2
 ### Task 40: Final summary + handoff to Plan 2
 
 **Files:**
+
 - Modify: `README.md`
 
 - [ ] **Step 1: Update README with the deploy URL placeholder and progress table**
@@ -3714,12 +3718,12 @@ Append to `README.md`:
 ```markdown
 ## Status
 
-| Plan | Status | Notes |
-| --- | --- | --- |
-| 1. Foundation | ✅ Done | Bilingual marketing shell, home + 7 service pages, static pages, Vercel preview |
-| 2. Content collections | ⏳ Next | Case studies, blog, careers (lists + details) |
-| 3. Forms & integrations | ⏳ | Resend, Turnstile, Blob, contact/demo/career forms |
-| 4. SEO + polish + launch | ⏳ | Sitemap, hreflang, JSON-LD, analytics, KVKK, prod deploy |
+| Plan                     | Status  | Notes                                                                           |
+| ------------------------ | ------- | ------------------------------------------------------------------------------- |
+| 1. Foundation            | ✅ Done | Bilingual marketing shell, home + 7 service pages, static pages, Vercel preview |
+| 2. Content collections   | ⏳ Next | Case studies, blog, careers (lists + details)                                   |
+| 3. Forms & integrations  | ⏳      | Resend, Turnstile, Blob, contact/demo/career forms                              |
+| 4. SEO + polish + launch | ⏳      | Sitemap, hreflang, JSON-LD, analytics, KVKK, prod deploy                        |
 
 Preview: <fill-in-after-task-38>
 ```
@@ -3738,6 +3742,7 @@ git commit -m "docs: update README with plan status"
 This section is the author's check after writing the plan.
 
 **Spec coverage check:**
+
 - §3 Sayfa haritası — covered: home, /hizmetler, /hizmetler/[slug] (×7), /hakkimizda, /iletisim, /kvkk, /cerez-politikasi. Case studies, blog, careers explicitly deferred to Plan 2.
 - §4 Anasayfa bölümleri — Hero, ServicesGrid, IndustryStrip, FeaturedCase (placeholder), ProcessSteps, Testimonials, BlogPreview (placeholder), CTABlock. Covered.
 - §5 Sayfa şablonları — Service template (Tasks 31–32) covered. Case study + blog + career templates explicitly Plan 2.
