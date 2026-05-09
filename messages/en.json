@@ -1,0 +1,43 @@
+{
+  "common": {
+    "primary_cta": "Request Demo",
+    "secondary_cta": "Our Work",
+    "read_more": "Read more",
+    "all_services": "All services"
+  },
+  "nav": {
+    "services": "Services",
+    "work": "Work",
+    "blog": "Blog",
+    "about": "About",
+    "careers": "Careers",
+    "contact": "Contact"
+  },
+  "footer": {
+    "tagline": "Your software partner.",
+    "company": "Company",
+    "services": "Services",
+    "legal": "Legal",
+    "kvkk": "Privacy",
+    "cookies": "Cookies",
+    "rights": "All rights reserved."
+  },
+  "home": {
+    "hero": {
+      "title": "Make the complex, simple.",
+      "subtitle": "End-to-end software for finance, iGaming, commerce and beyond."
+    },
+    "services_section": { "title": "Our services", "subtitle": "Seven disciplines, one standard." },
+    "industries": { "title": "Industries we serve" },
+    "process": {
+      "title": "How we work",
+      "steps": {
+        "discovery": { "title": "Discovery", "description": "We clarify the need and context." },
+        "design": { "title": "Design", "description": "We shape the solution end to end." },
+        "build": { "title": "Build", "description": "We ship fast, with tests." },
+        "support": { "title": "Support", "description": "We stay with you after launch." }
+      }
+    },
+    "cta": { "title": "Let's talk about your project.", "subtitle": "We respond within 24 hours." }
+  }
+}

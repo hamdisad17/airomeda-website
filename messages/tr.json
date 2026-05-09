@@ -1,0 +1,43 @@
+{
+  "common": {
+    "primary_cta": "Demo Talep Et",
+    "secondary_cta": "Çalışmalarımız",
+    "read_more": "Daha fazla",
+    "all_services": "Tüm hizmetler"
+  },
+  "nav": {
+    "services": "Hizmetler",
+    "work": "Çalışmalarımız",
+    "blog": "Blog",
+    "about": "Hakkımızda",
+    "careers": "Kariyer",
+    "contact": "İletişim"
+  },
+  "footer": {
+    "tagline": "Bilişim teknolojileri ortağınız.",
+    "company": "Şirket",
+    "services": "Hizmetler",
+    "legal": "Yasal",
+    "kvkk": "KVKK",
+    "cookies": "Çerez Politikası",
+    "rights": "Tüm hakları saklıdır."
+  },
+  "home": {
+    "hero": {
+      "title": "Karmaşık olanı, basit kıl.",
+      "subtitle": "Finans, iGaming, e-ticaret ve daha fazlası için uçtan uca yazılım."
+    },
+    "services_section": { "title": "Hizmetlerimiz", "subtitle": "Yedi disiplin, tek standart." },
+    "industries": { "title": "Çalıştığımız sektörler" },
+    "process": {
+      "title": "Nasıl çalışırız",
+      "steps": {
+        "discovery": { "title": "Keşif", "description": "İhtiyacı ve bağlamı netleştiririz." },
+        "design": { "title": "Tasarım", "description": "Çözümü mimarisinden arayüzüne kurarız." },
+        "build": { "title": "Geliştirme", "description": "Hızla ve test ederek inşa ederiz." },
+        "support": { "title": "Destek", "description": "Yayın sonrasında yanınızda kalırız." }
+      }
+    },
+    "cta": { "title": "Projenizi konuşalım.", "subtitle": "24 saat içinde dönüş yaparız." }
+  }
+}
