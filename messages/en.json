@@ -39,5 +39,6 @@
       }
     },
     "cta": { "title": "Let's talk about your project.", "subtitle": "We respond within 24 hours." }
-  }
+  },
+  "services_index": { "title": "Our services" }
 }

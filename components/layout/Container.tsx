@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 
 type Props = React.HTMLAttributes<HTMLDivElement> & {
-  as?: 'div' | 'section' | 'header' | 'footer' | 'main';
+  as?: 'div' | 'section' | 'header' | 'footer' | 'main' | 'article';
 };
 
 export function Container({ as: As = 'div', className, ...rest }: Props) {
