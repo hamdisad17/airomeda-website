@@ -1,0 +1,56 @@
+---
+title: Integration Software
+slug: integration
+excerpt: Reliable, observable, and maintainable data integration between enterprise systems.
+hero_subtitle: Design and implementation of event-driven or API-based integration architecture between ERP, CRM, and third-party services.
+capabilities:
+  - title: API gateway design and management
+    description: Centralised security, rate limiting, versioning, and API observability.
+  - title: ERP integrations
+    description: Bidirectional data synchronisation with SAP, Logo, Netsis, and similar ERP systems.
+  - title: EDI and B2B messaging
+    description: Supplier and customer integrations based on EDIFACT, X12, and AS2.
+  - title: Event streaming and webhook infrastructure
+    description: Reliable event publishing and consumer management over Kafka or RabbitMQ.
+  - title: Transformation and data mapping
+    description: Rule-based transformation layer that handles data model differences between systems.
+  - title: Integration monitoring and error management
+    description: Failed message retry, alerting, and integration health dashboards.
+tech_stack:
+  - Kafka
+  - RabbitMQ
+  - Apache Camel
+  - OpenAPI
+  - Node.js
+  - PostgreSQL
+  - Kong
+faq:
+  - question: Can you work with legacy systems or undocumented APIs?
+    answer: Yes. We conduct interface analysis through reverse engineering before integration begins and document our findings to clarify project scope.
+  - question: Should we use real-time integration or batch processing?
+    answer: The decision depends on data latency tolerance, system load, and business process requirements. We evaluate each project from both a technical and business perspective before making a recommendation.
+  - question: How is integration security ensured?
+    answer: OAuth 2.0, API key rotation, TLS enforcement, and least-privilege access policies form our standard security layer.
+  - question: Is it possible to take over an existing integration infrastructure?
+    answer: Yes. We audit and document existing integrations first, then propose an incremental improvement or restructuring plan.
+cta_text: Let's review your integration architecture together
+related_cases: []
+---
+
+## Why Airomeda?
+
+As an enterprise software ecosystem grows, data consistency across systems becomes one of the most frequently overlooked engineering problems. When order data lives in the ERP, customer data in the CRM, and inventory data in the WMS, the reports feeding business decisions become unreliable.
+
+We treat integration projects not merely as technical wiring tasks, but as a responsibility to keep business processes flowing without interruption. The main reason we prefer event-driven architectures is observability: every message's status is traceable, failed deliveries can be retried, and workflows can scale independently.
+
+<Callout title="Our approach">
+Every integration must be observable and reversible — independent of the connected systems.
+</Callout>
+
+## What problems do we solve?
+
+- Inconsistency and error costs caused by data manually copied between systems
+- Undocumented or unmaintained point-to-point integration sprawl
+- Keeping existing integrations running without interruption during a system migration
+- Modernising EDI-based supplier communication
+- Delayed detection of integration failures that only surface within business processes
