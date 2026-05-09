@@ -1,5 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
+import { headers } from 'next/headers';
+import { routing } from '@/i18n/routing';
 import type { Metadata, Viewport } from 'next';
 
 const inter = Inter({
@@ -18,9 +20,16 @@ export const metadata: Metadata = {
   description: 'Airomeda — Bilişim teknolojileri çözümleri.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const h = await headers();
+  const localeHeader = h.get('x-next-intl-locale');
+  const locale =
+    localeHeader && (routing.locales as readonly string[]).includes(localeHeader)
+      ? localeHeader
+      : routing.defaultLocale;
+
   return (
-    <html lang="tr" className={inter.variable}>
+    <html lang={locale} className={inter.variable}>
       <body>{children}</body>
     </html>
   );
