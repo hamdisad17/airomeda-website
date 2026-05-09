@@ -8,6 +8,9 @@ module.exports = {
       script: 'server.js',
       instances: 'max',
       exec_mode: 'cluster',
+      // Node 24's native --env-file loads /var/www/airomeda/shared/.env.production
+      // before each instance starts. Secrets stay out of source control.
+      node_args: '--env-file=/var/www/airomeda/shared/.env.production',
       env: {
         NODE_ENV: 'production',
         PORT: 3010,
