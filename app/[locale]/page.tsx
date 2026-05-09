@@ -1,6 +1,13 @@
 import { setRequestLocale } from 'next-intl/server';
-import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
+import { Hero } from '@/components/sections/Hero';
+import { ServicesGrid } from '@/components/sections/ServicesGrid';
+import { IndustryStrip } from '@/components/sections/IndustryStrip';
+import { FeaturedCase } from '@/components/sections/FeaturedCase';
+import { ProcessSteps } from '@/components/sections/ProcessSteps';
+import { Testimonials } from '@/components/sections/Testimonials';
+import { BlogPreview } from '@/components/sections/BlogPreview';
+import { CTABlock } from '@/components/sections/CTABlock';
 
 export default async function Home({
   params,
@@ -9,12 +16,17 @@ export default async function Home({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations('home.hero');
 
   return (
-    <main className="container py-24">
-      <h1 className="text-display-1 font-bold">{t('title')}</h1>
-      <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{t('subtitle')}</p>
-    </main>
+    <>
+      <Hero />
+      <ServicesGrid locale={locale} />
+      <IndustryStrip />
+      <FeaturedCase />
+      <ProcessSteps />
+      <Testimonials />
+      <BlogPreview />
+      <CTABlock />
+    </>
   );
 }
