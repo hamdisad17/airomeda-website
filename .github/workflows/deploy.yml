@@ -34,6 +34,8 @@ jobs:
           # Next.js standalone output requires static + public to be copied alongside server.js
           cp -r .next/static .next/standalone/.next/static
           if [ -d public ]; then cp -r public .next/standalone/public; fi
+          # Bundle PM2 config so the deploy step can reload from the release dir
+          cp ecosystem.config.cjs .next/standalone/ecosystem.config.cjs
 
       - name: Set up SSH
         run: |

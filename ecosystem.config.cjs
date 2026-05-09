@@ -5,7 +5,7 @@ module.exports = {
     {
       name: 'airomeda-website',
       cwd: '/var/www/airomeda/current',
-      script: '.next/standalone/server.js',
+      script: 'server.js',
       instances: 'max',
       exec_mode: 'cluster',
       env: {
