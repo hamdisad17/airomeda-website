@@ -21,7 +21,7 @@ export async function MegaMenu({ locale }: { locale: Locale }) {
           {services.map((s) => (
             <li key={s.slug}>
               <Link
-                href={{ pathname: '/hizmetler/[slug]', params: { slug: s.slug } }}
+                href={`/hizmetler/${s.slug}`}
                 className="block rounded p-3 hover:bg-muted"
               >
                 <span className="font-medium">{s.title}</span>

@@ -19,7 +19,7 @@ export async function ServicesGrid({ locale }: { locale: Locale }) {
           {services.map((s) => (
             <li key={s.slug}>
               <Link
-                href={{ pathname: '/hizmetler/[slug]', params: { slug: s.slug } }}
+                href={`/hizmetler/${s.slug}`}
                 className="group flex h-full flex-col rounded-lg border border-border bg-muted/20 p-6 transition-colors hover:border-accent hover:bg-muted/40"
               >
                 <h3 className="text-lg font-semibold">{s.title}</h3>
