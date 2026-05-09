@@ -3,7 +3,7 @@
 # SSL: provision via certbot (certbot --nginx -d airomeda.com -d www.airomeda.com)
 
 upstream airomeda_app {
-    server 127.0.0.1:3000;
+    server 127.0.0.1:3010;
     keepalive 16;
 }
 

@@ -77,7 +77,7 @@ ufw --force enable
 echo "==> Writing nginx config for ${DOMAIN}"
 cat >/etc/nginx/sites-available/airomeda <<NGINX
 upstream airomeda_app {
-    server 127.0.0.1:3000;
+    server 127.0.0.1:3010;
     keepalive 16;
 }
 
