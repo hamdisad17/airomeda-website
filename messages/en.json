@@ -60,5 +60,36 @@
     "all_categories": "All",
     "no_posts": "No posts yet.",
     "related_posts": "Related posts"
+  },
+  "careers": {
+    "title": "Careers",
+    "subtitle": "A company growing with talented people doing meaningful work.",
+    "team_culture_title": "Our team culture",
+    "team_culture_intro": "Three principles we hold to as we work together.",
+    "values": {
+      "ownership": {
+        "title": "Ownership",
+        "description": "We see decisions through, end to end."
+      },
+      "craft": {
+        "title": "Craft",
+        "description": "We ship fast but never sacrifice quality."
+      },
+      "transparency": {
+        "title": "Transparency",
+        "description": "We talk openly about mistakes — no hiding."
+      }
+    },
+    "open_positions": "Open positions",
+    "no_open_positions": "No open positions right now. You can send your CV to careers@airomeda.com.",
+    "responsibilities_title": "Responsibilities",
+    "requirements_title": "Requirements",
+    "benefits_title": "What we offer",
+    "apply_cta": "Apply",
+    "apply_placeholder": "Application form coming in Plan 3. For now please email your CV and cover letter to careers@airomeda.com.",
+    "department_label": "Department",
+    "location_label": "Location",
+    "type_label": "Type",
+    "posted_label": "Posted"
   }
 }

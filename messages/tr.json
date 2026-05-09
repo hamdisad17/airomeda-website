@@ -60,5 +60,36 @@
     "all_categories": "Tümü",
     "no_posts": "Henüz yazı yok.",
     "related_posts": "İlgili yazılar"
+  },
+  "careers": {
+    "title": "Kariyer",
+    "subtitle": "Yetenekli ekiple büyüyen, anlamlı işler yapan bir şirket.",
+    "team_culture_title": "Ekip kültürümüz",
+    "team_culture_intro": "Birlikte çalışırken inandığımız üç temel ilke.",
+    "values": {
+      "ownership": {
+        "title": "Sahiplik",
+        "description": "Aldığımız kararı sonuna kadar takip ederiz."
+      },
+      "craft": {
+        "title": "Zanaat",
+        "description": "Hızla teslim ederiz ama kaliteden ödün vermeyiz."
+      },
+      "transparency": {
+        "title": "Şeffaflık",
+        "description": "Hatalardan saklanmadan, açıkça konuşuruz."
+      }
+    },
+    "open_positions": "Açık pozisyonlar",
+    "no_open_positions": "Şu anda açık pozisyon bulunmamaktadır. CV'nizi careers@airomeda.com adresine gönderebilirsiniz.",
+    "responsibilities_title": "Sorumluluklar",
+    "requirements_title": "Aranan nitelikler",
+    "benefits_title": "Sunduklarımız",
+    "apply_cta": "Başvur",
+    "apply_placeholder": "Başvuru formu Plan 3'te eklenecek. Şimdilik careers@airomeda.com adresine CV ve ön yazınızı iletebilirsiniz.",
+    "department_label": "Departman",
+    "location_label": "Lokasyon",
+    "type_label": "Çalışma türü",
+    "posted_label": "Yayınlandı"
   }
 }
