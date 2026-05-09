@@ -91,5 +91,51 @@
     "location_label": "Location",
     "type_label": "Type",
     "posted_label": "Posted"
+  },
+  "contact_form": {
+    "title": "Get in touch",
+    "subtitle": "We will get back to you within 24 hours.",
+    "name": "Full name",
+    "email": "Email",
+    "company": "Company (optional)",
+    "message": "Your message",
+    "message_placeholder": "Share details about your project or question…",
+    "submit": "Send",
+    "submitting": "Sending…",
+    "success_title": "Message received",
+    "success_body": "We will get back to you as soon as possible.",
+    "config_unavailable": "The form is not active yet. You can write to hello@airomeda.com.",
+    "errors": {
+      "required": "This field is required",
+      "min_length": "Must be longer",
+      "invalid_email": "Enter a valid email",
+      "turnstile": "Verification not completed",
+      "rate_limit": "Too many attempts — please wait a moment",
+      "server": "An error occurred. Please try again later."
+    }
+  },
+  "demo_form": {
+    "title": "Request a demo for this service",
+    "subtitle": "Our team will get back to you within 24 hours.",
+    "service_label": "Service"
+  },
+  "application_form": {
+    "title": "Apply for this position",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "linkedin": "LinkedIn URL (optional)",
+    "cover_letter": "Cover letter",
+    "cover_letter_placeholder": "Why this role? Your experience…",
+    "cv_upload": "CV (PDF or DOCX, max 5 MB)",
+    "submit": "Apply",
+    "submitting": "Sending…",
+    "success_title": "Application received",
+    "success_body": "We will get back to you once we have reviewed your application.",
+    "errors": {
+      "cv_required": "Please upload a CV",
+      "cv_size": "CV must be under 5 MB",
+      "cv_type": "Please upload a PDF or DOCX file"
+    }
   }
 }

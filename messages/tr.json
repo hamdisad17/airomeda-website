@@ -91,5 +91,51 @@
     "location_label": "Lokasyon",
     "type_label": "Çalışma türü",
     "posted_label": "Yayınlandı"
+  },
+  "contact_form": {
+    "title": "Bizimle iletişime geçin",
+    "subtitle": "24 saat içinde dönüş yaparız.",
+    "name": "Ad Soyad",
+    "email": "E-posta",
+    "company": "Şirket (opsiyonel)",
+    "message": "Mesajınız",
+    "message_placeholder": "Projeniz veya sorunuz hakkında detayları paylaşın…",
+    "submit": "Gönder",
+    "submitting": "Gönderiliyor…",
+    "success_title": "Mesajınız iletildi",
+    "success_body": "En kısa sürede size dönüş yapacağız.",
+    "config_unavailable": "Form henüz aktif değil. hello@airomeda.com adresine yazabilirsiniz.",
+    "errors": {
+      "required": "Bu alan zorunlu",
+      "min_length": "Daha uzun olmalı",
+      "invalid_email": "Geçerli bir e-posta girin",
+      "turnstile": "Doğrulama tamamlanmadı",
+      "rate_limit": "Çok fazla deneme — bir süre bekleyin",
+      "server": "Bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+    }
+  },
+  "demo_form": {
+    "title": "Bu hizmet için demo talep edin",
+    "subtitle": "Ekibimiz size 24 saat içinde döner.",
+    "service_label": "Hizmet"
+  },
+  "application_form": {
+    "title": "Bu pozisyona başvurun",
+    "name": "Ad Soyad",
+    "email": "E-posta",
+    "phone": "Telefon (opsiyonel)",
+    "linkedin": "LinkedIn URL (opsiyonel)",
+    "cover_letter": "Kısa ön yazı",
+    "cover_letter_placeholder": "Neden bu rol? Tecrübeniz…",
+    "cv_upload": "CV (PDF veya DOCX, en fazla 5 MB)",
+    "submit": "Başvur",
+    "submitting": "Gönderiliyor…",
+    "success_title": "Başvurunuz alındı",
+    "success_body": "Uygunluğunuz değerlendirilince size dönüş yapacağız.",
+    "errors": {
+      "cv_required": "CV yükleyin",
+      "cv_size": "CV 5 MB'tan büyük olamaz",
+      "cv_type": "PDF veya DOCX yükleyin"
+    }
   }
 }

@@ -6,6 +6,7 @@ import { Container } from '@/components/layout/Container';
 import { MDXContent } from '@/components/mdx/MDXContent';
 import { JobMeta } from '@/components/careers/JobMeta';
 import { CTABlock } from '@/components/sections/CTABlock';
+import { JobApplicationForm } from '@/components/forms/JobApplicationForm';
 
 export async function generateStaticParams() {
   const params: { locale: Locale; slug: string }[] = [];
@@ -73,8 +74,13 @@ export default async function JobDetail({
           ))}
         </ul>
 
-        <div className="mt-12 rounded-lg border border-dashed border-border bg-muted/20 p-6 text-center text-sm text-muted-foreground">
-          {t('apply_placeholder')}
+        <div className="mt-12">
+          <h2 className="text-2xl font-semibold tracking-tight">
+            {t('apply_cta')}
+          </h2>
+          <div className="mt-8">
+            <JobApplicationForm jobSlug={slug} />
+          </div>
         </div>
       </Container>
       <CTABlock />
