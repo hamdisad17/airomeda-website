@@ -40,5 +40,15 @@
     },
     "cta": { "title": "Projenizi konuşalım.", "subtitle": "24 saat içinde dönüş yaparız." }
   },
-  "services_index": { "title": "Hizmetlerimiz" }
+  "services_index": { "title": "Hizmetlerimiz" },
+  "case_studies": {
+    "title": "Çalışmalarımız",
+    "subtitle": "Müşterilerimizle birlikte kurduğumuz çözümler.",
+    "metric_results": "Sonuçlar",
+    "related_label": "İlgili çalışmalar",
+    "client_label": "Müşteri",
+    "industry_label": "Sektör",
+    "year_label": "Yıl",
+    "services_label": "Hizmetler"
+  }
 }

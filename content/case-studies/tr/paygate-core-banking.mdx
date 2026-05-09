@@ -1,0 +1,57 @@
+---
+title: PayGate Core Banking Modernizasyonu
+slug: paygate-core-banking
+client: PayGate Bankası
+industry: Finans
+year: 2025
+services: [finans, entegrasyon]
+hero_image: /cases/paygate-core-banking-hero.svg
+excerpt: 12 yıllık monolit core banking yazılımının etap etap modüler mimariye taşınması; sıfır kesinti, beş kat daha yüksek işlem kapasitesi.
+metrics:
+  - label: İşlem hızı artışı
+    value: 5x
+  - label: Operasyonel maliyet düşüşü
+    value: "-38%"
+  - label: Yeni ürün lansman süresi
+    value: 6 hafta
+  - label: Kesintisiz geçiş
+    value: "100%"
+testimonial:
+  quote: Airomeda ekibi, regülasyona uyum konusunda gerçekten birlikte düşündü. Mimaride aldığımız her karar denetlenebilir ve geri dönebilir oldu.
+  author: Serkan Doğan
+  role: CTO, PayGate Bankası
+gallery: []
+related_cases: []
+---
+
+## Sorun
+
+PayGate Bankası, 2012 yılından bu yana kullanılan ve o dönemden kalma mimarisiyle çalışan bir monolit core banking sistemine sahipti. Tüm ürün katmanları — hesap yönetimi, ödeme işleme, mutabakat ve raporlama — tek bir kod tabanında sıkışmıştı. Her deploy, tüm sistemi durdurma riskini beraberinde getiriyordu; bu yüzden mühendisler ayda yalnızca iki kez üretim ortamına kod çıkabiliyordu.
+
+Banka, BDDK'nın 2024 yılında yayımladığı yeni güvenlik ve denetlenebilirlik yönetmeliklerine uymak zorundaydı. Yönetmelik; her finansal işlem için bağımsız denetim izleri, gerçek zamanlı anormallik bildirimi ve felaket kurtarma senaryosu kapsamındaki servis bazlı izolasyonu zorunlu kılıyordu. Monoliti olduğu haliyle bu gereksinimlere uydurmak, birden fazla ürün geliştirme döngüsünü donduruyordu.
+
+Mevcut ekibin sistemi bütünüyle yeniden yazma kapasitesi yoktu. Müşteri, bir yeniden yazım yerine sıfır kesintili ve kademeli bir geçiş stratejisi arıyordu.
+
+## Çözüm
+
+Airomeda, strangler-fig pattern'i temel alan kademeli bir servis çıkarma stratejisi önerdi. Her modül önce mevcut monolit ile eş zamanlı çalışacak şekilde dışarı alındı; doğrulandıktan sonra trafik yeni servise yönlendirildi.
+
+Mimari kararların merkezinde event sourcing ve CQRS yer aldı. Her finansal olay değişmez bir olay günlüğüne yazıldı; bu sayede hem regülatif denetim izleri hem de geriye dönük mutabakat mümkün hale geldi. Servisler arası iletişim senkron REST yerine Apache Kafka üzerinden asenkron mesajlaşma ile kuruldu; bu da bir servisin yavaşlamasının sistemi kasıp kavurmasını engelledi.
+
+İlk çıkarılan modül ödeme işleme katmanıydı. Yük testleri, yeni servisin mevcut monolitten 4,7 kat daha fazla eşzamanlı işlemi idare edebildiğini gösterdi. İkinci aşamada hesap yönetimi ve bildirim motoru ayrı servislere taşındı.
+
+## Süreç
+
+**Hafta 1–4: Keşif ve mimari tasarım.** Kod tabanı analizi, bağımlılık haritası ve servis sınırlarının belirlenmesi. BDDK yönetmelik gereksinimlerinin teknik karşılıklarına dönüştürülmesi. Mevcut ekiple iki adet çalıştay.
+
+**Hafta 5–12: Ödeme servisi.** Yeni ödeme modülünün Kafka tabanlı eventler üzerine inşa edilmesi. Monolit ile paralel çalışma dönemi — her iki sistem da aynı işlemleri işleyip sonuçlar karşılaştırıldı. Yük ve kaos testleri.
+
+**Hafta 13–20: Hesap yönetimi ve mutabakat.** Hesap ve mutabakat servislerinin ayrıştırılması. Denetim günlüğü altyapısı ve regülatif raporlama entegrasyonu. Canary deploy ile kademeli trafik aktarımı.
+
+**Hafta 21–24: Kapanış ve stabilizasyon.** Monolit kodu devre dışı bırakma, performans izleme panoları, ekip eğitimi ve operasyonel el sıkışma.
+
+## Sonuç
+
+Proje, planlanandan iki hafta önce ve tek bir üretim kesintisi yaşanmadan tamamlandı. İşlem kapasitesi beş kata yükseldi; bu, banka için yılın en yoğun dönemlerinde ek altyapı maliyeti olmaksızın yüksek hacmi karşılayabilme anlamına geliyor.
+
+BDDK denetimi, yeni denetim günlüğü altyapısını "yönetmeliğe tam uyumlu" olarak değerlendirdi. Yeni ürün lansman süresi 8–14 aydan 6 haftaya geriledi; ekip artık yılda 26 kez deploy yapabiliyor. Operasyonel altyapı maliyetleri ilk 6 ayda yüzde 38 düştü.

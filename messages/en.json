@@ -40,5 +40,15 @@
     },
     "cta": { "title": "Let's talk about your project.", "subtitle": "We respond within 24 hours." }
   },
-  "services_index": { "title": "Our services" }
+  "services_index": { "title": "Our services" },
+  "case_studies": {
+    "title": "Our Work",
+    "subtitle": "Solutions we built with our customers.",
+    "metric_results": "Results",
+    "related_label": "Related work",
+    "client_label": "Client",
+    "industry_label": "Industry",
+    "year_label": "Year",
+    "services_label": "Services"
+  }
 }

@@ -22,7 +22,7 @@ export default async function Home({
       <Hero />
       <ServicesGrid locale={locale} />
       <IndustryStrip />
-      <FeaturedCase />
+      <FeaturedCase locale={locale} />
       <ProcessSteps />
       <Testimonials />
       <BlogPreview />

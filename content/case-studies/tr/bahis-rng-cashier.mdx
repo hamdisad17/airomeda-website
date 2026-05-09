@@ -1,0 +1,57 @@
+---
+title: Bahis.io RNG Motor ve Kasiyer Platformu
+slug: bahis-rng-cashier
+client: Bahis.io
+industry: iGaming
+year: 2024
+services: [igaming, finans, entegrasyon]
+hero_image: /cases/bahis-rng-cashier-hero.svg
+excerpt: İGaming operatörü için bağımsız denetlenebilir RNG motoru ve çoklu para birimi kasiyeri; dört ülkede lisans onayı, saniyede 12.000 bahis kapasitesi.
+metrics:
+  - label: Saniyede işlenen bahis
+    value: 12.000
+  - label: Lisanslanan ülke sayısı
+    value: "4"
+  - label: Ödeme sağlayıcı entegrasyonu
+    value: "11"
+  - label: İlk ödeme başarı oranı
+    value: "99,2%"
+testimonial:
+  quote: Regülatörler RNG raporumuzu ilk sunuşta kabul etti. Bu kadar hızlı lisans almayı beklemiyorduk.
+  author: Mete Arıkan
+  role: CPO, Bahis.io
+gallery: []
+related_cases: []
+---
+
+## Sorun
+
+Bahis.io, Avrupa ve MENA bölgelerinde lisanslı bir iGaming operatörü olarak faaliyet gösteriyordu. Platform, üçüncü taraf bir RNG sağlayıcısına bağımlıydı; bu bağımlılık hem lisanslama süreçlerinde esneklik kaybına hem de her yeni pazar için ek lisans ücretlerine yol açıyordu. RNG sözleşmesinin yenilenmemesi durumunda tüm platform risk altına girecekti.
+
+Kasiyer tarafında sorunlar daha da kritikti. Farklı ödeme yöntemleri (banka havalesi, e-cüzdan, kripto) birbirinden bağımsız entegrasyonlarla yönetiliyordu; her sağlayıcı için ayrı mutabakat kodu mevcuttu. Oyuncu başına ödeme başarı oranı yüzde 94'ün altındaydı; başarısız işlemler destek ekibini aşırı yüklüyordu.
+
+Operatör, hem denetlenebilir ve bağımsız bir RNG motoruna hem de tüm ödeme sağlayıcılarını tek çatı altında toplayan birleşik bir kasiyer katmanına ihtiyaç duyuyordu.
+
+## Çözüm
+
+Airomeda iki ayrı sistemi paralel olarak tasarlayıp geliştirdi.
+
+**RNG Motoru:** Kriptografik olarak güçlü, donanım entropi kaynaklarıyla beslenen ve iTech Labs ile GLI denetim standartlarını karşılayan bağımsız bir RNG servisi inşa edildi. Servis, her sonuç için değişmez bir kanıt zinciri üretiyor; bu kanıt hem regülatörün denetim portalına hem de operatörün kendi raporlama sistemine akıyor. Yük altında saniyede 15.000 sonuç üretebiliyor; Bahis.io'nun mevcut kapasitesinin yüzde 25 üzerinde.
+
+**Birleşik Kasiyer:** Tüm ödeme sağlayıcıları ortak bir adaptör arayüzü arkasına alındı. Her sağlayıcı için akıllı yönlendirme mantığı eklendi: oyuncunun geçmiş başarı oranına, coğrafi konumuna ve ödeme tipine göre en uygun sağlayıcı seçiliyor. Başarısız işlemler otomatik olarak alternatif rotaya yönlendiriliyor.
+
+## Süreç
+
+**Ay 1–2: Lisanslama gereksinimlerinin analizi.** Malta Gaming Authority ve Curaçao eGaming düzenlemelerinin teknik gereksinimlerinin çıkarılması. RNG denetim çerçevesinin belirlenmesi. Mevcut kasiyer entegrasyonlarının haritalanması.
+
+**Ay 3–5: RNG motoru geliştirme ve denetim.** Servisin geliştirilmesi ve iTech Labs denetimine hazırlanması. Denetim raporunun üretilmesi; regülatör başvurularının hazırlanması.
+
+**Ay 4–6: Kasiyer katmanı.** Adaptör mimarisinin tasarımı, ilk 6 sağlayıcı entegrasyonu, akıllı yönlendirme motorunun geliştirilmesi. Yük testi ve başarı oranı optimizasyonu.
+
+**Ay 7: Entegrasyon ve canlıya geçiş.** İki sistemin Bahis.io platformuna entegrasyonu, canary launch, izleme altyapısı.
+
+## Sonuç
+
+RNG motoru dört ülkede regülatif onay aldı; ilk başvurularda reddetme yaşanmadı. Kasiyer başarı oranı yüzde 94'ten yüzde 99,2'ye yükseldi; destek taleplerinde yüzde 61 düşüş gözlemlendi.
+
+Platform artık 11 ödeme sağlayıcısını tek bir entegrasyon noktasından yönetiyor. Saniyede 12.000 bahis kapasitesiyle operatör, herhangi bir altyapı yükseltmesi gerektirmeden büyük spor etkinliklerinin yük zirvelerini karşılayabiliyor.

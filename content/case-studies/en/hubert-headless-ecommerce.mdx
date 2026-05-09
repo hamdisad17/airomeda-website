@@ -1,0 +1,57 @@
+---
+title: Hubert Headless E-Commerce Platform
+slug: hubert-headless-ecommerce
+client: Hubert Cosmetics
+industry: E-Commerce
+year: 2024
+services: [e-commerce, integration]
+hero_image: /cases/hubert-headless-ecommerce-hero.svg
+excerpt: Migrating one of Turkey's leading cosmetics brands from a monolithic e-commerce stack to a headless architecture — page speed more than doubled, conversion rate up 34%.
+metrics:
+  - label: Page load speed improvement
+    value: 2.4x
+  - label: Conversion rate increase
+    value: "+34%"
+  - label: Mobile Core Web Vitals (LCP)
+    value: 1.1s
+  - label: Annual infrastructure cost saving
+    value: "-52%"
+testimonial:
+  quote: The new platform doesn't slow down during campaign periods at all. Our team can now focus on creating content instead of waiting for technical support.
+  author: Elif Yıldız
+  role: Digital Marketing Director, Hubert Cosmetics
+gallery: []
+related_cases: []
+---
+
+## Challenge
+
+Hubert Cosmetics had been running on a custom-built e-commerce infrastructure for over a decade. Over the years, the platform had grown into a massive monolith hosting more than 200,000 products and tens of thousands of customer records. Slowdowns during campaign periods were inevitable; on Black Friday 2023, the infrastructure crashed, costing an estimated 1.8 million TRY in missed sales.
+
+Content management was another serious problem. The marketing team had to raise tickets with engineering for product page updates; even a simple description change required a three-day wait. Launching new campaigns required at minimum two sprint cycles to plan.
+
+Mobile experience had been neglected over the years. Google PageSpeed scores on mobile hovered between 28–32, negatively impacting organic search rankings.
+
+## Solution
+
+Airomeda designed a headless architecture: the product catalogue and stock management stayed in a robust backend API, while the customer experience layer was moved to a new Next.js frontend deployed on Edge CDN.
+
+Contentful was chosen for content management. The marketing team can now manage campaign pages, banners, and product descriptions directly without any code changes required. Content changes go live within 60 seconds.
+
+Product listing and detail pages are generated with Incremental Static Regeneration (ISR). During peak traffic, CDN-served static pages absorb the load naturally rather than stressing the infrastructure. The checkout flow routes to the real-time API; stock updates are instant.
+
+## Process
+
+**Months 1–2: Discovery and data migration plan.** Analysing the existing product catalogue and customer data. Defining API contracts. Headless architecture design and Contentful content modelling.
+
+**Months 3–5: Frontend development.** Building the Next.js application, implementing ISR strategy, Contentful integration. Core Web Vitals optimisation — iterating against LCP, CLS, and FID targets.
+
+**Months 4–6: Backend API and integrations.** Restructuring the product catalogue API. Payment and stock integrations. Data synchronisation with the existing ERP system.
+
+**Month 7: Migration and monitoring.** Go-live via blue-green deployment. Both systems ran in parallel for the first 4 weeks. Infrastructure cost optimisation.
+
+## Outcome
+
+The new platform handled three times more concurrent visitors during the November 2024 campaign season compared to the previous year — with zero slowdowns. Average page load time dropped from 4.8 seconds to under 2.0 seconds; mobile LCP reached 1.1 seconds.
+
+Conversion rate increased by 34%. The marketing team's average content update time dropped from 3 days to under 10 minutes. Annual infrastructure costs fell by 52% — stronger performance at lower cost.

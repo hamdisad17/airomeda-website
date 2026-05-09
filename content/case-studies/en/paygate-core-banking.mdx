@@ -1,0 +1,57 @@
+---
+title: PayGate Core Banking Modernisation
+slug: paygate-core-banking
+client: PayGate Bank
+industry: Finance
+year: 2025
+services: [finance, integration]
+hero_image: /cases/paygate-core-banking-hero.svg
+excerpt: Incremental extraction of a 12-year-old monolithic core banking system into a modular, event-driven architecture — zero downtime, five times the transaction capacity.
+metrics:
+  - label: Transaction throughput
+    value: 5x
+  - label: Operational cost reduction
+    value: "-38%"
+  - label: New product time-to-launch
+    value: 6 weeks
+  - label: Zero-downtime migration
+    value: "100%"
+testimonial:
+  quote: The Airomeda team truly thought alongside us on regulatory compliance. Every architectural decision we made became auditable and reversible.
+  author: Serkan Doğan
+  role: CTO, PayGate Bank
+gallery: []
+related_cases: []
+---
+
+## Challenge
+
+PayGate Bank had been running a monolithic core banking system since 2012. Every product layer — account management, payment processing, reconciliation, and reporting — was tightly coupled in a single codebase. Each deployment carried the risk of taking the entire system offline; as a result, engineers could only push to production twice a month.
+
+The bank also faced new regulatory requirements from the country's financial regulator, mandating independent audit trails for every financial transaction, real-time anomaly reporting, and service-level isolation for disaster recovery scenarios. Adapting the monolith to meet these requirements as-is would have frozen multiple product development cycles.
+
+The existing engineering team had neither the capacity nor the runway for a full rewrite. The client needed a zero-downtime, incremental migration strategy.
+
+## Solution
+
+Airomeda proposed a phased service extraction strategy built on the strangler-fig pattern. Each module was carved out to run alongside the monolith simultaneously; once validated, traffic was shifted to the new service.
+
+Event sourcing and CQRS sat at the heart of the architectural decisions. Every financial event was written to an immutable event log, enabling both regulatory audit trails and backward reconciliation. Inter-service communication was built on asynchronous messaging over Apache Kafka rather than synchronous REST — preventing any single slow service from cascading through the system.
+
+The payment processing layer was the first module extracted. Load tests showed the new service handling 4.7 times more concurrent transactions than the legacy monolith. In the second phase, account management and the notification engine were separated into their own services.
+
+## Process
+
+**Weeks 1–4: Discovery and architecture design.** Codebase analysis, dependency mapping, and defining service boundaries. Translating regulatory requirements into technical specifications. Two working sessions with the client's engineering team.
+
+**Weeks 5–12: Payment service.** Building the new payment module on Kafka-based events. Parallel running period — both systems processed the same transactions and results were compared. Load and chaos testing.
+
+**Weeks 13–20: Account management and reconciliation.** Extracting account and reconciliation services. Audit log infrastructure and regulatory reporting integration. Canary deployment with incremental traffic shifting.
+
+**Weeks 21–24: Close-out and stabilisation.** Decommissioning monolith code, setting up performance monitoring dashboards, team training, and operational handover.
+
+## Outcome
+
+The project was completed two weeks ahead of schedule with zero production incidents. Transaction capacity increased fivefold — meaning the bank can now handle peak-season volumes without additional infrastructure spend.
+
+The regulatory audit rated the new audit log infrastructure as "fully compliant." Time to launch new products dropped from 8–14 months to 6 weeks; the team can now deploy 26 times per year. Operational infrastructure costs fell by 38% in the first six months.
