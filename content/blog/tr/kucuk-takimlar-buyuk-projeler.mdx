@@ -1,0 +1,73 @@
+---
+title: Küçük Takımlar, Büyük Projeler
+slug: kucuk-takimlar-buyuk-projeler
+excerpt: Az kişiyle karmaşık yazılım teslim etmenin arkasındaki süreç, kültür ve pratikler.
+cover: /blog/kucuk-takimlar-buyuk-projeler-cover.svg
+author: Airomeda Ekibi
+published_at: '2026-05-01'
+reading_time: 6
+categories: [süreç]
+---
+
+## Paradoks
+
+Büyük organizasyonlar büyük projeler için büyük takımlar kurar. Bu mantıklı görünür, ancak Brooks Yasası bize çok önceden söyledi: gecikmiş bir projeye insan eklemek projeyi daha da geciktirir.
+
+Airomeda olarak kasıtlı şekilde küçük takımlarla çalışıyoruz. Bu tercih hem bir kısıtlama hem de bir güç kaynağı. Bu yazıda küçük ekiple büyük iş teslim etmenin pratiklerini paylaşıyoruz.
+
+## Neden Küçük Takımlar?
+
+Küçük takımlar şu avantajları beraberinde getirir:
+
+- **Koordinasyon maliyeti düşük**: 5 kişi arasındaki iletişim 15 kişi arasındaki iletişimden üstel olarak daha az karmaşık
+- **Bağlam tutarlılığı yüksek**: Herkes projenin tüm boyutlarını anlıyor
+- **Karar hızı yüksek**: Toplantıya gerek kalmadan kararlar alınabiliyor
+- **Hesap verebilirlik net**: Her modülün sahibi belli
+
+Ancak bu avantajlar kendiliğinden gelmez. Küçük takımların üretken kalması için kasıtlı bir çalışma tasarımı gerekir.
+
+## Üretkenliği Koruyan Pratikler
+
+### 1. Asenkron Önce Kültürü
+
+Toplantı saatlerini minimize etmek ve kararları yazılı olarak almak, özellikle çok saat diliminde çalışıldığında kritik öneme sahiptir. Her önemli kararın gerekçesini, alternatifleri ve sonucu belgeleyen hafif bir "decision log" tutmak, onboarding sürecini de kısaltır.
+
+### 2. Değiştirilebilir Modüller
+
+Küçük takım, her geliştirici projenin her parçasına dokunabilir anlamına gelmelidir. Bunu mümkün kılan şey iyi ayrıştırılmış, test edilmiş ve belgelenmiş modüller.
+
+Bir geliştirici projeyi bıraktığında sistemin herhangi bir parçasını başka birinin sürdürebilmesi gerekir. "Sadece ben bilirim" bilgisi tek başına sistemik bir risktir.
+
+<Callout title="Bilgi Transferinin Tek Yolu">
+Kod review'ları salt kalite kontrolü değil, bilgi transferinin birincil mekanizmasıdır. Her review'ı bir öğrenme fırsatı olarak tasarlayın.
+</Callout>
+
+### 3. Otomasyon Birinci
+
+Manuel süreçler küçük takımlarda büyük takımlara kıyasla çok daha pahalıdır. Test otomasyonu, CI/CD, otomatik dağıtım ve izleme altyapısına erken yatırım yapın.
+
+Bir görevi manuel yapmak zorunda kaldığınızda kendinize şunu sorun: "Bu görevi nasıl otomatize ederim?"
+
+### 4. Kapsam Disiplini
+
+Küçük takımların en büyük tuzağı kapsam genişlemesidir (scope creep). Her yeni istek için net bir değerlendirme süreci olmalı ve "hayır" demek ekibin bir yetkinliği haline gelmeli.
+
+Özellik talepleri için basit bir değerlendirme çerçevesi:
+- Bu özellik hangi iş problemini çözüyor?
+- Onsuz ne kaybederiz?
+- Geliştirme maliyeti nedir?
+- Bakım maliyeti ne olacak?
+
+## Büyük Projeler Küçük Takımlarla Nasıl Teslim Edilir?
+
+Büyük projeyi gerçekten küçük parçalara bölmek gerekir — ama bu bölme tesadüfi değil, stratejik olmalı:
+
+- Her milestone, bağımsız olarak değer üreten ve test edilebilen bir çıktı olmalı
+- Teknik borç kontrollü birikmelidir; tamamen sıfırlamak hedeflenemez ama tamamen görmezden gelmek de sürdürülemez
+- Her üç ayda bir teknik borç retrospektifi yapın
+
+## Sonuç
+
+Küçük takımlar büyük projeler teslim edebilir — hatta çoğu zaman büyük takımlardan daha verimli. Bunun için iyi araçlar, asenkron iletişim kültürü, otomasyon ve kapsam disiplini bir arada gereklidir.
+
+En değerli kaynak takım üyelerinizin zamanıdır. Onu mümkün olan en yüksek etkili işlere yönlendirmek liderliğin birincil görevidir.

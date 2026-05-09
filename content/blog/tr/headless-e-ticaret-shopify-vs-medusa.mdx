@@ -1,0 +1,63 @@
+---
+title: Headless E-Ticaret: Shopify vs Medusa — Hangi Platform, Ne Zaman?
+slug: headless-e-ticaret-shopify-vs-medusa
+excerpt: Platform seçimi kararını yönlendiren teknik ve iş kriterleri üzerine kapsamlı bir karşılaştırma.
+cover: /blog/headless-e-ticaret-shopify-vs-medusa-cover.svg
+author: Airomeda Ekibi
+published_at: '2026-02-28'
+reading_time: 9
+categories: [e-ticaret]
+---
+
+## Sorun
+
+"Headless e-ticaret kuruyoruz, hangi platformu seçelim?" sorusu son iki yılda müşterilerden en sık duyduğumuz sorulardan biri haline geldi. Shopify'ın Storefront API'si ve Hydrogen framework'ü bir tarafta, açık kaynak ve self-hosted seçenek olarak Medusa diğer tarafta.
+
+İkisi arasındaki seçim, doğrudan iş modelinize, geliştirici kapasitesine ve uzun vadeli ölçekleme hedeflerinize bağlıdır. Bu yazıda her iki platformun güçlü ve zayıf yönlerini dürüstçe ele alıyoruz.
+
+## Shopify + Hydrogen: Ne Zaman Doğru Seçim?
+
+Shopify'ın headless çözümü, özellikle şu profildeki işletmeler için mantıklıdır:
+
+- Hızlı market'e çıkış kritikse ve geliştirme kapasitesi kısıtlıysa
+- Üçüncü taraf entegrasyon ekosistemi geniş kalması gerekiyorsa
+- Ödeme, vergi ve kargo gibi karmaşık operasyonel konular için önceden hazır çözümler tercih ediliyorsa
+- Sunucu yönetimi kapasitesi yoksa
+
+<Callout title="Shopify'ın Gizli Maliyeti">
+Shopify Plus planı ve işlem ücretleri, orta-büyük ölçekteki işletmeler için toplamda SaaS bedelinin çok ötesine geçebilir. TCO hesabını GMV bazında yapmadan karar vermeyin.
+</Callout>
+
+Hydrogen, React Server Components üzerine inşa edilmiş ve Vite tabanlı bir framework. Geliştirici deneyimi iyi, ancak Shopify ekosistemiyle sıkı entegrasyon bazen kısıtlayıcı olabilir.
+
+## Medusa: Ne Zaman Doğru Seçim?
+
+Medusa, özellikle şu senaryolarda Shopify'ın önüne geçer:
+
+- **Karmaşık ürün katalogları**: Özelleştirilmiş fiyatlandırma, dinamik vergi hesabı veya çok katmanlı varyant yapıları gerektiren işletmeler için Medusa'nın esnekliği paha biçilemez.
+- **Çok bölgeli operasyonlar**: Farklı ülkelerde farklı para birimleri, vergi kuralları ve ödeme yöntemleri yönetmek Medusa'da çok daha az sürtünmeyle gerçekleşir.
+- **Sahiplik ve özelleştirme**: Medusa açık kaynak ve self-hosted olduğundan platform kilitlenmesi (vendor lock-in) riski yoktur.
+- **Yüksek işlem hacmi**: Platform ücreti olmadığından yüksek GMV'de toplam sahip olma maliyeti belirgin şekilde düşer.
+
+Öte yandan Medusa'nın dezavantajları da vardır:
+
+- Olgun bir plugin ekosistemi henüz yoktur
+- DevOps ve altyapı yönetimi gerektirir
+- Shopify App Store'a kıyasla hazır entegrasyon sayısı azdır
+
+## Teknik Karşılaştırma
+
+| Kriter | Shopify + Hydrogen | Medusa |
+| --- | --- | --- |
+| Kurulum hızı | Hızlı | Orta |
+| Özelleştirme | Kısıtlı | Tam |
+| Vendor lock-in | Yüksek | Yok |
+| Platform maliyeti | GMV bazlı artar | Sabit (altyapı) |
+| Ekosistem | Geniş | Büyüyen |
+| DevOps gereksinimi | Düşük | Orta-Yüksek |
+
+## Sonuç
+
+Hızlı start gerektiren, standart ürün kataloğu olan ve geniş bir plugin ekosisteminden yararlanmak isteyen işletmeler için Shopify mantıklı seçimdir. Özelleşmiş iş modelleri, yüksek işlem hacmi ve tam sahiplik isteyen işletmeler için Medusa belirgin avantaj sunar.
+
+Her iki platformla da projeler geliştirmiş ekibimiz, kararı her zaman iş gereksinimlerinden başlatmanızı önerir — teknik tercihlerden değil.

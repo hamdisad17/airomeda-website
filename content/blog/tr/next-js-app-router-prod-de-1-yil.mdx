@@ -1,0 +1,66 @@
+---
+title: Next.js App Router ile Üretimde Bir Yıl
+slug: next-js-app-router-prod-de-1-yil
+excerpt: App Router'ı gerçek ürünlerde kullanmanın bize öğrettikleri ve hâlâ dikkat gerektiren konular.
+cover: /blog/next-js-app-router-prod-de-1-yil-cover.svg
+author: Airomeda Ekibi
+published_at: '2026-01-30'
+reading_time: 10
+categories: [teknoloji]
+---
+
+## Bağlam
+
+Next.js 13 ile duyurulan App Router, React Server Components (RSC) üzerine inşa edilmiş ve frontend geliştirme paradigmasını kökten değiştiren bir mimari. 2025 başında üretim ortamına taşıdığımız birden fazla projede bu mimarinin gerçek dünya performansını test ettik.
+
+Bir yıl sonra şunu söyleyebiliriz: App Router gerçekten güçlü, ancak dikkat edilmesi gereken nüanslar var.
+
+## Ne Çok İyi Çalıştı?
+
+### Sunucu Bileşenleri Veri Getirme Mantığını Sadeleştirdi
+
+RSC ile veri getirme doğrudan bileşen düzeyinde gerçekleşir. `useEffect` + `fetch` kombinasyonuna ya da global state yönetimi için üçüncü taraf kütüphanelere olan bağımlılık dramatik biçimde azaldı.
+
+Veritabanına doğrudan erişen bileşenler yazmak başta alışılmadık gelse de performans ve geliştirici deneyimi açısından kazancı gördükten sonra geri dönmek istemedin.
+
+### Nested Layouts Kod Organizasyonunu İyileştirdi
+
+Shared layout bileşenlerini route segmentlerine göre organize etmek, özellikle büyük uygulamalarda kodun anlaşılırlığını önemli ölçüde artırdı. Dashboard uygulamalarında iç içe geçmiş layout yapıları çok verimli bir geliştirme deneyimi sağladı.
+
+### Streaming ve Suspense Kullanıcı Deneyimini Yükseltti
+
+Yavaş veri kaynaklarını Suspense sınırlarıyla izole ederek sayfanın geri kalanının anında render edilmesini sağlamak, özellikle veri yoğun sayfalarda kullanıcı deneyimini gözle görülür biçimde iyileştirdi.
+
+<Callout title="Ölçüm Yapın">
+Streaming'in etkisini hissedilir kılmak için yavaş bileşenleri doğru Suspense sınırlarıyla izole etmeniz gerekir. Her şeyi tek bir Suspense'e sarmak beklenen kazancı sağlamaz.
+</Callout>
+
+## Dikkat Gerektiren Konular
+
+### Caching Modeli Hâlâ Kafa Karıştırıcı
+
+Next.js'in çok katmanlı önbellekleme modeli (Router Cache, Full Route Cache, Data Cache, Request Memoization) güçlü ama zihinsel modeli anlamak zaman alıyor. Eski `revalidate` davranışını bekleyip farklı sonuçlarla karşılaşmak yaygın bir deneyim.
+
+Önerdiğimiz yaklaşım:
+- Her cache katmanının ne zaman devreye girdiğini bir şemada belgeleyin
+- Cache invalidation stratejisini bileşen mimarisiyle birlikte planlayın
+- Geliştirme ortamında caching davranışı üretimden farklı olabileceğini unutmayın
+
+### Client/Server Sınırı Yeni Hata Türleri Doğurdu
+
+"use client" direktifini gereken yere koymak bazen çetrefilli olabiliyor. Özellikle üçüncü taraf kütüphaneler (henüz RSC uyumlu olmayan paketler) bu sınırı yönetmeyi zorlaştırıyor.
+
+### Bundle Analizi Daha da Önemli Hale Geldi
+
+Server/client sınırını yanlış çizmek, beklenmedik paket boyutu artışlarına yol açabiliyor. `@next/bundle-analyzer` ile düzenli analiz yapmak gerekli.
+
+## Tavsiyelerimiz
+
+- Yeni projelerde App Router ile başlayın — Pages Router'a dönmeyi düşünmek zorunda kalmayacaksınız
+- Mevcut uygulamaları geçirmek için `pages` ve `app` dizinlerinin aynı anda var olabileceği kademeli geçiş yaklaşımını benimseyin
+- Cache stratejinizi baştan planlayın; sonradan düzeltmek maliyetli olabiliyor
+- RSC ile uyumlu kütüphane seçimini mimari kararların bir parçası olarak ele alın
+
+## Sonuç
+
+App Router olgunlaşmaya devam ediyor ve her versiyonla daha stabil hale geliyor. Bir yıllık deneyimimize göre doğru kullanıldığında hem geliştirici verimliliği hem son kullanıcı deneyimi açısından belirgin kazançlar sağlıyor.

@@ -1,0 +1,65 @@
+---
+title: Core Banking Modernizasyonunda 5 Ders
+slug: core-banking-modernizasyon-stratejisi
+excerpt: Strangler fig deseniyle köklü bankacılık sistemlerini kesintisiz modernize etmenin yolunda öğrendiklerimiz.
+cover: /blog/core-banking-modernizasyon-stratejisi-cover.svg
+author: Airomeda Ekibi
+published_at: '2026-04-15'
+reading_time: 8
+categories: [finans]
+---
+
+## Sorun
+
+Onlarca yıldır ayakta duran core banking sistemleri, finans kurumlarının dijital dönüşümünün önündeki en büyük engeldir. Monolitik yapı, kritik iş süreçleriyle o kadar iç içe geçmiştir ki küçük bir değişiklik bile büyük riskler doğurabilir. Tüm sistemi bir anda değiştirmeye çalışmak çoğu zaman başarısızlıkla sonuçlanır.
+
+Airomeda olarak birden fazla finans kurumuyla çalışırken bu sorunun üstesinden gelmek için strangler fig (boğan incir) desenini merkeze alan bir yaklaşım geliştirdik. Bu yazıda öğrendiklerimizi paylaşıyoruz.
+
+## Strangler Fig Deseni Nedir?
+
+Strangler fig, bir incir ağacının ev sahibi ağacı yavaş yavaş sarıp geçersiz kılması metaforundan gelir. Yazılımda bu, yeni sistemin eski sistemin etrafına inşa edilmesi, işlevlerin parça parça yeni platforma taşınması ve eski sistemin zamanla devre dışı bırakılması anlamına gelir.
+
+Bu yaklaşımın çekiciliği şuradan kaynaklanır: hiçbir zaman "büyük patlama" geçişi yapmazsınız. Sistem her zaman çalışmaya devam eder.
+
+## 5 Kritik Ders
+
+### 1. API Katmanı Her Şeyden Önce Gelir
+
+Modernizasyona başlamadan önce mevcut sistemin tüm yeteneklerini kapsayan bir API katmanı oluşturmak zorunludur. Bu katman hem mevcut sisteme bir ayna tutar hem de yeni bileşenlerin bağlanacağı sözleşmeyi tanımlar.
+
+<Callout title="Kritik Gözlem">
+API tasarımını eski sistemin veri modelinden değil, iş alanı dilinden türetin. Teknik borcu API'ye taşımayın.
+</Callout>
+
+### 2. Veri Tutarlılığını Küçümsemeyin
+
+İki sistem paralel çalıştığında veri tutarlılığı en büyük baş ağrısı haline gelir. Olay güdümlü (event-driven) bir mimari benimsemek ve her iki sistemin de aynı olayları tüketmesini sağlamak bu sorunu yönetilebilir kılar.
+
+Çalıştığımız bir projede şu prensibi uyguladık:
+- Eski sistem kayıt sistemi olarak kalır
+- Yeni sistem olayları dinler ve kendi state'ini günceller
+- Belirli bir modül yeterince olgunlaştığında kayıt sistemi rolü devralınır
+
+### 3. Özellik Bayrakları Geçiş Sürecinin Can Simididir
+
+Hangi kullanıcıların yeni sistemi kullandığını kontrol etmek için özellik bayrakları (feature flags) kritik öneme sahiptir. Pilot kullanıcılarla başlayın, geri bildirim alın, sorunları çözün ve genişleyin.
+
+### 4. Gözlemlenebilirlik İki Sistem İçin Şart
+
+Dağıtık izleme (distributed tracing) ve merkezi log yönetimi olmadan iki sistem arasındaki sorunları tespit etmek imkansıza yakındır. OpenTelemetry tabanlı bir altyapı kurun ve her iki sistemi de aynı tracing framework'üne bağlayın.
+
+### 5. İnsan Faktörünü Görmezden Gelmeyin
+
+Modernizasyon yalnızca teknik bir süreç değildir. Eski sistemi yıllarca bilen ekiplerin yeni platforma geçişi hem teknik hem psikolojik bir değişimdir. Eğitim ve değişim yönetimine yatırım yapmak, teknik yatırım kadar kritiktir.
+
+## Sonuç
+
+Strangler fig deseni sabır gerektiren ama son derece etkili bir yaklaşımdır. Büyük bankacılık sistemlerini sıfırdan yeniden yazmak yerine bu yöntemi benimseyen kurumların dönüşümü hem daha hızlı tamamladığını hem de iş sürekliliğini koruduğunu gözlemledik.
+
+## Öneriler
+
+- Modernizasyona başlamadan önce kapsamlı bir etki analizi yapın
+- Teknik ekiple iş birimlerini sürece başından dahil edin
+- Her geçiş adımı için geri alma planı hazırlayın
+- Başarıyı teknik metriklerle değil iş metrikleriyle ölçün
+- Küçük zaferler kutlayın; uzun süreçlerde motivasyonu canlı tutmak önemlidir

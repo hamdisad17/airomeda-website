@@ -50,5 +50,15 @@
     "industry_label": "Industry",
     "year_label": "Year",
     "services_label": "Services"
+  },
+  "blog": {
+    "title": "Writing",
+    "subtitle": "Our thoughts on sectors, products and processes.",
+    "by_author": "Author",
+    "min_read": "min read",
+    "categories_label": "Categories",
+    "all_categories": "All",
+    "no_posts": "No posts yet.",
+    "related_posts": "Related posts"
   }
 }

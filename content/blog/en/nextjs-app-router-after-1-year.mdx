@@ -1,0 +1,66 @@
+---
+title: One Year with Next.js App Router in Production
+slug: nextjs-app-router-after-1-year
+excerpt: What the App Router has taught us in real products, and the areas that still demand careful attention.
+cover: /blog/nextjs-app-router-after-1-year-cover.svg
+author: Airomeda Team
+published_at: '2026-01-30'
+reading_time: 10
+categories: [technology]
+---
+
+## Context
+
+The App Router announced with Next.js 13 — built on React Server Components (RSC) — fundamentally changes the frontend development paradigm. We moved several production projects onto this architecture in early 2025 and have been testing its real-world performance ever since.
+
+One year on, we can say this: App Router is genuinely powerful, but there are nuances that require attention.
+
+## What Worked Very Well?
+
+### Server Components Simplified Data Fetching Logic
+
+With RSC, data fetching happens directly at the component level. Our dependency on `useEffect` + `fetch` combinations and third-party libraries for global state management dropped dramatically.
+
+Writing components that access the database directly felt unusual at first, but once we saw the performance and developer experience gains, there was no desire to go back.
+
+### Nested Layouts Improved Code Organization
+
+Organizing shared layout components by route segment significantly improved code legibility in large applications. Nested layout structures for dashboard applications in particular provided a highly efficient development experience.
+
+### Streaming and Suspense Elevated User Experience
+
+Isolating slow data sources behind Suspense boundaries so the rest of the page renders immediately produced noticeably better user experiences on data-intensive pages.
+
+<Callout title="Measure It">
+To make streaming's effect tangible, you need to isolate slow components with properly placed Suspense boundaries. Wrapping everything in a single Suspense won't deliver the expected gains.
+</Callout>
+
+## Areas Requiring Careful Attention
+
+### The Caching Model Is Still Confusing
+
+Next.js's multi-layered caching model (Router Cache, Full Route Cache, Data Cache, Request Memoization) is powerful but takes time to build a mental model around. Expecting legacy `revalidate` behavior and getting different results is a common experience.
+
+Our recommended approach:
+- Document when each cache layer activates in a diagram
+- Plan your cache invalidation strategy alongside your component architecture
+- Remember that caching behavior in development can differ from production
+
+### The Client/Server Boundary Introduced New Error Types
+
+Placing the `"use client"` directive correctly can sometimes be tricky. Third-party libraries in particular (packages not yet RSC-compatible) complicate managing this boundary.
+
+### Bundle Analysis Became Even More Important
+
+Drawing the server/client boundary incorrectly can lead to unexpected bundle size increases. Regular analysis with `@next/bundle-analyzer` is necessary.
+
+## Our Recommendations
+
+- Start new projects with App Router — you won't find yourself wanting to revert to Pages Router
+- For migrating existing applications, adopt the gradual migration approach where `pages` and `app` directories coexist
+- Plan your cache strategy upfront; fixing it later is expensive
+- Treat RSC-compatible library selection as part of architectural decisions
+
+## Conclusion
+
+App Router continues to mature and grows more stable with each version. Based on our year of experience, when used correctly it delivers meaningful gains in both developer productivity and end-user experience.

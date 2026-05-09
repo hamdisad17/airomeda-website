@@ -25,7 +25,7 @@ export default async function Home({
       <FeaturedCase locale={locale} />
       <ProcessSteps />
       <Testimonials />
-      <BlogPreview />
+      <BlogPreview locale={locale} />
       <CTABlock />
     </>
   );

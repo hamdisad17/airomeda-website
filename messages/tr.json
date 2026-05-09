@@ -50,5 +50,15 @@
     "industry_label": "Sektör",
     "year_label": "Yıl",
     "services_label": "Hizmetler"
+  },
+  "blog": {
+    "title": "Yazılar",
+    "subtitle": "Sektör, ürün ve süreçler üzerine düşüncelerimiz.",
+    "by_author": "Yazar",
+    "min_read": "dk okuma",
+    "categories_label": "Kategoriler",
+    "all_categories": "Tümü",
+    "no_posts": "Henüz yazı yok.",
+    "related_posts": "İlgili yazılar"
   }
 }

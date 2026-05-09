@@ -1,0 +1,73 @@
+---
+title: Small Teams, Big Projects
+slug: small-teams-big-projects
+excerpt: The processes, culture, and practices behind delivering complex software with lean engineering teams.
+cover: /blog/small-teams-big-projects-cover.svg
+author: Airomeda Team
+published_at: '2026-05-01'
+reading_time: 6
+categories: [process]
+---
+
+## The Paradox
+
+Large organizations build large teams for large projects. This seems logical — but Brooks' Law told us long ago that adding people to a late project makes it later.
+
+At Airomeda we deliberately work with small teams. This is both a constraint and a source of strength. In this post we share the practices behind delivering significant work with lean crews.
+
+## Why Small Teams?
+
+Small teams bring distinct advantages:
+
+- **Low coordination cost**: Communication among 5 people is exponentially less complex than among 15
+- **High context fidelity**: Everyone understands all dimensions of the project
+- **Fast decision velocity**: Decisions can be made without scheduling meetings
+- **Clear accountability**: Every module has an identifiable owner
+
+But these advantages don't appear automatically. Keeping small teams productive requires intentional work design.
+
+## Practices That Preserve Productivity
+
+### 1. Async-First Culture
+
+Minimizing meeting hours and making decisions in writing is critical — especially when working across time zones. Keeping a lightweight decision log that records the rationale, alternatives, and outcome for every significant decision also shortens onboarding considerably.
+
+### 2. Interchangeable Modules
+
+Small team should mean every developer can touch any part of the project. What makes that possible is well-separated, tested, and documented modules.
+
+When a developer leaves the project, anyone else must be able to continue any part of the system. "Only I know this" knowledge is a systemic risk in its own right.
+
+<Callout title="The Only Path to Knowledge Transfer">
+Code reviews are not merely quality control — they are the primary mechanism for knowledge transfer. Design every review as a learning opportunity.
+</Callout>
+
+### 3. Automation First
+
+Manual processes are far more expensive in small teams than in large ones. Invest early in test automation, CI/CD, automated deployment, and monitoring infrastructure.
+
+Whenever you find yourself doing something manually, ask: "How do I automate this task?"
+
+### 4. Scope Discipline
+
+The biggest trap for small teams is scope creep. Every new request needs a clear evaluation process, and saying "no" must become a team competency.
+
+A simple evaluation framework for feature requests:
+- What business problem does this feature solve?
+- What do we lose without it?
+- What is the development cost?
+- What will the maintenance cost be?
+
+## How Do Big Projects Get Delivered with Small Teams?
+
+The big project genuinely has to be broken into small pieces — but that decomposition must be strategic, not arbitrary:
+
+- Every milestone should be an independently valuable and testable deliverable
+- Technical debt should accrue in a controlled way; zeroing it out is impossible, but ignoring it entirely is unsustainable
+- Run a technical debt retrospective every quarter
+
+## Conclusion
+
+Small teams can deliver big projects — and often do so more efficiently than large teams. Achieving this requires good tooling, an async communication culture, automation, and scope discipline working in concert.
+
+Your team members' time is your most precious resource. Directing it toward the highest-impact work is leadership's primary obligation.
