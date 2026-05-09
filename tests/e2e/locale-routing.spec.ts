@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-test('TR is default locale at /', async ({ page }) => {
+test('TR is default locale: / redirects to /tr', async ({ page }) => {
   await page.goto('/');
-  await expect(page).toHaveURL(/\/$/);
+  await expect(page).toHaveURL(/\/tr$/);
   await expect(page.locator('html')).toHaveAttribute('lang', 'tr');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Karmaşık');
 });
