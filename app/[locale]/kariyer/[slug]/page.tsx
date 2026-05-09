@@ -39,6 +39,7 @@ export default async function JobDetail({
   if (!content || !content.frontmatter.active) notFound();
   const { frontmatter, body } = content;
   const t = await getTranslations({ locale, namespace: 'careers' });
+  const tApp = await getTranslations({ locale, namespace: 'application_form' });
 
   return (
     <>
@@ -76,7 +77,7 @@ export default async function JobDetail({
 
         <div className="mt-12">
           <h2 className="text-2xl font-semibold tracking-tight">
-            {t('apply_cta')}
+            {tApp('title')}
           </h2>
           <div className="mt-8">
             <JobApplicationForm jobSlug={slug} />

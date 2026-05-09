@@ -21,8 +21,8 @@ test.describe('TR service pages', () => {
   }
 });
 
-test('EN service page (/en/services/finance) renders', async ({ page }) => {
-  await page.goto('/en/services/finance');
+test('EN service page (/en/hizmetler/finance) renders', async ({ page }) => {
+  await page.goto('/en/hizmetler/finance');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Financial Software');
 });
 
