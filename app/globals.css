@@ -1,4 +1,8 @@
 @import 'tailwindcss';
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   --color-background: hsl(215 50% 7%);
@@ -10,7 +14,7 @@
   --color-border: hsl(215 20% 18%);
   --color-ring: hsl(24 95% 53%);
 
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-sans: system-ui, sans-serif;
 
   --text-display-1: clamp(2.5rem, 6vw, 4.5rem);
   --text-display-1--line-height: 1.05;
@@ -57,4 +61,106 @@ body {
 ::selection {
   background: var(--color-accent);
   color: var(--color-accent-foreground);
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  /* Shadcn-specific tokens that don't conflict with our @theme block */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-input: var(--input);
+  --color-destructive: var(--destructive);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  /* --radius-lg is already set in @theme above; var(--radius) is the shadcn base */
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Airomeda dark-only theme — all shadcn CSS variables set to our palette values.
+   We don't use light/dark switching; color-scheme: dark is set on html. */
+:root {
+  /* Core — matched to our @theme tokens */
+  --background: hsl(215 50% 7%);
+  --foreground: hsl(0 0% 98%);
+
+  /* Surfaces */
+  --card: hsl(215 30% 10%);
+  --card-foreground: hsl(0 0% 98%);
+  --popover: hsl(215 30% 10%);
+  --popover-foreground: hsl(0 0% 98%);
+
+  /* Primary = orange accent */
+  --primary: hsl(24 95% 53%);
+  --primary-foreground: hsl(0 0% 100%);
+
+  /* Secondary = muted navy */
+  --secondary: hsl(215 20% 16%);
+  --secondary-foreground: hsl(0 0% 98%);
+
+  /* Muted — matched to our @theme tokens */
+  --muted: hsl(215 20% 16%);
+  --muted-foreground: hsl(215 15% 70%);
+
+  /* Accent — matched to our @theme tokens */
+  --accent: hsl(24 95% 53%);
+  --accent-foreground: hsl(0 0% 100%);
+
+  /* Destructive — red */
+  --destructive: hsl(0 72% 51%);
+
+  /* Border / input / ring — matched to our @theme tokens */
+  --border: hsl(215 20% 18%);
+  --input: hsl(215 20% 18%);
+  --ring: hsl(24 95% 53%);
+
+  /* Charts — subtle navy variants */
+  --chart-1: hsl(24 95% 53%);
+  --chart-2: hsl(215 50% 50%);
+  --chart-3: hsl(215 30% 40%);
+  --chart-4: hsl(215 20% 30%);
+  --chart-5: hsl(215 10% 20%);
+
+  /* Radius — keep our 0.75rem base */
+  --radius: 0.75rem;
+
+  /* Sidebar */
+  --sidebar: hsl(215 40% 9%);
+  --sidebar-foreground: hsl(0 0% 98%);
+  --sidebar-primary: hsl(24 95% 53%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(215 20% 16%);
+  --sidebar-accent-foreground: hsl(0 0% 98%);
+  --sidebar-border: hsl(215 20% 18%);
+  --sidebar-ring: hsl(24 95% 53%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply font-sans;
+  }
 }
