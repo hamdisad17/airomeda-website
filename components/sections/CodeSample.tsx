@@ -1,224 +1,101 @@
 'use client';
-import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
-
-type Token = { tok?: 'com' | 'key' | 'fn' | 'str' | 'num'; t: string };
-
-const TABS: { id: string; label: string; file: string; code: Token[] }[] = [
-  {
-    id: 'finance',
-    label: 'Finance',
-    file: 'payments/transfer.ts',
-    code: [
-      { tok: 'com', t: '// idempotent transfer with audit trail' },
-      { t: '\n\n' },
-      { tok: 'key', t: 'export async function' },
-      { t: ' ' },
-      { tok: 'fn', t: 'transfer' },
-      { t: '(input: TransferInput) {\n  ' },
-      { tok: 'key', t: 'const' },
-      { t: ' tx = ' },
-      { tok: 'key', t: 'await' },
-      { t: ' ledger.' },
-      { tok: 'fn', t: 'beginTransaction' },
-      { t: '({ idempotency: input.id });\n  ' },
-      { tok: 'key', t: 'try' },
-      { t: ' {\n    ' },
-      { tok: 'key', t: 'await' },
-      { t: ' ledger.' },
-      { tok: 'fn', t: 'debit' },
-      { t: '(input.from, input.amount);\n    ' },
-      { tok: 'key', t: 'await' },
-      { t: ' ledger.' },
-      { tok: 'fn', t: 'credit' },
-      { t: '(input.to, input.amount);\n    ' },
-      { tok: 'key', t: 'await' },
-      { t: ' audit.' },
-      { tok: 'fn', t: 'record' },
-      { t: '(' },
-      { tok: 'str', t: "'transfer'" },
-      { t: ', { ...input, status: ' },
-      { tok: 'str', t: "'settled'" },
-      { t: ' });\n    ' },
-      { tok: 'key', t: 'return await' },
-      { t: ' tx.' },
-      { tok: 'fn', t: 'commit' },
-      { t: '();\n  } ' },
-      { tok: 'key', t: 'catch' },
-      { t: ' (err) {\n    ' },
-      { tok: 'key', t: 'throw await' },
-      { t: ' tx.' },
-      { tok: 'fn', t: 'rollback' },
-      { t: '(err);\n  }\n}' },
-    ],
-  },
-  {
-    id: 'gaming',
-    label: 'iGaming',
-    file: 'gaming/spin.ts',
-    code: [
-      { tok: 'com', t: '// certified RNG with auditable seed' },
-      { t: '\n\n' },
-      { tok: 'key', t: 'export async function' },
-      { t: ' ' },
-      { tok: 'fn', t: 'placeSpin' },
-      { t: '(input: SpinRequest) {\n  ' },
-      { tok: 'key', t: 'const' },
-      { t: ' seed = ' },
-      { tok: 'key', t: 'await' },
-      { t: ' rng.' },
-      { tok: 'fn', t: 'nextSeed' },
-      { t: '({ provider: input.gameId });\n  ' },
-      { tok: 'key', t: 'await' },
-      { t: ' wallet.' },
-      { tok: 'fn', t: 'reserve' },
-      { t: '(input.userId, input.bet);\n  ' },
-      { tok: 'key', t: 'const' },
-      { t: ' outcome = ' },
-      { tok: 'fn', t: 'computeOutcome' },
-      { t: '(seed, input);\n  ' },
-      { tok: 'key', t: 'if' },
-      { t: ' (outcome.payout > ' },
-      { tok: 'num', t: '0' },
-      { t: ') ' },
-      { tok: 'key', t: 'await' },
-      { t: ' wallet.' },
-      { tok: 'fn', t: 'credit' },
-      { t: '(input.userId, outcome.payout);\n  ' },
-      { tok: 'key', t: 'await' },
-      { t: ' regulator.' },
-      { tok: 'fn', t: 'logSpin' },
-      { t: '({ seed, outcome, ...input });\n  ' },
-      { tok: 'key', t: 'return' },
-      { t: ' outcome;\n}' },
-    ],
-  },
-  {
-    id: 'commerce',
-    label: 'E-Commerce',
-    file: 'commerce/checkout.ts',
-    code: [
-      { tok: 'com', t: '// transactional checkout, multi-tenant marketplace' },
-      { t: '\n\n' },
-      { tok: 'key', t: 'export async function' },
-      { t: ' ' },
-      { tok: 'fn', t: 'checkout' },
-      { t: '(cart: Cart, payment: PaymentMethod) {\n  ' },
-      { tok: 'key', t: 'const' },
-      { t: ' tx = ' },
-      { tok: 'key', t: 'await' },
-      { t: ' db.' },
-      { tok: 'fn', t: 'transaction' },
-      { t: '();\n  ' },
-      { tok: 'key', t: 'for' },
-      { t: ' (' },
-      { tok: 'key', t: 'const' },
-      { t: ' line ' },
-      { tok: 'key', t: 'of' },
-      { t: ' cart.lines) {\n    ' },
-      { tok: 'key', t: 'await' },
-      { t: ' inventory.' },
-      { tok: 'fn', t: 'reserve' },
-      { t: '(line.sku, line.qty);\n  }\n  ' },
-      { tok: 'key', t: 'const' },
-      { t: ' charge = ' },
-      { tok: 'key', t: 'await' },
-      { t: ' psp.' },
-      { tok: 'fn', t: 'authorize' },
-      { t: '(payment, cart.total);\n  ' },
-      { tok: 'key', t: 'if' },
-      { t: ' (!charge.ok) ' },
-      { tok: 'key', t: 'throw' },
-      { t: ' tx.' },
-      { tok: 'fn', t: 'rollback' },
-      { t: '();\n  ' },
-      { tok: 'key', t: 'return await' },
-      { t: ' tx.' },
-      { tok: 'fn', t: 'commit' },
-      { t: '();\n}' },
-    ],
-  },
-];
+import { TextReveal } from '@/components/motion/TextReveal';
 
 export function CodeSample() {
-  const [active, setActive] = React.useState(TABS[0]!.id);
-  const current = TABS.find((t) => t.id === active) ?? TABS[0]!;
-
   return (
-    <section className="border-b border-border bg-muted/30 py-24 md:py-32">
+    <section className="border-b border-border bg-muted py-28 md:py-36">
       <Container as="div">
         <div className="grid items-start gap-16 lg:grid-cols-2">
           <RevealSection>
             <div>
-              <p className="font-mono text-eyebrow uppercase text-accent">
-                {'// 03 · architecture'}
-              </p>
-              <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-                Üretim ortamı için yazılmış kod.
+              <p className="text-eyebrow uppercase text-muted-foreground">04 — Architecture</p>
+              <h2 className="mt-4 text-display-2 font-medium tracking-tight">
+                <TextReveal as="span">Üretim için yazılmış kod.</TextReveal>
               </h2>
               <p className="mt-6 text-body-lg text-muted-foreground">
-                İdempotent, audit-ready, transactional. Her satır bir karar — geri alınabilir,
-                denetlenebilir, dokümante. Regülatör denetiminden geri dönen müşterimiz yok.
+                <span className="font-serif-italic text-foreground">İdempotent, audit-ready, transactional.</span>{' '}
+                Production&apos;a aldığımız her satırın geri dönüşü ve denetimi var. Regülatör denetiminden
+                geri dönen müşterimiz yok.
               </p>
-              <ul className="mt-8 space-y-3 text-sm">
-                <li className="flex gap-3">
-                  <span className="text-accent">→</span>
-                  Idempotency keys for retry safety
+              <ul className="mt-10 space-y-4 text-sm">
+                <li className="flex items-start gap-4 border-t border-border pt-4">
+                  <span className="text-accent">01</span>
+                  <span>Idempotency keys ile retry güvenliği</span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="text-accent">→</span>
-                  Distributed transactions for consistency
+                <li className="flex items-start gap-4 border-t border-border pt-4">
+                  <span className="text-accent">02</span>
+                  <span>Distributed transactions ile tutarlılık</span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="text-accent">→</span>
-                  Full audit trail — success + failure
+                <li className="flex items-start gap-4 border-t border-border pt-4">
+                  <span className="text-accent">03</span>
+                  <span>Audit trail — her olay log&apos;da</span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="text-accent">→</span>
-                  BDDK / TCMB compliant retention
+                <li className="flex items-start gap-4 border-t border-border pt-4">
+                  <span className="text-accent">04</span>
+                  <span>BDDK / TCMB uyumlu retention</span>
                 </li>
               </ul>
             </div>
           </RevealSection>
-
           <RevealSection delay={0.1}>
             <div className="border border-border bg-elevated">
-              {/* Tabs */}
-              <div className="flex items-center border-b border-border bg-muted/40">
-                {TABS.map((t) => (
-                  <button
-                    key={t.id}
-                    type="button"
-                    onClick={() => setActive(t.id)}
-                    className={`relative px-4 py-3 font-mono text-xs transition-colors ${
-                      active === t.id
-                        ? 'text-foreground'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                  >
-                    {t.label}
-                    {active === t.id && (
-                      <span className="absolute inset-x-2 bottom-0 h-px bg-accent" />
-                    )}
-                  </button>
-                ))}
-                <span className="ml-auto pr-4 font-mono text-xs text-muted-foreground">
-                  {current.file}
-                </span>
+              <div className="flex items-center border-b border-border px-4 py-3">
+                <span className="font-mono text-xs text-muted-foreground">payments/transfer.ts</span>
               </div>
-              {/* Code body */}
-              <pre className="overflow-x-auto p-5 font-mono text-xs leading-relaxed">
+              <pre className="overflow-x-auto p-6 font-mono text-xs leading-relaxed">
                 <code>
-                  {current.code.map((seg, i) =>
-                    seg.tok ? (
-                      <span key={i} className={`tok-${seg.tok}`}>
-                        {seg.t}
-                      </span>
-                    ) : (
-                      seg.t
-                    ),
-                  )}
+                  <span className="tok-com">{'// idempotent transfer with audit trail'}</span>
+                  {'\n\n'}
+                  <span className="tok-key">{'export async function'}</span>
+                  {' '}
+                  <span className="tok-fn">{'transfer'}</span>
+                  {'(input: TransferInput) {\n'}
+                  {'  '}
+                  <span className="tok-key">{'const'}</span>
+                  {' tx = '}
+                  <span className="tok-key">{'await'}</span>
+                  {' ledger.'}
+                  <span className="tok-fn">{'beginTransaction'}</span>
+                  {'({ idempotency: input.id });\n'}
+                  {'  '}
+                  <span className="tok-key">{'try'}</span>
+                  {' {\n    '}
+                  <span className="tok-key">{'await'}</span>
+                  {' ledger.'}
+                  <span className="tok-fn">{'debit'}</span>
+                  {'(input.from, input.amount);\n    '}
+                  <span className="tok-key">{'await'}</span>
+                  {' ledger.'}
+                  <span className="tok-fn">{'credit'}</span>
+                  {'(input.to, input.amount);\n    '}
+                  <span className="tok-key">{'await'}</span>
+                  {' audit.'}
+                  <span className="tok-fn">{'record'}</span>
+                  {'('}
+                  <span className="tok-str">{"'transfer'"}</span>
+                  {', { ...input, status: '}
+                  <span className="tok-str">{"'settled'"}</span>
+                  {' });\n    '}
+                  <span className="tok-key">{'return await'}</span>
+                  {' tx.'}
+                  <span className="tok-fn">{'commit'}</span>
+                  {'();\n  } '}
+                  <span className="tok-key">{'catch'}</span>
+                  {' (err) {\n    '}
+                  <span className="tok-key">{'await'}</span>
+                  {' audit.'}
+                  <span className="tok-fn">{'record'}</span>
+                  {'('}
+                  <span className="tok-str">{"'transfer'"}</span>
+                  {', { ...input, status: '}
+                  <span className="tok-str">{"'failed'"}</span>
+                  {' });\n    '}
+                  <span className="tok-key">{'throw await'}</span>
+                  {' tx.'}
+                  <span className="tok-fn">{'rollback'}</span>
+                  {'(err);\n  }\n}'}
                 </code>
               </pre>
             </div>

@@ -48,7 +48,7 @@ export async function Header() {
             href="/iletisim"
             className="hidden md:inline-flex items-center gap-1.5 bg-accent px-3.5 py-2 text-sm font-medium text-accent-foreground transition-colors hover:opacity-90"
           >
-            {t('contact')} <span>→</span>
+            Konuşalım <span>→</span>
           </Link>
         </div>
       </Container>

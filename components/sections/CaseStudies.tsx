@@ -20,16 +20,14 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
         <RevealSection>
           <div className="flex items-end justify-between">
             <div>
-              <p className="font-mono text-eyebrow uppercase text-accent">
-                {'// 08 · selected work'}
-              </p>
-              <h2 className="mt-4 text-display-2 font-semibold tracking-tight">{t('title')}</h2>
+              <p className="text-eyebrow uppercase text-muted-foreground">05 — Selected work</p>
+              <h2 className="mt-4 text-display-2 font-medium tracking-tight">{t('title')}</h2>
             </div>
             <Link
               href="/calismalarimiz"
-              className="hidden font-mono text-xs uppercase tracking-wider text-accent hover:underline md:inline-block"
+              className="hidden text-sm text-muted-foreground transition-colors hover:text-accent md:inline-block"
             >
-              all work →
+              All work →
             </Link>
           </div>
         </RevealSection>
@@ -42,22 +40,22 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
           >
             <div className="grid gap-0 lg:grid-cols-12">
               <div className="p-8 lg:col-span-7 md:p-12">
-                <p className="font-mono text-eyebrow uppercase text-accent">{featured.client}</p>
-                <h3 className="mt-4 text-display-3 font-semibold tracking-tight">
+                <p className="text-eyebrow uppercase text-accent">{featured.client}</p>
+                <h3 className="mt-4 text-display-3 font-medium tracking-tight">
                   {featured.title}
                 </h3>
                 <p className="mt-4 max-w-xl text-body-lg text-muted-foreground">
                   {featured.excerpt}
                 </p>
-                <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-muted-foreground">
+                <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted-foreground">
                   <span>{featured.industry}</span>
                   <span>·</span>
                   <span>{featured.year}</span>
                   <span>·</span>
                   <span>{featured.services.join(' · ')}</span>
                 </div>
-                <span className="mt-8 inline-flex items-center gap-2 font-mono text-xs uppercase text-foreground transition-colors group-hover:text-accent">
-                  [ case study ]{' '}
+                <span className="mt-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors group-hover:text-accent">
+                  View case study{' '}
                   <span className="transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
@@ -67,7 +65,7 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
                 <ul className="grid grid-cols-2 gap-x-6 gap-y-8">
                   {featured.metrics.slice(0, 4).map((m) => (
                     <li key={m.label}>
-                      <p className="font-mono text-2xl font-semibold tracking-tight tabular-nums text-foreground">
+                      <p className="text-2xl font-medium tracking-tight tabular-nums text-foreground">
                         {m.value}
                       </p>
                       <p className="mt-2 text-xs text-muted-foreground">{m.label}</p>
@@ -89,10 +87,10 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
                 href={`/calismalarimiz/${c.slug}`}
                 className="group block border border-border bg-elevated p-8 transition-colors hover:border-accent"
               >
-                <p className="font-mono text-eyebrow uppercase text-accent">{c.client}</p>
-                <h3 className="mt-3 text-lg font-semibold tracking-tight">{c.title}</h3>
+                <p className="text-eyebrow uppercase text-accent">{c.client}</p>
+                <h3 className="mt-3 text-lg font-medium tracking-tight">{c.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.excerpt}</p>
-                <div className="mt-5 flex flex-wrap gap-x-4 font-mono text-xs text-muted-foreground">
+                <div className="mt-5 flex flex-wrap gap-x-4 text-xs text-muted-foreground">
                   <span>{c.industry}</span>
                   <span>·</span>
                   <span>{c.year}</span>

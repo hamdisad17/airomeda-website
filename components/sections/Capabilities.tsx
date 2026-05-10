@@ -16,8 +16,8 @@ export async function Capabilities({ locale }: { locale: Locale }) {
       <Container as="div">
         <div className="max-w-2xl">
           <RevealSection>
-            <p className="font-mono text-eyebrow uppercase text-accent">{'// 01 · capabilities'}</p>
-            <h2 className="mt-4 text-display-2 font-semibold tracking-tight">{t('title')}</h2>
+            <p className="text-eyebrow uppercase text-muted-foreground">02 — Capabilities</p>
+            <h2 className="mt-4 text-display-2 font-medium tracking-tight">{t('title')}</h2>
             <p className="mt-4 text-body-lg text-muted-foreground">{t('subtitle')}</p>
           </RevealSection>
         </div>
@@ -32,8 +32,8 @@ export async function Capabilities({ locale }: { locale: Locale }) {
                 <CapabilityIcon slug={s.slug} className="h-8 w-8 text-accent" />
                 <h3 className="mt-6 text-lg font-semibold tracking-tight">{s.title}</h3>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{s.excerpt}</p>
-                <span className="mt-6 inline-flex items-center gap-1 font-mono text-xs uppercase text-muted-foreground transition-colors group-hover:text-accent">
-                  [ open ]
+                <span className="mt-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors group-hover:text-accent">
+                  Explore
                   <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
                 </span>
               </Link>
