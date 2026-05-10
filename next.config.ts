@@ -9,7 +9,7 @@ const withMDX = createMDX();
 const nextConfig: NextConfig = {
   output: 'standalone',
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
-  experimental: { typedRoutes: false },
+  typedRoutes: false,
   images: {
     remotePatterns: [{ protocol: 'https', hostname: '**.airomeda.com' }],
   },
