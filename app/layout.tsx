@@ -1,5 +1,5 @@
 import './globals.css';
-import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import { headers } from 'next/headers';
 import { ThemeProvider } from 'next-themes';
 import { routing } from '@/i18n/routing';
@@ -17,16 +17,8 @@ const geistMono = Geist_Mono({
   display: 'swap',
 });
 
-const instrumentSerif = Instrument_Serif({
-  weight: '400',
-  subsets: ['latin', 'latin-ext'],
-  variable: '--font-instrument-serif',
-  display: 'swap',
-  style: 'italic',
-});
-
 export const viewport: Viewport = {
-  themeColor: '#0F1217',
+  themeColor: '#08080F',
 };
 
 export const metadata: Metadata = {
@@ -44,11 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       : routing.defaultLocale;
 
   return (
-    <html
-      lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           {children}

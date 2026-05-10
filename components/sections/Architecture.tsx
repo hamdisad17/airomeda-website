@@ -65,8 +65,8 @@ export function Architecture() {
       <Container as="div">
       <div ref={ref}>
         <div className="mb-16 max-w-3xl">
-          <p className="text-eyebrow uppercase text-muted-foreground">03 — Integration</p>
-          <h2 className="mt-4 text-display-2 font-medium tracking-tight">
+          <p className="font-mono text-eyebrow uppercase text-accent">{'// 04 · integration'}</p>
+          <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
             Mevcut yığınınızla konuşur, vermek istediğiniz şey kadar veri alır.
           </h2>
           <p className="mt-4 text-body-lg text-muted-foreground">
@@ -90,7 +90,7 @@ export function Architecture() {
                 y1="50"
                 x2={n.x}
                 y2={n.y}
-                stroke="hsl(180 45% 55%)"
+                stroke="hsl(189 100% 50%)"
                 strokeWidth="0.15"
                 strokeOpacity="0.6"
               />
@@ -102,15 +102,15 @@ export function Architecture() {
                 cx={n.x}
                 cy={n.y}
                 r="0.8"
-                fill="hsl(180 45% 55%)"
+                fill="hsl(189 100% 50%)"
               />
             ))}
             <circle
               cx="50"
               cy="50"
               r="2.5"
-              fill="hsl(180 45% 55%)"
-              stroke="hsl(180 45% 55% / 0.3)"
+              fill="hsl(189 100% 50%)"
+              stroke="hsl(189 100% 50% / 0.3)"
               strokeWidth="1.5"
             />
           </svg>
@@ -119,7 +119,7 @@ export function Architecture() {
           {NODES.map((n, i) => (
             <div
               key={`label-${i}`}
-              className="absolute text-xs text-muted-foreground"
+              className="absolute font-mono text-xs text-muted-foreground"
               style={{
                 left: `${n.x}%`,
                 top: `${n.y}%`,
@@ -134,10 +134,10 @@ export function Architecture() {
 
           {/* Center label */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-4 text-center">
-            <p className="font-medium tracking-tight">
+            <p className="font-semibold tracking-tight">
               airomeda<span className="text-accent">.</span>
             </p>
-            <p className="text-xs text-muted-foreground">core platform</p>
+            <p className="font-mono text-xs text-muted-foreground">core platform</p>
           </div>
         </div>
       </div>
