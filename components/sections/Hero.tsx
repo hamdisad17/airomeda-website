@@ -6,104 +6,118 @@ import { Reveal } from '@/components/ui/Reveal';
 export async function Hero() {
   const t = await getTranslations();
   const year = new Date().getFullYear();
+  const buildId = `BUILD.${year}.05.07`;
 
   return (
     <section className="relative overflow-hidden">
-      {/* ambient accent glow — extremely subtle */}
+      {/* Dim ambient glow — stays subtle, just enough to anchor the eye */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-32 right-0 h-[640px] w-[640px] rounded-full"
+        className="pointer-events-none absolute -top-48 left-1/2 h-[800px] w-[1200px] -translate-x-1/2 rounded-full"
         style={{
           background:
-            'radial-gradient(circle at center, hsl(48 100% 50% / 0.08) 0%, transparent 60%)',
-          filter: 'blur(40px)',
+            'radial-gradient(ellipse at center, hsl(48 100% 50% / 0.07) 0%, transparent 65%)',
+          filter: 'blur(60px)',
         }}
       />
 
-      <Container as="div" className="relative grid gap-16 py-20 md:py-32 lg:grid-cols-12 lg:gap-12 lg:py-40">
-        <div className="lg:col-span-8">
-          <Reveal>
-            <p className="mb-8 inline-flex items-center gap-3 font-mono text-eyebrow uppercase text-muted-foreground">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
-              <span>v.{year}.05</span>
-              <span className="text-muted-foreground/50">/</span>
-              <span>İstanbul</span>
-            </p>
-          </Reveal>
+      <Container as="div" className="relative pt-28 pb-32 md:pt-40 md:pb-44">
+        {/* Tiny precision label */}
+        <Reveal>
+          <div className="mb-12 flex items-center gap-4 font-mono text-eyebrow uppercase">
+            <span className="inline-flex items-center gap-2 text-foreground">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
+              </span>
+              live
+            </span>
+            <span className="h-px w-8 bg-border"></span>
+            <span className="text-muted-foreground">{buildId}</span>
+            <span className="h-px w-8 bg-border"></span>
+            <span className="text-muted-foreground">İstanbul · İstanbul</span>
+          </div>
+        </Reveal>
 
-          <Reveal delay={80}>
-            <h1 className="text-display-1 font-medium tracking-tight">
-              {t('home.hero.title')}
-            </h1>
-          </Reveal>
-
-          <Reveal delay={160}>
-            <p className="mt-8 max-w-xl text-body-lg text-muted-foreground">
-              {t('home.hero.subtitle')}
-            </p>
-          </Reveal>
-
-          <Reveal delay={240}>
-            <div className="mt-12 flex flex-wrap items-center gap-6">
-              <Link
-                href="/iletisim"
-                className="group relative inline-flex items-center gap-3 rounded-md bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-all duration-200 ease-[var(--ease-out-quint)] hover:-translate-y-px hover:shadow-[0_4px_20px_-4px_hsl(48_100%_50%_/_0.4)]"
+        {/* Hero typography — display-1, but bigger, breathing */}
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-9">
+            <Reveal delay={80}>
+              <h1
+                className="font-medium tracking-tight"
+                style={{
+                  fontSize: 'clamp(3rem, 9.5vw, 9rem)',
+                  lineHeight: 0.92,
+                  letterSpacing: '-0.045em',
+                }}
               >
-                {t('common.primary_cta')}
-                <span className="transition-transform duration-200 ease-[var(--ease-out-quint)] group-hover:translate-x-1">→</span>
-              </Link>
-              <Link
-                href="/calismalarimiz"
-                className="group inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-accent"
-              >
-                <span className="border-b border-border transition-colors group-hover:border-accent">
-                  {t('common.secondary_cta')}
-                </span>
-                <span className="transition-transform duration-200 ease-[var(--ease-out-quint)] group-hover:translate-x-1">→</span>
-              </Link>
-            </div>
-          </Reveal>
+                {t('home.hero.title')}
+              </h1>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-3 flex flex-col justify-end">
+            <Reveal delay={160}>
+              <div className="border-l border-border pl-6">
+                <p className="font-mono text-eyebrow uppercase text-muted-foreground">{'// est.'}</p>
+                <p className="mt-2 font-mono text-3xl text-foreground">2018</p>
+                <p className="mt-1 font-mono text-eyebrow uppercase text-muted-foreground">
+                  active disciplines
+                </p>
+                <p className="mt-2 font-mono text-3xl text-accent">07</p>
+              </div>
+            </Reveal>
+          </div>
         </div>
 
-        {/* Right rail: code-spec card */}
-        <Reveal delay={320} className="lg:col-span-4">
-          <div className="relative rounded-lg border border-border bg-muted/40 p-6 backdrop-blur-sm">
-            <div className="absolute -top-px left-6 right-6 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
-            <p className="mb-4 font-mono text-eyebrow uppercase text-muted-foreground">{'// system spec'}</p>
-            <dl className="space-y-3 font-mono text-sm">
-              <div className="flex justify-between">
-                <dt className="text-muted-foreground">disciplines</dt>
-                <dd className="text-foreground">7</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="text-muted-foreground">production</dt>
-                <dd className="text-foreground">2018→{year}</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="text-muted-foreground">stack</dt>
-                <dd className="text-accent">multi-runtime</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="text-muted-foreground">delivery</dt>
-                <dd className="text-foreground">8–16 wk</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="text-muted-foreground">status</dt>
-                <dd className="inline-flex items-center gap-2 text-foreground">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  active
-                </dd>
-              </div>
-            </dl>
+        <Reveal delay={240}>
+          <p className="mt-12 max-w-xl text-body-lg text-muted-foreground">
+            {t('home.hero.subtitle')}
+          </p>
+        </Reveal>
+
+        <Reveal delay={320}>
+          <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <Link
+              href="/iletisim"
+              className="group relative inline-flex items-center gap-3 rounded-md bg-accent px-6 py-3.5 text-sm font-medium text-accent-foreground transition-all duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-0.5 hover:shadow-[0_8px_30px_-8px_hsl(48_100%_50%_/_0.5)]"
+            >
+              {t('common.primary_cta')}
+              <span className="transition-transform duration-300 ease-[var(--ease-out-quint)] group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+            <Link
+              href="/calismalarimiz"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-foreground"
+            >
+              <span className="border-b border-border pb-px transition-colors duration-200 group-hover:border-foreground">
+                {t('common.secondary_cta')}
+              </span>
+              <span className="transition-transform duration-200 ease-[var(--ease-out-quint)] group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          </div>
+        </Reveal>
+
+        {/* Bottom rail — three small system labels with mono */}
+        <Reveal delay={480}>
+          <div className="mt-24 flex flex-wrap items-center gap-x-12 gap-y-4 border-t border-border pt-8 font-mono text-xs">
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground">[01]</span>
+              <span className="text-foreground/80">finans · igaming · e-ticaret</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground">[02]</span>
+              <span className="text-foreground/80">production-grade · auditable</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground">[03]</span>
+              <span className="text-foreground/80">8–16 wk delivery · TR/EN</span>
+            </div>
           </div>
         </Reveal>
       </Container>
-
-      {/* hairline divider with dot */}
-      <div className="relative h-px w-full">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-border to-transparent" />
-        <div className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/60" />
-      </div>
     </section>
   );
 }

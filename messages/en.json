@@ -38,7 +38,18 @@
         "support": { "title": "Support", "description": "We stay with you after launch." }
       }
     },
-    "cta": { "title": "Let's talk about your project.", "subtitle": "We respond within 24 hours." }
+    "cta": { "title": "A hard problem?", "subtitle": "Let's talk." },
+    "manifesto": {
+      "lead": "We treat software like infrastructure, not a brochure.",
+      "extension": "When it breaks, people lose money, regulators call, customers leave. That's why we anchor architecture in auditability, and earn speed from the team — never the quality.",
+      "p1_title": "Ownership",
+      "p1_body": "We see decisions through to production incidents.",
+      "p2_title": "Craft",
+      "p2_body": "We ship fast but never cut corners.",
+      "p3_title": "Transparency",
+      "p3_body": "We talk about risk and mistakes openly."
+    },
+    "selected_work": { "title": "Recent shipments." }
   },
   "services_index": { "title": "Our services" },
   "case_studies": {

@@ -4,6 +4,7 @@ import { Container } from '@/components/layout/Container';
 import { Reveal } from '@/components/ui/Reveal';
 import { listServices } from '@/lib/mdx';
 import type { Locale } from '@/i18n/routing';
+import { ServiceGlyph } from '@/components/visualizations/ServiceGlyph';
 
 export async function ServicesGrid({ locale }: { locale: Locale }) {
   const t = await getTranslations('home.services_section');
@@ -13,7 +14,9 @@ export async function ServicesGrid({ locale }: { locale: Locale }) {
     <section className="relative">
       <Container as="div" className="py-24 md:py-32">
         <Reveal>
-          <p className="font-mono text-eyebrow uppercase text-muted-foreground">{'// 01 — services'}</p>
+          <p className="font-mono text-eyebrow uppercase text-muted-foreground">
+            {'// 01 — services'}
+          </p>
         </Reveal>
         <div className="mt-6 mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <Reveal delay={80} className="max-w-2xl">
@@ -38,20 +41,26 @@ export async function ServicesGrid({ locale }: { locale: Locale }) {
                   className="group relative flex h-full flex-col p-7 transition-colors duration-200 hover:bg-muted/40"
                 >
                   <div className="flex items-baseline justify-between">
+                    <ServiceGlyph
+                      slug={s.slug}
+                      className="text-muted-foreground transition-colors duration-300 group-hover:text-accent"
+                    />
                     <span className="font-mono text-eyebrow uppercase text-muted-foreground">
                       / {(i + 1).toString().padStart(2, '0')}
                     </span>
-                    <span className="font-mono text-xs text-muted-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                      open →
-                    </span>
                   </div>
-                  <h3 className="mt-8 text-xl font-medium tracking-tight text-foreground">
+                  <h3 className="mt-6 text-xl font-medium tracking-tight text-foreground">
                     {s.title}
                   </h3>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {s.excerpt}
                   </p>
-                  <div className="mt-8 h-px w-full bg-border transition-colors duration-200 group-hover:bg-accent" />
+                  <div className="mt-8 flex items-center justify-between">
+                    <div className="h-px flex-1 bg-border transition-colors duration-200 group-hover:bg-accent" />
+                    <span className="ml-4 font-mono text-xs text-muted-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                      open →
+                    </span>
+                  </div>
                 </Link>
               </Reveal>
             </li>

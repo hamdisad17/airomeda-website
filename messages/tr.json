@@ -38,7 +38,18 @@
         "support": { "title": "Destek", "description": "Yayın sonrasında yanınızda kalırız." }
       }
     },
-    "cta": { "title": "Projenizi konuşalım.", "subtitle": "24 saat içinde dönüş yaparız." }
+    "cta": { "title": "Karmaşık problem mi?", "subtitle": "Konuşalım." },
+    "manifesto": {
+      "lead": "Yazılımı bir broşür gibi değil, bir altyapı gibi düşünüyoruz.",
+      "extension": "Çalışmadığında insanlar para kaybeder, regülatör arar, müşteri gider. Bu yüzden mimariyi denetlenebilirlik üzerinden kuruyoruz; hızı, kaliteden değil ekipten kazanıyoruz.",
+      "p1_title": "Sahiplik",
+      "p1_body": "Aldığımız kararı production'da olaylara müdahaleye kadar takip ederiz.",
+      "p2_title": "Zanaat",
+      "p2_body": "Hızlı teslim ediyoruz ama kestirme yapmıyoruz.",
+      "p3_title": "Şeffaflık",
+      "p3_body": "Riski ve hatayı saklamadan, açıkça konuşuruz."
+    },
+    "selected_work": { "title": "Son teslim ettiklerimizden." }
   },
   "services_index": { "title": "Hizmetlerimiz" },
   "case_studies": {
