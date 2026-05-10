@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
@@ -5,119 +6,105 @@ import { Reveal } from '@/components/ui/Reveal';
 
 export async function Hero() {
   const t = await getTranslations();
-  const year = new Date().getFullYear();
-  const buildId = `BUILD.${year}.05.07`;
 
   return (
-    <section className="relative overflow-hidden">
-      {/* Dim ambient glow — stays subtle, just enough to anchor the eye */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-48 left-1/2 h-[800px] w-[1200px] -translate-x-1/2 rounded-full"
-        style={{
-          background:
-            'radial-gradient(ellipse at center, hsl(48 100% 50% / 0.07) 0%, transparent 65%)',
-          filter: 'blur(60px)',
-        }}
-      />
-
-      <Container as="div" className="relative pt-28 pb-32 md:pt-40 md:pb-44">
-        {/* Tiny precision label */}
+    <section className="relative">
+      <Container as="div" className="relative pt-24 pb-32 md:pt-36 md:pb-44">
+        {/* Tiny brand line at top */}
         <Reveal>
-          <div className="mb-12 flex items-center gap-4 font-mono text-eyebrow uppercase">
-            <span className="inline-flex items-center gap-2 text-foreground">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
-              </span>
-              live
-            </span>
-            <span className="h-px w-8 bg-border"></span>
-            <span className="text-muted-foreground">{buildId}</span>
-            <span className="h-px w-8 bg-border"></span>
-            <span className="text-muted-foreground">İstanbul · İstanbul</span>
-          </div>
-        </Reveal>
-
-        {/* Hero typography — display-1, but bigger, breathing */}
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-9">
-            <Reveal delay={80}>
-              <h1
-                className="font-medium tracking-tight"
-                style={{
-                  fontSize: 'clamp(3rem, 9.5vw, 9rem)',
-                  lineHeight: 0.92,
-                  letterSpacing: '-0.045em',
-                }}
-              >
-                {t('home.hero.title')}
-              </h1>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-3 flex flex-col justify-end">
-            <Reveal delay={160}>
-              <div className="border-l border-border pl-6">
-                <p className="font-mono text-eyebrow uppercase text-muted-foreground">{'// est.'}</p>
-                <p className="mt-2 font-mono text-3xl text-foreground">2018</p>
-                <p className="mt-1 font-mono text-eyebrow uppercase text-muted-foreground">
-                  active disciplines
-                </p>
-                <p className="mt-2 font-mono text-3xl text-accent">07</p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-
-        <Reveal delay={240}>
-          <p className="mt-12 max-w-xl text-body-lg text-muted-foreground">
-            {t('home.hero.subtitle')}
+          <p className="font-mono text-eyebrow uppercase text-muted-foreground">
+            Airomeda — Bilişim Teknolojileri · Est. 2018
           </p>
         </Reveal>
 
-        <Reveal delay={320}>
-          <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <Link
-              href="/iletisim"
-              className="group relative inline-flex items-center gap-3 rounded-md bg-accent px-6 py-3.5 text-sm font-medium text-accent-foreground transition-all duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-0.5 hover:shadow-[0_8px_30px_-8px_hsl(48_100%_50%_/_0.5)]"
-            >
-              {t('common.primary_cta')}
-              <span className="transition-transform duration-300 ease-[var(--ease-out-quint)] group-hover:translate-x-1">
-                →
-              </span>
-            </Link>
-            <Link
-              href="/calismalarimiz"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-foreground"
-            >
-              <span className="border-b border-border pb-px transition-colors duration-200 group-hover:border-foreground">
-                {t('common.secondary_cta')}
-              </span>
-              <span className="transition-transform duration-200 ease-[var(--ease-out-quint)] group-hover:translate-x-1">
-                →
-              </span>
-            </Link>
-          </div>
+        {/* Editorial display headline — Fraunces, hugely refined */}
+        <Reveal delay={120}>
+          <h1
+            className="font-display mt-12 max-w-5xl tracking-tight"
+            style={{
+              fontSize: 'clamp(2.75rem, 8.5vw, 8rem)',
+              lineHeight: 1.0,
+              letterSpacing: '-0.025em',
+              fontVariationSettings: "'opsz' 96, 'SOFT' 20, 'wght' 400",
+            }}
+          >
+            {t('home.hero.title')}
+          </h1>
         </Reveal>
 
-        {/* Bottom rail — three small system labels with mono */}
-        <Reveal delay={480}>
-          <div className="mt-24 flex flex-wrap items-center gap-x-12 gap-y-4 border-t border-border pt-8 font-mono text-xs">
-            <div className="flex items-center gap-2">
-              <span className="text-muted-foreground">[01]</span>
-              <span className="text-foreground/80">finans · igaming · e-ticaret</span>
+        {/* Two-column: subtitle + meta */}
+        <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:gap-12">
+          <Reveal delay={240} className="lg:col-span-7">
+            <p className="max-w-xl text-body-lg text-muted-foreground">
+              {t('home.hero.subtitle')}
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <Link
+                href="/iletisim"
+                className="group inline-flex items-center gap-3 rounded-md bg-accent px-7 py-4 text-sm font-medium text-accent-foreground transition-all duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-px hover:bg-accent/90"
+              >
+                {t('common.primary_cta')}
+                <span className="transition-transform duration-300 ease-[var(--ease-out-quint)] group-hover:translate-x-1">→</span>
+              </Link>
+              <Link
+                href="/calismalarimiz"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-foreground"
+              >
+                <span className="border-b border-foreground/30 pb-px transition-colors duration-200 group-hover:border-foreground">
+                  {t('common.secondary_cta')}
+                </span>
+                <span className="transition-transform duration-200 ease-[var(--ease-out-quint)] group-hover:translate-x-1">→</span>
+              </Link>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-muted-foreground">[02]</span>
-              <span className="text-foreground/80">production-grade · auditable</span>
+          </Reveal>
+
+          <Reveal delay={360} className="lg:col-span-5">
+            <div className="space-y-5 border-t border-border pt-6 md:pt-0 md:border-t-0 md:border-l md:pl-12">
+              <div>
+                <p className="font-mono text-eyebrow uppercase text-muted-foreground">Disiplinler</p>
+                <p className="mt-2 font-display text-3xl text-foreground" style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 20, 'wght' 400" }}>
+                  Yedi farklı alan
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Finans · iGaming · E-Ticaret · Entegrasyon · CRM · Pazarlama · Sosyal Medya
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-eyebrow uppercase text-muted-foreground">Yaklaşım</p>
+                <p className="mt-2 font-display text-3xl italic text-foreground" style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 100, 'wght' 400" }}>
+                  Sessiz mükemmellik
+                </p>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-muted-foreground">[03]</span>
-              <span className="text-foreground/80">8–16 wk delivery · TR/EN</span>
-            </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </Container>
+
+      {/* Full-bleed atmospheric photograph */}
+      <Reveal delay={480}>
+        <div className="relative mx-auto mt-12 max-w-7xl overflow-hidden rounded-lg">
+          <div className="img-warm relative aspect-[16/7] w-full">
+            <Image
+              src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=2400&q=85"
+              alt=""
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
+            {/* Soft vignette + warm tint overlay for premium cohesion */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  'radial-gradient(ellipse 90% 70% at 50% 60%, transparent 0%, hsl(40 28% 95% / 0.35) 100%)',
+              }}
+            />
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }

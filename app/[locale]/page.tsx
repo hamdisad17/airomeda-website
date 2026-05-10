@@ -5,6 +5,7 @@ import { makeAlternates } from '@/lib/seo/alternates';
 import { getTranslations } from 'next-intl/server';
 
 import { Hero } from '@/components/sections/Hero';
+import { EditorialFeature } from '@/components/sections/EditorialFeature';
 import { Manifesto } from '@/components/sections/Manifesto';
 import { LiveStatus } from '@/components/sections/LiveStatus';
 import { ServicesGrid } from '@/components/sections/ServicesGrid';
@@ -41,6 +42,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   return (
     <>
       <Hero />
+      <EditorialFeature />
       <Manifesto />
       <LiveStatus />
       <ServicesGrid locale={locale} />

@@ -11,7 +11,10 @@ const nextConfig: NextConfig = {
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   typedRoutes: false,
   images: {
-    remotePatterns: [{ protocol: 'https', hostname: '**.airomeda.com' }],
+    remotePatterns: [
+      { protocol: 'https', hostname: '**.airomeda.com' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+    ],
   },
 };
 
