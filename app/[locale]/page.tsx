@@ -7,12 +7,16 @@ import { getTranslations } from 'next-intl/server';
 import { Hero } from '@/components/sections/Hero';
 import { CustomerLogos } from '@/components/sections/CustomerLogos';
 import { WhyUs } from '@/components/sections/WhyUs';
+import { IndustrySwitcher } from '@/components/sections/IndustrySwitcher';
 import { Capabilities } from '@/components/sections/Capabilities';
 import { Architecture } from '@/components/sections/Architecture';
+import { SectionDivider } from '@/components/visuals/SectionDivider';
+import { ProductionHeartbeat } from '@/components/sections/ProductionHeartbeat';
 import { StackPanel } from '@/components/sections/StackPanel';
 import { ProductShowcase } from '@/components/sections/ProductShowcase';
 import { CodeSample } from '@/components/sections/CodeSample';
 import { Numbers } from '@/components/sections/Numbers';
+import { Manifesto } from '@/components/sections/Manifesto';
 import { CaseStudies } from '@/components/sections/CaseStudies';
 import { ProcessStory } from '@/components/sections/ProcessStory';
 import { Testimonials } from '@/components/sections/Testimonials';
@@ -48,18 +52,24 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <Hero />
       <CustomerLogos />
       <WhyUs />
+      <IndustrySwitcher />
       <Capabilities locale={locale} />
       <Architecture />
+      <SectionDivider label="canlı sistem" />
+      <ProductionHeartbeat />
       <StackPanel />
       <ProductShowcase variant="finance" />
       <CodeSample />
       <ProductShowcase variant="gaming" reverse />
       <Numbers />
+      <SectionDivider label="manifesto" />
+      <Manifesto />
       <CaseStudies locale={locale} />
       <ProcessStory />
       <Testimonials />
       <FAQ />
       <WordmarkMarquee />
+      <SectionDivider label="iletişim" />
       <CTASection />
     </>
   );

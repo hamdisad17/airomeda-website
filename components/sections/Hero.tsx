@@ -7,7 +7,7 @@ import { ParticleField } from '@/components/visuals/ParticleField';
 import { GradientOrb } from '@/components/visuals/GradientOrb';
 import { FloatingUIPeeks } from '@/components/visuals/FloatingUIPeeks';
 import { MagneticButton } from '@/components/motion/MagneticButton';
-import { TextReveal } from '@/components/motion/TextReveal';
+import { KineticHeadline } from '@/components/sections/KineticHeadline';
 import { RecentShipments } from '@/components/sections/RecentShipments';
 
 export async function Hero() {
@@ -31,9 +31,7 @@ export async function Hero() {
               <span className="text-muted-foreground">production</span>
             </span>
 
-            <h1 className="mt-8 text-display-1 font-semibold tracking-tight">
-              <TextReveal as="span">{t('home.hero.title')}</TextReveal>
-            </h1>
+            <KineticHeadline />
 
             <p className="mt-6 max-w-xl text-body-lg text-muted-foreground">
               {t('home.hero.subtitle')}

@@ -1,37 +1,69 @@
 'use client';
 import * as React from 'react';
-import gsap from 'gsap';
 
 export function CursorGlow() {
   const ref = React.useRef<HTMLDivElement>(null);
+  const [variant, setVariant] = React.useState<'default' | 'interact' | 'text'>(
+    'default',
+  );
 
   React.useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia('(hover: none)').matches) return;
 
     let raf = 0;
-    const onMove = (e: PointerEvent) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        gsap.to(el, { x: e.clientX, y: e.clientY, duration: 0.7, ease: 'power3.out' });
-      });
-    };
+    let tx = 0,
+      ty = 0,
+      cx = 0,
+      cy = 0;
 
-    window.addEventListener('pointermove', onMove);
+    function move(e: PointerEvent) {
+      tx = e.clientX;
+      ty = e.clientY;
+      const target = e.target as HTMLElement | null;
+      if (
+        target?.closest(
+          'button, a, [role="tab"], input, textarea, [data-cursor="interact"]',
+        )
+      ) {
+        setVariant('interact');
+      } else if (target?.closest('p, h1, h2, h3, h4, span, li')) {
+        setVariant((v) => (v === 'interact' ? v : 'text'));
+      } else {
+        setVariant('default');
+      }
+    }
+
+    function tick() {
+      cx += (tx - cx) * 0.18;
+      cy += (ty - cy) * 0.18;
+      if (ref.current) {
+        ref.current.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
+      }
+      raf = requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('pointermove', move);
+    raf = requestAnimationFrame(tick);
     return () => {
-      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointermove', move);
       cancelAnimationFrame(raf);
     };
   }, []);
+
+  const size = variant === 'interact' ? 500 : variant === 'text' ? 220 : 360;
+  const opacity = variant === 'interact' ? 0.45 : variant === 'text' ? 0.18 : 0.28;
 
   return (
     <div
       ref={ref}
       aria-hidden
-      className="cursor-glow pointer-events-none fixed left-0 top-0 z-[5] h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-50 mix-blend-screen hidden lg:block"
+      className="cursor-glow fixed left-0 top-0 pointer-events-none z-10 rounded-full hidden md:block transition-[width,height,opacity] duration-300 ease-out"
       style={{
-        background: 'radial-gradient(circle, hsl(189 100% 50% / 0.18), transparent 60%)',
-        filter: 'blur(40px)',
+        width: `${size}px`,
+        height: `${size}px`,
+        background: `radial-gradient(circle, hsl(189 100% 50% / ${opacity}) 0%, transparent 70%)`,
+        mixBlendMode: 'screen',
       }}
     />
   );
