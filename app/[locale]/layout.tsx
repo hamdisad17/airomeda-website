@@ -9,6 +9,8 @@ import { organizationSchema, websiteSchema } from '@/lib/seo/jsonld';
 import { CookieConsent } from '@/components/legal/CookieConsent';
 import { SmoothScroll } from '@/components/motion/SmoothScroll';
 import { CursorGlow } from '@/components/motion/CursorGlow';
+import { CommandPalette } from '@/components/overlay/CommandPalette';
+import { ScrollProgress } from '@/components/motion/ScrollProgress';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -29,6 +31,8 @@ export default async function LocaleLayout({
     <NextIntlClientProvider>
       <JsonLd data={[organizationSchema(), websiteSchema(locale as Locale)]} />
       <CursorGlow />
+      <ScrollProgress />
+      <CommandPalette />
       <SmoothScroll>
         <Header />
         <main className="min-h-[60vh]">{children}</main>

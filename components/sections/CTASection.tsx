@@ -8,7 +8,7 @@ export async function CTASection() {
   const t = await getTranslations('home.cta');
   const tc = await getTranslations('common');
   return (
-    <section className="relative overflow-hidden border-t border-border py-32 md:py-44">
+    <section id="cta" className="relative overflow-hidden border-t border-border py-32 md:py-44">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 animate-cta-pulse"

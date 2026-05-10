@@ -64,7 +64,7 @@ export function ProcessStory() {
   );
 
   return (
-    <section ref={wrap} className="border-b border-border py-24 md:py-32">
+    <section id="process-story" ref={wrap} className="border-b border-border py-24 md:py-32">
       <Container as="div">
         <div className="max-w-3xl">
           <p className="font-mono text-eyebrow uppercase text-accent">{'// 06 · method'}</p>

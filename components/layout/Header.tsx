@@ -5,6 +5,7 @@ import { LangSwitcher } from './LangSwitcher';
 import { Container } from './Container';
 import { MegaMenu } from './MegaMenu';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { CommandPaletteButton } from './CommandPaletteButton';
 import type { Locale } from '@/i18n/routing';
 
 export async function Header() {
@@ -42,6 +43,7 @@ export async function Header() {
           </Link>
         </nav>
         <div className="flex items-center gap-3">
+          <CommandPaletteButton />
           <LangSwitcher />
           <ThemeToggle />
           <Link

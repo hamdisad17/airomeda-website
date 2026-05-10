@@ -12,6 +12,7 @@ import { Capabilities } from '@/components/sections/Capabilities';
 import { Architecture } from '@/components/sections/Architecture';
 import { SectionDivider } from '@/components/visuals/SectionDivider';
 import { ProductionHeartbeat } from '@/components/sections/ProductionHeartbeat';
+import { BentoShowcase } from '@/components/sections/BentoShowcase';
 import { StackPanel } from '@/components/sections/StackPanel';
 import { ProductShowcase } from '@/components/sections/ProductShowcase';
 import { CodeSample } from '@/components/sections/CodeSample';
@@ -19,6 +20,7 @@ import { Numbers } from '@/components/sections/Numbers';
 import { Manifesto } from '@/components/sections/Manifesto';
 import { CaseStudies } from '@/components/sections/CaseStudies';
 import { ProcessStory } from '@/components/sections/ProcessStory';
+import { DeploymentPipeline } from '@/components/sections/DeploymentPipeline';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { FAQ } from '@/components/sections/FAQ';
 import { WordmarkMarquee } from '@/components/sections/WordmarkMarquee';
@@ -57,6 +59,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <Architecture />
       <SectionDivider label="canlı sistem" />
       <ProductionHeartbeat />
+      <BentoShowcase />
       <StackPanel />
       <ProductShowcase variant="finance" />
       <CodeSample />
@@ -66,6 +69,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <Manifesto />
       <CaseStudies locale={locale} />
       <ProcessStory />
+      <DeploymentPipeline />
       <Testimonials />
       <FAQ />
       <WordmarkMarquee />

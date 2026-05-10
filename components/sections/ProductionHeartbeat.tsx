@@ -182,7 +182,7 @@ export function ProductionHeartbeat() {
   const uptime = 99.994;
 
   return (
-    <section className="border-b border-border bg-elevated/30 py-20 md:py-28 relative overflow-hidden">
+    <section id="production-heartbeat" className="border-b border-border bg-elevated/30 py-20 md:py-28 relative overflow-hidden">
       {/* atmospheric bg */}
       <div
         aria-hidden

@@ -74,7 +74,7 @@ export function Architecture() {
   );
 
   return (
-    <section className="border-b border-border bg-muted/30 py-24 md:py-32">
+    <section id="architecture" className="border-b border-border bg-muted/30 py-24 md:py-32">
       <Container as="div">
       <div ref={ref}>
         <div className="mb-16 max-w-3xl">

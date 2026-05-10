@@ -59,7 +59,7 @@ export function IndustrySwitcher() {
   const item = INDUSTRIES[active] ?? INDUSTRIES[0]!;
 
   return (
-    <section className="border-b border-border py-20 md:py-28">
+    <section id="industry-switcher" className="border-b border-border py-20 md:py-28">
       <Container as="div">
         <RevealSection>
           <p className="font-mono text-eyebrow uppercase text-accent">{'// 03 · sektör'}</p>

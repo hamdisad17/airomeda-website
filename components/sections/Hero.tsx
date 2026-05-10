@@ -13,7 +13,7 @@ import { RecentShipments } from '@/components/sections/RecentShipments';
 export async function Hero() {
   const t = await getTranslations();
   return (
-    <section className="relative overflow-hidden border-b border-border">
+    <section id="hero" className="relative overflow-hidden border-b border-border">
       <AnimatedDotGrid />
       <ParticleField />
       <GradientOrb />

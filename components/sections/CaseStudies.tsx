@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 import { StaggerGrid } from '@/components/motion/StaggerGrid';
+import { TiltCard } from '@/components/motion/TiltCard';
 import { listCaseStudies } from '@/lib/mdx';
 import type { Locale } from '@/i18n/routing';
 
@@ -15,7 +16,7 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: 'home.selected_work' });
 
   return (
-    <section className="border-b border-border py-24 md:py-32">
+    <section id="case-studies" className="border-b border-border py-24 md:py-32">
       <Container as="div">
         <RevealSection>
           <div className="flex items-end justify-between">
@@ -36,9 +37,10 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
 
         {/* Featured case */}
         <RevealSection delay={0.1}>
+          <TiltCard className="mt-16" intensity={2}>
           <Link
             href={`/calismalarimiz/${featured.slug}`}
-            className="group mt-16 block border border-border bg-elevated transition-colors hover:border-accent"
+            className="group block border border-border bg-elevated transition-colors hover:border-accent"
           >
             <div className="grid gap-0 lg:grid-cols-12">
               <div className="p-8 lg:col-span-7 md:p-12">
@@ -77,27 +79,32 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
               </div>
             </div>
           </Link>
+          </TiltCard>
         </RevealSection>
 
         {/* Remaining two */}
         {rest.length > 0 && (
           <StaggerGrid className="mt-6 grid gap-6 md:grid-cols-2">
             {rest.map((c) => (
-              <Link
+              <TiltCard
                 data-stagger-item
                 key={c.slug}
-                href={`/calismalarimiz/${c.slug}`}
-                className="group block border border-border bg-elevated p-8 transition-colors hover:border-accent"
+                intensity={3}
               >
-                <p className="font-mono text-eyebrow uppercase text-accent">{c.client}</p>
-                <h3 className="mt-3 text-lg font-semibold tracking-tight">{c.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.excerpt}</p>
-                <div className="mt-5 flex flex-wrap gap-x-4 font-mono text-xs text-muted-foreground">
-                  <span>{c.industry}</span>
-                  <span>·</span>
-                  <span>{c.year}</span>
-                </div>
-              </Link>
+                <Link
+                  href={`/calismalarimiz/${c.slug}`}
+                  className="group block border border-border bg-elevated p-8 transition-colors hover:border-accent"
+                >
+                  <p className="font-mono text-eyebrow uppercase text-accent">{c.client}</p>
+                  <h3 className="mt-3 text-lg font-semibold tracking-tight">{c.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.excerpt}</p>
+                  <div className="mt-5 flex flex-wrap gap-x-4 font-mono text-xs text-muted-foreground">
+                    <span>{c.industry}</span>
+                    <span>·</span>
+                    <span>{c.year}</span>
+                  </div>
+                </Link>
+              </TiltCard>
             ))}
           </StaggerGrid>
         )}
