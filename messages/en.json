@@ -25,7 +25,9 @@
   "home": {
     "hero": {
       "title": "Make the complex, simple.",
-      "subtitle": "End-to-end software for finance, iGaming, commerce and beyond."
+      "subtitle": "End-to-end software for finance, iGaming, commerce and beyond.",
+      "kinetic_words": ["Finance", "iGaming", "Commerce", "Integration", "Performance", "CRM"],
+      "kinetic_connector": "for."
     },
     "services_section": { "title": "Our services", "subtitle": "Seven disciplines, one standard." },
     "industries": { "title": "Industries we serve" },

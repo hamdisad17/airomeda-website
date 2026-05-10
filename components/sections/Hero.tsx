@@ -31,7 +31,11 @@ export async function Hero() {
               <span className="text-muted-foreground">production</span>
             </span>
 
-            <KineticHeadline />
+            <KineticHeadline
+              words={t.raw('home.hero.kinetic_words') as string[]}
+              connector={t('home.hero.kinetic_connector')}
+              tailLine={t('home.hero.title')}
+            />
 
             <p className="mt-6 max-w-xl text-body-lg text-muted-foreground">
               {t('home.hero.subtitle')}

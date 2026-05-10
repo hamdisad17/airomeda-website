@@ -3,16 +3,20 @@ import * as React from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-const WORDS = ['Finans', 'iGaming', 'E-Ticaret', 'Entegrasyon', 'Performans', 'CRM'];
+interface KineticHeadlineProps {
+  words: string[];
+  connector: string;
+  tailLine: string;
+}
 
-export function KineticHeadline() {
+export function KineticHeadline({ words, connector, tailLine }: KineticHeadlineProps) {
   const containerRef = React.useRef<HTMLSpanElement>(null);
   const [active, setActive] = React.useState(0);
 
   React.useEffect(() => {
-    const t = setInterval(() => setActive((i) => (i + 1) % WORDS.length), 2200);
+    const t = setInterval(() => setActive((i) => (i + 1) % words.length), 2200);
     return () => clearInterval(t);
-  }, []);
+  }, [words.length]);
 
   useGSAP(
     () => {
@@ -37,13 +41,13 @@ export function KineticHeadline() {
         >
           <span ref={containerRef} className="inline-flex">
             <span key={active} className="kinetic-word inline-block text-accent">
-              {WORDS[active]}
+              {words[active]}
             </span>
           </span>
         </span>
-        <span className="text-muted-foreground"> için.</span>
+        <span className="text-muted-foreground"> {connector}</span>
       </span>
-      <span className="block">Production-grade yazılım.</span>
+      <span className="block">{tailLine}</span>
     </h1>
   );
 }

@@ -25,7 +25,9 @@
   "home": {
     "hero": {
       "title": "Karmaşık olanı, basit kıl.",
-      "subtitle": "Finans, iGaming, e-ticaret ve daha fazlası için uçtan uca yazılım."
+      "subtitle": "Finans, iGaming, e-ticaret ve daha fazlası için uçtan uca yazılım.",
+      "kinetic_words": ["Finans", "iGaming", "E-Ticaret", "Entegrasyon", "Performans", "CRM"],
+      "kinetic_connector": "için."
     },
     "services_section": { "title": "Hizmetlerimiz", "subtitle": "Yedi disiplin, tek standart." },
     "industries": { "title": "Çalıştığımız sektörler" },
