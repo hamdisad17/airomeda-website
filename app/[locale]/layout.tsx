@@ -6,6 +6,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { organizationSchema, websiteSchema } from '@/lib/seo/jsonld';
+import { CookieConsent } from '@/components/legal/CookieConsent';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -28,6 +29,7 @@ export default async function LocaleLayout({
       <Header />
       <main className="min-h-[60vh]">{children}</main>
       <Footer />
+      <CookieConsent />
     </NextIntlClientProvider>
   );
 }

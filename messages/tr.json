@@ -137,5 +137,11 @@
       "cv_size": "CV 5 MB'tan büyük olamaz",
       "cv_type": "PDF veya DOCX yükleyin"
     }
+  },
+  "cookie_consent": {
+    "title": "Çerezler hakkında",
+    "body": "Sitemizin çalışması için zorunlu çerezler kullanıyoruz. Analiz veya reklam çerezi yok.",
+    "accept": "Tamam, anladım",
+    "manage_link": "Çerez politikası"
   }
 }
