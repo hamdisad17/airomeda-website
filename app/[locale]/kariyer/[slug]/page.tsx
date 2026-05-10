@@ -7,6 +7,10 @@ import { MDXContent } from '@/components/mdx/MDXContent';
 import { JobMeta } from '@/components/careers/JobMeta';
 import { CTABlock } from '@/components/sections/CTABlock';
 import { JobApplicationForm } from '@/components/forms/JobApplicationForm';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { jobPostingSchema, jobSchemaEmploymentType, breadcrumbSchema } from '@/lib/seo/jsonld';
+import { SITE } from '@/lib/seo/site';
+import { makeAlternates } from '@/lib/seo/alternates';
 
 export async function generateStaticParams() {
   const params: { locale: Locale; slug: string }[] = [];
@@ -25,7 +29,22 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const content = await loadJobContent(slug, locale);
   if (!content || !content.frontmatter.active) return {};
-  return { title: content.frontmatter.title };
+  const alts = makeAlternates(`/kariyer/${slug}`, locale);
+  return {
+    title: content.frontmatter.title,
+    alternates: alts,
+    openGraph: {
+      type: 'website' as const,
+      url: alts.canonical,
+      title: content.frontmatter.title,
+      siteName: SITE.name,
+      locale: SITE.ogLocale[locale],
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title: content.frontmatter.title,
+    },
+  };
 }
 
 export default async function JobDetail({
@@ -41,8 +60,30 @@ export default async function JobDetail({
   const t = await getTranslations({ locale, namespace: 'careers' });
   const tApp = await getTranslations({ locale, namespace: 'application_form' });
 
+  const url = makeAlternates(`/kariyer/${slug}`, locale).canonical;
+  const jobLd = jobPostingSchema({
+    title: frontmatter.title,
+    description:
+      frontmatter.responsibilities.join(' ') + ' ' + frontmatter.requirements.join(' '),
+    url,
+    datePosted: frontmatter.posted_at,
+    employmentType: jobSchemaEmploymentType(frontmatter.employment_type),
+    hiringOrganizationName: SITE.name,
+    jobLocation: frontmatter.location,
+    locale,
+  });
+  const breadcrumbs = breadcrumbSchema([
+    { name: 'Airomeda', url: `${SITE.url}/${locale}` },
+    {
+      name: locale === 'tr' ? 'Kariyer' : 'Careers',
+      url: `${SITE.url}/${locale}/kariyer`,
+    },
+    { name: frontmatter.title, url },
+  ]);
+
   return (
     <>
+      <JsonLd data={[jobLd, breadcrumbs]} />
       <Container as="section" className="border-b border-border py-16 md:py-24">
         <h1 className="max-w-3xl text-display-2 font-bold tracking-tight">{frontmatter.title}</h1>
         <div className="mt-8">

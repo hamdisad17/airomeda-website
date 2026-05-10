@@ -1,5 +1,7 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
+import { SITE } from '@/lib/seo/site';
+import { makeAlternates } from '@/lib/seo/alternates';
 import { Container } from '@/components/layout/Container';
 import { ServicesGrid } from '@/components/sections/ServicesGrid';
 import { CTABlock } from '@/components/sections/CTABlock';
@@ -11,7 +13,22 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'services_index' });
-  return { title: t('title') };
+  const alts = makeAlternates('/hizmetler', locale);
+  return {
+    title: t('title'),
+    alternates: alts,
+    openGraph: {
+      type: 'website' as const,
+      url: alts.canonical,
+      title: t('title'),
+      siteName: SITE.name,
+      locale: SITE.ogLocale[locale],
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title: t('title'),
+    },
+  };
 }
 
 export default async function ServicesIndex({

@@ -1,6 +1,8 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
 import { listBlogPosts } from '@/lib/mdx';
+import { SITE } from '@/lib/seo/site';
+import { makeAlternates } from '@/lib/seo/alternates';
 import { Container } from '@/components/layout/Container';
 import { BlogList } from '@/components/blog/BlogList';
 import { CategoryFilter } from '@/components/blog/CategoryFilter';
@@ -8,7 +10,22 @@ import { CategoryFilter } from '@/components/blog/CategoryFilter';
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'blog' });
-  return { title: t('title') };
+  const alts = makeAlternates('/blog', locale);
+  return {
+    title: t('title'),
+    alternates: alts,
+    openGraph: {
+      type: 'website' as const,
+      url: alts.canonical,
+      title: t('title'),
+      siteName: SITE.name,
+      locale: SITE.ogLocale[locale],
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title: t('title'),
+    },
+  };
 }
 
 export default async function BlogIndex({ params }: { params: Promise<{ locale: Locale }> }) {

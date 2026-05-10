@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { listBlogPosts, listBlogCategories } from '@/lib/mdx';
+import { SITE } from '@/lib/seo/site';
+import { makeAlternates } from '@/lib/seo/alternates';
 import { Container } from '@/components/layout/Container';
 import { BlogList } from '@/components/blog/BlogList';
 import { CategoryFilter } from '@/components/blog/CategoryFilter';
@@ -22,7 +24,23 @@ export async function generateMetadata({
 }) {
   const { locale, slug } = await params;
   const t = await getTranslations({ locale, namespace: 'blog' });
-  return { title: `${slug} · ${t('title')}` };
+  const title = `${slug} · ${t('title')}`;
+  const alts = makeAlternates(`/blog/kategori/${slug}`, locale);
+  return {
+    title,
+    alternates: alts,
+    openGraph: {
+      type: 'website' as const,
+      url: alts.canonical,
+      title,
+      siteName: SITE.name,
+      locale: SITE.ogLocale[locale],
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title,
+    },
+  };
 }
 
 export default async function CategoryPage({

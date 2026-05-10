@@ -7,6 +7,10 @@ import { MDXContent } from '@/components/mdx/MDXContent';
 import { BlogMeta } from '@/components/blog/BlogMeta';
 import { BlogList } from '@/components/blog/BlogList';
 import { CTABlock } from '@/components/sections/CTABlock';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { articleSchema, breadcrumbSchema } from '@/lib/seo/jsonld';
+import { SITE } from '@/lib/seo/site';
+import { makeAlternates } from '@/lib/seo/alternates';
 
 export async function generateStaticParams() {
   const params: { locale: Locale; slug: string }[] = [];
@@ -25,7 +29,29 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const content = await loadBlogPostContent(slug, locale);
   if (!content) return {};
-  return { title: content.frontmatter.title, description: content.frontmatter.excerpt };
+  const { frontmatter } = content;
+  const alts = makeAlternates(`/blog/${slug}`, locale);
+  return {
+    title: frontmatter.title,
+    description: frontmatter.excerpt,
+    alternates: alts,
+    openGraph: {
+      type: 'article' as const,
+      url: alts.canonical,
+      title: frontmatter.title,
+      description: frontmatter.excerpt,
+      siteName: SITE.name,
+      locale: SITE.ogLocale[locale],
+      publishedTime: frontmatter.published_at,
+      authors: [frontmatter.author],
+      images: frontmatter.cover ? [`${SITE.url}${frontmatter.cover}`] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title: frontmatter.title,
+      description: frontmatter.excerpt,
+    },
+  };
 }
 
 export default async function BlogPostPage({
@@ -50,8 +76,25 @@ export default async function BlogPostPage({
     )
     .slice(0, 3);
 
+  const url = makeAlternates(`/blog/${slug}`, locale).canonical;
+  const article = articleSchema({
+    headline: frontmatter.title,
+    description: frontmatter.excerpt,
+    url,
+    datePublished: frontmatter.published_at,
+    author: frontmatter.author,
+    image: frontmatter.cover ? `${SITE.url}${frontmatter.cover}` : undefined,
+    locale,
+  });
+  const breadcrumbs = breadcrumbSchema([
+    { name: 'Airomeda', url: `${SITE.url}/${locale}` },
+    { name: 'Blog', url: `${SITE.url}/${locale}/blog` },
+    { name: frontmatter.title, url },
+  ]);
+
   return (
     <>
+      <JsonLd data={[article, breadcrumbs]} />
       <Container as="section" className="py-12 md:py-20">
         <ul className="mb-6 flex flex-wrap gap-2 text-xs text-muted-foreground">
           {frontmatter.categories.map((c) => (

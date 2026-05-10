@@ -11,6 +11,10 @@ import { CTABlock } from '@/components/sections/CTABlock';
 import { Container } from '@/components/layout/Container';
 import { DemoForm } from '@/components/forms/DemoForm';
 import { SERVICE_SLUGS, type ServiceKey } from '@/lib/i18n/slug-map';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { serviceSchema, breadcrumbSchema } from '@/lib/seo/jsonld';
+import { SITE } from '@/lib/seo/site';
+import { makeAlternates } from '@/lib/seo/alternates';
 
 export async function generateStaticParams() {
   const params: { locale: Locale; slug: string }[] = [];
@@ -29,9 +33,25 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const content = await loadServiceContent(slug, locale);
   if (!content) return {};
+  const path = `/hizmetler/${slug}`;
+  const alts = makeAlternates(path, locale);
   return {
     title: content.frontmatter.title,
     description: content.frontmatter.excerpt,
+    alternates: alts,
+    openGraph: {
+      type: 'website' as const,
+      url: alts.canonical,
+      title: content.frontmatter.title,
+      description: content.frontmatter.excerpt,
+      siteName: SITE.name,
+      locale: SITE.ogLocale[locale],
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title: content.frontmatter.title,
+      description: content.frontmatter.excerpt,
+    },
   };
 }
 
@@ -50,8 +70,29 @@ export default async function ServiceDetail({
 
   const tDemo = await getTranslations({ locale, namespace: 'demo_form' });
 
+  const url = makeAlternates(`/hizmetler/${slug}`, locale).canonical;
+  const breadcrumbs = breadcrumbSchema([
+    { name: 'Airomeda', url: `${SITE.url}/${locale}` },
+    {
+      name: locale === 'tr' ? 'Hizmetler' : 'Services',
+      url: `${SITE.url}/${locale}/hizmetler`,
+    },
+    { name: content.frontmatter.title, url },
+  ]);
+
   return (
     <>
+      <JsonLd
+        data={[
+          serviceSchema({
+            name: content.frontmatter.title,
+            description: content.frontmatter.excerpt,
+            url,
+            locale,
+          }),
+          breadcrumbs,
+        ]}
+      />
       <ServiceHero
         title={content.frontmatter.title}
         subtitle={content.frontmatter.hero_subtitle}

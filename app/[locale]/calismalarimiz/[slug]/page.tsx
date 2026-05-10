@@ -9,6 +9,10 @@ import { MDXContent } from '@/components/mdx/MDXContent';
 import { Quote } from '@/components/mdx/Quote';
 import { Container } from '@/components/layout/Container';
 import { CTABlock } from '@/components/sections/CTABlock';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { articleSchema, breadcrumbSchema } from '@/lib/seo/jsonld';
+import { SITE } from '@/lib/seo/site';
+import { makeAlternates } from '@/lib/seo/alternates';
 
 export async function generateStaticParams() {
   const params: { locale: Locale; slug: string }[] = [];
@@ -27,7 +31,25 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const content = await loadCaseStudyContent(slug, locale);
   if (!content) return {};
-  return { title: content.frontmatter.title, description: content.frontmatter.excerpt };
+  const alts = makeAlternates(`/calismalarimiz/${slug}`, locale);
+  return {
+    title: content.frontmatter.title,
+    description: content.frontmatter.excerpt,
+    alternates: alts,
+    openGraph: {
+      type: 'article' as const,
+      url: alts.canonical,
+      title: content.frontmatter.title,
+      description: content.frontmatter.excerpt,
+      siteName: SITE.name,
+      locale: SITE.ogLocale[locale],
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title: content.frontmatter.title,
+      description: content.frontmatter.excerpt,
+    },
+  };
 }
 
 export default async function CaseStudyDetail({
@@ -41,8 +63,26 @@ export default async function CaseStudyDetail({
   if (!content) notFound();
   const { frontmatter, body } = content;
 
+  const url = makeAlternates(`/calismalarimiz/${slug}`, locale).canonical;
+  const article = articleSchema({
+    headline: frontmatter.title,
+    description: frontmatter.excerpt,
+    url,
+    author: SITE.name,
+    locale,
+  });
+  const breadcrumbs = breadcrumbSchema([
+    { name: 'Airomeda', url: `${SITE.url}/${locale}` },
+    {
+      name: locale === 'tr' ? 'Çalışmalarımız' : 'Our Work',
+      url: `${SITE.url}/${locale}/calismalarimiz`,
+    },
+    { name: frontmatter.title, url },
+  ]);
+
   return (
     <>
+      <JsonLd data={[article, breadcrumbs]} />
       <CaseStudyHero data={frontmatter} />
       <MetricsBlock metrics={frontmatter.metrics} />
       <Container as="article" className="prose-invert max-w-3xl py-20">
