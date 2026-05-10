@@ -1,50 +1,57 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Container } from './Container';
-import { Logo } from './Logo';
 
 export async function Footer() {
   const t = await getTranslations('footer');
   const tnav = await getTranslations('nav');
   const year = new Date().getFullYear();
-
   return (
-    <footer className="relative mt-32 border-t border-border">
-      <Container as="div" className="py-16">
-        <div className="grid gap-12 md:grid-cols-4">
-          <div className="md:col-span-1">
-            <Logo href="/" />
-            <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">{t('tagline')}</p>
-            <p className="mt-8 font-mono text-eyebrow uppercase text-muted-foreground">{'// İstanbul / EU+TR'}</p>
+    <footer className="bg-ink text-paper">
+      <Container as="div" className="py-20">
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <span
+              className="font-display text-3xl text-paper"
+              style={{ fontVariationSettings: "'opsz' 36, 'wdth' 100, 'wght' 500" }}
+            >
+              airomeda<span className="text-coral">.</span>
+            </span>
+            <p className="mt-6 max-w-md text-paper/60">{t('tagline')}</p>
+            <p className="mt-12 font-display text-xs uppercase tracking-[0.2em] text-paper/50">
+              İstanbul · TR/EN · 2018→{year}
+            </p>
           </div>
-          <FooterColumn title={t('company')}>
+          <FooterCol title={t('company')}>
             <FooterLink href="/hakkimizda">{tnav('about')}</FooterLink>
             <FooterLink href="/kariyer">{tnav('careers')}</FooterLink>
             <FooterLink href="/iletisim">{tnav('contact')}</FooterLink>
             <FooterLink href="/blog">{tnav('blog')}</FooterLink>
-          </FooterColumn>
-          <FooterColumn title={t('services')}>
+          </FooterCol>
+          <FooterCol title={t('services')}>
             <FooterLink href="/hizmetler">{tnav('services')}</FooterLink>
             <FooterLink href="/calismalarimiz">{tnav('work')}</FooterLink>
-          </FooterColumn>
-          <FooterColumn title={t('legal')}>
+          </FooterCol>
+          <FooterCol title={t('legal')}>
             <FooterLink href="/kvkk">{t('kvkk')}</FooterLink>
             <FooterLink href="/cerez-politikasi">{t('cookies')}</FooterLink>
-          </FooterColumn>
+          </FooterCol>
         </div>
-        <div className="mt-16 flex flex-col items-start justify-between gap-3 border-t border-border pt-8 font-mono text-xs text-muted-foreground md:flex-row md:items-center">
-          <p>© {year} airomeda<span className="text-accent">.</span> — {t('rights')}</p>
-          <p>{'// system online'}</p>
+        <div className="mt-20 flex flex-col gap-3 border-t border-paper/10 pt-8 font-display text-xs uppercase tracking-[0.2em] text-paper/50 md:flex-row md:items-center md:justify-between">
+          <p>
+            © {year} airomeda — {t('rights')}
+          </p>
+          <p>hello@airomeda.com</p>
         </div>
       </Container>
     </footer>
   );
 }
 
-function FooterColumn({ title, children }: { title: string; children: React.ReactNode }) {
+function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div>
-      <h3 className="font-mono text-eyebrow uppercase text-muted-foreground">{title}</h3>
+    <div className="md:col-span-2">
+      <p className="font-display text-xs uppercase tracking-[0.2em] text-paper/50">{title}</p>
       <ul className="mt-5 space-y-3 text-sm">{children}</ul>
     </div>
   );
@@ -55,7 +62,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
     <li>
       <Link
         href={href as never}
-        className="text-foreground/80 transition-colors duration-150 hover:text-accent"
+        className="text-paper/80 transition-colors duration-150 hover:text-coral"
       >
         {children}
       </Link>

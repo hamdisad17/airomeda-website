@@ -10,26 +10,27 @@ export async function Header() {
   const t = await getTranslations('nav');
   const locale = (await getLocale()) as Locale;
 
-  const links = [
-    { href: '/calismalarimiz' as const, label: t('work') },
-    { href: '/blog' as const, label: t('blog') },
-    { href: '/hakkimizda' as const, label: t('about') },
-    { href: '/kariyer' as const, label: t('careers') },
-  ];
-
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-md">
-      <Container as="div" className="flex h-14 items-center justify-between">
+    <header className="sticky top-0 z-40 border-b border-ink/10 bg-paper/85 backdrop-blur">
+      <Container as="div" className="flex h-16 items-center justify-between">
         <Logo href="/" />
-        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
           <MegaMenu locale={locale} />
-          {links.map((item) => (
+          {(
+            [
+              { href: '/calismalarimiz' as const, label: t('work') },
+              { href: '/blog' as const, label: t('blog') },
+              { href: '/hakkimizda' as const, label: t('about') },
+              { href: '/kariyer' as const, label: t('careers') },
+            ] as const
+          ).map((it) => (
             <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
+              key={it.href}
+              href={it.href}
+              className="font-display text-sm text-ink/80 hover:text-coral transition-colors"
+              style={{ fontVariationSettings: "'opsz' 24, 'wdth' 100, 'wght' 500" }}
             >
-              {item.label}
+              {it.label}
             </Link>
           ))}
         </nav>
@@ -37,7 +38,7 @@ export async function Header() {
           <LangSwitcher />
           <Link
             href="/iletisim"
-            className="hidden rounded-md border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-all duration-200 ease-[var(--ease-out-quint)] hover:-translate-y-px hover:border-accent hover:text-accent md:inline-block"
+            className="hidden md:inline-block bg-ink px-4 py-2 text-sm font-medium text-paper hover:bg-coral transition-colors"
           >
             {t('contact')}
           </Link>

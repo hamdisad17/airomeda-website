@@ -1,25 +1,18 @@
 import './globals.css';
-import { Fraunces, Instrument_Sans, Geist_Mono } from 'next/font/google';
+import { Bricolage_Grotesque, Karla } from 'next/font/google';
 import { headers } from 'next/headers';
 import { routing } from '@/i18n/routing';
 import type { Metadata, Viewport } from 'next';
 
-const fraunces = Fraunces({
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin', 'latin-ext'],
-  variable: '--font-fraunces',
-  display: 'swap',
-  axes: ['SOFT', 'WONK', 'opsz'],
-});
-
-const instrumentSans = Instrument_Sans({
-  subsets: ['latin', 'latin-ext'],
-  variable: '--font-instrument-sans',
+  variable: '--font-bricolage',
   display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  subsets: ['latin'],
-  variable: '--font-geist-mono',
+const karla = Karla({
+  subsets: ['latin', 'latin-ext'],
+  variable: '--font-karla',
   display: 'swap',
 });
 
@@ -29,8 +22,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
-  title: { default: 'Airomeda', template: '%s · Airomeda' },
-  description: 'Karmaşık olanı, basit kıl. Finans, iGaming ve e-ticaret için uçtan uca yazılım.',
+  title: { default: 'Airomeda', template: '%s — Airomeda' },
+  description: 'Airomeda — Bilişim teknolojileri stüdyosu. Finans, iGaming, e-ticaret.',
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -42,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       : routing.defaultLocale;
 
   return (
-    <html lang={locale} className={`${fraunces.variable} ${instrumentSans.variable} ${geistMono.variable}`}>
+    <html lang={locale} className={`${bricolage.variable} ${karla.variable}`}>
       <body>{children}</body>
     </html>
   );

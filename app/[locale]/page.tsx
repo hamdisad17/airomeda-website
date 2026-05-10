@@ -5,13 +5,13 @@ import { makeAlternates } from '@/lib/seo/alternates';
 import { getTranslations } from 'next-intl/server';
 
 import { Hero } from '@/components/sections/Hero';
-import { EditorialFeature } from '@/components/sections/EditorialFeature';
+import { Marquee } from '@/components/sections/Marquee';
 import { Manifesto } from '@/components/sections/Manifesto';
-import { LiveStatus } from '@/components/sections/LiveStatus';
+import { Industries } from '@/components/sections/Industries';
 import { ServicesGrid } from '@/components/sections/ServicesGrid';
+import { EditorialFeature } from '@/components/sections/EditorialFeature';
 import { SelectedWork } from '@/components/sections/SelectedWork';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
-import { Metrics } from '@/components/sections/Metrics';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { BlogPreview } from '@/components/sections/BlogPreview';
 import { CTABlock } from '@/components/sections/CTABlock';
@@ -42,13 +42,13 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   return (
     <>
       <Hero />
-      <EditorialFeature />
+      <Marquee />
       <Manifesto />
-      <LiveStatus />
+      <Industries />
       <ServicesGrid locale={locale} />
+      <EditorialFeature />
       <SelectedWork locale={locale} />
       <ProcessSteps />
-      <Metrics />
       <Testimonials />
       <BlogPreview locale={locale} />
       <CTABlock />

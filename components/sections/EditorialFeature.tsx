@@ -1,58 +1,29 @@
-import Image from 'next/image';
 import { Container } from '@/components/layout/Container';
-import { Reveal } from '@/components/ui/Reveal';
+import { WordReveal } from '@/components/ui/WordReveal';
 
-export async function EditorialFeature() {
+export function EditorialFeature() {
   return (
-    <section className="relative py-24 md:py-44">
+    <section className="bg-coral py-32 md:py-44 text-paper">
       <Container as="div">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
-          <Reveal className="lg:col-span-5">
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">A Note on Method</p>
-            <h2
-              className="font-display mt-8"
-              style={{
-                fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
-                lineHeight: 1.05,
-                letterSpacing: '-0.02em',
-                fontVariationSettings: "'opsz' 72, 'SOFT' 30, 'wght' 400",
-              }}
-            >
-              <span>Yazılım — </span>
-              <span
-                className="font-display-italic"
-                style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100, 'wght' 400" }}
-              >
-                bir el zanaatı.
-              </span>
-            </h2>
-            <p className="mt-8 text-body-lg text-muted-foreground">
-              Üretim ortamında çalışan sistemler kuruyoruz. Production&apos;da çalışan kod, demoda
-              çalışan koddan başkadır. Ekibimiz, mimari kararı ilk satırından son insidan
-              müdahalesine kadar takip eder.
-            </p>
-            <p className="mt-6 font-mono text-eyebrow uppercase text-accent">
-              — Airomeda · 2018→{new Date().getFullYear()}
-            </p>
-          </Reveal>
-
-          <div className="lg:col-span-7">
-            <Reveal delay={160}>
-              <figure className="img-warm relative aspect-[4/5] overflow-hidden rounded-lg">
-                <Image
-                  src="https://images.unsplash.com/photo-1551038247-3d9af20df552?auto=format&fit=crop&w=1600&q=85"
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                />
-              </figure>
-              <figcaption className="mt-4 font-mono text-xs text-muted-foreground">
-                01 / Architectural intent precedes implementation.
-              </figcaption>
-            </Reveal>
-          </div>
-        </div>
+        <p className="font-display text-xs uppercase tracking-[0.2em] text-paper/70">
+          — Note · 04
+        </p>
+        <p
+          className="font-display mt-12 max-w-5xl"
+          style={{
+            fontSize: 'clamp(2.25rem, 6vw, 5.5rem)',
+            lineHeight: 1.0,
+            letterSpacing: '-0.03em',
+            fontVariationSettings: "'opsz' 96, 'wdth' 100, 'wght' 500",
+          }}
+        >
+          <WordReveal>
+            Yazılım, çalışmadığında şikâyet edilen şeydir. Çalıştığında — kimse fark etmez.
+          </WordReveal>
+        </p>
+        <p className="mt-12 font-display text-xs uppercase tracking-[0.2em] text-paper/70">
+          Biz, kimsenin fark etmediği üretim altyapılarını kuruyoruz.
+        </p>
       </Container>
     </section>
   );

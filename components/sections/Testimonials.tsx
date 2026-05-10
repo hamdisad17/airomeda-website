@@ -2,27 +2,43 @@ import { Container } from '@/components/layout/Container';
 
 const QUOTES = [
   {
-    quote: 'Airomeda ekibi 4 ayda ödeme altyapımızı yenileyip canlıya aldı. Hız ve kalite el ele geldi.',
-    author: 'Ad Soyad',
-    role: 'CTO, Müşteri A',
+    quote:
+      '4 ay içinde core banking modernizasyonumuzu canlıya aldılar. Hız ile kalite el ele geldi.',
+    author: 'CTO',
+    role: 'PayGate Bankası',
   },
   {
-    quote: 'iGaming entegrasyonlarımızı stabil ve denetlenebilir hâle getirdiler.',
-    author: 'Ad Soyad',
-    role: 'Director of Engineering, Müşteri B',
+    quote: 'Lisans onayını ilk sunuşta aldık. RNG raporumuzu beklediğimizden hızlı yaptılar.',
+    author: 'CPO',
+    role: 'Bahis.io',
   },
 ];
 
 export function Testimonials() {
   return (
-    <section className="border-b border-border">
-      <Container as="div" className="py-20">
-        <ul className="grid gap-6 md:grid-cols-2">
+    <section className="bg-bone py-24 md:py-32">
+      <Container as="div">
+        <p className="font-display text-xs uppercase tracking-[0.2em] text-ink/60">
+          — Voices · 07
+        </p>
+        <ul className="mt-12 grid gap-12 md:grid-cols-2 md:gap-16">
           {QUOTES.map((q) => (
-            <li key={q.author + q.role} className="rounded-lg border border-border bg-muted/20 p-6">
-              <blockquote className="text-base italic">&ldquo;{q.quote}&rdquo;</blockquote>
-              <p className="mt-4 text-sm text-muted-foreground">
-                — {q.author}, {q.role}
+            <li key={q.author + q.role}>
+              <blockquote
+                className="font-display"
+                style={{
+                  fontSize: 'clamp(1.5rem, 2.6vw, 2.4rem)',
+                  lineHeight: 1.15,
+                  letterSpacing: '-0.018em',
+                  fontVariationSettings: "'opsz' 72, 'wdth' 100, 'wght' 400",
+                }}
+              >
+                <span className="text-coral">&ldquo;</span>
+                {q.quote}
+                <span className="text-coral">&rdquo;</span>
+              </blockquote>
+              <p className="mt-6 font-display text-xs uppercase tracking-[0.2em] text-ink/60">
+                — {q.author} · {q.role}
               </p>
             </li>
           ))}
