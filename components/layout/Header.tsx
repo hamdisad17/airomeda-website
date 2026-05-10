@@ -10,30 +10,37 @@ export async function Header() {
   const t = await getTranslations('nav');
   const locale = (await getLocale()) as Locale;
 
+  const links = [
+    { href: '/calismalarimiz' as const, label: t('work') },
+    { href: '/blog' as const, label: t('blog') },
+    { href: '/hakkimizda' as const, label: t('about') },
+    { href: '/kariyer' as const, label: t('careers') },
+  ];
+
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
-      <Container as="div" className="flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-md">
+      <Container as="div" className="flex h-14 items-center justify-between">
         <Logo href="/" />
-        <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
           <MegaMenu locale={locale} />
-          <Link href="/calismalarimiz" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-            {t('work')}
-          </Link>
-          <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-            {t('blog')}
-          </Link>
-          <Link href="/hakkimizda" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-            {t('about')}
-          </Link>
-          <Link href="/kariyer" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-            {t('careers')}
-          </Link>
-          <Link href="/iletisim" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+          {links.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <div className="flex items-center gap-4">
+          <LangSwitcher />
+          <Link
+            href="/iletisim"
+            className="hidden rounded-md border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-all duration-200 ease-[var(--ease-out-quint)] hover:-translate-y-px hover:border-accent hover:text-accent md:inline-block"
+          >
             {t('contact')}
           </Link>
-        </nav>
-        <div className="flex items-center gap-3">
-          <LangSwitcher />
         </div>
       </Container>
     </header>

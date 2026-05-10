@@ -1,23 +1,29 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import { headers } from 'next/headers';
 import { routing } from '@/i18n/routing';
 import type { Metadata, Viewport } from 'next';
 
-const inter = Inter({
+const geistSans = Geist({
   subsets: ['latin', 'latin-ext'],
-  variable: '--font-inter',
+  variable: '--font-geist-sans',
+  display: 'swap',
+});
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
   display: 'swap',
 });
 
 export const viewport: Viewport = {
-  themeColor: '#0a1628',
+  themeColor: '#0c0c10',
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
   title: { default: 'Airomeda', template: '%s · Airomeda' },
-  description: 'Airomeda — Bilişim teknolojileri çözümleri.',
+  description: 'Karmaşık olanı, basit kıl. Finans, iGaming ve e-ticaret için uçtan uca yazılım.',
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -29,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       : routing.defaultLocale;
 
   return (
-    <html lang={locale} className={inter.variable}>
+    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>{children}</body>
     </html>
   );
