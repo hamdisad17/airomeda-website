@@ -1,16 +1,17 @@
 import { Container } from '@/components/layout/Container';
-import { Reveal } from '@/components/ui/Reveal';
+import { RevealSection } from '@/components/motion/RevealSection';
+import { TextReveal } from '@/components/motion/TextReveal';
 
 export function CodeSample() {
   return (
     <section className="border-b border-border bg-muted/30 py-24 md:py-32">
       <Container as="div">
         <div className="grid items-center gap-16 lg:grid-cols-2">
-          <Reveal>
+          <RevealSection>
             <div>
               <p className="font-mono text-eyebrow uppercase text-accent">{'// 02 · architecture'}</p>
               <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-                Denetlenebilir kod, üretim hızında.
+                <TextReveal as="h2">Denetlenebilir kod, üretim hızında.</TextReveal>
               </h2>
               <p className="mt-6 text-body-lg text-muted-foreground">
                 Idempotent transactional flows, event-sourced audit log, regulator-ready evidence.
@@ -35,8 +36,8 @@ export function CodeSample() {
                 </li>
               </ul>
             </div>
-          </Reveal>
-          <Reveal delay={120}>
+          </RevealSection>
+          <RevealSection delay={0.12}>
             <div className="border border-border bg-elevated overflow-hidden">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]/70" />
@@ -94,7 +95,7 @@ export function CodeSample() {
                 </code>
               </pre>
             </div>
-          </Reveal>
+          </RevealSection>
         </div>
       </Container>
     </section>

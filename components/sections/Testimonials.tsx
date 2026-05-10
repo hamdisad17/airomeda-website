@@ -1,21 +1,28 @@
 import { Container } from '@/components/layout/Container';
-import { Reveal } from '@/components/ui/Reveal';
+import { RevealSection } from '@/components/motion/RevealSection';
+import { StaggerGrid } from '@/components/motion/StaggerGrid';
 
 const QUOTES = [
   {
-    quote: '4 ayda core banking modernizasyonumuzu canlıya aldılar. Hız ve kalite el ele geldi.',
-    author: 'CTO',
+    quote: '4 ayda core banking modernizasyonumuzu canlıya aldılar. Sıfır kesintili geçiş ve denetlenebilir bir mimari teslim ettiler.',
+    author: 'Ad Soyad',
+    role: 'CTO',
     company: 'PayGate Bankası',
+    industry: 'Finans',
   },
   {
-    quote: 'Lisans onayını ilk sunuşta aldık. RNG raporumuzu beklediğimizden hızlı yaptılar.',
-    author: 'CPO',
+    quote: 'Lisans onayını ilk sunuşta aldık. RNG denetim raporunu beklediğimizden hızlı, eksiksiz teslim ettiler.',
+    author: 'Ad Soyad',
+    role: 'CPO',
     company: 'Bahis.io',
+    industry: 'iGaming',
   },
   {
-    quote: 'Headless mimariye geçişi 6 hafta içinde, kesinti yaşamadan tamamladılar.',
-    author: 'CTO',
+    quote: 'Headless mimariye geçişi 6 hafta içinde, kesinti yaşamadan tamamladılar. Aynı ekip operasyon desteğini sürdürüyor.',
+    author: 'Ad Soyad',
+    role: 'CTO',
     company: 'Hubert Commerce',
+    industry: 'E-Ticaret',
   },
 ];
 
@@ -23,32 +30,31 @@ export function Testimonials() {
   return (
     <section className="border-b border-border py-24 md:py-32">
       <Container as="div">
-        <Reveal>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 09 · referanslar'}</p>
-          <h2 className="mt-4 text-display-2 font-semibold tracking-tight">Müşterilerimiz ne diyor?</h2>
-        </Reveal>
-        <ul className="mt-12 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-3">
-          {QUOTES.map((q, i) => (
-            <li key={q.company} className="bg-background">
-              <Reveal delay={i * 80}>
-                <figure className="h-full p-7">
-                  <blockquote className="text-base leading-relaxed text-foreground">
-                    &ldquo;{q.quote}&rdquo;
-                  </blockquote>
-                  <figcaption className="mt-6 flex items-center gap-3">
-                    <span className="grid h-8 w-8 place-items-center border border-border font-mono text-sm font-semibold text-accent">
-                      {q.author[0]}
-                    </span>
-                    <div>
-                      <p className="text-sm font-semibold">{q.author}</p>
-                      <p className="font-mono text-xs text-muted-foreground">{q.company}</p>
-                    </div>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            </li>
+        <RevealSection>
+          <p className="font-mono text-eyebrow uppercase text-accent">{'// 07 · söz onların'}</p>
+          <h2 className="mt-4 max-w-3xl text-display-2 font-semibold tracking-tight">
+            Müşterilerimiz ne diyor?
+          </h2>
+        </RevealSection>
+        <StaggerGrid className="mt-12 grid gap-6 md:grid-cols-3">
+          {QUOTES.map((q) => (
+            <figure data-stagger-item key={q.company} className="flex h-full flex-col border border-border bg-elevated p-7">
+              <p className="font-mono text-eyebrow uppercase text-accent">{q.industry}</p>
+              <blockquote className="mt-4 flex-1 text-base leading-relaxed text-foreground">
+                &ldquo;{q.quote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-8 flex items-center gap-3 border-t border-border pt-5">
+                <span className="grid h-10 w-10 place-items-center bg-accent text-sm font-bold text-accent-foreground">
+                  {q.company[0]}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold">{q.author}</p>
+                  <p className="text-xs text-muted-foreground">{q.role} · {q.company}</p>
+                </div>
+              </figcaption>
+            </figure>
           ))}
-        </ul>
+        </StaggerGrid>
       </Container>
     </section>
   );

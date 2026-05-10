@@ -6,12 +6,14 @@ import { getTranslations } from 'next-intl/server';
 
 import { Hero } from '@/components/sections/Hero';
 import { CustomerLogos } from '@/components/sections/CustomerLogos';
+import { WhyUs } from '@/components/sections/WhyUs';
 import { Capabilities } from '@/components/sections/Capabilities';
 import { ProductShowcase } from '@/components/sections/ProductShowcase';
 import { CodeSample } from '@/components/sections/CodeSample';
 import { Numbers } from '@/components/sections/Numbers';
 import { CaseStudies } from '@/components/sections/CaseStudies';
 import { Testimonials } from '@/components/sections/Testimonials';
+import { FAQ } from '@/components/sections/FAQ';
 import { CTASection } from '@/components/sections/CTASection';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
@@ -41,6 +43,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
     <>
       <Hero />
       <CustomerLogos />
+      <WhyUs />
       <Capabilities locale={locale} />
       <ProductShowcase variant="finance" />
       <CodeSample />
@@ -48,6 +51,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <Numbers />
       <CaseStudies locale={locale} />
       <Testimonials />
+      <FAQ />
       <CTASection />
     </>
   );
