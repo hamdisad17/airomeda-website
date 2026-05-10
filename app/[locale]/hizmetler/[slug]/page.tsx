@@ -7,7 +7,7 @@ import { ServiceHero } from '@/components/service/ServiceHero';
 import { ServiceCapabilities } from '@/components/service/ServiceCapabilities';
 import { ServiceTechStrip } from '@/components/service/ServiceTechStrip';
 import { ServiceFAQ } from '@/components/service/ServiceFAQ';
-import { CTABlock } from '@/components/sections/CTABlock';
+import { CTASection } from '@/components/sections/CTASection';
 import { Container } from '@/components/layout/Container';
 import { DemoForm } from '@/components/forms/DemoForm';
 import { SERVICE_SLUGS, type ServiceKey } from '@/lib/i18n/slug-map';
@@ -113,7 +113,7 @@ export default async function ServiceDetail({
           </div>
         </Container>
       ) : (
-        <CTABlock />
+        <CTASection />
       )}
     </>
   );

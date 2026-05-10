@@ -6,7 +6,7 @@ import { Container } from '@/components/layout/Container';
 import { MDXContent } from '@/components/mdx/MDXContent';
 import { BlogMeta } from '@/components/blog/BlogMeta';
 import { BlogList } from '@/components/blog/BlogList';
-import { CTABlock } from '@/components/sections/CTABlock';
+import { CTASection } from '@/components/sections/CTASection';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { articleSchema, breadcrumbSchema } from '@/lib/seo/jsonld';
 import { SITE } from '@/lib/seo/site';
@@ -120,7 +120,7 @@ export default async function BlogPostPage({
           </div>
         </Container>
       )}
-      <CTABlock />
+      <CTASection />
     </>
   );
 }

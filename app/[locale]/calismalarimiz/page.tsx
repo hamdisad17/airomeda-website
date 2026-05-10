@@ -5,7 +5,7 @@ import { SITE } from '@/lib/seo/site';
 import { makeAlternates } from '@/lib/seo/alternates';
 import { Container } from '@/components/layout/Container';
 import { CaseStudyCard } from '@/components/case-study/CaseStudyCard';
-import { CTABlock } from '@/components/sections/CTABlock';
+import { CTASection } from '@/components/sections/CTASection';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -53,7 +53,7 @@ export default async function CaseStudiesIndex({
           ))}
         </ul>
       </Container>
-      <CTABlock />
+      <CTASection />
     </>
   );
 }

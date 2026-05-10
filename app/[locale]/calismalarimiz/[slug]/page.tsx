@@ -8,7 +8,7 @@ import { RelatedCases } from '@/components/case-study/RelatedCases';
 import { MDXContent } from '@/components/mdx/MDXContent';
 import { Quote } from '@/components/mdx/Quote';
 import { Container } from '@/components/layout/Container';
-import { CTABlock } from '@/components/sections/CTABlock';
+import { CTASection } from '@/components/sections/CTASection';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { articleSchema, breadcrumbSchema } from '@/lib/seo/jsonld';
 import { SITE } from '@/lib/seo/site';
@@ -97,7 +97,7 @@ export default async function CaseStudyDetail({
         )}
       </Container>
       <RelatedCases currentSlug={slug} locale={locale} />
-      <CTABlock />
+      <CTASection />
     </>
   );
 }

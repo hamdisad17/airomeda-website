@@ -3,8 +3,8 @@ import type { Locale } from '@/i18n/routing';
 import { SITE } from '@/lib/seo/site';
 import { makeAlternates } from '@/lib/seo/alternates';
 import { Container } from '@/components/layout/Container';
-import { ServicesGrid } from '@/components/sections/ServicesGrid';
-import { CTABlock } from '@/components/sections/CTABlock';
+import { Capabilities } from '@/components/sections/Capabilities';
+import { CTASection } from '@/components/sections/CTASection';
 
 export async function generateMetadata({
   params,
@@ -45,8 +45,8 @@ export default async function ServicesIndex({
       <Container as="section" className="py-20">
         <h1 className="text-display-1 font-bold tracking-tight">{t('title')}</h1>
       </Container>
-      <ServicesGrid locale={locale} />
-      <CTABlock />
+      <Capabilities locale={locale} />
+      <CTASection />
     </>
   );
 }

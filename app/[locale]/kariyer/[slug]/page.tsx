@@ -5,7 +5,7 @@ import { listJobs, loadJobContent } from '@/lib/mdx';
 import { Container } from '@/components/layout/Container';
 import { MDXContent } from '@/components/mdx/MDXContent';
 import { JobMeta } from '@/components/careers/JobMeta';
-import { CTABlock } from '@/components/sections/CTABlock';
+import { CTASection } from '@/components/sections/CTASection';
 import { JobApplicationForm } from '@/components/forms/JobApplicationForm';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { jobPostingSchema, jobSchemaEmploymentType, breadcrumbSchema } from '@/lib/seo/jsonld';
@@ -125,7 +125,7 @@ export default async function JobDetail({
           </div>
         </div>
       </Container>
-      <CTABlock />
+      <CTASection />
     </>
   );
 }

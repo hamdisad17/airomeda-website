@@ -5,16 +5,14 @@ import { makeAlternates } from '@/lib/seo/alternates';
 import { getTranslations } from 'next-intl/server';
 
 import { Hero } from '@/components/sections/Hero';
-import { Marquee } from '@/components/sections/Marquee';
-import { Manifesto } from '@/components/sections/Manifesto';
-import { Industries } from '@/components/sections/Industries';
-import { ServicesGrid } from '@/components/sections/ServicesGrid';
-import { EditorialFeature } from '@/components/sections/EditorialFeature';
-import { SelectedWork } from '@/components/sections/SelectedWork';
-import { ProcessSteps } from '@/components/sections/ProcessSteps';
+import { CustomerLogos } from '@/components/sections/CustomerLogos';
+import { Capabilities } from '@/components/sections/Capabilities';
+import { ProductShowcase } from '@/components/sections/ProductShowcase';
+import { CodeSample } from '@/components/sections/CodeSample';
+import { Numbers } from '@/components/sections/Numbers';
+import { CaseStudies } from '@/components/sections/CaseStudies';
 import { Testimonials } from '@/components/sections/Testimonials';
-import { BlogPreview } from '@/components/sections/BlogPreview';
-import { CTABlock } from '@/components/sections/CTABlock';
+import { CTASection } from '@/components/sections/CTASection';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -42,16 +40,15 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   return (
     <>
       <Hero />
-      <Marquee />
-      <Manifesto />
-      <Industries />
-      <ServicesGrid locale={locale} />
-      <EditorialFeature />
-      <SelectedWork locale={locale} />
-      <ProcessSteps />
+      <CustomerLogos />
+      <Capabilities locale={locale} />
+      <ProductShowcase variant="finance" />
+      <CodeSample />
+      <ProductShowcase variant="gaming" reverse />
+      <Numbers />
+      <CaseStudies locale={locale} />
       <Testimonials />
-      <BlogPreview locale={locale} />
-      <CTABlock />
+      <CTASection />
     </>
   );
 }

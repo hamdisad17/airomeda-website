@@ -1,23 +1,23 @@
 import './globals.css';
-import { Bricolage_Grotesque, Karla } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import { headers } from 'next/headers';
 import { routing } from '@/i18n/routing';
 import type { Metadata, Viewport } from 'next';
 
-const bricolage = Bricolage_Grotesque({
+const geistSans = Geist({
   subsets: ['latin', 'latin-ext'],
-  variable: '--font-bricolage',
+  variable: '--font-geist-sans',
   display: 'swap',
 });
 
-const karla = Karla({
-  subsets: ['latin', 'latin-ext'],
-  variable: '--font-karla',
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
   display: 'swap',
 });
 
 export const viewport: Viewport = {
-  themeColor: '#F7F4ED',
+  themeColor: '#FFFFFF',
 };
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       : routing.defaultLocale;
 
   return (
-    <html lang={locale} className={`${bricolage.variable} ${karla.variable}`}>
+    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>{children}</body>
     </html>
   );

@@ -6,7 +6,7 @@ import { makeAlternates } from '@/lib/seo/alternates';
 import { Container } from '@/components/layout/Container';
 import { JobList } from '@/components/careers/JobList';
 import { TeamCultureSection } from '@/components/careers/TeamCultureSection';
-import { CTABlock } from '@/components/sections/CTABlock';
+import { CTASection } from '@/components/sections/CTASection';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -56,7 +56,7 @@ export default async function CareersIndex({
           <p className="text-muted-foreground">{t('no_open_positions')}</p>
         )}
       </Container>
-      <CTABlock />
+      <CTASection />
     </>
   );
 }

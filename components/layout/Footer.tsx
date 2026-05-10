@@ -1,26 +1,19 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Container } from './Container';
+import { Logo } from './Logo';
 
 export async function Footer() {
   const t = await getTranslations('footer');
   const tnav = await getTranslations('nav');
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-ink text-paper">
-      <Container as="div" className="py-20">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <span
-              className="font-display text-3xl text-paper"
-              style={{ fontVariationSettings: "'opsz' 36, 'wdth' 100, 'wght' 500" }}
-            >
-              airomeda<span className="text-coral">.</span>
-            </span>
-            <p className="mt-6 max-w-md text-paper/60">{t('tagline')}</p>
-            <p className="mt-12 font-display text-xs uppercase tracking-[0.2em] text-paper/50">
-              İstanbul · TR/EN · 2018→{year}
-            </p>
+    <footer className="border-t border-border bg-muted/30">
+      <Container as="div" className="py-16">
+        <div className="grid gap-10 md:grid-cols-4">
+          <div className="md:col-span-1">
+            <Logo href="/" />
+            <p className="mt-5 max-w-xs text-sm text-muted-foreground">{t('tagline')}</p>
           </div>
           <FooterCol title={t('company')}>
             <FooterLink href="/hakkimizda">{tnav('about')}</FooterLink>
@@ -37,11 +30,9 @@ export async function Footer() {
             <FooterLink href="/cerez-politikasi">{t('cookies')}</FooterLink>
           </FooterCol>
         </div>
-        <div className="mt-20 flex flex-col gap-3 border-t border-paper/10 pt-8 font-display text-xs uppercase tracking-[0.2em] text-paper/50 md:flex-row md:items-center md:justify-between">
-          <p>
-            © {year} airomeda — {t('rights')}
-          </p>
-          <p>hello@airomeda.com</p>
+        <div className="mt-12 flex flex-col items-start justify-between gap-2 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
+          <p>© {year} Airomeda — {t('rights')}</p>
+          <p>İstanbul · TR/EN · hello@airomeda.com</p>
         </div>
       </Container>
     </footer>
@@ -50,9 +41,9 @@ export async function Footer() {
 
 function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="md:col-span-2">
-      <p className="font-display text-xs uppercase tracking-[0.2em] text-paper/50">{title}</p>
-      <ul className="mt-5 space-y-3 text-sm">{children}</ul>
+    <div>
+      <h3 className="text-xs font-semibold uppercase tracking-wider text-foreground">{title}</h3>
+      <ul className="mt-4 space-y-2.5 text-sm">{children}</ul>
     </div>
   );
 }
@@ -60,10 +51,7 @@ function FooterCol({ title, children }: { title: string; children: React.ReactNo
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <li>
-      <Link
-        href={href as never}
-        className="text-paper/80 transition-colors duration-150 hover:text-coral"
-      >
+      <Link href={href as never} className="text-muted-foreground transition-colors hover:text-accent">
         {children}
       </Link>
     </li>
