@@ -14,6 +14,7 @@ export async function Footer() {
           <div className="md:col-span-1">
             <Logo href="/" />
             <p className="mt-5 max-w-xs text-sm text-muted-foreground">{t('tagline')}</p>
+            <p className="mt-8 font-mono text-eyebrow uppercase text-muted-foreground">{'// İstanbul · TR/EN'}</p>
           </div>
           <FooterCol title={t('company')}>
             <FooterLink href="/hakkimizda">{tnav('about')}</FooterLink>
@@ -30,9 +31,9 @@ export async function Footer() {
             <FooterLink href="/cerez-politikasi">{t('cookies')}</FooterLink>
           </FooterCol>
         </div>
-        <div className="mt-12 flex flex-col items-start justify-between gap-2 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
+        <div className="mt-16 flex flex-col gap-3 border-t border-border pt-6 font-mono text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
           <p>© {year} Airomeda — {t('rights')}</p>
-          <p>İstanbul · TR/EN · hello@airomeda.com</p>
+          <p>hello@airomeda.com</p>
         </div>
       </Container>
     </footer>
@@ -42,7 +43,7 @@ export async function Footer() {
 function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-foreground">{title}</h3>
+      <h3 className="font-mono text-eyebrow uppercase text-muted-foreground">{title}</h3>
       <ul className="mt-4 space-y-2.5 text-sm">{children}</ul>
     </div>
   );
@@ -51,7 +52,7 @@ function FooterCol({ title, children }: { title: string; children: React.ReactNo
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <li>
-      <Link href={href as never} className="text-muted-foreground transition-colors hover:text-accent">
+      <Link href={href as never} className="text-foreground/80 transition-colors hover:text-accent">
         {children}
       </Link>
     </li>

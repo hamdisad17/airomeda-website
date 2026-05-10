@@ -1,6 +1,7 @@
 import './globals.css';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { headers } from 'next/headers';
+import { ThemeProvider } from 'next-themes';
 import { routing } from '@/i18n/routing';
 import type { Metadata, Viewport } from 'next';
 
@@ -17,13 +18,13 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#FFFFFF',
+  themeColor: '#08080F',
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
   title: { default: 'Airomeda', template: '%s — Airomeda' },
-  description: 'Airomeda — Bilişim teknolojileri stüdyosu. Finans, iGaming, e-ticaret.',
+  description: 'Karmaşık olanı, basit kıl. Finans, iGaming ve e-ticaret için uçtan uca yazılım.',
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -35,8 +36,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       : routing.defaultLocale;
 
   return (
-    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

@@ -13,13 +13,15 @@ export function Numbers() {
     <section className="border-b border-border py-24 md:py-32">
       <Container as="div">
         <Reveal>
-          <p className="text-xs font-medium uppercase tracking-wider text-accent">Ölçek</p>
+          <p className="font-mono text-eyebrow uppercase text-accent">{'// 03 · at scale'}</p>
         </Reveal>
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
           {STATS.map((s, i) => (
             <Reveal key={s.label} delay={i * 80}>
-              <div className="border-t-2 border-foreground pt-5">
-                <p className="text-display-2 font-semibold tracking-tight tabular-nums">{s.value}</p>
+              <div className="bg-background p-7">
+                <p className="font-mono text-display-2 font-semibold tracking-tight tabular-nums text-foreground">
+                  {s.value}
+                </p>
                 <p className="mt-3 text-sm text-muted-foreground">{s.label}</p>
               </div>
             </Reveal>

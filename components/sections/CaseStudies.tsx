@@ -15,23 +15,26 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
       <Container as="div">
         <div className="flex items-end justify-between">
           <div>
-            <p className="text-xs font-medium uppercase tracking-wider text-accent">Çalışmalarımız</p>
-            <h2 className="mt-3 text-display-2 font-semibold tracking-tight">{t('title')}</h2>
+            <p className="font-mono text-eyebrow uppercase text-accent">{'// 08 · çalışmalarımız'}</p>
+            <h2 className="mt-4 text-display-2 font-semibold tracking-tight">{t('title')}</h2>
           </div>
-          <Link href="/calismalarimiz" className="hidden text-sm font-medium text-accent hover:underline md:inline-block">
-            Tümünü gör →
+          <Link
+            href="/calismalarimiz"
+            className="hidden font-mono text-sm text-muted-foreground hover:text-accent transition-colors md:inline-block"
+          >
+            tümünü gör →
           </Link>
         </div>
-        <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
           {cases.map((c, i) => (
-            <li key={c.slug}>
+            <li key={c.slug} className="bg-background">
               <Reveal delay={i * 80}>
                 <Link
                   href={`/calismalarimiz/${c.slug}`}
-                  className="group block rounded-xl border border-border bg-white p-6 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:shadow-elevated"
+                  className="group block h-full p-7 transition-colors hover:bg-muted/40"
                 >
-                  <p className="text-xs font-medium uppercase tracking-wider text-accent">{c.client}</p>
-                  <h3 className="mt-3 text-lg font-semibold tracking-tight">{c.title}</h3>
+                  <p className="font-mono text-eyebrow uppercase text-accent">{c.client}</p>
+                  <h3 className="mt-4 text-lg font-semibold tracking-tight">{c.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.excerpt}</p>
                   <div className="mt-6 flex items-center gap-4 text-xs text-muted-foreground">
                     {c.metrics.slice(0, 2).map((m) => (
@@ -41,6 +44,9 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
                       </span>
                     ))}
                   </div>
+                  <span className="mt-6 inline-flex items-center gap-1 font-mono text-xs uppercase text-muted-foreground transition-colors group-hover:text-accent">
+                    [ open ] <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                  </span>
                 </Link>
               </Reveal>
             </li>

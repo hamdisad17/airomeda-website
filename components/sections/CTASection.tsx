@@ -6,24 +6,34 @@ export async function CTASection() {
   const t = await getTranslations('home.cta');
   const tc = await getTranslations('common');
   return (
-    <section className="relative overflow-hidden bg-foreground text-background py-24 md:py-32">
+    <section className="relative overflow-hidden border-t border-border py-32 md:py-44">
       <div
         aria-hidden
-        className="absolute inset-0 opacity-30"
-        style={{ background: 'radial-gradient(circle at 50% 0%, hsl(244 76% 59% / 0.4), transparent 60%)' }}
+        className="absolute inset-0 opacity-50"
+        style={{
+          background:
+            'radial-gradient(ellipse 60% 50% at 50% 0%, hsl(189 100% 50% / 0.2), transparent 70%)',
+        }}
       />
-      <Container as="div" className="relative text-center">
-        <h2 className="mx-auto max-w-3xl text-display-1 font-semibold tracking-tight">
+      <Container as="div" className="relative">
+        <p className="font-mono text-eyebrow uppercase text-accent">{'// 10 · start'}</p>
+        <h2
+          className="mt-8 max-w-5xl text-display-1 font-semibold tracking-tight"
+          style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}
+        >
           {t('title')} <span className="text-accent">{t('subtitle')}</span>
         </h2>
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-12 flex flex-wrap items-center gap-6">
           <Link
             href="/iletisim"
-            className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-sm font-medium text-accent-foreground transition-all duration-200 hover:bg-[hsl(244_76%_53%)] hover:shadow-[0_8px_30px_-4px_hsl(244_76%_59%_/_0.5)]"
+            className="group inline-flex items-center gap-2 bg-accent px-6 py-3.5 text-sm font-medium text-accent-foreground transition-all duration-200 hover:opacity-90 hover:shadow-[0_0_40px_-5px_hsl(189_100%_50%_/_0.5)]"
           >
             {tc('primary_cta')} <span>→</span>
           </Link>
-          <a href="mailto:hello@airomeda.com" className="text-sm text-background/80 hover:text-accent">
+          <a
+            href="mailto:hello@airomeda.com"
+            className="font-mono text-sm text-muted-foreground hover:text-accent transition-colors"
+          >
             hello@airomeda.com
           </a>
         </div>

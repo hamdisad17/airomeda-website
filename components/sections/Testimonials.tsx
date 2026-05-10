@@ -21,25 +21,27 @@ const QUOTES = [
 
 export function Testimonials() {
   return (
-    <section className="border-b border-border bg-muted/30 py-24 md:py-32">
+    <section className="border-b border-border py-24 md:py-32">
       <Container as="div">
         <Reveal>
-          <p className="text-xs font-medium uppercase tracking-wider text-accent">Referanslar</p>
-          <h2 className="mt-3 text-display-2 font-semibold tracking-tight">Müşterilerimiz ne diyor?</h2>
+          <p className="font-mono text-eyebrow uppercase text-accent">{'// 09 · referanslar'}</p>
+          <h2 className="mt-4 text-display-2 font-semibold tracking-tight">Müşterilerimiz ne diyor?</h2>
         </Reveal>
-        <ul className="mt-12 grid gap-6 md:grid-cols-3">
+        <ul className="mt-12 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-3">
           {QUOTES.map((q, i) => (
-            <li key={q.company}>
+            <li key={q.company} className="bg-background">
               <Reveal delay={i * 80}>
-                <figure className="rounded-xl border border-border bg-white p-7 shadow-card">
-                  <blockquote className="text-base leading-relaxed text-foreground">&ldquo;{q.quote}&rdquo;</blockquote>
+                <figure className="h-full p-7">
+                  <blockquote className="text-base leading-relaxed text-foreground">
+                    &ldquo;{q.quote}&rdquo;
+                  </blockquote>
                   <figcaption className="mt-6 flex items-center gap-3">
-                    <span className="grid h-9 w-9 place-items-center rounded-full bg-accent/10 text-sm font-semibold text-accent">
+                    <span className="grid h-8 w-8 place-items-center border border-border font-mono text-sm font-semibold text-accent">
                       {q.author[0]}
                     </span>
                     <div>
                       <p className="text-sm font-semibold">{q.author}</p>
-                      <p className="text-xs text-muted-foreground">{q.company}</p>
+                      <p className="font-mono text-xs text-muted-foreground">{q.company}</p>
                     </div>
                   </figcaption>
                 </figure>
