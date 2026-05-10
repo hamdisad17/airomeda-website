@@ -24,8 +24,9 @@ export function Architecture() {
   useGSAP(
     () => {
       if (!ref.current) return;
-      const lines = ref.current.querySelectorAll<SVGLineElement>('.conn-line');
+      const lines = ref.current.querySelectorAll<SVGPathElement>('.conn-line');
       const dots = ref.current.querySelectorAll<SVGCircleElement>('.conn-dot');
+      const centerCircle = ref.current.querySelector<SVGCircleElement>('.center-pulse');
 
       gsap.set(lines, { strokeDashoffset: 300, strokeDasharray: 300 });
       gsap.to(lines, {
@@ -56,6 +57,18 @@ export function Architecture() {
           },
         },
       );
+
+      if (centerCircle) {
+        gsap.to(centerCircle, {
+          scale: 1.3,
+          opacity: 0.4,
+          duration: 1.8,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          transformOrigin: '50px 50px',
+        });
+      }
     },
     { scope: ref },
   );
@@ -82,19 +95,21 @@ export function Architecture() {
             preserveAspectRatio="none"
             className="absolute inset-0 h-full w-full"
           >
-            {NODES.map((n, i) => (
-              <line
-                key={`line-${i}`}
-                className="conn-line"
-                x1="50"
-                y1="50"
-                x2={n.x}
-                y2={n.y}
-                stroke="hsl(189 100% 50%)"
-                strokeWidth="0.15"
-                strokeOpacity="0.6"
-              />
-            ))}
+            {NODES.map((n, i) => {
+              const cx = (50 + n.x) / 2;
+              const cy = (50 + n.y) / 2 - 8;
+              return (
+                <path
+                  key={`line-${i}`}
+                  className="conn-line"
+                  d={`M50,50 Q${cx},${cy} ${n.x},${n.y}`}
+                  stroke="hsl(189 100% 50%)"
+                  strokeWidth="0.15"
+                  strokeOpacity="0.55"
+                  fill="none"
+                />
+              );
+            })}
             {NODES.map((n, i) => (
               <circle
                 key={`dot-${i}`}
@@ -105,6 +120,18 @@ export function Architecture() {
                 fill="hsl(189 100% 50%)"
               />
             ))}
+            {/* Pulsing outer ring */}
+            <circle
+              className="center-pulse"
+              cx="50"
+              cy="50"
+              r="4.5"
+              fill="none"
+              stroke="hsl(189 100% 50%)"
+              strokeWidth="0.4"
+              strokeOpacity="0.6"
+            />
+            {/* Solid center dot */}
             <circle
               cx="50"
               cy="50"

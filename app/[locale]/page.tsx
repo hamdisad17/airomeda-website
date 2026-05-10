@@ -9,6 +9,7 @@ import { CustomerLogos } from '@/components/sections/CustomerLogos';
 import { WhyUs } from '@/components/sections/WhyUs';
 import { Capabilities } from '@/components/sections/Capabilities';
 import { Architecture } from '@/components/sections/Architecture';
+import { StackPanel } from '@/components/sections/StackPanel';
 import { ProductShowcase } from '@/components/sections/ProductShowcase';
 import { CodeSample } from '@/components/sections/CodeSample';
 import { Numbers } from '@/components/sections/Numbers';
@@ -49,6 +50,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <WhyUs />
       <Capabilities locale={locale} />
       <Architecture />
+      <StackPanel />
       <ProductShowcase variant="finance" />
       <CodeSample />
       <ProductShowcase variant="gaming" reverse />

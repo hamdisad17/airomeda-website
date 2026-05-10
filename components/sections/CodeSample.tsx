@@ -1,5 +1,44 @@
 'use client';
 import * as React from 'react';
+
+function CopyButton({ code }: { code: string }) {
+  const [copied, setCopied] = React.useState(false);
+  const handleCopy = React.useCallback(() => {
+    void navigator.clipboard.writeText(code).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }, [code]);
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+      aria-label="Copy code"
+    >
+      {copied ? (
+        <>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          copied
+        </>
+      ) : (
+        <>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+          copy
+        </>
+      )}
+    </button>
+  );
+}
+
+function tokensToPlainText(code: { tok?: string; t: string }[]): string {
+  return code.map((s) => s.t).join('');
+}
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 
@@ -184,7 +223,7 @@ export function CodeSample() {
 
           <RevealSection delay={0.1}>
             <div className="border border-border bg-elevated">
-              {/* Tabs */}
+              {/* Tabs + copy */}
               <div className="flex items-center border-b border-border bg-muted/40">
                 {TABS.map((t) => (
                   <button
@@ -203,24 +242,37 @@ export function CodeSample() {
                     )}
                   </button>
                 ))}
-                <span className="ml-auto pr-4 font-mono text-xs text-muted-foreground">
+                <span className="ml-auto font-mono text-xs text-muted-foreground hidden sm:inline">
                   {current.file}
                 </span>
+                <span className="px-4">
+                  <CopyButton code={tokensToPlainText(current.code)} />
+                </span>
               </div>
-              {/* Code body */}
-              <pre className="overflow-x-auto p-5 font-mono text-xs leading-relaxed">
-                <code>
-                  {current.code.map((seg, i) =>
-                    seg.tok ? (
-                      <span key={i} className={`tok-${seg.tok}`}>
-                        {seg.t}
-                      </span>
-                    ) : (
-                      seg.t
-                    ),
-                  )}
-                </code>
-              </pre>
+              {/* Code body with line numbers */}
+              <div className="flex overflow-x-auto">
+                <div
+                  aria-hidden
+                  className="select-none border-r border-border bg-muted/30 px-3 py-5 font-mono text-xs text-muted-foreground/50 leading-relaxed flex-shrink-0"
+                >
+                  {Array.from({ length: 16 }, (_, i) => (
+                    <div key={i} className="leading-relaxed">{i + 1}</div>
+                  ))}
+                </div>
+                <pre className="flex-1 overflow-x-auto p-5 font-mono text-xs leading-relaxed">
+                  <code>
+                    {current.code.map((seg, i) =>
+                      seg.tok ? (
+                        <span key={i} className={`tok-${seg.tok}`}>
+                          {seg.t}
+                        </span>
+                      ) : (
+                        seg.t
+                      ),
+                    )}
+                  </code>
+                </pre>
+              </div>
             </div>
           </RevealSection>
         </div>

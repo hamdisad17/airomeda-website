@@ -2,19 +2,20 @@ import { CustomerLogo } from '@/components/visuals/CustomerLogo';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 
-const VARIANTS = [
-  'paygate',
-  'bahis',
-  'hubert',
-  'topratebet',
-  'pazarliman',
-  'entegrasys',
-  'markaco',
-  'studio',
+const LOGOS = [
+  { v: 'paygate', industry: 'Finans' },
+  { v: 'bahis', industry: 'iGaming' },
+  { v: 'hubert', industry: 'E-Ticaret' },
+  { v: 'topratebet', industry: 'iGaming' },
+  { v: 'pazarliman', industry: 'Marketplace' },
+  { v: 'entegrasys', industry: 'Entegrasyon' },
+  { v: 'markaco', industry: 'Marka' },
+  { v: 'studio', industry: 'Yaratıcı' },
 ] as const;
 
+const doubled = [...LOGOS, ...LOGOS];
+
 export function CustomerLogos() {
-  const doubled = [...VARIANTS, ...VARIANTS];
   return (
     <section className="border-b border-border py-20">
       <Container as="div">
@@ -31,12 +32,15 @@ export function CustomerLogos() {
         }}
       >
         <div className="flex w-max items-center gap-16 animate-marquee-slow whitespace-nowrap">
-          {doubled.map((v, i) => (
+          {doubled.map((l, i) => (
             <span
-              key={`${v}-${i}`}
-              className="inline-flex items-center text-muted-foreground/60 transition-colors hover:text-foreground"
+              key={`${l.v}-${i}`}
+              className="group relative inline-flex flex-col items-center text-muted-foreground/60 transition-colors hover:text-foreground"
             >
-              <CustomerLogo variant={v} />
+              <CustomerLogo variant={l.v} />
+              <span className="absolute top-full mt-2 text-[10px] uppercase tracking-wider text-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100 whitespace-nowrap pointer-events-none">
+                {l.industry}
+              </span>
             </span>
           ))}
         </div>

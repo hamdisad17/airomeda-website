@@ -11,7 +11,7 @@ export async function CTASection() {
     <section className="relative overflow-hidden border-t border-border py-32 md:py-44">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 animate-cta-pulse"
         style={{
           background: 'radial-gradient(ellipse 60% 50% at 50% 30%, hsl(189 100% 50% / 0.25), transparent 70%)',
         }}

@@ -21,23 +21,34 @@ export function TextReveal({ children, className, as: As = 'span', delay = 0, st
   useGSAP(() => {
     if (!ref.current) return;
     const spans = ref.current.querySelectorAll('.word > span');
-    gsap.fromTo(
-      spans,
-      { yPercent: 110, opacity: 0 },
-      {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.9,
-        stagger,
-        ease: 'power3.out',
-        delay,
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
+    const rect = ref.current.getBoundingClientRect();
+    const inViewport = rect.top < window.innerHeight * 0.9;
+
+    if (inViewport) {
+      gsap.fromTo(
+        spans,
+        { yPercent: 110, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration: 0.9, stagger, ease: 'power3.out', delay },
+      );
+    } else {
+      gsap.fromTo(
+        spans,
+        { yPercent: 110, opacity: 0 },
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger,
+          ease: 'power3.out',
+          delay,
+          scrollTrigger: {
+            trigger: ref.current,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
         },
-      },
-    );
+      );
+    }
   }, { scope: ref });
 
   return React.createElement(

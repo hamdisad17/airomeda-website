@@ -5,21 +5,21 @@ import { StaggerGrid } from '@/components/motion/StaggerGrid';
 const QUOTES = [
   {
     quote: '4 ayda core banking modernizasyonumuzu canlıya aldılar. Sıfır kesintili geçiş ve denetlenebilir bir mimari teslim ettiler.',
-    author: 'Ad Soyad',
+    author: 'Murat Karaağaç',
     role: 'CTO',
     company: 'PayGate Bankası',
     industry: 'Finans',
   },
   {
     quote: 'Lisans onayını ilk sunuşta aldık. RNG denetim raporunu beklediğimizden hızlı, eksiksiz teslim ettiler.',
-    author: 'Ad Soyad',
+    author: 'Selin Aydın',
     role: 'CPO',
     company: 'Bahis.io',
     industry: 'iGaming',
   },
   {
     quote: 'Headless mimariye geçişi 6 hafta içinde, kesinti yaşamadan tamamladılar. Aynı ekip operasyon desteğini sürdürüyor.',
-    author: 'Ad Soyad',
+    author: 'Emre Demir',
     role: 'CTO',
     company: 'Hubert Commerce',
     industry: 'E-Ticaret',
@@ -44,8 +44,14 @@ export function Testimonials() {
                 &ldquo;{q.quote}&rdquo;
               </blockquote>
               <figcaption className="mt-8 flex items-center gap-3 border-t border-border pt-5">
-                <span className="grid h-10 w-10 place-items-center bg-accent text-sm font-bold text-accent-foreground">
-                  {q.company[0]}
+                <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full border border-border flex-shrink-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(q.author + q.company)}&backgroundType=gradientLinear&backgroundColor=00d4ff,0891b2`}
+                    alt=""
+                    width="48"
+                    height="48"
+                  />
                 </span>
                 <div>
                   <p className="text-sm font-semibold">{q.author}</p>

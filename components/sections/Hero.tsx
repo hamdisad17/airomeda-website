@@ -4,8 +4,11 @@ import { Container } from '@/components/layout/Container';
 import { TerminalDemo } from '@/components/mockups/TerminalDemo';
 import { AnimatedDotGrid } from '@/components/visuals/AnimatedDotGrid';
 import { ParticleField } from '@/components/visuals/ParticleField';
+import { GradientOrb } from '@/components/visuals/GradientOrb';
+import { FloatingUIPeeks } from '@/components/visuals/FloatingUIPeeks';
 import { MagneticButton } from '@/components/motion/MagneticButton';
 import { TextReveal } from '@/components/motion/TextReveal';
+import { RecentShipments } from '@/components/sections/RecentShipments';
 
 export async function Hero() {
   const t = await getTranslations();
@@ -13,14 +16,7 @@ export async function Hero() {
     <section className="relative overflow-hidden border-b border-border">
       <AnimatedDotGrid />
       <ParticleField />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-40 right-1/4 h-[600px] w-[600px] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, hsl(189 100% 50% / 0.2), transparent 70%)',
-          filter: 'blur(80px)',
-        }}
-      />
+      <GradientOrb />
 
       <Container as="div" className="relative pt-20 pb-24 md:pt-32 md:pb-36">
         <div className="grid items-center gap-16 lg:grid-cols-2">
@@ -73,9 +69,16 @@ export async function Hero() {
                 <span className="text-accent">✓</span> 8–16 hafta teslim
               </span>
             </div>
+
+            {/* Recent shipments rotating indicator */}
+            <RecentShipments />
           </div>
 
-          <TerminalDemo />
+          {/* Terminal column with floating UI peeks */}
+          <div className="relative">
+            <FloatingUIPeeks />
+            <TerminalDemo />
+          </div>
         </div>
       </Container>
     </section>
