@@ -8,12 +8,15 @@ import { Hero } from '@/components/sections/Hero';
 import { CustomerLogos } from '@/components/sections/CustomerLogos';
 import { WhyUs } from '@/components/sections/WhyUs';
 import { Capabilities } from '@/components/sections/Capabilities';
+import { Architecture } from '@/components/sections/Architecture';
 import { ProductShowcase } from '@/components/sections/ProductShowcase';
 import { CodeSample } from '@/components/sections/CodeSample';
 import { Numbers } from '@/components/sections/Numbers';
 import { CaseStudies } from '@/components/sections/CaseStudies';
+import { ProcessStory } from '@/components/sections/ProcessStory';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { FAQ } from '@/components/sections/FAQ';
+import { WordmarkMarquee } from '@/components/sections/WordmarkMarquee';
 import { CTASection } from '@/components/sections/CTASection';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
@@ -45,13 +48,16 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <CustomerLogos />
       <WhyUs />
       <Capabilities locale={locale} />
+      <Architecture />
       <ProductShowcase variant="finance" />
       <CodeSample />
       <ProductShowcase variant="gaming" reverse />
       <Numbers />
       <CaseStudies locale={locale} />
+      <ProcessStory />
       <Testimonials />
       <FAQ />
+      <WordmarkMarquee />
       <CTASection />
     </>
   );

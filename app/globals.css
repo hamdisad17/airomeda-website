@@ -119,6 +119,21 @@ main, header, footer { position: relative; z-index: 2; }
 }
 @utility animate-terminal-blink { animation: terminal-blink 1s steps(2) infinite; }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@utility animate-marquee { animation: marquee 30s linear infinite; }
+
+@keyframes marquee-slow {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@utility animate-marquee-slow { animation: marquee-slow 40s linear infinite; }
+
+/* Cursor glow — reduced in light mode */
+.light .cursor-glow { opacity: 0.2; mix-blend-mode: multiply; }
+
 /* Code syntax highlighting (manual) */
 .tok-key { color: hsl(311 80% 75%); }
 .tok-fn  { color: hsl(189 100% 60%); }

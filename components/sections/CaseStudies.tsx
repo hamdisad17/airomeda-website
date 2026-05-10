@@ -1,57 +1,106 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
-import { Reveal } from '@/components/ui/Reveal';
+import { RevealSection } from '@/components/motion/RevealSection';
+import { StaggerGrid } from '@/components/motion/StaggerGrid';
 import { listCaseStudies } from '@/lib/mdx';
 import type { Locale } from '@/i18n/routing';
 
 export async function CaseStudies({ locale }: { locale: Locale }) {
-  const cases = (await listCaseStudies(locale)).sort((a, b) => b.year - a.year).slice(0, 3);
+  const cases = (await listCaseStudies(locale)).sort((a, b) => b.year - a.year);
   if (cases.length === 0) return null;
+
+  const featured = cases[0]!;
+  const rest = cases.slice(1, 3);
   const t = await getTranslations({ locale, namespace: 'home.selected_work' });
 
   return (
     <section className="border-b border-border py-24 md:py-32">
       <Container as="div">
-        <div className="flex items-end justify-between">
-          <div>
-            <p className="font-mono text-eyebrow uppercase text-accent">{'// 08 · çalışmalarımız'}</p>
-            <h2 className="mt-4 text-display-2 font-semibold tracking-tight">{t('title')}</h2>
+        <RevealSection>
+          <div className="flex items-end justify-between">
+            <div>
+              <p className="font-mono text-eyebrow uppercase text-accent">
+                {'// 08 · selected work'}
+              </p>
+              <h2 className="mt-4 text-display-2 font-semibold tracking-tight">{t('title')}</h2>
+            </div>
+            <Link
+              href="/calismalarimiz"
+              className="hidden font-mono text-xs uppercase tracking-wider text-accent hover:underline md:inline-block"
+            >
+              all work →
+            </Link>
           </div>
+        </RevealSection>
+
+        {/* Featured case */}
+        <RevealSection delay={0.1}>
           <Link
-            href="/calismalarimiz"
-            className="hidden font-mono text-sm text-muted-foreground hover:text-accent transition-colors md:inline-block"
+            href={`/calismalarimiz/${featured.slug}`}
+            className="group mt-16 block border border-border bg-elevated transition-colors hover:border-accent"
           >
-            tümünü gör →
-          </Link>
-        </div>
-        <ul className="mt-12 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
-          {cases.map((c, i) => (
-            <li key={c.slug} className="bg-background">
-              <Reveal delay={i * 80}>
-                <Link
-                  href={`/calismalarimiz/${c.slug}`}
-                  className="group block h-full p-7 transition-colors hover:bg-muted/40"
-                >
-                  <p className="font-mono text-eyebrow uppercase text-accent">{c.client}</p>
-                  <h3 className="mt-4 text-lg font-semibold tracking-tight">{c.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.excerpt}</p>
-                  <div className="mt-6 flex items-center gap-4 text-xs text-muted-foreground">
-                    {c.metrics.slice(0, 2).map((m) => (
-                      <span key={m.label} className="flex items-baseline gap-1.5">
-                        <span className="text-base font-semibold text-foreground tabular-nums">{m.value}</span>
-                        <span>{m.label}</span>
-                      </span>
-                    ))}
-                  </div>
-                  <span className="mt-6 inline-flex items-center gap-1 font-mono text-xs uppercase text-muted-foreground transition-colors group-hover:text-accent">
-                    [ open ] <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+            <div className="grid gap-0 lg:grid-cols-12">
+              <div className="p-8 lg:col-span-7 md:p-12">
+                <p className="font-mono text-eyebrow uppercase text-accent">{featured.client}</p>
+                <h3 className="mt-4 text-display-3 font-semibold tracking-tight">
+                  {featured.title}
+                </h3>
+                <p className="mt-4 max-w-xl text-body-lg text-muted-foreground">
+                  {featured.excerpt}
+                </p>
+                <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-muted-foreground">
+                  <span>{featured.industry}</span>
+                  <span>·</span>
+                  <span>{featured.year}</span>
+                  <span>·</span>
+                  <span>{featured.services.join(' · ')}</span>
+                </div>
+                <span className="mt-8 inline-flex items-center gap-2 font-mono text-xs uppercase text-foreground transition-colors group-hover:text-accent">
+                  [ case study ]{' '}
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                    →
                   </span>
-                </Link>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
+                </span>
+              </div>
+              <div className="border-t border-border bg-muted/40 p-8 md:p-12 lg:col-span-5 lg:border-l lg:border-t-0">
+                <ul className="grid grid-cols-2 gap-x-6 gap-y-8">
+                  {featured.metrics.slice(0, 4).map((m) => (
+                    <li key={m.label}>
+                      <p className="font-mono text-2xl font-semibold tracking-tight tabular-nums text-foreground">
+                        {m.value}
+                      </p>
+                      <p className="mt-2 text-xs text-muted-foreground">{m.label}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </Link>
+        </RevealSection>
+
+        {/* Remaining two */}
+        {rest.length > 0 && (
+          <StaggerGrid className="mt-6 grid gap-6 md:grid-cols-2">
+            {rest.map((c) => (
+              <Link
+                data-stagger-item
+                key={c.slug}
+                href={`/calismalarimiz/${c.slug}`}
+                className="group block border border-border bg-elevated p-8 transition-colors hover:border-accent"
+              >
+                <p className="font-mono text-eyebrow uppercase text-accent">{c.client}</p>
+                <h3 className="mt-3 text-lg font-semibold tracking-tight">{c.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.excerpt}</p>
+                <div className="mt-5 flex flex-wrap gap-x-4 font-mono text-xs text-muted-foreground">
+                  <span>{c.industry}</span>
+                  <span>·</span>
+                  <span>{c.year}</span>
+                </div>
+              </Link>
+            ))}
+          </StaggerGrid>
+        )}
       </Container>
     </section>
   );

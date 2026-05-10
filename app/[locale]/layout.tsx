@@ -7,6 +7,8 @@ import { Footer } from '@/components/layout/Footer';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { organizationSchema, websiteSchema } from '@/lib/seo/jsonld';
 import { CookieConsent } from '@/components/legal/CookieConsent';
+import { SmoothScroll } from '@/components/motion/SmoothScroll';
+import { CursorGlow } from '@/components/motion/CursorGlow';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -26,10 +28,13 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider>
       <JsonLd data={[organizationSchema(), websiteSchema(locale as Locale)]} />
-      <Header />
-      <main className="min-h-[60vh]">{children}</main>
-      <Footer />
-      <CookieConsent />
+      <CursorGlow />
+      <SmoothScroll>
+        <Header />
+        <main className="min-h-[60vh]">{children}</main>
+        <Footer />
+        <CookieConsent />
+      </SmoothScroll>
     </NextIntlClientProvider>
   );
 }
