@@ -3,10 +3,46 @@ import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 
 const STACK = [
-  { category: 'Web & Mobil', items: ['React', 'Next.js', 'Flutter', 'Vue', 'TypeScript'] },
-  { category: 'Veri & AI', items: ['Python', 'PostgreSQL', 'Machine Learning', 'Redis', 'Elasticsearch'] },
-  { category: 'ERP & Entegrasyon', items: ['Odoo ERP', 'Logo', 'Netsis', 'REST API', 'Webhook'] },
-  { category: 'Oyun & AR/VR', items: ['Unity', 'C#', 'AR/VR', 'Game Engine', 'Blender'] },
+  {
+    category: 'Web Çözümleri',
+    items: [
+      'Kurumsal web sitesi',
+      'E-ticaret mağazası',
+      'Yönetim paneli',
+      'Müşteri portalı',
+      'Online sipariş sayfası',
+    ],
+  },
+  {
+    category: 'Mobil Uygulamalar',
+    items: [
+      'iOS uygulaması',
+      'Android uygulaması',
+      'Tablet versiyonu',
+      'Saha kullanım uygulaması',
+      'Müşteri uygulaması',
+    ],
+  },
+  {
+    category: 'Otomasyon',
+    items: [
+      'Stok takibi',
+      'Sipariş yönetimi',
+      'CRM sistemi',
+      'E-fatura entegrasyonu',
+      'Raporlama & bildirimler',
+    ],
+  },
+  {
+    category: 'Pazarlama',
+    items: [
+      'SEO optimizasyonu',
+      'Google Ads yönetimi',
+      'Sosyal medya içerikleri',
+      'Analiz raporları',
+      'Sadakat programı',
+    ],
+  },
 ];
 
 export function StackPanel() {
@@ -14,12 +50,12 @@ export function StackPanel() {
     <section className="border-b border-border py-20 md:py-28">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 05 · stack'}</p>
+          <p className="font-mono text-eyebrow uppercase text-accent">Çözümlerimiz</p>
           <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-            Kullandığımız teknolojiler.
+            Çalışma Alanlarımız.
           </h2>
           <p className="mt-4 max-w-2xl text-body-lg text-muted-foreground">
-            2014&apos;ten beri 180+ projede kullandığımız ve kanıtlanmış teknolojiler. Sizin mevcut sisteminiz ne olursa olsun, 36 kişilik uzman ekibimiz onunla çalışabilir.
+            İşletmenizin ihtiyacı olan her çözümü tek elden alın. 11 yıllık tecrübemizle, web&apos;den mobil uygulamaya, otomasyondan pazarlamaya kadar yanınızdayız.
           </p>
         </RevealSection>
         <div className="mt-16 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2 lg:grid-cols-4">

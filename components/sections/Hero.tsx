@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
-import { HeroProductPreview } from '@/components/visuals/HeroProductPreview';
+import { TerminalDemo } from '@/components/mockups/TerminalDemo';
 import { ParticleField } from '@/components/visuals/ParticleField';
 import { FlowField } from '@/components/visuals/FlowField';
 import { FloatingUIPeeks } from '@/components/visuals/FloatingUIPeeks';
@@ -74,10 +74,10 @@ export async function Hero() {
             <RecentShipments />
           </div>
 
-          {/* Product preview with floating UI peeks */}
+          {/* Terminal demo with floating UI peeks */}
           <div className="relative">
             <FloatingUIPeeks />
-            <HeroProductPreview />
+            <TerminalDemo />
           </div>
         </div>
       </Container>

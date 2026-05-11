@@ -98,77 +98,74 @@ function HeartbeatBar() {
   );
 }
 
-const LOG_LINES = [
-  { method: 'POST', path: '/api/v1/transactions/authorize', status: 200, ms: 18, region: 'fra1' },
-  { method: 'GET',  path: '/api/v1/users/balance',           status: 200, ms: 12, region: 'fra1' },
-  { method: 'POST', path: '/api/v1/games/spin',              status: 200, ms: 22, region: 'lon1' },
-  { method: 'POST', path: '/api/v1/orders/checkout',         status: 200, ms: 34, region: 'fra1' },
-  { method: 'PUT',  path: '/api/v1/inventory/sku/4421',      status: 204, ms: 9,  region: 'fra1' },
-  { method: 'POST', path: '/api/v1/auth/verify',             status: 200, ms: 14, region: 'iad1' },
-  { method: 'GET',  path: '/api/v1/transactions/12847',      status: 200, ms: 7,  region: 'fra1' },
-  { method: 'POST', path: '/api/v1/payments/3ds',            status: 200, ms: 28, region: 'fra1' },
-  { method: 'POST', path: '/api/v1/rng/generate',            status: 200, ms: 4,  region: 'lon1' },
-  { method: 'POST', path: '/api/v1/webhook/iyzico',          status: 200, ms: 11, region: 'fra1' },
-];
-
-interface LogLine {
-  method: string;
-  path: string;
-  status: number;
-  ms: number;
-  region: string;
+interface ActivityLine {
+  actor: string;
+  action: string;
+  badge?: string;
+  badgeTone?: 'success' | 'accent' | 'muted';
+  minsAgo: number;
   key?: number;
 }
 
+const ACTIVITY_TEMPLATES: Omit<ActivityLine, 'minsAgo' | 'key'>[] = [
+  { actor: 'Ahmet K.', action: 'yeni sipariş verdi · ₺245', badge: 'Sipariş', badgeTone: 'success' },
+  { actor: 'Ayşe T.', action: 'üyelik oluşturdu', badge: 'Yeni Üye', badgeTone: 'accent' },
+  { actor: 'Mehmet Y.', action: 'yorum bıraktı · ⭐⭐⭐⭐⭐', badge: 'Yorum', badgeTone: 'accent' },
+  { actor: 'Sistem', action: 'stok güncellendi · 234 yeni ürün', badge: 'Stok', badgeTone: 'muted' },
+  { actor: 'Kampanya', action: 'bildirimi gönderildi · 1.247 müşteri', badge: 'Pazarlama', badgeTone: 'accent' },
+  { actor: 'Selin A.', action: 'yeni mesaj gönderdi', badge: 'Mesaj', badgeTone: 'success' },
+  { actor: 'Kemal B.', action: 'siparişini teslim aldı', badge: 'Teslim', badgeTone: 'success' },
+  { actor: 'Sistem', action: 'günlük satış raporu hazırlandı', badge: 'Rapor', badgeTone: 'muted' },
+  { actor: 'Fatma D.', action: 'sepetine ürün ekledi · ₺189', badge: 'Sepet', badgeTone: 'muted' },
+  { actor: 'Ali R.', action: 'fatura talebinde bulundu', badge: 'Fatura', badgeTone: 'muted' },
+];
+
+function badgeClass(tone?: ActivityLine['badgeTone']): string {
+  switch (tone) {
+    case 'success': return 'bg-success/15 text-success';
+    case 'accent': return 'bg-accent/15 text-accent';
+    default: return 'bg-muted text-muted-foreground';
+  }
+}
+
 function LiveLog() {
-  const [lines, setLines] = React.useState<LogLine[]>(() =>
-    LOG_LINES.slice(0, 6).map((l, i) => ({ ...l, key: i })),
+  const [lines, setLines] = React.useState<ActivityLine[]>(() =>
+    ACTIVITY_TEMPLATES.slice(0, 6).map((l, i) => ({ ...l, minsAgo: i * 5 + 2, key: i })),
   );
 
   React.useEffect(() => {
     const t = setInterval(() => {
       setLines((curr) => {
-        const template = LOG_LINES[Math.floor(Math.random() * LOG_LINES.length)];
+        const template = ACTIVITY_TEMPLATES[Math.floor(Math.random() * ACTIVITY_TEMPLATES.length)];
         if (!template) return curr;
-        const stamped: LogLine = {
-          method: template.method,
-          path: template.path,
-          status: template.status,
-          region: template.region,
-          ms: Math.max(2, template.ms + Math.floor((Math.random() - 0.5) * 8)),
+        const stamped: ActivityLine = {
+          ...template,
+          minsAgo: Math.floor(Math.random() * 3) + 1,
           key: Date.now() + Math.random(),
         };
-        return [stamped, ...curr].slice(0, 6);
+        return [stamped, ...curr.map((l) => ({ ...l, minsAgo: l.minsAgo + 1 }))].slice(0, 6);
       });
-    }, 1100);
+    }, 1200);
     return () => clearInterval(t);
   }, []);
 
   return (
-    <div className="font-mono text-[11px]">
+    <div className="text-[11px]">
       {lines.map((l, i) => (
         <div
           key={l.key ?? i}
-          className="px-6 py-1.5 border-b border-border last:border-b-0 flex items-center gap-4 hover:bg-muted/30 transition-colors"
+          className="px-6 py-2 border-b border-border last:border-b-0 flex items-center gap-3 hover:bg-muted/30 transition-colors"
         >
-          <span className="text-muted-foreground tabular-nums w-16">
-            {new Date().toLocaleTimeString('tr-TR', { hour12: false })}
+          <span className="text-muted-foreground tabular-nums w-20 shrink-0">
+            {l.minsAgo} dk önce
           </span>
-          <span
-            className={`w-12 ${
-              l.method === 'GET'
-                ? 'text-accent'
-                : l.method === 'POST'
-                  ? 'text-success'
-                  : 'text-foreground/70'
-            }`}
-          >
-            {l.method}
-          </span>
-          <span className="flex-1 text-foreground truncate">{l.path}</span>
-          <span className="text-muted-foreground w-12 tabular-nums">{l.region}</span>
-          <span className="text-success tabular-nums w-12">{l.status}</span>
-          <span className="text-muted-foreground tabular-nums w-14 text-right">{l.ms}ms</span>
+          <span className="font-medium text-foreground shrink-0">{l.actor}</span>
+          <span className="flex-1 text-muted-foreground truncate">{l.action}</span>
+          {l.badge && (
+            <span className={`px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider rounded-sm shrink-0 ${badgeClass(l.badgeTone)}`}>
+              {l.badge}
+            </span>
+          )}
         </div>
       ))}
     </div>
@@ -176,10 +173,10 @@ function LiveLog() {
 }
 
 export function ProductionHeartbeat() {
-  const txns = useTickingNumber(1847291, [6, 28], 900);
-  const deploys = useTickingNumber(287, [0, 0.005], 4000);
-  const latency = useTickingNumber(18, [-1.2, 1.5], 2200);
-  const uptime = 99.973;
+  const orders = useTickingNumber(1247, [1, 3], 2200);
+  const revenue = useTickingNumber(247890, [150, 400], 3000);
+  const newCustomers = useTickingNumber(127, [0, 0.8], 4500);
+  const messages = useTickingNumber(8, [0, 0.1], 6000);
 
   return (
     <section id="production-heartbeat" className="border-b border-border bg-elevated/30 py-20 md:py-28 relative overflow-hidden">
@@ -197,9 +194,9 @@ export function ProductionHeartbeat() {
         <RevealSection>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
-              <p className="font-mono text-eyebrow uppercase text-accent">{'// 05 · canlı sistem'}</p>
+              <p className="font-mono text-eyebrow uppercase text-accent">Yönetim Panosu</p>
               <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-                Müşterilerimizin sistemleri.<br />Kesintisiz çalışıyor.
+                Her Şey Tek Yerde.<br />Her An Göz Önünde.
               </h2>
             </div>
             <div className="font-mono text-xs text-muted-foreground flex items-center gap-2">
@@ -207,51 +204,49 @@ export function ProductionHeartbeat() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
               </span>
-              status.airomeda.com · all systems operational
+              Canlı · Gerçek zamanlı takip
             </div>
           </div>
         </RevealSection>
 
         <div className="mt-12 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
-          {/* Card: Transactions */}
+          {/* Card: Orders */}
           <div className="bg-background p-6">
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">
-              Bugünkü işlemler
+              Bugünkü siparişler
             </p>
             <p className="mt-4 text-3xl font-semibold tabular-nums text-foreground">
-              {Math.floor(txns).toLocaleString('tr-TR')}
+              {Math.floor(orders).toLocaleString('tr-TR')}
             </p>
             <div className="mt-4">
               <Sparkline accent />
             </div>
-            <p className="mt-2 font-mono text-[10px] text-success">↑ 12.4% · son saat</p>
+            <p className="mt-2 font-mono text-[10px] text-success">↑ artıyor · son saat</p>
           </div>
 
-          {/* Card: Latency */}
+          {/* Card: Revenue */}
           <div className="bg-background p-6">
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">
-              Sistem hızı
+              Toplam ciro · 7 gün
             </p>
             <p className="mt-4 text-3xl font-semibold tabular-nums text-foreground">
-              <span>{latency.toFixed(0)}</span>
-              <span className="text-base text-muted-foreground ml-1">ms</span>
+              ₺{Math.floor(revenue).toLocaleString('tr-TR')}
             </p>
             <div className="mt-4">
               <HeartbeatBar />
             </div>
             <p className="mt-2 font-mono text-[10px] text-muted-foreground">
-              tüm bölgeler · son 5 dk
+              bu hafta · tüm kanallar
             </p>
           </div>
 
-          {/* Card: Uptime */}
+          {/* Card: New customers */}
           <div className="bg-background p-6">
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">
-              Kesintisiz çalışma
+              Yeni müşteri · bugün
             </p>
             <p className="mt-4 text-3xl font-semibold tabular-nums text-foreground">
-              {uptime.toFixed(3)}
-              <span className="text-base text-muted-foreground">%</span>
+              {Math.floor(newCustomers).toLocaleString('tr-TR')}
             </p>
             <div
               className="mt-4 grid gap-px h-10"
@@ -260,40 +255,41 @@ export function ProductionHeartbeat() {
               {Array.from({ length: 30 }).map((_, i) => (
                 <div
                   key={i}
-                  className={i === 9 ? 'bg-accent/30' : 'bg-success/40'}
+                  className={i >= 27 ? 'bg-accent/40' : 'bg-success/35'}
                 />
               ))}
             </div>
-            <p className="mt-2 font-mono text-[10px] text-muted-foreground">
-              son 30 gün · SLA %99.95 · gözlemlenen %99.973
-            </p>
+            <p className="mt-2 font-mono text-[10px] text-success">↑ %18 · geçen haftaya göre</p>
           </div>
 
-          {/* Card: Deploys */}
+          {/* Card: Messages */}
           <div className="bg-background p-6">
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">
-              Aylık güncelleme
+              Bekleyen mesajlar
             </p>
             <p className="mt-4 text-3xl font-semibold tabular-nums text-foreground">
-              {Math.floor(deploys).toLocaleString('tr-TR')}
+              {Math.floor(messages)}
             </p>
-            <div className="mt-4 flex items-center gap-2 font-mono text-[10px]">
-              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-success" />
-              <span className="text-muted-foreground">son: 22 dk önce · fra1</span>
+            <div className="mt-4 flex items-center gap-2 text-[10px]">
+              <span className="inline-flex px-2 py-0.5 bg-accent/15 text-accent font-mono uppercase tracking-wider text-[10px]">Yanıtla</span>
             </div>
             <p className="mt-2 font-mono text-[10px] text-muted-foreground">
-              otomatik · kesintisiz · hızlı
+              müşteri soruları · gelen kutusu
             </p>
           </div>
         </div>
 
-        {/* Live request log strip */}
+        {/* Live activity feed */}
         <div className="mt-px border border-border bg-background overflow-hidden">
           <div className="border-b border-border px-6 py-2.5 flex items-center justify-between">
-            <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-              canlı istek akışı · production
+            <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-70" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
+              </span>
+              Müşterilerin Canlı Aktiviteleri
             </p>
-            <p className="font-mono text-[10px] text-success">● live</p>
+            <p className="font-mono text-[10px] text-success">● canlı</p>
           </div>
           <LiveLog />
         </div>

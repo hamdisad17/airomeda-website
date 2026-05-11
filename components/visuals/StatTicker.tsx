@@ -8,29 +8,22 @@ interface TickerStat {
 }
 
 const STATS: TickerStat[] = [
-  { label: 'TX_TODAY', v: '1,847,291', delta: '+12.4%' },
-  { label: 'UPTIME_30D', v: '99.973%', delta: '0' },
-  { label: 'P50_LATENCY', v: '18ms', delta: '-2ms' },
-  { label: 'P99_LATENCY', v: '142ms', delta: '-8ms' },
-  { label: 'DEPLOYS_MONTH', v: '280+', delta: '+18' },
-  { label: 'ACTIVE_REGIONS', v: '4', delta: '0' },
-  { label: 'EDGE_POPS', v: '320', delta: '+4' },
-  { label: 'PROJECTS_TOTAL', v: '134', delta: '+3' },
-  { label: 'ACTIVE_CLIENTS', v: '68', delta: '+2' },
-  { label: 'FAILOVER', v: '<8s', delta: '0' },
-  { label: 'ENGINEERS', v: '28', delta: '+2' },
-  { label: 'SLA_GUARANTEE', v: '99.95%', delta: '0' },
+  { label: 'BU YIL TAMAMLANAN', v: '47', delta: 'proje' },
+  { label: 'MUTLU MÜŞTERİ', v: '85+', delta: 'aktif' },
+  { label: 'DENEYİMİMİZ', v: '11', delta: 'yıl' },
+  { label: 'EKİBİMİZ', v: '36', delta: 'uzman' },
+  { label: 'HİZMET VERDİĞİMİZ', v: '130+', delta: 'ülke' },
+  { label: 'DESTEK', v: '7/24', delta: 'canlı' },
+  { label: 'TÜRKÇE + İNGİLİZCE', v: '2', delta: 'dil' },
+  { label: 'ORTALAMA TESLİM', v: '8 hafta', delta: 'planlı' },
+  { label: 'TAMAMLANAN PROJE', v: '180+', delta: 'toplam' },
+  { label: 'MÜŞTERİ MEMNUNİYETİ', v: '%97', delta: 'puan' },
+  { label: 'SEKTÖR', v: '12+', delta: 'alan' },
+  { label: 'ÜCRETSİZ DESTEK', v: '6 ay', delta: 'garanti' },
 ];
 
 function DeltaChip({ delta }: { delta: string }) {
-  if (delta === '0') {
-    return <span className="text-muted-foreground/40">{delta}</span>;
-  }
-  if (delta.startsWith('+')) {
-    return <span className="text-success">{delta}</span>;
-  }
-  // negative delta (latency improvement) displayed in accent
-  return <span className="text-accent">{delta}</span>;
+  return <span className="text-muted-foreground/60 text-[10px]">{delta}</span>;
 }
 
 export function StatTicker() {
@@ -51,7 +44,7 @@ export function StatTicker() {
         style={{ background: 'linear-gradient(to left, var(--color-background), transparent)' }}
       />
 
-      <div className="flex w-max animate-marquee gap-12 font-mono text-xs" aria-label="Live system metrics">
+      <div className="flex w-max animate-marquee gap-12 font-mono text-xs" aria-label="Airomeda rakamları">
         {items.map((s, i) => (
           <div key={i} className="flex items-center gap-2.5 flex-shrink-0 select-none">
             <span className="text-muted-foreground uppercase tracking-wider text-[10px]">{s.label}</span>

@@ -9,12 +9,48 @@ import { RevealSection } from '@/components/motion/RevealSection';
 gsap.registerPlugin(ScrollTrigger);
 
 const STAGES = [
-  { id: 'ihtiyac', label: 'İhtiyaç Belirleme', detail: 'Projenizin kapsamı ve hedefleri netleştiriliyor', logs: ['✓ İlk görüşme tamamlandı', '✓ İhtiyaçlar belgelendi', '✓ Proje planı hazırlandı'] },
-  { id: 'tasarim', label: 'Tasarım', detail: 'Size özel çözüm mimarisinin tasarımı', logs: ['↻ Çözüm mimarisi hazırlanıyor...', '✓ Onayınız alındı', '✓ Tasarım belgelendi'] },
-  { id: 'gelistirme', label: 'Geliştirme', detail: 'Her iki haftada demo edilebilir ilerleme', logs: ['✓ Sprint 1 tamamlandı · demo hazır', '✓ Sprint 2 tamamlandı · geri bildirim alındı', '✓ Sprint 3 tamamlandı · testler geçildi'] },
-  { id: 'test', label: 'Test', detail: 'Kapsamlı kalite güvencesi ve doğrulama', logs: ['✓ Fonksiyonel testler geçildi', '✓ Güvenlik kontrolü tamamlandı', '✓ Performans testi başarılı'] },
-  { id: 'teslim', label: 'Teslim', detail: 'Sisteminiz canlıya alınıyor', logs: ['↻ Sistem canlıya alınıyor...', '✓ Canlıya geçiş tamamlandı', '✓ İzleme aktif · kesintisiz çalışıyor'] },
-  { id: 'destek', label: 'Destek', detail: 'Teslim sonrası 7/24 yanınızdayız', logs: ['✓ 7/24 destek aktif', '✓ Eğitim tamamlandı · belgeler teslim edildi', '● aktif · kesintisiz çalışıyor'] },
+  {
+    id: 'gorusme',
+    label: 'İlk Görüşme',
+    detail: 'Tanışma toplantısı, ihtiyaç analizi',
+    desc: 'Sizinle baş başa oturup işinizi ve hedeflerinizi dinleriz. Ücretsiz.',
+    logs: ['✓ Tanışma toplantısı yapıldı', '✓ İhtiyaçlar listelendi', '✓ Hedefler netleşti'],
+  },
+  {
+    id: 'teklif',
+    label: 'Plan ve Teklif',
+    detail: 'Detaylı proje planı, fiyat teklifi',
+    desc: 'Yapılacakların listesi, süre, fiyat. Hepsi yazılı, hepsi şeffaf.',
+    logs: ['✓ Proje planı çıkarıldı', '✓ Maliyet hesaplandı', '✓ Teklif size sunuldu'],
+  },
+  {
+    id: 'tasarim',
+    label: 'Tasarım',
+    detail: 'Ekran tasarımları, sizin onayınız',
+    desc: 'Her ekranı tasarlar, size gösteririz. Beğenmediğiniz yer kalmaz.',
+    logs: ['✓ İlk taslaklar hazır', '✓ Renk ve yazı tipi seçildi', '✓ Onayınız alındı'],
+  },
+  {
+    id: 'gelistirme',
+    label: 'Geliştirme',
+    detail: 'Sistemin inşası, haftalık raporlar',
+    desc: 'Uzman ekibimiz çalışır. Her hafta ne yapıldığını size gösteririz.',
+    logs: ['✓ Ana sistem hazır', '✓ Mobil uygulama hazır', '✓ Test ortamı kuruldu'],
+  },
+  {
+    id: 'test',
+    label: 'Test ve Eğitim',
+    detail: 'Sıkı testler, ekibinize eğitim',
+    desc: 'Sistem her yönden test edilir. Ekibinizi kullanmak için eğitiriz.',
+    logs: ['✓ 200+ test yapıldı', '✓ Ekibiniz eğitildi', '✓ Yazılı kullanım kılavuzu teslim edildi'],
+  },
+  {
+    id: 'destek',
+    label: 'Yayın ve Destek',
+    detail: 'Canlıya alma, sürekli yanınızda',
+    desc: 'Sisteminiz hayata geçer. 7/24 destek hattımız sizinle.',
+    logs: ['✓ Sistem canlıya alındı', '✓ Tüm fonksiyonlar çalışıyor', '✓ Destek hattı aktif'],
+  },
 ];
 
 export function DeploymentPipeline() {
@@ -44,12 +80,12 @@ export function DeploymentPipeline() {
         style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, hsl(189 100% 50% / 0.1), transparent 70%)' }}/>
       <Container as="div" className="relative pt-20 pb-20 min-h-screen flex flex-col justify-center">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 08 · geliştirme süreci'}</p>
+          <p className="font-mono text-eyebrow uppercase text-accent">Çalışma Sürecimiz</p>
           <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-            Fikrinizden teslimata.
+            İlk görüşmeden yayına.
           </h2>
           <p className="mt-4 max-w-2xl text-body-lg text-muted-foreground">
-            Her adımda ne yapıldığını açıkça görürsünüz. Şeffaf süreç, hızlı teslim, uzun vadeli destek.
+            Her adımda ne yapıldığını açıkça görürsünüz. Sürpriz yok, gizli maliyet yok — sadece net bir süreç ve güvenilir teslim.
           </p>
         </RevealSection>
 
@@ -76,10 +112,10 @@ export function DeploymentPipeline() {
                   }`}>
                     {s.label}
                   </p>
-                  <p className={`mt-1 text-xs font-mono transition-colors ${
+                  <p className={`mt-1 text-xs transition-colors ${
                     isActive ? 'text-muted-foreground' : 'text-muted-foreground/40'
                   }`}>
-                    {s.detail}
+                    {s.desc}
                   </p>
                 </li>
               );
@@ -100,14 +136,14 @@ export function DeploymentPipeline() {
               <span className="font-mono text-[10px] text-success">● live</span>
             </div>
             <div className="p-6 font-mono text-xs min-h-[320px]">
-              <p className="text-muted-foreground mb-3">$ airomeda pipeline:status</p>
+              <p className="text-muted-foreground mb-4">Projenizin durumu:</p>
               {STAGES.slice(0, active + 1).map((s, i) => (
                 <div key={s.id} className="mb-4 last:mb-0">
-                  <p className={`${i === active ? 'text-accent' : 'text-foreground/70'} mb-1.5`}>
-                    [{String(i + 1).padStart(2, '0')}] {s.label} → {s.detail}
+                  <p className={`${i === active ? 'text-accent font-semibold' : 'text-foreground/70'} mb-1.5`}>
+                    {String(i + 1).padStart(2, '0')}. {s.label}
                   </p>
                   {s.logs.map((log) => (
-                    <p key={log} className={`pl-6 ${i === active ? 'text-foreground' : 'text-muted-foreground/50'}`}>
+                    <p key={log} className={`pl-4 ${i === active ? 'text-foreground' : 'text-muted-foreground/50'}`}>
                       {log}
                     </p>
                   ))}

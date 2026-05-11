@@ -16,115 +16,116 @@ interface Frame {
   visual: React.ReactNode;
 }
 
-function CommitVisual() {
+function ProblemVisual() {
   return (
-    <div className="font-mono text-xs space-y-2 text-left w-full max-w-sm">
-      <p className="text-muted-foreground">$ git commit -m &quot;feat(banking): add 3DS challenge&quot;</p>
-      <p className="text-success">✓ pre-commit hook passed</p>
-      <p className="text-success">✓ lint — 0 errors</p>
-      <p className="text-success">✓ typecheck — 0 errors</p>
-      <p className="text-foreground/70">[main 6422b59] feat(banking): add 3DS challenge</p>
-      <p className="text-foreground/70"> 3 files changed, 47 insertions(+), 12 deletions(-)</p>
-    </div>
-  );
-}
-
-function CIVisual() {
-  return (
-    <div className="font-mono text-xs space-y-2 text-left w-full max-w-sm">
-      <p className="text-muted-foreground">GitHub Actions · build #4827 · triggered by push</p>
-      <div className="space-y-1">
-        {[
-          { label: 'setup Node 24', done: true },
-          { label: 'pnpm install (cached)', done: true },
-          { label: 'lint check', done: true },
-          { label: 'typecheck', done: true },
-          { label: 'test suite', done: true },
-        ].map((step) => (
-          <p key={step.label} className={step.done ? 'text-success' : 'text-muted-foreground'}>
-            {step.done ? '✓' : '↻'} {step.label}
-          </p>
-        ))}
+    <div className="text-sm space-y-3 text-left w-full max-w-sm">
+      <div className="border border-border/60 bg-muted/30 p-4 space-y-2">
+        <p className="text-foreground/60 text-xs uppercase tracking-wider font-mono">Müşteri durumu</p>
+        <p className="text-foreground">Eski sistem sürekli çöküyor.</p>
+        <p className="text-muted-foreground">Müşteriler sepeti terk ediyor.</p>
+        <p className="text-muted-foreground">Yeni ürün eklemek saatler alıyor.</p>
+        <p className="text-muted-foreground">Rakipler önde, satışlar düşüyor.</p>
       </div>
-      <p className="text-accent pt-1">⏱ 4m 18s · all checks passed</p>
+      <div className="flex items-center gap-2 text-xs text-muted-foreground/70">
+        <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/40 inline-block" />
+        Bu sorunlar tanıdık geliyor mu?
+      </div>
     </div>
   );
 }
 
-function TestVisual() {
-  const suites = [
-    { name: 'unit', count: 847, duration: '3.4s' },
-    { name: 'integration', count: 124, duration: '12.1s' },
-    { name: 'e2e', count: 28, duration: '47.8s' },
-  ];
+function ContactVisual() {
   return (
-    <div className="font-mono text-xs space-y-3 text-left w-full max-w-sm">
-      {suites.map((s) => (
-        <div key={s.name} className="space-y-1">
-          <div className="flex items-center justify-between text-muted-foreground uppercase tracking-wider text-[10px]">
-            <span>{s.name}</span>
-            <span>{s.duration}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="flex-1 h-1.5 bg-border">
-              <div className="h-full bg-success" style={{ width: '100%' }} />
-            </div>
-            <span className="text-success tabular-nums">{s.count} passed</span>
-          </div>
-        </div>
-      ))}
-      <p className="pt-2 text-success border-t border-border">✓ 999 tests · 0 failed · coverage 94.2%</p>
+    <div className="text-sm space-y-3 text-left w-full max-w-sm">
+      <div className="border border-border/60 bg-muted/30 p-4 space-y-2">
+        <p className="text-foreground/60 text-xs uppercase tracking-wider font-mono">İletişim</p>
+        <p className="text-foreground">Telefon / WhatsApp / E-posta</p>
+        <p className="text-muted-foreground">Ücretsiz ilk görüşme talep edildi.</p>
+        <p className="text-muted-foreground">Randevu: 3 gün içinde.</p>
+        <p className="text-success">✓ Sorularınız yanıtlandı</p>
+      </div>
+      <div className="flex items-center gap-2 text-xs text-accent">
+        <span className="h-1.5 w-1.5 rounded-full bg-accent inline-block" />
+        Airomeda ekibi 24 saat içinde döner.
+      </div>
     </div>
   );
 }
 
-function BuildVisual() {
+function MeetingVisual() {
   return (
-    <div className="font-mono text-xs space-y-2 text-left w-full max-w-sm">
-      <p className="text-muted-foreground">$ docker buildx build --platform linux/amd64,arm64</p>
-      <p className="text-foreground/70">↻ Building airomeda/core:6422b59...</p>
-      <p className="text-success">✓ Layer cache hit: 3/4</p>
-      <p className="text-success">✓ multi-arch build complete (2m 41s)</p>
-      <p className="text-success">✓ Pushed to ghcr.io/airomeda/core:6422b59</p>
-      <p className="text-muted-foreground">   Size: 24.8 MB · 4 layers</p>
+    <div className="text-sm space-y-3 text-left w-full max-w-sm">
+      <div className="border border-border/60 bg-muted/30 p-4 space-y-2">
+        <p className="text-foreground/60 text-xs uppercase tracking-wider font-mono">İlk Görüşme</p>
+        <p className="text-success">✓ Hedefleriniz dinlendi</p>
+        <p className="text-success">✓ Mevcut sorunlar listelendi</p>
+        <p className="text-success">✓ Bütçe ve süre konuşuldu</p>
+        <p className="text-foreground/70">Sonraki adım: Detaylı teklif hazırlanıyor</p>
+      </div>
+      <div className="flex items-center gap-2 text-xs text-muted-foreground/70">
+        <span className="h-1.5 w-1.5 rounded-full bg-success inline-block" />
+        Görüşme ücretsiz, yükümlülük yok.
+      </div>
     </div>
   );
 }
 
-function DeployVisual() {
+function PlanVisual() {
   return (
-    <div className="font-mono text-xs space-y-2 text-left w-full max-w-sm">
-      <p className="text-muted-foreground">$ kubectl apply -f k8s/deployment.yaml</p>
-      <p className="text-foreground/70">↻ deployment.apps/airomeda-core configured</p>
-      <p className="text-foreground/70">↻ Rolling update: 0/3 pods ready...</p>
-      <p className="text-foreground/70">↻ Rolling update: 1/3 pods ready...</p>
-      <p className="text-foreground/70">↻ Rolling update: 2/3 pods ready...</p>
-      <p className="text-accent">✓ 3/3 pods ready (8s) · fra1 + lon1 + ist1</p>
+    <div className="text-sm space-y-3 text-left w-full max-w-sm">
+      <div className="border border-border/60 bg-muted/30 p-4 space-y-2">
+        <p className="text-foreground/60 text-xs uppercase tracking-wider font-mono">Teslim Edilen Plan</p>
+        <p className="text-success">✓ Yapılacaklar listesi</p>
+        <p className="text-success">✓ 8 haftalık takvim</p>
+        <p className="text-success">✓ Fiyat: ₺145.000 (sabit)</p>
+        <p className="text-success">✓ Sözleşme taslağı</p>
+        <p className="text-foreground/70">Onayınızı bekliyoruz.</p>
+      </div>
+      <div className="flex items-center gap-2 text-xs text-accent">
+        <span className="h-1.5 w-1.5 rounded-full bg-accent inline-block" />
+        Fiyat değişmez. Kapsam yazılıdır.
+      </div>
     </div>
   );
 }
 
-function LiveVisual() {
+function BuildDoneVisual() {
   return (
-    <div className="font-mono text-xs space-y-2 text-left w-full max-w-sm">
-      <div className="flex items-center gap-2 mb-3">
-        <span className="relative flex h-2 w-2">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
-          <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+    <div className="text-sm space-y-3 text-left w-full max-w-sm">
+      <div className="border border-border/60 bg-muted/30 p-4 space-y-2">
+        <p className="text-foreground/60 text-xs uppercase tracking-wider font-mono">8. Hafta Sonu</p>
+        <p className="text-success">✓ Web sitesi hazır</p>
+        <p className="text-success">✓ Mobil uygulama hazır</p>
+        <p className="text-success">✓ Yönetim paneli hazır</p>
+        <p className="text-success">✓ Ekibiniz eğitildi</p>
+        <p className="text-success">✓ Sistem canlıya alındı</p>
+      </div>
+      <div className="flex items-center gap-2 text-xs text-accent">
+        <span className="h-1.5 w-1.5 rounded-full bg-accent inline-block" />
+        Söz verilen tarihte, söz verilen fiyata.
+      </div>
+    </div>
+  );
+}
+
+function HappyEndVisual() {
+  return (
+    <div className="text-sm space-y-3 text-left w-full max-w-sm">
+      <div className="border border-border/60 bg-muted/30 p-4 space-y-2">
+        <p className="text-foreground/60 text-xs uppercase tracking-wider font-mono">3. Ay Sonuçları</p>
+        <p className="text-success">↑ %180 satış artışı</p>
+        <p className="text-success">↑ %240 online sipariş</p>
+        <p className="text-success">✓ Müşteri memnuniyeti: %97</p>
+        <p className="text-success">✓ Arıza: 0 (sıfır)</p>
+        <p className="text-foreground/70">Destek hattı: hâlâ aktif, 7/24.</p>
+      </div>
+      <div className="flex items-center gap-2 text-xs text-accent">
+        <span className="h-1.5 w-1.5 rounded-full bg-success inline-block animate-ping" />
+        <span className="relative flex h-1.5 w-1.5 -ml-3.5">
+          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
         </span>
-        <span className="text-success uppercase tracking-wider text-[10px]">production · all systems operational</span>
+        Gerçek bir müşteri hikayesi.
       </div>
-      {[
-        { label: 'uptime', value: '99.973%' },
-        { label: 'P50 latency', value: '18ms' },
-        { label: 'traffic', value: '100% new version' },
-        { label: 'region', value: 'fra1 · lon1 · ist1 · iad1' },
-      ].map((row) => (
-        <div key={row.label} className="flex justify-between">
-          <span className="text-muted-foreground">{row.label}</span>
-          <span className="text-accent tabular-nums">{row.value}</span>
-        </div>
-      ))}
     </div>
   );
 }
@@ -132,51 +133,51 @@ function LiveVisual() {
 const FRAMES: Frame[] = [
   {
     id: 1,
-    eyebrow: '01 · commit',
-    title: 'feat(banking): add 3DS challenge',
-    subtitle: "Her değişiklik belgelenir, lint ve typecheck geçmeden pipeline'a girmez.",
+    eyebrow: '01 · Sorun var',
+    title: 'Sürekli arıza yaşıyorlardı.',
+    subtitle: 'Eski sistem çöküyor, satışlar kayıp gidiyordu. Rakipler önde, müşteriler bezgin.',
     tone: 'foreground',
-    visual: <CommitVisual />,
+    visual: <ProblemVisual />,
   },
   {
     id: 2,
-    eyebrow: '02 · CI',
-    title: 'GitHub Actions · 4m 18s',
-    subtitle: "Paralel job'lar — lint, typecheck, build cache — her push'ta otomatik tetiklenir.",
+    eyebrow: '02 · Bize ulaştılar',
+    title: 'Bir telefon açtılar.',
+    subtitle: "Airomeda'yı aradılar. Aynı gün geri döndük. Ücretsiz ilk görüşme randevusu aldılar.",
     tone: 'foreground',
-    visual: <CIVisual />,
+    visual: <ContactVisual />,
   },
   {
     id: 3,
-    eyebrow: '03 · test',
-    title: '847 unit · 124 integration · 28 e2e',
-    subtitle: "%94.2 test coverage. Hiçbir commit 999 testi geçmeden pipeline'ı ilerletemiyor.",
+    eyebrow: '03 · Konuştuk',
+    title: 'İlk görüşme yapıldı.',
+    subtitle: 'İhtiyaçlarını, hedeflerini ve bütçelerini dinledik. Hiç teknik konuşmadık, iş konuştuk.',
     tone: 'foreground',
-    visual: <TestVisual />,
+    visual: <MeetingVisual />,
   },
   {
     id: 4,
-    eyebrow: '04 · build',
-    title: 'multi-arch docker · ghcr.io',
-    subtitle: 'linux/amd64 + arm64. Layer cache ile 4 dakikadan 2.7 dakikaya.',
+    eyebrow: '04 · Plan çıktı',
+    title: 'Detaylı plan teslim edildi.',
+    subtitle: 'Ne yapılacak, ne zaman, kaça. Hepsi yazılı. Fiyat değişmez, kapsam netleştirildi.',
     tone: 'foreground',
-    visual: <BuildVisual />,
+    visual: <PlanVisual />,
   },
   {
     id: 5,
-    eyebrow: '05 · deploy',
-    title: 'k8s rolling update · 8 saniye',
-    subtitle: 'Sıfır downtime. fra1 birincil, lon1 yedek, ist1 edge — paralel rolling update.',
+    eyebrow: '05 · Geliştirdik',
+    title: 'Sistem 8 haftada hazır oldu.',
+    subtitle: 'Web sitesi, mobil uygulama, yönetim paneli. Her hafta ilerlemeyi gösterdik.',
     tone: 'accent',
-    visual: <DeployVisual />,
+    visual: <BuildDoneVisual />,
   },
   {
     id: 6,
-    eyebrow: '06 · live',
-    title: 'production · 100% traffic',
-    subtitle: '99.973% uptime, 18ms P50. Devir teslimde bu hattın sahibi siz olacaksınız.',
+    eyebrow: '06 · Mutlu son',
+    title: 'Satışları %180 arttı.',
+    subtitle: '3 ay içinde. Sistem çalışıyor, ekip mutlu, müşteriler memnun. Destek hâlâ yanlarında.',
     tone: 'accent',
-    visual: <LiveVisual />,
+    visual: <HappyEndVisual />,
   },
 ];
 
@@ -295,7 +296,7 @@ export function ScrollSequence() {
 
         {/* Scroll hint */}
         <p className="mt-16 font-mono text-[10px] uppercase tracking-wider text-muted-foreground/50 text-center">
-          scroll ↓ to advance pipeline
+          kaydır ↓ hikayeyi takip et
         </p>
       </Container>
     </section>

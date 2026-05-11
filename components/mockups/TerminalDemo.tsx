@@ -7,14 +7,20 @@ type TerminalLine =
   | { text: string; delay: number };
 
 const LINES: TerminalLine[] = [
-  { prompt: '$', text: 'airomeda deploy --env production', delay: 0 },
-  { text: '✓ build succeeded in 8.2s', tone: 'ok', delay: 800 },
-  { text: '✓ 127 tests passed', tone: 'ok', delay: 1100 },
-  { text: '✓ DKIM signed · audit log written', tone: 'ok', delay: 1400 },
-  { text: '→ deployed to airomeda.app', tone: 'accent', delay: 1700 },
-  { text: '→ propagation: 12 regions', tone: 'muted', delay: 1900 },
-  { text: '', delay: 2100 },
-  { prompt: '$', text: '', blink: true, delay: 2400 },
+  { text: '~/airomeda — Projeniz canlıda', tone: 'muted', delay: 0 },
+  { text: '─────────────────────────────', tone: 'muted', delay: 200 },
+  { text: '', delay: 400 },
+  { text: '✓ İhtiyaç analizi tamamlandı       (Hafta 1)', tone: 'ok', delay: 700 },
+  { text: '✓ Proje planı onaylandı             (Hafta 1)', tone: 'ok', delay: 1000 },
+  { text: '✓ Tasarımlar onaylandı              (Hafta 3)', tone: 'ok', delay: 1300 },
+  { text: '✓ Geliştirme tamamlandı             (Hafta 7)', tone: 'ok', delay: 1600 },
+  { text: '✓ Test ve eğitim bitti              (Hafta 8)', tone: 'ok', delay: 1900 },
+  { text: '✓ Sistem canlıda                     (Bugün)', tone: 'ok', delay: 2200 },
+  { text: '', delay: 2500 },
+  { text: '→ Müşterilerinize hizmet veriyor', tone: 'accent', delay: 2700 },
+  { text: '→ Destek hattımız sizinle · 7/24', tone: 'accent', delay: 2900 },
+  { text: '', delay: 3100 },
+  { prompt: '$', text: '', blink: true, delay: 3300 },
 ];
 
 function getToneClass(line: TerminalLine): string {
@@ -37,7 +43,7 @@ export function TerminalDemo() {
     const restart = setTimeout(() => {
       setShown(0);
       setCycle((c) => c + 1);
-    }, 4800);
+    }, 6500);
     timers.push(restart);
     return () => { timers.forEach(clearTimeout); };
   }, [cycle]);
@@ -48,7 +54,7 @@ export function TerminalDemo() {
         <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]/70" />
-        <span className="ml-3 font-mono text-xs text-muted-foreground tracking-tight">~/airomeda — bash</span>
+        <span className="ml-3 font-mono text-xs text-muted-foreground tracking-tight">~/airomeda — proje özeti</span>
       </div>
       <div className="p-5 font-mono text-sm leading-7 min-h-[14rem]">
         {LINES.slice(0, shown).map((l, i) => (
