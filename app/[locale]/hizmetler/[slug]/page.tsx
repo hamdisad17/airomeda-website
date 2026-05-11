@@ -19,6 +19,7 @@ import { ServiceOverview } from '@/components/sections/services/ServiceOverview'
 import { ServiceGallery } from '@/components/sections/services/ServiceGallery';
 import { ServiceBenefits } from '@/components/sections/services/ServiceBenefits';
 import { ServicePackages } from '@/components/sections/services/ServicePackages';
+import { LegalDisclaimer } from '@/components/sections/services/LegalDisclaimer';
 
 export async function generateStaticParams() {
   const params: { locale: Locale; slug: string }[] = [];
@@ -119,6 +120,7 @@ export default async function ServiceDetail({
       <ServicePackages slug={slug} />
       <ServiceTechStrip items={content.frontmatter.tech_stack} />
       <ServiceFAQ items={content.frontmatter.faq} />
+      {(slug === 'sans-oyunlari' || slug === 'finans') && <LegalDisclaimer />}
       {serviceKey ? (
         <Container as="section" className="max-w-3xl py-20">
           <h2 className="text-display-2 font-semibold tracking-tight">{tDemo('title')}</h2>

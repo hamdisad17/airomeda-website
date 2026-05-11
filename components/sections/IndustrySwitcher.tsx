@@ -95,6 +95,20 @@ const INDUSTRIES = [
     ],
     metric: { v: '+%65', l: 'tekrar satın alma oranı' },
   },
+  {
+    key: 'kurumsal-web',
+    label: 'Kurumsal Web',
+    tagline:
+      'İşletmenizi internette güçlü temsil eden, modern ve mobil uyumlu kurumsal web siteleri.',
+    points: [
+      'Özel tasarım, kurumsal kimliğe uygun',
+      'Mobil + tablet + masaüstü uyumlu',
+      'Kolay içerik yönetim paneli',
+      'Çok dilli yapı (TR, EN ve daha fazlası)',
+      'SEO uyumlu hızlı altyapı',
+    ],
+    metric: { v: '15-30', l: 'gün içinde teslim' },
+  },
 ];
 
 export function IndustrySwitcher() {

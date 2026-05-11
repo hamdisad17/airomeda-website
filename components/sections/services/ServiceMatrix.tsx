@@ -19,6 +19,7 @@ const SERVICE_METRICS: Record<string, { value: string; label: string }> = {
   'seo-reklam': { value: '+210%', label: 'organik büyüme' },
   'sosyal-medya': { value: '3×', label: 'daha fazla etkileşim' },
   crm: { value: '-40%', label: 'müşteri kaybı azaldı' },
+  'kurumsal-web': { value: '15-30', label: 'günde teslim' },
 };
 
 function ServiceCard({

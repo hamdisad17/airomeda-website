@@ -17,6 +17,7 @@ export const DemoRequestSchema = ContactFormSchema.extend({
     'seo-ads',
     'social-media',
     'crm',
+    'corporate-web',
   ]),
 });
 

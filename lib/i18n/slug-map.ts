@@ -7,7 +7,8 @@ export type ServiceKey =
   | 'integration'
   | 'seo-ads'
   | 'social-media'
-  | 'crm';
+  | 'crm'
+  | 'corporate-web';
 
 type ServiceEntry = {
   key: ServiceKey;
@@ -22,6 +23,7 @@ export const SERVICE_SLUGS: readonly ServiceEntry[] = [
   { key: 'seo-ads', slugs: { tr: 'seo-reklam', en: 'seo-ads' } },
   { key: 'social-media', slugs: { tr: 'sosyal-medya', en: 'social-media' } },
   { key: 'crm', slugs: { tr: 'crm', en: 'crm' } },
+  { key: 'corporate-web', slugs: { tr: 'kurumsal-web', en: 'kurumsal-web' } },
 ] as const;
 
 export function getServiceSlugInLocale(

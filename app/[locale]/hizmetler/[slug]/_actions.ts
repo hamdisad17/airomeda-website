@@ -10,7 +10,7 @@ export async function submitDemoRequest(input: {
   email: string;
   company?: string;
   message: string;
-  service: 'finance' | 'gaming' | 'ecommerce' | 'integration' | 'seo-ads' | 'social-media' | 'crm';
+  service: 'finance' | 'gaming' | 'ecommerce' | 'integration' | 'seo-ads' | 'social-media' | 'crm' | 'corporate-web';
   turnstileToken: string;
 }): Promise<FormActionResult> {
   return runFormAction({

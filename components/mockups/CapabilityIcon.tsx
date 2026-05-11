@@ -100,6 +100,14 @@ export function CapabilityIcon({ slug, className }: Props) {
         <path d="M14 16c1-2 2-3 3-3s2 1 3 3"/>
       </>
     ),
+    'kurumsal-web': (
+      <>
+        <rect x="3" y="3" width="18" height="14" rx="2"/>
+        <line x1="3" y1="7" x2="21" y2="7"/>
+        <line x1="8" y1="21" x2="16" y2="21"/>
+        <line x1="12" y1="17" x2="12" y2="21"/>
+      </>
+    ),
   };
   return (
     <svg
