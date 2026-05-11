@@ -4,18 +4,26 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { Container } from '@/components/layout/Container';
+import { RevealSection } from '@/components/motion/RevealSection';
+import { Link } from '@/i18n/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const NODES = [
-  { name: 'Ödeme Sistemi',  x: 20, y: 20 },
-  { name: 'Müşteri Doğrulama', x: 80, y: 20 },
-  { name: 'Bankacılık',    x: 8,  y: 50 },
-  { name: 'ERP / Depo',    x: 92, y: 50 },
-  { name: 'Oyun / AR-VR',  x: 20, y: 80 },
-  { name: 'Regülasyon',    x: 80, y: 80 },
-  { name: 'Veri & Analitik', x: 50, y: 10 },
-  { name: 'Dijital Pazarlama', x: 50, y: 90 },
+const CATEGORIES = [
+  { key: 'odeme', icon: '₺', label: 'Ödeme', brands: ['iyzico', 'PayTR', 'Param', 'Stripe'] },
+  { key: 'kargo', icon: '📦', label: 'Kargo', brands: ['Aras', 'Yurtiçi', 'MNG', 'PTT'] },
+  { key: 'erp', icon: '⚙', label: 'ERP', brands: ['Logo', 'Mikro', 'Netsis', 'NetSuite'] },
+  { key: 'pazaryeri', icon: '◇', label: 'Pazaryeri', brands: ['Trendyol', 'Hepsiburada', 'N11', 'Amazon'] },
+  { key: 'sosyal', icon: '✦', label: 'Sosyal Medya', brands: ['Meta', 'Instagram', 'TikTok', 'X'] },
+  { key: 'reklam', icon: '◊', label: 'Reklam', brands: ['Google Ads', 'Meta Ads', 'TikTok Ads'] },
+  { key: 'banka', icon: '◉', label: 'Banka', brands: ['SWIFT', 'EFT', 'FAST', 'Havale'] },
+  { key: 'efatura', icon: '☰', label: 'E-Belge', brands: ['e-Fatura', 'e-Arşiv', 'e-İrsaliye'] },
+];
+
+const OUTCOMES = [
+  { title: 'Tek panel', body: 'Tüm sistemleriniz tek bir kontrol noktasından yönetilir.' },
+  { title: 'Gerçek zamanlı', body: 'Veriler anında senkronize olur. Bekleme yok, manuel iş yok.' },
+  { title: 'Güvenli akış', body: 'Veri kaybı olmaz. Her işlem kayıt altına alınır.' },
 ];
 
 export function Architecture() {
@@ -24,14 +32,16 @@ export function Architecture() {
   useGSAP(
     () => {
       if (!ref.current) return;
-      const lines = ref.current.querySelectorAll<SVGPathElement>('.conn-line');
-      const dots = ref.current.querySelectorAll<SVGCircleElement>('.conn-dot');
-      const centerCircle = ref.current.querySelector<SVGCircleElement>('.center-pulse');
 
-      gsap.set(lines, { strokeDashoffset: 300, strokeDasharray: 300 });
-      gsap.to(lines, {
+      // Animate flow paths drawing in
+      const paths = ref.current.querySelectorAll<SVGPathElement>('.flow-path');
+      paths.forEach((p) => {
+        const len = p.getTotalLength();
+        gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
+      });
+      gsap.to(paths, {
         strokeDashoffset: 0,
-        duration: 1.5,
+        duration: 1.6,
         stagger: 0.08,
         ease: 'power2.out',
         scrollTrigger: {
@@ -41,132 +51,228 @@ export function Architecture() {
         },
       });
 
+      // Animate flowing data dots along each path
+      const dots = ref.current.querySelectorAll<SVGCircleElement>('.flow-dot');
+      dots.forEach((dot, i) => {
+        const path = paths[i];
+        if (!path) return;
+        const len = path.getTotalLength();
+        const progress = { t: 0 };
+        gsap.to(progress, {
+          t: 1,
+          duration: 2.5,
+          repeat: -1,
+          ease: 'none',
+          delay: i * 0.25,
+          onUpdate: () => {
+            const point = path.getPointAtLength(progress.t * len);
+            dot.setAttribute('cx', String(point.x));
+            dot.setAttribute('cy', String(point.y));
+          },
+        });
+      });
+
+      // Pulse the center hub
+      const hub = ref.current.querySelector<HTMLDivElement>('.hub-pulse');
+      if (hub) {
+        gsap.to(hub, {
+          scale: 1.08,
+          duration: 2.4,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+        });
+      }
+
+      // Reveal category cards
+      const cards = ref.current.querySelectorAll('.cat-card');
       gsap.fromTo(
-        dots,
-        { scale: 0, opacity: 0, transformOrigin: 'center center' },
+        cards,
+        { opacity: 0, x: -16 },
         {
-          scale: 1,
           opacity: 1,
+          x: 0,
           duration: 0.6,
-          stagger: 0.1,
-          ease: 'back.out(2)',
+          stagger: 0.06,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: ref.current,
-            start: 'top 70%',
+            start: 'top 75%',
             toggleActions: 'play none none none',
           },
         },
       );
 
-      if (centerCircle) {
-        gsap.to(centerCircle, {
-          scale: 1.3,
-          opacity: 0.4,
-          duration: 1.8,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-          transformOrigin: '50px 50px',
-        });
-      }
+      const outcomes = ref.current.querySelectorAll('.outcome-card');
+      gsap.fromTo(
+        outcomes,
+        { opacity: 0, x: 16 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.6,
+          stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: ref.current,
+            start: 'top 75%',
+            toggleActions: 'play none none none',
+          },
+        },
+      );
     },
     { scope: ref },
   );
 
   return (
-    <section id="architecture" className="border-b border-border bg-muted/30 py-24 md:py-32">
-      <Container as="div">
-      <div ref={ref}>
-        <div className="mb-16 max-w-3xl">
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 04 · integration'}</p>
-          <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-            Mevcut sistemlerinizle sorunsuz çalışır.
-          </h2>
-          <p className="mt-4 text-body-lg text-muted-foreground">
-            11 yıllık entegrasyon deneyimi. Ödeme sistemleri, ERP, bankacılık, oyun platformları — hangi altyapınız olursa olsun, sistemlerinizi birbirine bağlarız.
-          </p>
-        </div>
+    <section id="architecture" className="border-b border-border bg-elevated/40 py-24 md:py-32 relative overflow-hidden">
+      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-50"
+        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, hsl(189 100% 50% / 0.08), transparent 70%)' }}/>
 
-        <div className="relative aspect-[2/1] w-full border border-border bg-background overflow-hidden">
-          {/* SVG lines and dots */}
-          <svg
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            className="absolute inset-0 h-full w-full"
-          >
-            {NODES.map((n, i) => {
-              const cx = (50 + n.x) / 2;
-              const cy = (50 + n.y) / 2 - 8;
-              return (
-                <path
-                  key={`line-${i}`}
-                  className="conn-line"
-                  d={`M50,50 Q${cx},${cy} ${n.x},${n.y}`}
-                  stroke="hsl(189 100% 50%)"
-                  strokeWidth="0.15"
-                  strokeOpacity="0.55"
-                  fill="none"
-                />
-              );
-            })}
-            {NODES.map((n, i) => (
-              <circle
-                key={`dot-${i}`}
-                className="conn-dot"
-                cx={n.x}
-                cy={n.y}
-                r="0.8"
-                fill="hsl(189 100% 50%)"
-              />
-            ))}
-            {/* Pulsing outer ring */}
-            <circle
-              className="center-pulse"
-              cx="50"
-              cy="50"
-              r="4.5"
-              fill="none"
-              stroke="hsl(189 100% 50%)"
-              strokeWidth="0.4"
-              strokeOpacity="0.6"
-            />
-            {/* Solid center dot */}
-            <circle
-              cx="50"
-              cy="50"
-              r="2.5"
-              fill="hsl(189 100% 50%)"
-              stroke="hsl(189 100% 50% / 0.3)"
-              strokeWidth="1.5"
-            />
-          </svg>
-
-          {/* Node labels positioned over SVG */}
-          {NODES.map((n, i) => (
-            <div
-              key={`label-${i}`}
-              className="absolute font-mono text-xs text-muted-foreground"
-              style={{
-                left: `${n.x}%`,
-                top: `${n.y}%`,
-                transform: 'translate(-50%, calc(-50% - 20px))',
-              }}
-            >
-              <span className="border border-border bg-background px-2 py-1 whitespace-nowrap">
-                {n.name}
-              </span>
+      <Container as="div" className="relative">
+        <div ref={ref}>
+          <RevealSection>
+            <div className="max-w-3xl">
+              <p className="font-mono text-eyebrow uppercase text-accent">{'// 04 · entegrasyon'}</p>
+              <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
+                Mevcut sistemlerinizle<br />sorunsuz çalışır.
+              </h2>
+              <p className="mt-4 text-body-lg text-muted-foreground">
+                11 yıllık deneyimimizle; ödeme, kargo, ERP, pazaryeri, sosyal medya — kullandığınız tüm sistemleri Airomeda&apos;ya bağlayıp tek panelden yönetmenizi sağlıyoruz.
+              </p>
             </div>
-          ))}
+          </RevealSection>
 
-          {/* Center label */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-4 text-center">
-            <p className="font-semibold tracking-tight">
-              airomeda<span className="text-accent">.</span>
-            </p>
-            <p className="font-mono text-xs text-muted-foreground">core platform</p>
+          {/* Main visual — 3 column flow */}
+          <div className="mt-16 grid lg:grid-cols-[1fr_1.2fr_1fr] gap-8 lg:gap-12 items-stretch">
+            {/* Left: source categories */}
+            <div className="space-y-2">
+              <p className="font-mono text-eyebrow uppercase text-muted-foreground mb-4">
+                {'// kaynaklarınız'}
+              </p>
+              {CATEGORIES.map((c) => (
+                <div
+                  key={c.key}
+                  className="cat-card border border-border bg-background px-4 py-3 flex items-center gap-3 hover:border-accent transition-colors group"
+                >
+                  <span className="font-mono text-accent text-base w-5 text-center flex-shrink-0">{c.icon}</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-foreground">{c.label}</p>
+                    <p className="font-mono text-[10px] text-muted-foreground truncate">
+                      {c.brands.slice(0, 3).join(' · ')}
+                    </p>
+                  </div>
+                  <span className="font-mono text-[10px] text-muted-foreground/60 tabular-nums">{c.brands.length}+</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Center: Airomeda hub + flow visual */}
+            <div className="relative flex flex-col items-center justify-center min-h-[520px]">
+              <svg
+                viewBox="0 0 400 520"
+                preserveAspectRatio="none"
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                aria-hidden
+              >
+                {/* Lines from left to center */}
+                {CATEGORIES.map((_, i) => {
+                  const y = 30 + i * 60;
+                  return (
+                    <path
+                      key={`l-${i}`}
+                      className="flow-path"
+                      d={`M0,${y} C 140,${y} 140,260 200,260`}
+                      stroke="hsl(189 100% 50%)"
+                      strokeWidth="0.8"
+                      strokeOpacity="0.35"
+                      fill="none"
+                      strokeLinecap="round"
+                    />
+                  );
+                })}
+                {/* Lines from center to right */}
+                {OUTCOMES.map((_, i) => {
+                  const y = 130 + i * 130;
+                  return (
+                    <path
+                      key={`r-${i}`}
+                      className="flow-path"
+                      d={`M200,260 C 260,260 260,${y} 400,${y}`}
+                      stroke="hsl(189 100% 50%)"
+                      strokeWidth="0.8"
+                      strokeOpacity="0.35"
+                      fill="none"
+                      strokeLinecap="round"
+                    />
+                  );
+                })}
+                {/* Flowing dots */}
+                {[...CATEGORIES, ...OUTCOMES].map((_, i) => (
+                  <circle
+                    key={`fd-${i}`}
+                    className="flow-dot"
+                    r="2.5"
+                    fill="hsl(189 100% 60%)"
+                    style={{ filter: 'drop-shadow(0 0 4px hsl(189 100% 50% / 0.8))' }}
+                  />
+                ))}
+              </svg>
+
+              {/* Central hub */}
+              <div className="relative z-10">
+                <div className="hub-pulse relative">
+                  <div className="w-48 h-48 border-2 border-accent bg-elevated/80 backdrop-blur-md flex flex-col items-center justify-center shadow-[0_20px_60px_-15px_hsl(189_100%_50%_/_0.5)]">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent mb-2">core platform</div>
+                    <div className="text-2xl font-bold tracking-tight text-foreground">airomeda<span className="text-accent">.</span></div>
+                    <div className="mt-3 flex items-center gap-1.5">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75"/>
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success"/>
+                      </span>
+                      <span className="font-mono text-[10px] text-muted-foreground">canlı</span>
+                    </div>
+                  </div>
+                  {/* Pulsing ring */}
+                  <div aria-hidden className="absolute inset-0 -m-4 border border-accent/30 pointer-events-none"
+                    style={{ animation: 'cta-pulse 3s ease-in-out infinite' }}/>
+                </div>
+                <div className="mt-6 text-center">
+                  <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                    <span className="tabular-nums text-accent">200+</span>
+                    <span>entegrasyon</span>
+                    <span className="text-muted-foreground/40">·</span>
+                    <span className="tabular-nums text-accent">8</span>
+                    <span>kategori</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: outcomes */}
+            <div className="space-y-3 flex flex-col">
+              <p className="font-mono text-eyebrow uppercase text-muted-foreground mb-4">
+                {'// sonuç'}
+              </p>
+              {OUTCOMES.map((o) => (
+                <div
+                  key={o.title}
+                  className="outcome-card border border-border bg-background p-5 hover:border-accent transition-colors flex-1 flex flex-col justify-center"
+                >
+                  <p className="font-semibold text-foreground text-base">{o.title}</p>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{o.body}</p>
+                </div>
+              ))}
+              <Link
+                href="/iletisim"
+                className="outcome-card mt-2 border border-accent bg-accent/5 px-5 py-4 hover:bg-accent/10 transition-colors flex items-center justify-between group"
+              >
+                <span className="font-semibold text-foreground">Sisteminizi bağlayalım</span>
+                <span className="font-mono text-sm text-accent transition-transform group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
       </Container>
     </section>
   );
