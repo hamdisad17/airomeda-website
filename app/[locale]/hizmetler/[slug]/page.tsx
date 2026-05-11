@@ -97,6 +97,7 @@ export default async function ServiceDetail({
         title={content.frontmatter.title}
         subtitle={content.frontmatter.hero_subtitle}
         ctaText={content.frontmatter.cta_text}
+        slug={slug}
       />
       <Container as="article" className="prose-invert max-w-3xl py-20">
         <MDXContent source={content.body} />

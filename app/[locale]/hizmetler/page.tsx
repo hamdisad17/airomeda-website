@@ -2,8 +2,11 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
 import { SITE } from '@/lib/seo/site';
 import { makeAlternates } from '@/lib/seo/alternates';
-import { Container } from '@/components/layout/Container';
-import { Capabilities } from '@/components/sections/Capabilities';
+import { listServices } from '@/lib/mdx';
+import { ServicesHero } from '@/components/sections/services/ServicesHero';
+import { ServiceMatrix } from '@/components/sections/services/ServiceMatrix';
+import { ProcessStrip } from '@/components/sections/services/ProcessStrip';
+import { PricingSnapshot } from '@/components/sections/services/PricingSnapshot';
 import { CTASection } from '@/components/sections/CTASection';
 
 export async function generateMetadata({
@@ -38,14 +41,14 @@ export default async function ServicesIndex({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: 'services_index' });
+  const services = await listServices(locale);
 
   return (
     <>
-      <Container as="section" className="py-20">
-        <h1 className="text-display-1 font-bold tracking-tight">{t('title')}</h1>
-      </Container>
-      <Capabilities locale={locale} />
+      <ServicesHero />
+      <ServiceMatrix services={services} />
+      <ProcessStrip />
+      <PricingSnapshot />
       <CTASection />
     </>
   );

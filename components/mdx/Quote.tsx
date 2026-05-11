@@ -2,12 +2,23 @@ type Props = { author?: string; role?: string; children: React.ReactNode };
 
 export function Quote({ author, role, children }: Props) {
   return (
-    <figure className="my-8 rounded-lg border border-border bg-muted/30 p-6">
-      <blockquote className="text-lg italic text-foreground">{children}</blockquote>
+    <figure className="my-10 relative border-l-2 border-accent pl-8 py-4">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-px top-0 bottom-0"
+        style={{
+          background: 'linear-gradient(to bottom, hsl(189 100% 50% / 0.4), hsl(189 100% 50% / 0.05))',
+        }}
+      />
+      <blockquote className="text-lg md:text-xl font-semibold tracking-tight text-foreground leading-snug">
+        <span className="text-accent">&ldquo;</span>
+        {children}
+        <span className="text-accent">&rdquo;</span>
+      </blockquote>
       {(author || role) && (
-        <figcaption className="mt-4 text-sm text-muted-foreground">
+        <figcaption className="mt-4 font-mono text-xs uppercase tracking-wider text-muted-foreground">
           — {author}
-          {role && <span>, {role}</span>}
+          {role && <span className="text-muted-foreground/60"> · {role}</span>}
         </figcaption>
       )}
     </figure>

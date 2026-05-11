@@ -1,17 +1,24 @@
+import * as React from 'react';
 import { Container } from '@/components/layout/Container';
+import { RevealSection } from '@/components/motion/RevealSection';
 
 export function ServiceTechStrip({ items }: { items: string[] }) {
   return (
-    <section className="border-b border-border">
-      <Container as="div" className="py-12">
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Kullandığımız teknolojiler
-        </p>
-        <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-base font-medium text-foreground/80">
+    <section className="border-b border-border py-16">
+      <Container as="div">
+        <RevealSection>
+          <p className="font-mono text-eyebrow uppercase text-accent">{'// tech stack'}</p>
+        </RevealSection>
+        <div className="mt-8 flex flex-wrap gap-2">
           {items.map((tech) => (
-            <li key={tech}>{tech}</li>
+            <span
+              key={tech}
+              className="border border-border bg-elevated px-4 py-2 font-mono text-sm text-muted-foreground hover:border-accent/40 hover:text-foreground transition-colors"
+            >
+              {tech}
+            </span>
           ))}
-        </ul>
+        </div>
       </Container>
     </section>
   );

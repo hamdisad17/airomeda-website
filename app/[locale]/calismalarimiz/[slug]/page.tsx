@@ -85,17 +85,55 @@ export default async function CaseStudyDetail({
       <JsonLd data={[article, breadcrumbs]} />
       <CaseStudyHero data={frontmatter} />
       <MetricsBlock metrics={frontmatter.metrics} />
-      <Container as="article" className="prose-invert max-w-3xl py-20">
-        <MDXContent source={body} />
-        {frontmatter.testimonial && (
-          <Quote
-            author={frontmatter.testimonial.author}
-            role={frontmatter.testimonial.role}
-          >
-            {frontmatter.testimonial.quote}
-          </Quote>
-        )}
-      </Container>
+
+      {/* Narrative / MDX content with cinematic wrapper */}
+      <section className="border-b border-border py-20 md:py-28 relative">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-30"
+          style={{
+            background:
+              'radial-gradient(ellipse 40% 60% at 80% 50%, hsl(189 100% 50% / 0.04), transparent 70%)',
+          }}
+        />
+        <Container as="div" className="relative">
+          <div className="grid md:grid-cols-[280px_1fr] gap-12 md:gap-20">
+            {/* Sidebar metadata */}
+            <div className="md:sticky md:top-24 md:self-start space-y-6">
+              <div className="border border-border bg-elevated p-5 font-mono text-xs">
+                <p className="text-muted-foreground uppercase tracking-wider mb-3">{'> meta'}</p>
+                {[
+                  ['müşteri', frontmatter.client],
+                  ['sektör', frontmatter.industry],
+                  ['yıl', String(frontmatter.year)],
+                  ['hizmetler', frontmatter.services.join(', ')],
+                ].map(([k, v]) => (
+                  <p key={k} className="flex gap-2 mb-1">
+                    <span className="text-muted-foreground w-20 shrink-0">{k}</span>
+                    <span className="text-accent">{v}</span>
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            {/* Main narrative */}
+            <article className="max-w-2xl">
+              <MDXContent source={body} />
+              {frontmatter.testimonial && (
+                <div className="mt-12">
+                  <Quote
+                    author={frontmatter.testimonial.author}
+                    role={frontmatter.testimonial.role}
+                  >
+                    {frontmatter.testimonial.quote}
+                  </Quote>
+                </div>
+              )}
+            </article>
+          </div>
+        </Container>
+      </section>
+
       <RelatedCases currentSlug={slug} locale={locale} />
       <CTASection />
     </>
