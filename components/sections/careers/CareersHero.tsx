@@ -59,10 +59,10 @@ export function CareersHero({ openCount }: CareersHeroProps) {
             <div className="border border-border bg-elevated p-6 font-mono text-xs space-y-5">
               <p className="text-muted-foreground uppercase tracking-wider">{'> ekip'}</p>
               {[
-                { label: 'mühendis', value: '24' },
-                { label: 'ortalama kıdem', value: '6+ yıl' },
-                { label: 'lokasyon', value: 'İstanbul · remote' },
-                { label: 'sektörler', value: 'fintech · iGaming · e-ticaret' },
+                { label: 'mühendis', value: '28' },
+                { label: 'toplam ekip', value: '47 kişi' },
+                { label: 'lokasyon', value: 'Maslak İstanbul · İzmir · remote' },
+                { label: 'sektörler', value: 'fintech · iGaming · e-ticaret · entegrasyon' },
               ].map((row) => (
                 <div key={row.label} className="flex items-baseline justify-between gap-4">
                   <span className="text-muted-foreground uppercase">{row.label}</span>

@@ -9,12 +9,12 @@ import { RevealSection } from '@/components/motion/RevealSection';
 gsap.registerPlugin(ScrollTrigger);
 
 const STAGES = [
-  { id: 'commit', label: 'commit', detail: 'git push origin main', logs: ['Counting objects: 14, done.', 'Compressing objects: 100% (10/10), done.', 'Total 14 (delta 8), reused 0 (delta 0)'] },
-  { id: 'ci', label: 'CI', detail: 'GitHub Actions · build #4827', logs: ['↻ Setting up Node 24...', '↻ Installing dependencies (pnpm)...', '✓ Lockfile up to date'] },
+  { id: 'commit', label: 'commit', detail: 'feat(banking): add 3DS challenge flow', logs: ['Counting objects: 17, done.', 'Compressing objects: 100% (12/12), done.', 'Total 17 (delta 9), reused 0 (delta 0)'] },
+  { id: 'ci', label: 'CI', detail: 'GitHub Actions · build #4827 · 4m 18s', logs: ['↻ Setting up Node 24...', '↻ Installing dependencies (pnpm)...', '✓ Lockfile up to date'] },
   { id: 'test', label: 'tests', detail: '847 unit · 124 integration · 28 e2e', logs: ['✓ unit (3.4s) 847 passed', '✓ integration (12.1s) 124 passed', '✓ e2e (47.8s) 28 passed'] },
-  { id: 'build', label: 'build', detail: 'Docker multi-arch · 4 layers cached', logs: ['↻ Building image airomeda/core:6422b59...', '✓ Layer cache hit: 3/4', '✓ Pushed to ghcr.io (24.8 MB)'] },
-  { id: 'deploy', label: 'deploy', detail: 'Kubernetes rolling update · fra1 + lon1', logs: ['↻ Applying manifest...', '✓ Deployment updated', '✓ Readiness probe passed in 8s'] },
-  { id: 'live', label: 'live', detail: '99.994% uptime · 18ms P50', logs: ['✓ Health: all pods healthy', '✓ Traffic: 100% on new version', '● production · running'] },
+  { id: 'build', label: 'build', detail: 'multi-arch docker · ghcr.io · 4 layers cached', logs: ['↻ Building image airomeda/core:6422b59...', '✓ Layer cache hit: 3/4', '✓ Pushed to ghcr.io (24.8 MB)'] },
+  { id: 'deploy', label: 'deploy', detail: 'k8s rolling update · fra1 birincil · lon1 yedek', logs: ['↻ Applying manifest...', '✓ Deployment updated', '✓ Readiness probe passed in 8s'] },
+  { id: 'live', label: 'live', detail: 'production · 100% traffic · 99.973% uptime · 18ms P50', logs: ['✓ Health: all pods healthy (fra1 + lon1 + ist1)', '✓ Traffic: 100% on new version', '● production · running'] },
 ];
 
 export function DeploymentPipeline() {

@@ -16,37 +16,37 @@ const IMAGES: ImgSpec[] = [
     src: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=900&q=85',
     alt: 'Code editor',
     span: 'tall',
-    caption: 'core platform · TypeScript',
+    caption: 'core banking · TypeScript + Kotlin',
   },
   {
     src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=85',
     alt: 'Dashboard',
     span: 'wide',
-    caption: 'finance dashboard · production',
+    caption: 'PayGate dashboard · production · fra1',
   },
   {
     src: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=85',
     alt: 'Workspace',
     span: 'sq',
-    caption: 'Istanbul studio',
+    caption: 'Maslak · İstanbul ofisi',
   },
   {
     src: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=900&q=85',
     alt: 'Servers',
     span: 'tall',
-    caption: 'fra1 · live',
+    caption: 'fra1 birincil · k8s cluster · live',
   },
   {
     src: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=600&q=85',
     alt: 'Code review',
     span: 'sq',
-    caption: 'pair · code review',
+    caption: 'sprint review · 28 mühendis',
   },
   {
     src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=85',
     alt: 'Network',
     span: 'wide',
-    caption: 'edge POP · 320+',
+    caption: 'Cloudflare edge · 320+ POP · 4 bölge',
   },
 ];
 
@@ -62,7 +62,7 @@ export function StudioGallery() {
                 Stüdyodan kareler.
               </h2>
             </div>
-            <p className="font-mono text-xs text-muted-foreground">istanbul · 6:24 PM</p>
+            <p className="font-mono text-xs text-muted-foreground">Maslak · İstanbul · GMT+3</p>
           </div>
         </RevealSection>
 

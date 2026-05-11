@@ -12,25 +12,25 @@ const PHASES = [
     id: 'discovery',
     n: '01',
     title: 'Discovery',
-    body: "İhtiyacı haritalandırırız. Regülasyon, bağımlılıklar, mevcut sistemler. İlk 2-4 hafta.",
+    body: "İhtiyacı haritalandırırız. Regülasyon gereksinimleri, sistem bağımlılıkları, teknik borç haritası. Brief'e 24 saat, NDA'ya ortalama 2 iş günü. İlk 2–3 hafta.",
   },
   {
     id: 'design',
     n: '02',
     title: 'Design',
-    body: 'Mimari kararlar, API kontratları, veri modeli. Çizilen her şey paylaşılır, müşteri onaylar.',
+    body: 'Mimari kararlar, servis sınırları, API kontratları, veri modeli. Her karar belgelenir, müşteri onaylar. Audit-ready mimari ilk günden.',
   },
   {
     id: 'build',
     n: '03',
     title: 'Build',
-    body: "Sprintler halinde teslim. Her sprint sonunda demo edilebilir bir parça. Test + CI + audit log.",
+    body: "Sprintler halinde teslim. Her sprint sonunda demo edilebilir bir parça. 847 unit, 124 integration, 28 e2e test. CI/CD hattı ve observability her commit'ten itibaren.",
   },
   {
     id: 'support',
     n: '04',
     title: 'Support',
-    body: "Production'a aldığımız ne olursa olsun, biz buradayız. On-call rotation, SLA, observability.",
+    body: "Production'a aldığımız her şeyin arkasındayız. On-call rotation, %99.95 SLA, OpenTelemetry izleme. Devir teslim: kod, doküman, ekip eğitimi.",
   },
 ];
 
@@ -77,11 +77,11 @@ export function ProcessStory() {
             <div className="lg:sticky lg:top-32">
               <p className="font-mono text-eyebrow uppercase text-muted-foreground">{'// process'}</p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight">
-                4 faz, ortalama 12 hafta.
+                4 faz, 6–14 hafta.
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 Her fazın sonunda müşteri görür, geri bildirim verir, biz devam ederiz.
-                Şeffaf sprint kadansı + audit-ready dokümantasyon.
+                Şeffaf sprint kadansı + audit-ready dokümantasyon. Devir teslim dahil.
               </p>
             </div>
           </div>

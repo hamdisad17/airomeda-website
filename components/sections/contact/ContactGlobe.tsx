@@ -21,7 +21,7 @@ export function ContactGlobe() {
               <DeploymentGlobe />
             </div>
             <div className="absolute bottom-4 left-4 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-              {'12 bölge · 47+ üretim sistemi'}
+              {'4 aktif bölge · 47 üretim sistemi · Cloudflare 320+ POP'}
             </div>
           </div>
 
@@ -31,9 +31,9 @@ export function ContactGlobe() {
               <p className="text-muted-foreground uppercase tracking-wider mb-4">{'> ofis'}</p>
               <div className="space-y-1 text-foreground/80">
                 <p className="text-foreground font-medium">Airomeda A.Ş.</p>
-                <p>Levent Mah. Büyükdere Cad.</p>
-                <p>No: 185, Kat: 8</p>
-                <p>34394 Şişli / İstanbul</p>
+                <p>Maslak Büyükdere Cad. No: 237</p>
+                <p>Kat: 12</p>
+                <p>34485 Sarıyer / İstanbul</p>
                 <p className="text-muted-foreground">Türkiye</p>
               </div>
             </div>
@@ -60,15 +60,15 @@ export function ContactGlobe() {
               <p className="text-muted-foreground uppercase tracking-wider mb-4">{'> e-posta'}</p>
               <div className="space-y-2">
                 <div>
-                  <p className="text-muted-foreground text-[10px] mb-1">Yeni proje</p>
-                  <a href="mailto:hello@airomeda.com" className="text-accent hover:underline">
-                    hello@airomeda.com
+                  <p className="text-muted-foreground text-[10px] mb-1">Yeni proje / brief</p>
+                  <a href="mailto:brief@airomeda.com" className="text-accent hover:underline">
+                    brief@airomeda.com
                   </a>
                 </div>
                 <div>
                   <p className="text-muted-foreground text-[10px] mb-1">Kariyer</p>
-                  <a href="mailto:kariyer@airomeda.com" className="text-accent hover:underline">
-                    kariyer@airomeda.com
+                  <a href="mailto:careers@airomeda.com" className="text-accent hover:underline">
+                    careers@airomeda.com
                   </a>
                 </div>
               </div>

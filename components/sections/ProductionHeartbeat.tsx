@@ -176,10 +176,10 @@ function LiveLog() {
 }
 
 export function ProductionHeartbeat() {
-  const txns = useTickingNumber(1247831, [4, 24], 900);
-  const deploys = useTickingNumber(2847, [0, 0.04], 4000);
-  const latency = useTickingNumber(18, [-1.5, 1.8], 2200);
-  const uptime = 99.994;
+  const txns = useTickingNumber(1847291, [6, 28], 900);
+  const deploys = useTickingNumber(287, [0, 0.005], 4000);
+  const latency = useTickingNumber(18, [-1.2, 1.5], 2200);
+  const uptime = 99.973;
 
   return (
     <section id="production-heartbeat" className="border-b border-border bg-elevated/30 py-20 md:py-28 relative overflow-hidden">
@@ -224,7 +224,7 @@ export function ProductionHeartbeat() {
             <div className="mt-4">
               <Sparkline accent />
             </div>
-            <p className="mt-2 font-mono text-[10px] text-success">↑ 4.2% · son saat</p>
+            <p className="mt-2 font-mono text-[10px] text-success">↑ 12.4% · son saat</p>
           </div>
 
           {/* Card: Latency */}
@@ -260,29 +260,29 @@ export function ProductionHeartbeat() {
               {Array.from({ length: 30 }).map((_, i) => (
                 <div
                   key={i}
-                  className={i === 12 ? 'bg-accent/30' : 'bg-success/40'}
+                  className={i === 9 ? 'bg-accent/30' : 'bg-success/40'}
                 />
               ))}
             </div>
             <p className="mt-2 font-mono text-[10px] text-muted-foreground">
-              son 30 gün · 1 planlı bakım
+              son 30 gün · SLA %99.95 · gözlemlenen %99.973
             </p>
           </div>
 
           {/* Card: Deploys */}
           <div className="bg-background p-6">
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">
-              Sevkiyat (bu yıl)
+              Aylık deployment
             </p>
             <p className="mt-4 text-3xl font-semibold tabular-nums text-foreground">
               {Math.floor(deploys).toLocaleString('tr-TR')}
             </p>
             <div className="mt-4 flex items-center gap-2 font-mono text-[10px]">
               <span className="inline-flex h-1.5 w-1.5 rounded-full bg-success" />
-              <span className="text-muted-foreground">son: 14 dk önce</span>
+              <span className="text-muted-foreground">son: 22 dk önce · fra1</span>
             </div>
             <p className="mt-2 font-mono text-[10px] text-muted-foreground">
-              production · auto-deploy
+              production · k8s rolling · auto-deploy
             </p>
           </div>
         </div>

@@ -38,33 +38,24 @@ export function StudioStory() {
           <RevealSection>
             <div className="space-y-6 text-muted-foreground leading-relaxed max-w-2xl">
               <p className="text-lg text-foreground/90">
-                2018&apos;de iki mühendis, bir fintech projesi ve bir ofis. Bugün 24 kişilik bir
-                ekip, birden fazla kıtada çalışan production sistemleri ve düzenlenmiş
-                endüstrilerde kanıtlanmış bir yol.
+                2018&apos;de iki mühendis, bir fintech müşterisi ve Maslak&apos;ta küçük bir ofis. Bugün 47 kişilik bir ekip, 4 aktif bölgede çalışan 47 production sistemi ve düzenlenmiş endüstrilerde kanıtlanmış 8 yıllık yol.
               </p>
               <p>
-                Airomeda&apos;yı kurarken bir ilkeyle başladık: yazdığımız kodun kalitesi, onu
-                destekleyecek altyapının sağlamlığı ve teslim ettiğimizde müşterinin elinde
-                gerçek anlamda çalışan bir sistem olması. Sunum değil, production.
+                Airomeda&apos;yı kurarken bir ilkeyle başladık: yazdığımız kodun kalitesi, onu destekleyecek altyapının sağlamlığı ve teslim ettiğimizde müşterinin elinde gerçek anlamda çalışan bir sistem olması. Demo değil, production hattı.
               </p>
               <p>
-                Finans sektörünün regülasyon ağırlığını, iGaming&apos;in lisans hassasiyetini,
-                e-ticaretin hız baskısını ve entegrasyon projelerinin karmaşıklığını ilk elden
-                bilen bir ekip. Bu deneyim bize sektörel kısayolları, kaçınılması gereken
-                teknik borçları ve her disiplinin özgün risklerini öğretti.
+                Finans sektörünün BDDK/MASAK regülasyon ağırlığını, iGaming&apos;in eCOGRA lisans hassasiyetini, e-ticaretin hız baskısını ve entegrasyon projelerinin idempotency karmaşıklığını ilk elden bilen bir ekip. Bu deneyim bize sektörel kısayolları, kaçınılması gereken teknik borçları ve her disiplinin özgün risklerini öğretti.
               </p>
 
               <Pullquote
-                attribution="Mehmet Kara"
+                attribution="Ahmet Kaya"
                 role="CEO, Airomeda"
               >
                 Production&apos;da değilse, bitmemiştir.
               </Pullquote>
 
               <p>
-                Bugün müşterilerimizle uzun vadeli ortaklıklar kuruyoruz. Projeyi bitirip
-                gitmiyor, teslim ettikten sonra da yanlarında kalıyoruz. Kod onların,
-                IP onların, mimari kararlar belgelenmiş ve denetlenebilir.
+                Bugün 68 aktif müşteri ile uzun vadeli ortaklıklar sürdürüyoruz. 280+ aylık deployment, %99.973 gözlemlenen uptime. Projeyi bitirip gitmiyor, devrediyoruz — kod sizin, IP sizin, mimari kararlar belgelenmiş ve denetlenebilir.
               </p>
             </div>
           </RevealSection>

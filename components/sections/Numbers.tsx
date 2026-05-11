@@ -4,10 +4,10 @@ import { CountUp } from '@/components/motion/CountUp';
 import { StaggerGrid } from '@/components/motion/StaggerGrid';
 
 const STATS = [
-  { end: 28, suffix: '+', decimals: 0, label: 'production deployment' },
-  { end: 99.994, suffix: '%', decimals: 3, label: 'aggregate uptime' },
-  { end: 4.2, suffix: 'B', decimals: 1, label: 'işlenen transaction' },
-  { end: 7, suffix: ' yıl', decimals: 0, label: 'üretim ortamında' },
+  { end: 134, suffix: '', decimals: 0, label: 'tamamlanmış proje' },
+  { end: 99.973, suffix: '%', decimals: 3, label: 'gözlemlenen aylık uptime' },
+  { end: 47, suffix: '', decimals: 0, label: "production'da çalışan sistem" },
+  { end: 8, suffix: ' yıl', decimals: 0, label: 'üretim ortamında' },
 ];
 
 export function Numbers() {

@@ -19,8 +19,7 @@ export function StackPanel() {
             Üretim ortamımız.
           </h2>
           <p className="mt-4 max-w-2xl text-body-lg text-muted-foreground">
-            8 yıllık production deneyimi. Müşterinin yığını veya hedeflediği yığın hangisi olursa
-            olsun, ekibimiz onunla teslim edecek deneyime sahip.
+            2018&apos;den beri 47 production sisteminde test edilmiş. Müşterinin mevcut yığını veya hedeflediği mimari ne olursa olsun, 28 mühendislik ekibi onunla teslim edecek deneyime sahip.
           </p>
         </RevealSection>
         <div className="mt-16 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2 lg:grid-cols-4">

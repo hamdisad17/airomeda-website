@@ -75,8 +75,8 @@ export function BentoShowcase() {
           <TiltCard className="p-6 border border-border bg-elevated flex flex-col justify-between">
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">SLA</p>
             <div>
-              <p className="text-5xl font-semibold tabular-nums tracking-tight">99.99<span className="text-accent">%</span></p>
-              <p className="mt-2 text-xs text-muted-foreground font-mono">aylık ortalama uptime</p>
+              <p className="text-5xl font-semibold tabular-nums tracking-tight">99.95<span className="text-accent">%</span></p>
+              <p className="mt-2 text-xs text-muted-foreground font-mono">uptime SLA · gözlemlenen 99.973%</p>
             </div>
           </TiltCard>
 
@@ -96,9 +96,9 @@ export function BentoShowcase() {
 
           {/* Quote */}
           <TiltCard className="p-6 border border-border bg-elevated md:col-span-2">
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">CTO, PayGate</p>
+            <p className="font-mono text-eyebrow uppercase text-muted-foreground">Murat Karaağaç · CTO, PayGate</p>
             <p className="mt-3 text-base md:text-lg font-medium leading-snug">
-              <span className="text-accent">&ldquo;</span>Sıfır kesinti ile core banking modernizasyonu — denetlenebilir, ölçeklenebilir, devredilebilir.<span className="text-accent">&rdquo;</span>
+              <span className="text-accent">&ldquo;</span>4 ayda core banking migrasyonu tamamlandı. Planlanan 12 saatlik kesinti penceresini sıfıra indirdiler; BDDK denetimi ilk turda geçildi.<span className="text-accent">&rdquo;</span>
             </p>
           </TiltCard>
 
@@ -106,7 +106,7 @@ export function BentoShowcase() {
           <TiltCard className="p-6 border border-border bg-elevated flex flex-col justify-between">
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">teslim</p>
             <div>
-              <p className="text-3xl font-semibold tracking-tight">8–16 <span className="text-base text-muted-foreground">hafta</span></p>
+              <p className="text-3xl font-semibold tracking-tight">6–14 <span className="text-base text-muted-foreground">hafta</span></p>
               <p className="mt-2 text-xs text-muted-foreground font-mono">brief → production</p>
             </div>
           </TiltCard>

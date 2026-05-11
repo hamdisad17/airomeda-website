@@ -9,6 +9,7 @@ import { CultureGallery } from '@/components/sections/careers/CultureGallery';
 import { WhyJoin } from '@/components/sections/careers/WhyJoin';
 import { OpenRoles } from '@/components/sections/careers/OpenRoles';
 import { PerksStrip } from '@/components/sections/careers/PerksStrip';
+import { AsymmetricGallery } from '@/components/visuals/AsymmetricGallery';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -44,6 +45,7 @@ export default async function CareersIndex({
     <>
       <CareersHero openCount={jobs.length} />
       <PerksStrip />
+      <AsymmetricGallery />
       <CultureGallery />
       <WhyJoin />
       <OpenRoles jobs={jobs} />

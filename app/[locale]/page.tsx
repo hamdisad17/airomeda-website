@@ -5,6 +5,7 @@ import { makeAlternates } from '@/lib/seo/alternates';
 import { getTranslations } from 'next-intl/server';
 
 import { Hero } from '@/components/sections/Hero';
+import { StatTicker } from '@/components/visuals/StatTicker';
 import { CustomerLogos } from '@/components/sections/CustomerLogos';
 import { WhyUs } from '@/components/sections/WhyUs';
 import { IndustrySwitcher } from '@/components/sections/IndustrySwitcher';
@@ -12,6 +13,7 @@ import { Capabilities } from '@/components/sections/Capabilities';
 import { Architecture } from '@/components/sections/Architecture';
 import { SectionDivider } from '@/components/visuals/SectionDivider';
 import { ProductionHeartbeat } from '@/components/sections/ProductionHeartbeat';
+import { ScrollSequence } from '@/components/visuals/ScrollSequence';
 import { BentoShowcase } from '@/components/sections/BentoShowcase';
 import { StackPanel } from '@/components/sections/StackPanel';
 import { ProductShowcase } from '@/components/sections/ProductShowcase';
@@ -54,6 +56,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   return (
     <>
       <Hero />
+      <StatTicker />
       <CustomerLogos />
       <WhyUs />
       <IndustrySwitcher />
@@ -61,6 +64,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <Architecture />
       <SectionDivider label="canlı sistem" />
       <ProductionHeartbeat />
+      <ScrollSequence />
       <BentoShowcase />
       <StackPanel />
       <DeploymentGlobe />

@@ -48,25 +48,25 @@ export async function CTASection() {
             </Link>
           </MagneticButton>
           <a
-            href="mailto:hello@airomeda.com"
+            href="mailto:brief@airomeda.com"
             className="font-mono text-sm text-muted-foreground hover:text-accent transition-colors"
           >
-            hello@airomeda.com →
+            brief@airomeda.com →
           </a>
         </div>
 
         <div className="mt-20 grid gap-x-12 gap-y-6 border-t border-border pt-10 font-mono text-xs text-muted-foreground md:grid-cols-3">
           <div>
             <p className="text-foreground">İlk görüşme</p>
-            <p className="mt-1">30 dk ücretsiz · kapsam değerlendirme</p>
+            <p className="mt-1">30 dk ücretsiz · kapsam değerlendirme · NDA ortalama 2 iş günü</p>
           </div>
           <div>
-            <p className="text-foreground">NDA</p>
-            <p className="mt-1">İki yönlü imzalama · veri sıkıdır</p>
+            <p className="text-foreground">Brief&apos;e yanıt</p>
+            <p className="mt-1">24 saat içinde · brief@airomeda.com</p>
           </div>
           <div>
-            <p className="text-foreground">Cevap süresi</p>
-            <p className="mt-1">24 saat içinde · hello@airomeda.com</p>
+            <p className="text-foreground">Teslim</p>
+            <p className="mt-1">6–14 hafta · proje tipine göre · devir teslim dahil</p>
           </div>
         </div>
       </Container>

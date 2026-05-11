@@ -3,13 +3,13 @@ import { Container } from '@/components/layout/Container';
 
 const PERKS = [
   'özel sağlık sigortası',
-  'yıllık eğitim bütçesi',
-  'tam uzaktan çalışma',
-  'konferans bütçesi',
+  '12.000 TL yıllık konferans bütçesi',
+  'tam uzaktan veya hibrit',
   'MacBook Pro M-serisi',
   'esnek izin politikası',
   'yıllık prim',
-  'hibrit istanbul ofisi',
+  'Maslak ofis veya İzmir',
+  'eğitim + sertifika desteği',
 ];
 
 export function PerksStrip() {

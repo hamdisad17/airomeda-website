@@ -1,0 +1,154 @@
+---
+title: Distributed Tracing with OpenTelemetry
+slug: opentelemetry-distributed-tracing
+excerpt: How we achieved full observability across 10+ services in the Entegrasys project using a single trace ID. Sampling strategy, context propagation, and Grafana Tempo integration.
+cover: /blog/opentelemetry-distributed-tracing-cover.svg
+author: İlker Demirci
+published_at: '2026-05-01'
+reading_time: 8
+categories: [infrastructure]
+---
+
+## The Problem
+
+In the Entegrasys project, 10 shipping carriers and 4 ERP systems are managed through a single orchestration layer. When an order is placed, the request passes through an average of 7 services: API gateway, auth service, order service, ERP connector, and carrier adapter.
+
+When something slows down or errors in this chain, pinpointing the exact location — with each service using its own log format — could take hours. OpenTelemetry solved this.
+
+## What OpenTelemetry Is (and Isn't)
+
+OpenTelemetry (OTel) is a vendor-agnostic standard for producing, collecting, and exporting telemetry data — traces, metrics, logs. It is not a storage or visualization tool; it operates on the production side of the pipeline.
+
+The practical implication: a service instrumented with OTel can send traces to Jaeger, Grafana Tempo, or Datadog. Switching vendors requires no code changes.
+
+## Instrumentation Strategy
+
+### Auto vs Manual Instrumentation
+
+For Node.js services, OTel's auto-instrumentation package automatically instruments HTTP, gRPC, database queries, and many popular libraries:
+
+```typescript
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
+
+const sdk = new NodeSDK({
+  traceExporter: new OTLPTraceExporter({ url: process.env.OTEL_EXPORTER_OTLP_ENDPOINT }),
+  instrumentations: [getNodeAutoInstrumentations()],
+});
+
+sdk.start();
+```
+
+This single file turns everything from Express endpoints to Prisma queries into spans automatically.
+
+Manual instrumentation is necessary to add visibility into business logic:
+
+```typescript
+import { trace } from '@opentelemetry/api';
+
+const tracer = trace.getTracer('order-service', '1.0.0');
+
+async function processOrder(orderId: string) {
+  return tracer.startActiveSpan('order.process', async (span) => {
+    span.setAttribute('order.id', orderId);
+    span.setAttribute('order.source', 'api');
+    
+    try {
+      const result = await doWork(orderId);
+      span.setStatus({ code: SpanStatusCode.OK });
+      return result;
+    } catch (err) {
+      span.recordException(err as Error);
+      span.setStatus({ code: SpanStatusCode.ERROR });
+      throw err;
+    } finally {
+      span.end();
+    }
+  });
+}
+```
+
+### Context Propagation
+
+Context propagation is the lifeblood of distributed tracing. As a request moves from one service to another, the trace ID and span ID travel in HTTP headers (`traceparent`, `tracestate`).
+
+OTel handles this propagation automatically — but if a layer in the chain breaks propagation (reverse proxy, queue, third-party SDK), the chain breaks.
+
+<Callout title="Common Pitfall">
+Async operations over message queues (Kafka, RabbitMQ) do not automatically carry trace context. You must write explicit code to attach `traceparent` to message headers and restore it on the consumer side.
+</Callout>
+
+## Collector Configuration
+
+The OTel Collector receives traces, metrics, and logs from services, processes them, and forwards them to backend storage. In Entegrasys we built this pipeline:
+
+```yaml
+# otel-collector-config.yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  batch:
+    timeout: 1s
+    send_batch_size: 1024
+  memory_limiter:
+    limit_mib: 512
+  resource:
+    attributes:
+      - key: deployment.environment
+        value: production
+        action: upsert
+
+exporters:
+  otlp/tempo:
+    endpoint: tempo:4317
+    tls:
+      insecure: true
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, batch, resource]
+      exporters: [otlp/tempo]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [prometheus]
+```
+
+## Sampling Strategy
+
+Storing every trace in production is both expensive and unnecessary. We defined a smart sampling strategy:
+
+- **Head-based sampling**: 10% random sampling as baseline for all services
+- **Tail-based sampling**: All requests over 500ms are stored at 100%
+- **Error sampling**: All traces containing errors are stored at 100%
+- **Business sampling**: Critical paths (payments, orders) sampled at 100%
+
+Tail-based sampling was applied at the OTel Collector level, so the full trace information is available before making the decision.
+
+## Visualization with Grafana Tempo
+
+We used Grafana Tempo for trace storage. Its native integration with Prometheus lets us display traces and metrics side by side in Grafana.
+
+The most valuable feature: jumping from a Prometheus alert directly to the relevant trace. When an endpoint's P99 latency spikes, a single click from the graph to the trace.
+
+## Results
+
+After taking OTel to production:
+
+- Average incident detection time dropped from 47 minutes to 8 minutes
+- Slow ERP connectors identified from real data; N+1 query problems found in 3 carrier adapters
+- New developer onboarding time reduced: system behavior is now readable from traces
+
+## Conclusion
+
+OpenTelemetry is a mature, production-ready standard. It can be set up without vendor lock-in, and its broad ecosystem support means you can get started quickly. If you work with microservices or distributed systems, we recommend moving OTel from your "future improvements" list into today's infrastructure.

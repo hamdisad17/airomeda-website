@@ -2,10 +2,11 @@
 import * as React from 'react';
 
 const SHIPMENTS = [
-  { type: 'Core banking', client: 'PayGate', date: '4 hf önce' },
-  { type: 'RNG engine', client: 'Bahis.io', date: '6 hf önce' },
-  { type: 'Headless storefront', client: 'Hubert', date: '9 hf önce' },
-  { type: 'Payment cashier', client: 'TopRateBet', date: '11 hf önce' },
+  { type: 'Core banking migrasyonu', client: 'PayGate', date: '3 hf önce' },
+  { type: 'RNG + cashier', client: 'Bahis.io', date: '5 hf önce' },
+  { type: 'Headless storefront', client: 'Hubert Commerce', date: '8 hf önce' },
+  { type: 'ERP köprüsü', client: 'Entegrasys', date: '10 hf önce' },
+  { type: 'Sportsbook platformu', client: 'TopRateBet', date: '13 hf önce' },
 ];
 
 export function RecentShipments() {

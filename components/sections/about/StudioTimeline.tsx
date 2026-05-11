@@ -9,14 +9,14 @@ import { RevealSection } from '@/components/motion/RevealSection';
 gsap.registerPlugin(ScrollTrigger);
 
 const MILESTONES = [
-  { year: '2018', label: 'Kuruluş', detail: 'İstanbul, iki kurucu, bir fintech müşterisi.' },
-  { year: '2019', label: 'İlk fintech', detail: 'İlk ödeme entegrasyon projesi canlıya alındı.' },
-  { year: '2020', label: 'iGaming lisansı', detail: 'Lisanslı casino ve sportsbook platformu teslim edildi.' },
-  { year: '2021', label: 'E-ticaret platformu', detail: 'Headless e-ticaret çözümleri portföye eklendi.' },
-  { year: '2022', label: 'Ekip büyümesi', detail: 'Ekip 10\'dan 20+ mühendise büyüdü.' },
-  { year: '2023', label: 'Multi-region', detail: 'İlk çok bölgeli deployment — 3 kıta, 8 POP.' },
-  { year: '2024', label: 'Entegrasyon ürünü', detail: 'ERP/WMS köprüsü ürünü kendi portföyümüze girdi.' },
-  { year: '2025', label: 'Ölçek', detail: '47+ canlı production sistemi, 12 bölge, 24 mühendis.' },
+  { year: '2018', label: 'Kuruluş', detail: 'Maslak, İstanbul — iki kurucu, bir PSP müşterisi, tek ofis.' },
+  { year: '2019', label: 'İlk ödeme entegrasyonu', detail: "Akış Ödemeleri için PSP entegrasyon projesi production'a alındı. İlk BDDK uyumlu audit log." },
+  { year: '2020', label: 'iGaming portfolyosu', detail: 'Bahis.io için lisanslı casino platformu ve eCOGRA uyumlu RNG teslim edildi.' },
+  { year: '2021', label: 'Headless e-ticaret', detail: 'Hubert Commerce için Magento→Next.js migrasyonu. LCP 3.1s → 0.9s.' },
+  { year: '2022', label: 'Ekip 28 mühendise ulaştı', detail: 'İzmir uydu ofisi açıldı. 28 mühendis, 6 designer, ilk SRE/DevOps rotasyonu.' },
+  { year: '2023', label: 'Multi-region deployment', detail: 'fra1 birincil, lon1 yedek, ist1 edge — 3 bölge, Cloudflare 320+ POP.' },
+  { year: '2024', label: 'Entegrasyon ürünü', detail: 'Entegrasys için ERP/WMS/kargo agregatör köprüsü. 10+ taşıyıcı, tek idempotent router.' },
+  { year: '2025', label: '47 production sistem · 134 proje', detail: '4 aktif bölge (fra1 · lon1 · ist1 · iad1), 68 aktif müşteri, 280+ aylık deployment.' },
 ];
 
 export function StudioTimeline() {

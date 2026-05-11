@@ -223,8 +223,7 @@ export function DeploymentGlobe() {
               Dünyaya dağıtıyoruz.
             </h2>
             <p className="mt-4 max-w-md text-body-lg text-muted-foreground">
-              Cloudflare, AWS, GCP — multi-region failover, edge cache, geo-routing. Hangi
-              pazardaysanız, latency&apos;ni düşürüyoruz.
+              Cloudflare global ağı (320+ POP), 4 aktif bölge — fra1 birincil, lon1 yedek, ist1 edge, iad1 read-replica. Failover 8 saniye altı.
             </p>
             <dl className="mt-10 grid grid-cols-2 gap-6">
               <div>
@@ -240,7 +239,7 @@ export function DeploymentGlobe() {
                   bölge
                 </dt>
                 <dd className="mt-1.5 text-2xl font-semibold tabular-nums text-foreground">
-                  42
+                  4
                 </dd>
               </div>
               <div>

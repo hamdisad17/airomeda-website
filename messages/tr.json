@@ -14,7 +14,7 @@
     "contact": "İletişim"
   },
   "footer": {
-    "tagline": "Bilişim teknolojileri ortağınız.",
+    "tagline": "Slayt değil. Yazılım yazıyoruz.",
     "company": "Şirket",
     "services": "Hizmetler",
     "legal": "Yasal",
@@ -24,9 +24,9 @@
   },
   "home": {
     "hero": {
-      "title": "Karmaşık olanı, basit kıl.",
-      "subtitle": "Finans, iGaming, e-ticaret ve daha fazlası için uçtan uca yazılım.",
-      "kinetic_words": ["Finans", "iGaming", "E-Ticaret", "Entegrasyon", "Performans", "CRM"],
+      "title": "Karmaşık olanı, production'a taşı.",
+      "subtitle": "2018'den beri finans, iGaming, e-ticaret ve entegrasyon için audit-ready, ölçeklenebilir yazılım.",
+      "kinetic_words": ["Finans", "iGaming", "E-Ticaret", "Entegrasyon", "SEO & Reklam", "CRM"],
       "kinetic_connector": "için."
     },
     "services_section": { "title": "Hizmetlerimiz", "subtitle": "Yedi disiplin, tek standart." },
@@ -42,21 +42,21 @@
     },
     "cta": { "title": "Karmaşık problem mi?", "subtitle": "Konuşalım." },
     "manifesto": {
-      "lead": "Yazılımı bir broşür gibi değil, bir altyapı gibi düşünüyoruz.",
-      "extension": "Çalışmadığında insanlar para kaybeder, regülatör arar, müşteri gider. Bu yüzden mimariyi denetlenebilirlik üzerinden kuruyoruz; hızı, kaliteden değil ekipten kazanıyoruz.",
+      "lead": "Yazılımı bir broşür gibi değil, denetlenebilir bir altyapı gibi inşa ediyoruz.",
+      "extension": "Çalışmadığında insanlar para kaybeder, regülatör arar, müşteri gider. Bu yüzden her mimari kararı audit izine göre kuruyoruz; hızı kaliteden değil, ekip disiplininden kazanıyoruz.",
       "p1_title": "Sahiplik",
-      "p1_body": "Aldığımız kararı production'da olaylara müdahaleye kadar takip ederiz.",
+      "p1_body": "Kodu biz yazmış olabiliriz ama IP sizin. Her karar belgelenir, her sistem devredilir.",
       "p2_title": "Zanaat",
-      "p2_body": "Hızlı teslim ediyoruz ama kestirme yapmıyoruz.",
+      "p2_body": "6–14 haftada production, ama temiz mimari ile. Teknik borç surprizi yok.",
       "p3_title": "Şeffaflık",
-      "p3_body": "Riski ve hatayı saklamadan, açıkça konuşuruz."
+      "p3_body": "Riski, hatayı ve gecikmeli teslimi saklamadan, ilk günde açıkça konuşuruz."
     },
     "selected_work": { "title": "Son teslim ettiklerimizden." }
   },
   "services_index": { "title": "Hizmetlerimiz" },
   "case_studies": {
     "title": "Çalışmalarımız",
-    "subtitle": "Müşterilerimizle birlikte kurduğumuz çözümler.",
+    "subtitle": "134 tamamlanmış proje — her biri production'da, ölçülebilir sonuçlarla.",
     "metric_results": "Sonuçlar",
     "related_label": "İlgili çalışmalar",
     "client_label": "Müşteri",
@@ -76,7 +76,7 @@
   },
   "careers": {
     "title": "Kariyer",
-    "subtitle": "Yetenekli ekiple büyüyen, anlamlı işler yapan bir şirket.",
+    "subtitle": "47 kişilik ekip, 5 açık pozisyon — production sistemler inşa eden mühendisler arıyoruz.",
     "team_culture_title": "Ekip kültürümüz",
     "team_culture_intro": "Birlikte çalışırken inandığımız üç temel ilke.",
     "values": {
@@ -95,6 +95,7 @@
     },
     "open_positions": "Açık pozisyonlar",
     "no_open_positions": "Şu anda açık pozisyon bulunmamaktadır. CV'nizi careers@airomeda.com adresine gönderebilirsiniz.",
+
     "responsibilities_title": "Sorumluluklar",
     "requirements_title": "Aranan nitelikler",
     "benefits_title": "Sunduklarımız",

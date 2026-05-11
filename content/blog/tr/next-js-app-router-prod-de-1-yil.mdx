@@ -1,66 +1,112 @@
 ---
-title: Next.js App Router ile Üretimde Bir Yıl
+title: BDDK Denetimine Hazır Log Altyapısı
 slug: next-js-app-router-prod-de-1-yil
-excerpt: App Router'ı gerçek ürünlerde kullanmanın bize öğrettikleri ve hâlâ dikkat gerektiren konular.
+excerpt: PayGate projesinde BDDK ve MASAK uyumu için yapısal log şeması, değişmez log zinciri ve gerçek zamanlı anomali tespiti nasıl kuruldu.
 cover: /blog/next-js-app-router-prod-de-1-yil-cover.svg
-author: Airomeda Ekibi
+author: Selin Aydın
 published_at: '2026-01-30'
 reading_time: 10
-categories: [teknoloji]
+categories: [finans]
 ---
 
-## Bağlam
+## Sorun
 
-Next.js 13 ile duyurulan App Router, React Server Components (RSC) üzerine inşa edilmiş ve frontend geliştirme paradigmasını kökten değiştiren bir mimari. 2025 başında üretim ortamına taşıdığımız birden fazla projede bu mimarinin gerçek dünya performansını test ettik.
+Türk finansal regülasyonları (BDDK, MASAK) bankacılık sistemlerinden log saklaması, erişilebilirlik ve değişmezlik konusunda katı gereksinimler talep eder. Bunlar yalnızca "log tutun" demez; hangi olayların ne kadar süre saklanacağını, kim tarafından erişilebileceğini ve denetim sırasında nasıl sunulacağını da belirler.
 
-Bir yıl sonra şunu söyleyebiliriz: App Router gerçekten güçlü, ancak dikkat edilmesi gereken nüanslar var.
+PayGate projesinde BDDK denetimine 8 hafta kalan noktada kapsamlı bir log altyapısı eksikliğiyle karşılaştık. Bu yazı, sıfırdan kurduğumuz mimarinin teknik detaylarını aktarıyor.
 
-## Ne Çok İyi Çalıştı?
+## BDDK Log Gereksinimleri
 
-### Sunucu Bileşenleri Veri Getirme Mantığını Sadeleştirdi
+Denetim öncesinde masaya oturup gereksinimleri somutlaştırdık:
 
-RSC ile veri getirme doğrudan bileşen düzeyinde gerçekleşir. `useEffect` + `fetch` kombinasyonuna ya da global state yönetimi için üçüncü taraf kütüphanelere olan bağımlılık dramatik biçimde azaldı.
+- **Saklamanın türü**: İşlem logları 10 yıl, erişim logları 5 yıl
+- **Değişmezlik kanıtı**: Her log kaydının sonradan değiştirilemeyeceğini ispatlayan kriptografik zincir
+- **Yapısal format**: Serbest metin değil, şema doğrulanabilir JSON
+- **Gerçek zamanlı erişim**: Denetçilerin önceden belirlenmiş sorgularla anlık veri çekebilmesi
+- **Anonimleştirme politikası**: KVKK kapsamında kişisel verilerin maskelenmesi
 
-Veritabanına doğrudan erişen bileşenler yazmak başta alışılmadık gelse de performans ve geliştirici deneyimi açısından kazancı gördükten sonra geri dönmek istemedin.
-
-### Nested Layouts Kod Organizasyonunu İyileştirdi
-
-Shared layout bileşenlerini route segmentlerine göre organize etmek, özellikle büyük uygulamalarda kodun anlaşılırlığını önemli ölçüde artırdı. Dashboard uygulamalarında iç içe geçmiş layout yapıları çok verimli bir geliştirme deneyimi sağladı.
-
-### Streaming ve Suspense Kullanıcı Deneyimini Yükseltti
-
-Yavaş veri kaynaklarını Suspense sınırlarıyla izole ederek sayfanın geri kalanının anında render edilmesini sağlamak, özellikle veri yoğun sayfalarda kullanıcı deneyimini gözle görülür biçimde iyileştirdi.
-
-<Callout title="Ölçüm Yapın">
-Streaming'in etkisini hissedilir kılmak için yavaş bileşenleri doğru Suspense sınırlarıyla izole etmeniz gerekir. Her şeyi tek bir Suspense'e sarmak beklenen kazancı sağlamaz.
+<Callout title="Önemli Ayrım">
+BDDK log gereksinimleri uygulama logları ile işlem audit loglarını ayırt eder. İkincisi kriptografik kanıt gerektirir; birincisi gözlemlenebilirlik içindir. Her iki pipeline'ı birbirinden bağımsız tasarlayın.
 </Callout>
 
-## Dikkat Gerektiren Konular
+## Mimari: İki Paralel Pipeline
 
-### Caching Modeli Hâlâ Kafa Karıştırıcı
+### 1. Gözlemlenebilirlik Pipeline'ı
 
-Next.js'in çok katmanlı önbellekleme modeli (Router Cache, Full Route Cache, Data Cache, Request Memoization) güçlü ama zihinsel modeli anlamak zaman alıyor. Eski `revalidate` davranışını bekleyip farklı sonuçlarla karşılaşmak yaygın bir deneyim.
+Uygulama logu için OpenTelemetry tabanlı bir yapı kurduk:
 
-Önerdiğimiz yaklaşım:
-- Her cache katmanının ne zaman devreye girdiğini bir şemada belgeleyin
-- Cache invalidation stratejisini bileşen mimarisiyle birlikte planlayın
-- Geliştirme ortamında caching davranışı üretimden farklı olabileceğini unutmayın
+- **Collector**: OpenTelemetry Collector, tüm servislerden logları toplar
+- **Format**: OTLP JSON — her log kaydında `service.name`, `trace_id`, `span_id` zorunlu
+- **Depolama**: Elasticsearch — 90 günlük hot storage, ardından S3 Glacier'a arşiv
+- **Görselleştirme**: Grafana loki stack ile gerçek zamanlı dashboard
 
-### Client/Server Sınırı Yeni Hata Türleri Doğurdu
+Bu pipeline operasyon ekibinin günlük kullandığı katman. P50 sorgu süresi 42ms, P99 280ms.
 
-"use client" direktifini gereken yere koymak bazen çetrefilli olabiliyor. Özellikle üçüncü taraf kütüphaneler (henüz RSC uyumlu olmayan paketler) bu sınırı yönetmeyi zorlaştırıyor.
+### 2. Audit Log Pipeline'ı
 
-### Bundle Analizi Daha da Önemli Hale Geldi
+Regülatör denetimi için ayrı, değişmez bir pipeline:
 
-Server/client sınırını yanlış çizmek, beklenmedik paket boyutu artışlarına yol açabiliyor. `@next/bundle-analyzer` ile düzenli analiz yapmak gerekli.
+```
+İşlem Olayı → Kafka Topic (audit.events) → Audit Processor → Append-Only PostgreSQL → S3 WORM Bucket
+```
 
-## Tavsiyelerimiz
+Her audit log kaydı şu alanları içerir:
 
-- Yeni projelerde App Router ile başlayın — Pages Router'a dönmeyi düşünmek zorunda kalmayacaksınız
-- Mevcut uygulamaları geçirmek için `pages` ve `app` dizinlerinin aynı anda var olabileceği kademeli geçiş yaklaşımını benimseyin
-- Cache stratejinizi baştan planlayın; sonradan düzeltmek maliyetli olabiliyor
-- RSC ile uyumlu kütüphane seçimini mimari kararların bir parçası olarak ele alın
+```json
+{
+  "event_id": "uuid-v7",
+  "event_type": "PAYMENT_INITIATED",
+  "actor_id": "usr_masked_sha256",
+  "timestamp_utc": "2026-01-15T14:32:01.847Z",
+  "payload_hash": "sha256:...",
+  "prev_hash": "sha256:...",
+  "signature": "ed25519:..."
+}
+```
+
+`prev_hash` alanı blockchain benzeri bir zincir oluşturur. Herhangi bir kaydı değiştirmek zinciri kırar ve doğrulama scripti bunu anında tespit eder.
+
+## Kişisel Veri Maskeleme
+
+KVKK kapsamında TC kimlik numarası, IBAN ve telefon numarası log akışına girmeden önce maskeler:
+
+```typescript
+const SENSITIVE_PATTERNS = [
+  { pattern: /\b\d{11}\b/g, label: 'TC_ID' },
+  { pattern: /TR\d{2}\s?\d{4}\s?\d{4}\s?\d{4}\s?\d{4}\s?\d{2}/g, label: 'IBAN' },
+  { pattern: /(\+90|0)\s?5\d{2}\s?\d{3}\s?\d{2}\s?\d{2}/g, label: 'PHONE' },
+];
+
+function maskSensitive(input: string): string {
+  return SENSITIVE_PATTERNS.reduce(
+    (acc, { pattern, label }) => acc.replace(pattern, `[MASKED:${label}]`),
+    input
+  );
+}
+```
+
+Bu fonksiyon log collector middleware olarak tüm servislerden geçer — uygulama katmanında tek bir yerde tanımlı.
+
+## Anomali Tespiti
+
+Audit pipeline üzerine gerçek zamanlı anomali tespiti ekledik:
+
+- **Yüksek frekanslı işlemler**: 60 saniyede 50'den fazla işlem yapan hesap → otomatik inceleme kuyruğu
+- **Alışılmadık saat**: Hesabın tarihsel örüntüsünden sapan saatte işlem → risk skoru artırımı
+- **Coğrafi imkansızlık**: Birbirini izleyen iki işlemin fiziksel olarak imkansız hızdaki konum değişimi → anlık blok
+
+Bu kurallar kod değil, YAML konfigürasyonuyla yönetilir. Yeni bir kural eklemek deployment gerektirmiyor.
+
+## Denetim Sonucu
+
+BDDK denetimi ilk sunuşta geçti. Denetçilerin özellikle beğendiği noktalar:
+
+1. Kriptografik zincir bütünlüğünün anlık doğrulanabilmesi
+2. Denetçi erişiminin kendi audit loguna düşmesi (iç içe denetlenebilirlik)
+3. Veri saklama politikasının sistem konfigürasyonuyla tam uyumu
+
+Denetim sürecinde talep edilen 847 spesifik işlem kaydının tamamı ortalama 1.2 saniyede döndürüldü.
 
 ## Sonuç
 
-App Router olgunlaşmaya devam ediyor ve her versiyonla daha stabil hale geliyor. Bir yıllık deneyimimize göre doğru kullanıldığında hem geliştirici verimliliği hem son kullanıcı deneyimi açısından belirgin kazançlar sağlıyor.
+Regülatör uyumlu log altyapısı teknik bir zorunluluk değil, iş sürekliliğinin güvencesidir. Doğru mimarinin anahtarı: gözlemlenebilirlik ile audit logunu ayrı pipeline'larda yönetmek ve kriptografik kanıtı baştan tasarıma dahil etmek.

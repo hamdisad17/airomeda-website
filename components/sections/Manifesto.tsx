@@ -78,11 +78,11 @@ export function Manifesto() {
         <div className="mt-24 grid md:grid-cols-3 gap-8 max-w-4xl border-t border-border pt-12">
           <div>
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">teslim</p>
-            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">8-16 hafta</p>
+            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">6–14 hafta</p>
           </div>
           <div>
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">canlıdaki ekip</p>
-            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">aynı ekip · devamı</p>
+            <p className="font-mono text-eyebrow uppercase text-muted-foreground">brief&apos;e yanıt</p>
+            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">24 saat · NDA 2 iş günü</p>
           </div>
           <div>
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">sahiplik</p>

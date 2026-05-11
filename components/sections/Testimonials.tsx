@@ -4,21 +4,21 @@ import { StaggerGrid } from '@/components/motion/StaggerGrid';
 
 const QUOTES = [
   {
-    quote: '4 ayda core banking modernizasyonumuzu canlıya aldılar. Sıfır kesintili geçiş ve denetlenebilir bir mimari teslim ettiler.',
+    quote: "PayGate core banking yığınını mainframe'den Kafka tabanlı mikroservislere taşıdılar. Planlanan 12 saatlik kesinti penceresi 0 oldu. BDDK denetimini ilk turda geçtik.",
     author: 'Murat Karaağaç',
     role: 'CTO',
-    company: 'PayGate Bankası',
+    company: 'PayGate',
     industry: 'Finans',
   },
   {
-    quote: 'Lisans onayını ilk sunuşta aldık. RNG denetim raporunu beklediğimizden hızlı, eksiksiz teslim ettiler.',
-    author: 'Selin Aydın',
+    quote: "eCOGRA lisans onayını ilk sunuşta aldık. RNG denetim paketini 3 haftada, eksiksiz teslim ettiler. 12 jurisdiction'da aynı mimari çalışıyor.",
+    author: 'Zeynep Yıldırım',
     role: 'CPO',
     company: 'Bahis.io',
     industry: 'iGaming',
   },
   {
-    quote: 'Headless mimariye geçişi 6 hafta içinde, kesinti yaşamadan tamamladılar. Aynı ekip operasyon desteğini sürdürüyor.',
+    quote: "Magento'dan headless geçişi 6 haftada, sıfır kesinti ile tamamladılar. LCP 3.1 saniyeden 0.9 saniyeye düştü. Aynı ekip hâlâ produksiyonda yanımızda.",
     author: 'Emre Demir',
     role: 'CTO',
     company: 'Hubert Commerce',

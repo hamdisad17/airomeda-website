@@ -7,9 +7,9 @@ const LOGOS = [
   { v: 'bahis', industry: 'iGaming' },
   { v: 'hubert', industry: 'E-Ticaret' },
   { v: 'topratebet', industry: 'iGaming' },
-  { v: 'pazarliman', industry: 'Marketplace' },
+  { v: 'pazarliman', industry: 'E-Ticaret' },
   { v: 'entegrasys', industry: 'Entegrasyon' },
-  { v: 'markaco', industry: 'Marka' },
+  { v: 'markaco', industry: 'Marka & Stüdyo' },
   { v: 'studio', industry: 'Yaratıcı' },
 ] as const;
 
@@ -21,7 +21,7 @@ export function CustomerLogos() {
       <Container as="div">
         <RevealSection>
           <p className="text-center font-mono text-eyebrow uppercase text-muted-foreground">
-            {"2018'den beri Türkiye'nin önde gelen markalarına teslim ediyoruz"}
+            {"2018'den beri 68 aktif müşteri, 134 tamamlanmış proje"}
           </p>
         </RevealSection>
       </Container>

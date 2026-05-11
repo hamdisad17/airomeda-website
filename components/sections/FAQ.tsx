@@ -6,27 +6,27 @@ import { RevealSection } from '@/components/motion/RevealSection';
 const ITEMS = [
   {
     q: 'Tipik bir projenin teslim süresi nedir?',
-    a: 'Kapsamına göre 8 ile 16 hafta arasında değişiyor. İlk 4 hafta keşif + ilk demo edilebilir parça; sonraki 4-12 hafta üretime hazır teslim.',
+    a: 'Kapsama göre 6 ile 14 hafta arasında değişiyor. İlk 2–3 hafta discovery + mimari tasarım; sonraki sprintlerde demo edilebilir parçalar; son faz devir teslim ve stabilizasyon.',
   },
   {
-    q: 'BDDK / TCMB uyumlu yazılım üretiyor musunuz?',
-    a: 'Evet. Finans projelerinde regülasyon haritalandırması ile başlıyoruz. Audit-ready mimari, denetlenebilir event log, geri alınabilir kararlar.',
+    q: 'BDDK / MASAK uyumlu yazılım üretiyor musunuz?',
+    a: 'Evet. Her finans projesinde regülasyon haritalandırması ile başlıyoruz: BDDK yönetmelikleri, MASAK bildirimleri, değişmez event log. Denetimde geri dönülebilir kararlar.',
   },
   {
     q: 'Mevcut sistemimize entegre olur musunuz?',
-    a: 'Evet. ISO 8583, ISO 20022, REST, GraphQL, mesajlaşma tabanlı entegrasyonları yapıyoruz. Legacy + modern coexistence senaryoları konusunda deneyimliyiz.',
+    a: 'Evet. ISO 8583, ISO 20022, REST, GraphQL, Kafka/RabbitMQ tabanlı entegrasyonlar. Legacy coexistence (strangler-fig) stratejisi konusunda üretim deneyimimiz var.',
   },
   {
     q: 'Proje sonrasında devamlılık nasıl olacak?',
-    a: 'İki seçenek: 1) Devir teslim — kapsamlı dokümantasyon + ekip eğitimi ile kendi ekibinize teslim. 2) Bakım sözleşmesi — bizimle devam.',
+    a: 'İki seçenek: 1) Devir teslim — belgelenmiş mimari, ekip eğitimi, runbook ve kod ile kendi ekibinize teslim. 2) Retainer — bizimle devam, %99.95 SLA.',
   },
   {
     q: 'Fiyatlandırma nasıl çalışıyor?',
-    a: 'Sabit fiyat veya time-and-material. İlk görüşmede kapsamı netleştirip her iki seçeneği de sunuyoruz.',
+    a: 'Sprint (4–6 hafta, sabit kapsam), Project (6–14 hafta, milestone tabanlı) veya Long-term retainer. İlk görüşmede kapsamı netleştirip tüm modelleri sunuyoruz.',
   },
   {
     q: 'NDA ve veri güvenliği nasıl?',
-    a: 'İlk görüşmeden önce iki yönlü NDA imzalanır. Geliştirme, KVKK + GDPR uyumlu. Production veriniz bizim makinemize hiçbir zaman inmez.',
+    a: 'Brief gönderdikten sonra ortalama 2 iş günü içinde iki yönlü NDA imzalanır. Geliştirme KVKK + GDPR uyumlu. Production veriniz hiçbir zaman bizim altyapımıza inmez.',
   },
 ];
 

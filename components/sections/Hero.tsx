@@ -60,13 +60,13 @@ export async function Hero() {
             {/* Trust mini-line */}
             <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-2 font-mono text-xs text-muted-foreground">
               <span className="flex items-center gap-1.5">
-                <span className="text-accent">✓</span> BDDK uyumlu
+                <span className="text-accent">✓</span> BDDK/MASAK uyumlu
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="text-accent">✓</span> 99.994% uptime
+                <span className="text-accent">✓</span> 99.973% uptime
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="text-accent">✓</span> 8–16 hafta teslim
+                <span className="text-accent">✓</span> 6–14 hafta teslim
               </span>
             </div>
 

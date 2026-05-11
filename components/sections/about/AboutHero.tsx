@@ -5,10 +5,10 @@ import { TextReveal } from '@/components/motion/TextReveal';
 import { CountUp } from '@/components/motion/CountUp';
 
 const STATS = [
-  { v: 24, suffix: '', label: 'mühendis' },
-  { v: 12, suffix: '', label: 'bölge' },
-  { v: 47, suffix: '+', label: 'production' },
-  { v: 8, suffix: 'yıl', label: 'deneyim' },
+  { v: 28, suffix: '', label: 'mühendis' },
+  { v: 47, suffix: '', label: 'production sistem' },
+  { v: 134, suffix: '', label: 'tamamlanmış proje' },
+  { v: 8, suffix: ' yıl', label: 'üretim deneyimi' },
 ];
 
 export function AboutHero() {
@@ -46,8 +46,7 @@ export function AboutHero() {
               </span>
             </h1>
             <p className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              Finans, iGaming, e-ticaret ve entegrasyon alanlarında production-grade yazılım
-              geliştiriyoruz. Kodun sahibi sizsiniz — her zaman, her koşulda.
+              2018&apos;den beri 7 disiplin, 47 kişilik ekip, 134 tamamlanmış proje. Finans, iGaming, e-ticaret ve entegrasyon alanlarında production-grade yazılım. Kodun sahibi sizsiniz — her zaman, her koşulda.
             </p>
           </div>
 
@@ -59,12 +58,12 @@ export function AboutHero() {
             </div>
             <div className="p-4 space-y-2">
               {[
-                ['kuruluş', '2018'],
-                ['lokasyon', 'istanbul · TR'],
-                ['ekip', '24 mühendis'],
+                ['kuruluş', '2018 · İstanbul'],
+                ['lokasyon', 'Maslak · İstanbul · TR'],
+                ['ekip', '47 kişi · 28 mühendis'],
                 ['dil', 'TR / EN'],
-                ['dağıtım', '12 bölge'],
-                ['model', 'custom · retainer · sprint'],
+                ['bölge', '4 aktif · fra1 · lon1 · ist1 · iad1'],
+                ['model', 'sprint · project · retainer'],
               ].map(([label, val]) => (
                 <p key={label} className="flex gap-2">
                   <span className="text-muted-foreground w-24 shrink-0">{label}</span>

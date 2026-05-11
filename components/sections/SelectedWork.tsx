@@ -26,38 +26,38 @@ const WORKS: WorkItem[] = [
     title: 'Core banking modernizasyonu.',
     client: 'PayGate',
     year: '2025',
-    summary: 'Legacy mainframe→event-driven core. 0 kesinti, BDDK audit-pass, 4 ay teslim.',
-    metrics: [{ v: '0', l: 'kesinti' }, { v: '120ms', l: 'P99 tx' }, { v: '47', l: 'mikroservis' }],
+    summary: 'Mainframe→event-driven Kafka mikroservisleri. 0 kesinti, BDDK denetimi ilk sunuşta geçildi, 4 ay teslim.',
+    metrics: [{ v: '0', l: 'kesinti' }, { v: '142ms', l: 'P99 tx' }, { v: '5×', l: 'tx kapasitesi' }],
     visual: 'finance',
   },
   {
     key: 'bahisio',
     industry: 'iGaming',
-    title: 'iGaming platform & RNG.',
+    title: 'Casino platform & RNG motoru.',
     client: 'Bahis.io',
     year: '2025',
-    summary: 'Lisanslı casino + sportsbook + cashier. eCOGRA-ready RNG, 12 jurisdiction.',
-    metrics: [{ v: '4ms', l: 'spin' }, { v: '12', l: 'lisans' }, { v: '99.99%', l: 'uptime' }],
+    summary: 'Lisanslı casino + sportsbook + cashier. eCOGRA uyumlu RNG, 12 jurisdiction desteği, 10 haftada production.',
+    metrics: [{ v: '4ms', l: 'spin response' }, { v: '12', l: 'jurisdiction' }, { v: '99.95%', l: 'uptime' }],
     visual: 'gaming',
   },
   {
     key: 'hubert',
     industry: 'E-Ticaret',
-    title: 'Headless storefront migration.',
+    title: 'Headless storefront migrasyonu.',
     client: 'Hubert Commerce',
     year: '2024',
-    summary: 'Magento→Next.js, kesintisiz. 0.9s LCP, +34% conversion.',
-    metrics: [{ v: '0.9s', l: 'LCP' }, { v: '+34%', l: 'conv' }, { v: '6 hf', l: 'teslim' }],
+    summary: 'Magento→Next.js headless geçişi, sıfır kesinti. LCP 3.1s→0.9s, conversion +34%, 6 hafta teslim.',
+    metrics: [{ v: '0.9s', l: 'LCP mobile' }, { v: '+34%', l: 'conversion' }, { v: '6 hf', l: 'teslim' }],
     visual: 'commerce',
   },
   {
     key: 'entegrasys',
     industry: 'Entegrasyon',
-    title: 'ERP/WMS köprüsü.',
+    title: 'ERP + kargo agregatörü.',
     client: 'Entegrasys',
     year: '2024',
-    summary: 'Logo, Netsis, NetSuite, kargo agregatör — tek idempotent webhook router.',
-    metrics: [{ v: '10+', l: 'taşıyıcı' }, { v: '99.99%', l: 'webhook' }, { v: '4', l: 'ERP' }],
+    summary: 'Logo, Netsis, NetSuite + 10+ kargo taşıyıcısı, tek idempotent webhook router. %99.99 teslimat SLA.',
+    metrics: [{ v: '10+', l: 'taşıyıcı' }, { v: '99.99%', l: 'webhook SLA' }, { v: '4', l: 'ERP sistemi' }],
     visual: 'integration',
   },
 ];
@@ -255,7 +255,7 @@ export function SelectedWork() {
                   Sıradaki vaka, sizinki olabilir.
                 </h3>
                 <p className="mt-4 text-sm text-muted-foreground">
-                  Production&apos;a hazır ekip · 8-16 hafta teslim · devir teslim.
+                  Production&apos;a hazır ekip · 6–14 hafta teslim · devir teslim.
                 </p>
               </div>
               <a href="#cta" className="inline-flex items-center gap-2 font-mono text-sm text-accent group">

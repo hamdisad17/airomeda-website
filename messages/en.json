@@ -14,7 +14,7 @@
     "contact": "Contact"
   },
   "footer": {
-    "tagline": "Your software partner.",
+    "tagline": "No slides. We write software.",
     "company": "Company",
     "services": "Services",
     "legal": "Legal",
@@ -24,9 +24,9 @@
   },
   "home": {
     "hero": {
-      "title": "Make the complex, simple.",
-      "subtitle": "End-to-end software for finance, iGaming, commerce and beyond.",
-      "kinetic_words": ["Finance", "iGaming", "Commerce", "Integration", "Performance", "CRM"],
+      "title": "Ship the complex to production.",
+      "subtitle": "Audit-ready, scalable software for finance, iGaming, e-commerce and integration — since 2018.",
+      "kinetic_words": ["Finance", "iGaming", "Commerce", "Integration", "SEO & Ads", "CRM"],
       "kinetic_connector": "for."
     },
     "services_section": { "title": "Our services", "subtitle": "Seven disciplines, one standard." },
@@ -42,21 +42,21 @@
     },
     "cta": { "title": "A hard problem?", "subtitle": "Let's talk." },
     "manifesto": {
-      "lead": "We treat software like infrastructure, not a brochure.",
-      "extension": "When it breaks, people lose money, regulators call, customers leave. That's why we anchor architecture in auditability, and earn speed from the team — never the quality.",
+      "lead": "We build software like auditable infrastructure, not a brochure.",
+      "extension": "When it fails, people lose money, regulators call, customers leave. That's why every architecture decision traces to an audit log — and we earn speed from team discipline, never from quality shortcuts.",
       "p1_title": "Ownership",
-      "p1_body": "We see decisions through to production incidents.",
+      "p1_body": "The code is yours. IP is yours. Every decision is documented and transferable.",
       "p2_title": "Craft",
-      "p2_body": "We ship fast but never cut corners.",
+      "p2_body": "6–14 weeks to production — clean architecture included. No tech-debt surprises on handover.",
       "p3_title": "Transparency",
-      "p3_body": "We talk about risk and mistakes openly."
+      "p3_body": "We talk about risk, delays, and mistakes on day one. No surprises at handover."
     },
     "selected_work": { "title": "Recent shipments." }
   },
   "services_index": { "title": "Our services" },
   "case_studies": {
     "title": "Our Work",
-    "subtitle": "Solutions we built with our customers.",
+    "subtitle": "134 completed projects — every one in production, with measurable results.",
     "metric_results": "Results",
     "related_label": "Related work",
     "client_label": "Client",
@@ -76,7 +76,7 @@
   },
   "careers": {
     "title": "Careers",
-    "subtitle": "A company growing with talented people doing meaningful work.",
+    "subtitle": "47-person team, 5 open roles — we're looking for engineers who build production systems.",
     "team_culture_title": "Our team culture",
     "team_culture_intro": "Three principles we hold to as we work together.",
     "values": {

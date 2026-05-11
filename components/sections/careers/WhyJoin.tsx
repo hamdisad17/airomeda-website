@@ -5,23 +5,23 @@ import { RevealSection } from '@/components/motion/RevealSection';
 const CARDS = [
   {
     icon: '⬡',
-    title: "Production'da çalış",
-    body: 'Her proje canlı ortamda, gerçek kullanıcılarla. Kafa karışıklığı değil, gerçek sorumluluk.',
+    title: 'Production sistemi yönet',
+    body: '47 production sistem, 280+ aylık deployment. Gerçek yük, gerçek sorumluluk — kafa karıştırıcı sandbox ortamı yok.',
   },
   {
     icon: '◈',
-    title: 'Devir teslim et',
-    body: 'Kodu teslim ettikten sonra sahip çık. Onboarding, maintainability ve döküman da işin parçası.',
+    title: 'Devir teslim standartlarında çalış',
+    body: "Kod IP müşterinin. Bu yüzden belgelendirme, test kapsamı ve maintainability her sprint'te birinci sınıf kriter.",
   },
   {
     icon: '◉',
-    title: 'Audit-ready kod yaz',
-    body: 'Fintech ve iGaming regülasyonları kod kalitesini zorunlu kılar. Siz de bu disipline alışırsınız.',
+    title: 'Regülasyonla kod yaz',
+    body: 'BDDK, MASAK, eCOGRA — finans ve iGaming regülasyonları kod kalitesini zorunlu kılıyor. Bu disiplin kariyer boyu fayda sağlar.',
   },
   {
     icon: '◧',
-    title: "İstanbul'dan dünyaya",
-    body: "İstanbul'dan global müşterilere hizmet veriyoruz. Remote-first kültür, global etki.",
+    title: 'Büyüyen ekipte yer al',
+    body: '5 açık pozisyon. Çalışan başına 12.000 TL konferans bütçesi. Maslak İstanbul veya İzmir ofisi ya da tam uzaktan.',
   },
 ];
 
