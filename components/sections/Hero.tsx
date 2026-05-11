@@ -2,9 +2,8 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
 import { TerminalDemo } from '@/components/mockups/TerminalDemo';
-import { AnimatedDotGrid } from '@/components/visuals/AnimatedDotGrid';
 import { ParticleField } from '@/components/visuals/ParticleField';
-import { GradientOrb } from '@/components/visuals/GradientOrb';
+import { FlowField } from '@/components/visuals/FlowField';
 import { FloatingUIPeeks } from '@/components/visuals/FloatingUIPeeks';
 import { MagneticButton } from '@/components/motion/MagneticButton';
 import { KineticHeadline } from '@/components/sections/KineticHeadline';
@@ -14,9 +13,8 @@ export async function Hero() {
   const t = await getTranslations();
   return (
     <section id="hero" className="relative overflow-hidden border-b border-border">
-      <AnimatedDotGrid />
+      <FlowField />
       <ParticleField />
-      <GradientOrb />
 
       <Container as="div" className="relative pt-20 pb-24 md:pt-32 md:pb-36">
         <div className="grid items-center gap-16 lg:grid-cols-2">

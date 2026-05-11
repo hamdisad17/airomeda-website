@@ -18,7 +18,7 @@ import { ProductShowcase } from '@/components/sections/ProductShowcase';
 import { CodeSample } from '@/components/sections/CodeSample';
 import { Numbers } from '@/components/sections/Numbers';
 import { Manifesto } from '@/components/sections/Manifesto';
-import { CaseStudies } from '@/components/sections/CaseStudies';
+import { SelectedWork } from '@/components/sections/SelectedWork';
 import { ProcessStory } from '@/components/sections/ProcessStory';
 import { DeploymentPipeline } from '@/components/sections/DeploymentPipeline';
 import { Testimonials } from '@/components/sections/Testimonials';
@@ -67,7 +67,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <Numbers />
       <SectionDivider label="manifesto" />
       <Manifesto />
-      <CaseStudies locale={locale} />
+      <SelectedWork />
       <ProcessStory />
       <DeploymentPipeline />
       <Testimonials />

@@ -8,7 +8,7 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { organizationSchema, websiteSchema } from '@/lib/seo/jsonld';
 import { CookieConsent } from '@/components/legal/CookieConsent';
 import { SmoothScroll } from '@/components/motion/SmoothScroll';
-import { CursorGlow } from '@/components/motion/CursorGlow';
+import { MorphCursor } from '@/components/motion/MorphCursor';
 import { CommandPalette } from '@/components/overlay/CommandPalette';
 import { ScrollProgress } from '@/components/motion/ScrollProgress';
 
@@ -30,7 +30,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider>
       <JsonLd data={[organizationSchema(), websiteSchema(locale as Locale)]} />
-      <CursorGlow />
+      <MorphCursor />
       <ScrollProgress />
       <CommandPalette />
       <SmoothScroll>
