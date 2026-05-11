@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Container } from '@/components/layout/Container';
 import { Link } from '@/i18n/navigation';
@@ -13,7 +13,7 @@ export async function CaseStudyHero({ data }: { data: CaseStudyFrontmatter }) {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 60% 50% at 50% 30%, hsl(189 100% 50% / 0.08), transparent 70%)',
+            'radial-gradient(ellipse 60% 50% at 50% 30%, rgb(20 184 166 / 0.08), transparent 70%)',
         }}
       />
       <Container as="div" className="relative py-24 md:py-36">

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { TextReveal } from '@/components/motion/TextReveal';
@@ -18,7 +18,7 @@ export function CareersHero({ openCount }: CareersHeroProps) {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 60% 50% at 50% 30%, hsl(189 100% 50% / 0.08), transparent 70%)',
+            'radial-gradient(ellipse 60% 50% at 50% 30%, rgb(20 184 166 / 0.08), transparent 70%)',
         }}
       />
       <Container as="div" className="relative py-24 md:py-36">
@@ -45,7 +45,7 @@ export function CareersHero({ openCount }: CareersHeroProps) {
                 <MagneticButton>
                   <Link
                     href="#acik-pozisyonlar"
-                    className="inline-flex items-center gap-2 bg-accent px-6 py-3 text-sm font-medium text-accent-foreground transition-all hover:shadow-[0_0_40px_-5px_hsl(189_100%_50%_/_0.6)]"
+                    className="inline-flex items-center gap-2 bg-accent px-6 py-3 text-sm font-medium text-accent-foreground transition-all hover:shadow-[0_0_40px_-5px_hsl(173_80%_40%_/_0.6)]"
                   >
                     Açık pozisyonlara bak <span>↓</span>
                   </Link>

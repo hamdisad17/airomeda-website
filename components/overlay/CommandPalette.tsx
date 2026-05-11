@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -128,7 +128,7 @@ export function CommandPalette() {
         onClick={() => setOpen(false)}
         className="absolute inset-0 bg-background/70 backdrop-blur-md cursor-default"
       />
-      <div className="relative w-full max-w-2xl border border-border bg-elevated shadow-[0_20px_80px_-20px_hsl(189_100%_50%_/_0.3)]">
+      <div className="relative w-full max-w-2xl border border-border bg-elevated shadow-[0_20px_80px_-20px_hsl(173_80%_40%_/_0.3)]">
         <div className="flex items-center gap-3 border-b border-border px-5 py-4">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-muted-foreground flex-shrink-0" aria-hidden>
             <circle cx="11" cy="11" r="8"/>

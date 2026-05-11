@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 
 type CursorMode = 'default' | 'link' | 'button' | 'text' | 'view';
@@ -114,7 +114,7 @@ export function MorphCursor() {
           width: `${ringSize}px`,
           height: `${ringSize}px`,
           opacity: ringOpacity,
-          background: mode === 'view' ? 'hsl(189 100% 50% / 0.1)' : 'transparent',
+          background: mode === 'view' ? 'rgb(20 184 166 / 0.1)' : 'transparent',
         }}
       >
         {label && (

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -65,8 +65,8 @@ export function FinanceDashboard() {
           <svg viewBox="0 0 320 80" className="w-full h-20" preserveAspectRatio="none">
             <defs>
               <linearGradient id="fchart-dark" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="hsl(189 100% 50%)" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="hsl(189 100% 50%)" stopOpacity="0" />
+                <stop offset="0%" stopColor="#14B8A6" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#14B8A6" stopOpacity="0" />
               </linearGradient>
             </defs>
             {/* Area fill — static */}
@@ -79,7 +79,7 @@ export function FinanceDashboard() {
               className="chart-line"
               d="M0,60 L20,55 L40,58 L60,40 L80,42 L100,30 L120,35 L140,20 L160,28 L180,15 L200,18 L220,8 L240,12 L260,5 L280,10 L300,3 L320,8"
               fill="none"
-              stroke="hsl(189 100% 50%)"
+              stroke="#14B8A6"
               strokeWidth="1.5"
             />
           </svg>

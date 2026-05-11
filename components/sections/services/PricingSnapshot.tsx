@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
@@ -53,7 +53,7 @@ export function PricingSnapshot() {
         className="pointer-events-none absolute inset-0 opacity-30"
         style={{
           background:
-            'radial-gradient(ellipse 50% 60% at 50% 100%, hsl(189 100% 50% / 0.06), transparent 70%)',
+            'radial-gradient(ellipse 50% 60% at 50% 100%, rgb(20 184 166 / 0.06), transparent 70%)',
         }}
       />
       <Container as="div" className="relative">
@@ -83,7 +83,7 @@ export function PricingSnapshot() {
                     className="pointer-events-none absolute top-0 right-0 h-32 w-32"
                     style={{
                       background:
-                        'radial-gradient(circle at 100% 0%, hsl(189 100% 50% / 0.15), transparent 70%)',
+                        'radial-gradient(circle at 100% 0%, rgb(20 184 166 / 0.15), transparent 70%)',
                     }}
                   />
                 )}

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import Image from 'next/image';
 
@@ -20,7 +20,7 @@ export function HoverVideoMarquee() {
               <Image src={it.src} alt="" fill className="object-cover grayscale-[50%] transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110" sizes="320px" unoptimized/>
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="h-14 w-14 border-2 border-accent bg-elevated/60 backdrop-blur-md flex items-center justify-center">
-                  <span className="ml-1" style={{ borderLeft: '10px solid hsl(189 100% 50%)', borderTop: '6px solid transparent', borderBottom: '6px solid transparent' }}/>
+                  <span className="ml-1" style={{ borderLeft: '10px solid #14B8A6', borderTop: '6px solid transparent', borderBottom: '6px solid transparent' }}/>
                 </div>
               </div>
             </div>

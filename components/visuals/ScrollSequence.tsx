@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -221,7 +221,7 @@ export function ScrollSequence() {
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-30"
-        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, hsl(189 100% 50% / 0.1), transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgb(20 184 166 / 0.1), transparent 70%)' }}
       />
       <Container as="div" className="relative flex flex-col justify-center min-h-screen py-20">
         {/* Progress rail */}

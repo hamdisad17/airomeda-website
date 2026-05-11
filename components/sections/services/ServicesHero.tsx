@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { TextReveal } from '@/components/motion/TextReveal';
@@ -21,7 +21,7 @@ export function ServicesHero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 60% 50% at 50% 30%, hsl(189 100% 50% / 0.07), transparent 70%)',
+            'radial-gradient(ellipse 60% 50% at 50% 30%, rgb(20 184 166 / 0.07), transparent 70%)',
         }}
       />
       {/* Subtle dot grid */}
@@ -29,7 +29,7 @@ export function ServicesHero() {
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-20"
         style={{
-          backgroundImage: 'radial-gradient(circle, hsl(189 100% 50% / 0.2) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, rgb(20 184 166 / 0.2) 1px, transparent 1px)',
           backgroundSize: '40px 40px',
           maskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 80%)',
         }}

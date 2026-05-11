@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -75,7 +75,7 @@ export function GamingControlPanel() {
               className="chart-line"
               d="M0,30 L20,32 L40,28 L60,35 L80,22 L100,28 L120,15 L140,25 L160,18 L180,30 L200,12 L220,20 L240,10 L260,18 L280,8 L300,15 L320,5"
               fill="none"
-              stroke="hsl(189 100% 50%)"
+              stroke="#14B8A6"
               strokeWidth="1.5"
               strokeLinejoin="round"
             />

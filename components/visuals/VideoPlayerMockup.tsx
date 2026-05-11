@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import Image from 'next/image';
 
@@ -33,7 +33,7 @@ export function VideoPlayerMockup({ title, duration = '3:42', poster }: VideoPla
           <Image src={poster} alt="" fill className="object-cover grayscale-[40%] contrast-[1.1]" sizes="100vw" unoptimized={poster.startsWith('https://')} />
         )}
         <div aria-hidden className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 60%, hsl(189 100% 50% / 0.15), transparent 70%)' }}/>
+          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 60%, rgb(20 184 166 / 0.15), transparent 70%)' }}/>
         {/* Play overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
           <button type="button" onClick={() => setPlaying(!playing)}
@@ -44,7 +44,7 @@ export function VideoPlayerMockup({ title, duration = '3:42', poster }: VideoPla
                 <span className="block w-1 h-5 bg-accent"/>
               </span>
             ) : (
-              <span className="ml-0.5" style={{ borderLeft: '12px solid hsl(189 100% 50%)', borderTop: '8px solid transparent', borderBottom: '8px solid transparent' }}/>
+              <span className="ml-0.5" style={{ borderLeft: '12px solid #14B8A6', borderTop: '8px solid transparent', borderBottom: '8px solid transparent' }}/>
             )}
           </button>
         </div>

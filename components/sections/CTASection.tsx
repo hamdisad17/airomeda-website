@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+﻿import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
 import { TextReveal } from '@/components/motion/TextReveal';
@@ -13,14 +13,14 @@ export async function CTASection() {
         aria-hidden
         className="pointer-events-none absolute inset-0 animate-cta-pulse"
         style={{
-          background: 'radial-gradient(ellipse 60% 50% at 50% 30%, hsl(189 100% 50% / 0.25), transparent 70%)',
+          background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgb(20 184 166 / 0.25), transparent 70%)',
         }}
       />
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-30"
         style={{
-          backgroundImage: 'radial-gradient(circle, hsl(189 100% 50% / 0.15) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, rgb(20 184 166 / 0.15) 1px, transparent 1px)',
           backgroundSize: '24px 24px',
           maskImage: 'radial-gradient(ellipse 50% 50% at 50% 50%, black 0%, transparent 80%)',
         }}
@@ -42,7 +42,7 @@ export async function CTASection() {
           <MagneticButton>
             <Link
               href="/iletisim"
-              className="group inline-flex items-center gap-2 bg-accent px-6 py-3.5 text-sm font-medium text-accent-foreground transition-all duration-200 hover:shadow-[0_0_40px_-5px_hsl(189_100%_50%_/_0.6)]"
+              className="group inline-flex items-center gap-2 bg-accent px-6 py-3.5 text-sm font-medium text-accent-foreground transition-all duration-200 hover:shadow-[0_0_40px_-5px_hsl(173_80%_40%_/_0.6)]"
             >
               {tc('primary_cta')} <span>→</span>
             </Link>

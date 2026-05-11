@@ -1,4 +1,4 @@
-type Props = { author?: string; role?: string; children: React.ReactNode };
+﻿type Props = { author?: string; role?: string; children: React.ReactNode };
 
 export function Quote({ author, role, children }: Props) {
   return (
@@ -7,7 +7,7 @@ export function Quote({ author, role, children }: Props) {
         aria-hidden
         className="pointer-events-none absolute -left-px top-0 bottom-0"
         style={{
-          background: 'linear-gradient(to bottom, hsl(189 100% 50% / 0.4), hsl(189 100% 50% / 0.05))',
+          background: 'linear-gradient(to bottom, rgb(20 184 166 / 0.4), rgb(20 184 166 / 0.05))',
         }}
       />
       <blockquote className="text-lg md:text-xl font-semibold tracking-tight text-foreground leading-snug">

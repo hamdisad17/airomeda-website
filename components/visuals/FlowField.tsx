@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 
 export function FlowField() {
@@ -82,7 +82,7 @@ export function FlowField() {
       ctx.fillRect(0, 0, width, height);
       ctx.globalCompositeOperation = 'source-over';
 
-      ctx.strokeStyle = 'hsla(189, 100%, 55%, 0.45)';
+      ctx.strokeStyle = 'hsla(173, 80%, 45%, 0.45)';
       ctx.lineWidth = 0.7;
 
       for (const p of particles) {

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
@@ -83,7 +83,7 @@ export function DeploymentGlobe() {
           const p = latLonTo3D(lat, lon, r, rotation);
           if (p.z < 0) continue; // back face cull
           const alpha = Math.max(0, p.z / r) * 0.4;
-          ctx.fillStyle = `hsla(189, 100%, 50%, ${alpha})`;
+          ctx.fillStyle = `hsla(173, 80%, 40%, ${alpha})`;
           ctx.beginPath();
           ctx.arc(cx + p.x, cy + p.y, 1, 0, Math.PI * 2);
           ctx.fill();
@@ -101,7 +101,7 @@ export function DeploymentGlobe() {
         const py = cy + p.y;
         const alpha = Math.max(0.3, p.z / r);
         // Outer pulse
-        ctx.fillStyle = `hsla(189, 100%, 60%, ${0.15 * alpha})`;
+        ctx.fillStyle = `hsla(173, 80%, 50%, ${0.15 * alpha})`;
         ctx.beginPath();
         ctx.arc(
           px,
@@ -112,12 +112,12 @@ export function DeploymentGlobe() {
         );
         ctx.fill();
         // Core
-        ctx.fillStyle = `hsla(189, 100%, 55%, ${alpha})`;
+        ctx.fillStyle = `hsla(173, 80%, 45%, ${alpha})`;
         ctx.beginPath();
         ctx.arc(px, py, 2.4, 0, Math.PI * 2);
         ctx.fill();
         // Outer ring
-        ctx.strokeStyle = `hsla(189, 100%, 60%, ${alpha * 0.6})`;
+        ctx.strokeStyle = `hsla(173, 80%, 50%, ${alpha * 0.6})`;
         ctx.lineWidth = 0.6;
         ctx.beginPath();
         ctx.arc(px, py, 5, 0, Math.PI * 2);
@@ -162,7 +162,7 @@ export function DeploymentGlobe() {
           2 * (1 - easeT) * easeT * liftY +
           easeT * easeT * pTo.y;
 
-        ctx.strokeStyle = `hsla(189, 100%, 60%, ${1 - Math.abs(t - 0.5) * 2})`;
+        ctx.strokeStyle = `hsla(173, 80%, 50%, ${1 - Math.abs(t - 0.5) * 2})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         // Draw fading tail
@@ -184,7 +184,7 @@ export function DeploymentGlobe() {
         ctx.stroke();
 
         // Head dot
-        ctx.fillStyle = 'hsl(189 100% 70%)';
+        ctx.fillStyle = 'hsl(173 80% 60%)';
         ctx.beginPath();
         ctx.arc(cx + px, cy + py, 1.8, 0, Math.PI * 2);
         ctx.fill();
@@ -210,7 +210,7 @@ export function DeploymentGlobe() {
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
           background:
-            'radial-gradient(ellipse 60% 50% at 50% 40%, hsl(189 100% 50% / 0.08), transparent 70%)',
+            'radial-gradient(ellipse 60% 50% at 50% 40%, rgb(20 184 166 / 0.08), transparent 70%)',
         }}
       />
       <Container as="div" className="relative">

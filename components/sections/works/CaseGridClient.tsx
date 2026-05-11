@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
@@ -20,7 +20,7 @@ function CaseCard({ data }: { data: CaseStudyFrontmatter }) {
           className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{
             background:
-              'radial-gradient(ellipse 80% 60% at 50% 0%, hsl(189 100% 50% / 0.06), transparent 70%)',
+              'radial-gradient(ellipse 80% 60% at 50% 0%, rgb(20 184 166 / 0.06), transparent 70%)',
           }}
         />
 

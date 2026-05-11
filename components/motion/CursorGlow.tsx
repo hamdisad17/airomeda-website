@@ -62,7 +62,7 @@ export function CursorGlow() {
       style={{
         width: `${size}px`,
         height: `${size}px`,
-        background: `radial-gradient(circle, hsl(189 100% 50% / ${opacity}) 0%, transparent 70%)`,
+        background: `radial-gradient(circle, rgb(20 184 166 / ${opacity}) 0%, transparent 70%)`,
         mixBlendMode: 'screen',
       }}
     />

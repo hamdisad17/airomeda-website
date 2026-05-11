@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -233,7 +233,7 @@ export function Architecture() {
   return (
     <section id="architecture" className="border-b border-border bg-elevated/40 py-24 md:py-32 relative overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-50"
-        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, hsl(189 100% 50% / 0.08), transparent 70%)' }}/>
+        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, rgb(20 184 166 / 0.08), transparent 70%)' }}/>
 
       <Container as="div" className="relative">
         <div ref={ref}>
@@ -290,7 +290,7 @@ export function Architecture() {
                       key={`l-${i}`}
                       className="flow-path"
                       d={`M0,${y} C 140,${y} 140,260 200,260`}
-                      stroke="hsl(189 100% 50%)"
+                      stroke="#14B8A6"
                       strokeWidth="0.8"
                       strokeOpacity="0.35"
                       fill="none"
@@ -306,7 +306,7 @@ export function Architecture() {
                       key={`r-${i}`}
                       className="flow-path"
                       d={`M200,260 C 260,260 260,${y} 400,${y}`}
-                      stroke="hsl(189 100% 50%)"
+                      stroke="#14B8A6"
                       strokeWidth="0.8"
                       strokeOpacity="0.35"
                       fill="none"
@@ -320,8 +320,8 @@ export function Architecture() {
                     key={`fd-${i}`}
                     className="flow-dot"
                     r="2.5"
-                    fill="hsl(189 100% 60%)"
-                    style={{ filter: 'drop-shadow(0 0 4px hsl(189 100% 50% / 0.8))' }}
+                    fill="hsl(173 80% 50%)"
+                    style={{ filter: 'drop-shadow(0 0 4px rgb(20 184 166 / 0.8))' }}
                   />
                 ))}
               </svg>
@@ -329,7 +329,7 @@ export function Architecture() {
               {/* Central hub */}
               <div className="relative z-10">
                 <div className="hub-pulse relative">
-                  <div className="w-48 h-48 border-2 border-accent bg-elevated/80 backdrop-blur-md flex flex-col items-center justify-center shadow-[0_20px_60px_-15px_hsl(189_100%_50%_/_0.5)]">
+                  <div className="w-48 h-48 border-2 border-accent bg-elevated/80 backdrop-blur-md flex flex-col items-center justify-center shadow-[0_20px_60px_-15px_hsl(173_80%_40%_/_0.5)]">
                     <div className="text-[10px] uppercase tracking-[0.2em] text-accent mb-2">Ana Sistem</div>
                     <div className="text-2xl font-bold tracking-tight text-foreground">airomeda<span className="text-accent">.</span></div>
                     <div className="mt-3 flex items-center gap-1.5">

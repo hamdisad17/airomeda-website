@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import { Link } from '@/i18n/navigation';
 import { TiltCard } from '@/components/motion/TiltCard';
@@ -41,7 +41,7 @@ function ServiceCard({
           aria-hidden
           className="pointer-events-none absolute top-0 right-0 h-40 w-40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{
-            background: 'radial-gradient(circle at 100% 0%, hsl(189 100% 50% / 0.12), transparent 70%)',
+            background: 'radial-gradient(circle at 100% 0%, rgb(20 184 166 / 0.12), transparent 70%)',
           }}
         />
 

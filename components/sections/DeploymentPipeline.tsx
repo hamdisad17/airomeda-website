@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -77,7 +77,7 @@ export function DeploymentPipeline() {
   return (
     <div ref={sectionRef} className="border-b border-border min-h-screen bg-elevated/40 relative overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-50"
-        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, hsl(189 100% 50% / 0.1), transparent 70%)' }}/>
+        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgb(20 184 166 / 0.1), transparent 70%)' }}/>
       <Container as="div" className="relative pt-20 pb-20 min-h-screen flex flex-col justify-center">
         <RevealSection>
           <p className="font-mono text-eyebrow uppercase text-accent">Çalışma Sürecimiz</p>
@@ -98,7 +98,7 @@ export function DeploymentPipeline() {
               return (
                 <li key={s.id} className="relative pl-8 pb-8 last:pb-0">
                   <span className={`absolute left-0 top-1 -translate-x-1/2 inline-flex h-3 w-3 rounded-full border-2 transition-all ${
-                    isActive ? 'border-accent bg-accent scale-150 shadow-[0_0_20px_hsl(189_100%_50%_/_0.8)]' :
+                    isActive ? 'border-accent bg-accent scale-150 shadow-[0_0_20px_hsl(173_80%_40%_/_0.8)]' :
                     isPast ? 'border-accent bg-accent' :
                     'border-muted-foreground/30 bg-background'
                   }`}/>

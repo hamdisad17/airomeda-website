@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -127,7 +127,7 @@ export function CinemaMockup({ kind }: Variant) {
           <svg width="18" height="22" viewBox="0 0 18 22">
             <path
               d="M2 2 L2 18 L7 14 L10 21 L13 20 L10 13 L16 13 Z"
-              fill="hsl(189 100% 50%)"
+              fill="#14B8A6"
               stroke="hsl(240 10% 4%)"
               strokeWidth="1.5"
             />
@@ -175,8 +175,8 @@ function FinanceContent() {
           <svg viewBox="0 0 400 100" className="w-full h-24">
             <defs>
               <linearGradient id="cm-fin-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(189 100% 50% / 0.3)" />
-                <stop offset="100%" stopColor="hsl(189 100% 50% / 0)" />
+                <stop offset="0%" stopColor="rgb(20 184 166 / 0.3)" />
+                <stop offset="100%" stopColor="rgb(20 184 166 / 0)" />
               </linearGradient>
             </defs>
             <path
@@ -187,12 +187,12 @@ function FinanceContent() {
               className="cm-chart-line"
               d="M 0 75 L 30 70 L 60 65 L 90 72 L 120 50 L 150 55 L 180 35 L 210 40 L 240 25 L 270 30 L 300 18 L 330 22 L 360 15 L 400 12"
               fill="none"
-              stroke="hsl(189 100% 50%)"
+              stroke="#14B8A6"
               strokeWidth="1.5"
               strokeLinejoin="round"
             />
             {[120, 240, 360].map((x, i) => (
-              <circle key={i} cx={x} cy={[50, 25, 15][i]} r="2.5" fill="hsl(189 100% 50%)" />
+              <circle key={i} cx={x} cy={[50, 25, 15][i]} r="2.5" fill="#14B8A6" />
             ))}
           </svg>
           <div className="mt-2 grid grid-cols-6 gap-1 font-mono text-[9px] text-muted-foreground">

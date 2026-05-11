@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
@@ -48,7 +48,7 @@ export function NewsletterCTA() {
                   <MagneticButton>
                     <button
                       type="submit"
-                      className="px-6 py-3 bg-accent text-accent-foreground font-mono text-xs uppercase tracking-wider hover:shadow-[0_0_30px_-5px_hsl(189_100%_50%_/_0.5)] transition-shadow"
+                      className="px-6 py-3 bg-accent text-accent-foreground font-mono text-xs uppercase tracking-wider hover:shadow-[0_0_30px_-5px_hsl(173_80%_40%_/_0.5)] transition-shadow"
                     >
                       Abone ol
                     </button>

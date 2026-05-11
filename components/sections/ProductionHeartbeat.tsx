@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -53,7 +53,7 @@ function Sparkline({ accent = false }: { accent?: boolean }) {
       <path
         d={d}
         fill="none"
-        stroke={accent ? 'hsl(189 100% 50%)' : 'currentColor'}
+        stroke={accent ? '#14B8A6' : 'currentColor'}
         strokeWidth="1"
         strokeLinejoin="round"
         strokeLinecap="round"
@@ -186,7 +186,7 @@ export function ProductionHeartbeat() {
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
           background:
-            'radial-gradient(ellipse 60% 40% at 50% 0%, hsl(189 100% 50% / 0.1), transparent 70%)',
+            'radial-gradient(ellipse 60% 40% at 50% 0%, rgb(20 184 166 / 0.1), transparent 70%)',
         }}
       />
 

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -61,7 +61,7 @@ export function Manifesto() {
   return (
     <section className="border-b border-border py-32 md:py-48 relative overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-40"
-        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, hsl(189 100% 50% / 0.07), transparent 70%)' }}/>
+        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgb(20 184 166 / 0.07), transparent 70%)' }}/>
       <Container as="div" className="relative">
         <div ref={ref}>
         <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mb-20">Sözümüz</p>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
@@ -18,7 +18,7 @@ function RelatedCard({ data }: { data: CaseStudyFrontmatter }) {
         className="pointer-events-none absolute top-0 right-0 h-24 w-24 opacity-0 group-hover:opacity-100 transition-opacity"
         style={{
           background:
-            'radial-gradient(circle at 100% 0%, hsl(189 100% 50% / 0.1), transparent 70%)',
+            'radial-gradient(circle at 100% 0%, rgb(20 184 166 / 0.1), transparent 70%)',
         }}
       />
       <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">{data.industry}</p>

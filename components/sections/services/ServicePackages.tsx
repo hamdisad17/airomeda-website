@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
@@ -457,7 +457,7 @@ export function ServicePackages({ slug }: ServicePackagesProps) {
               key={pkg.name}
               className={`relative flex flex-col border p-8 ${
                 pkg.highlight
-                  ? 'border-accent bg-accent/5 shadow-[0_0_40px_-10px_hsl(189_100%_50%_/_0.2)]'
+                  ? 'border-accent bg-accent/5 shadow-[0_0_40px_-10px_hsl(173_80%_40%_/_0.2)]'
                   : 'border-border bg-elevated'
               }`}
             >
@@ -490,7 +490,7 @@ export function ServicePackages({ slug }: ServicePackagesProps) {
                 href="/iletisim"
                 className={`mt-8 block text-center px-4 py-3 text-sm font-medium transition-all ${
                   pkg.highlight
-                    ? 'bg-accent text-accent-foreground hover:shadow-[0_0_30px_-5px_hsl(189_100%_50%_/_0.5)]'
+                    ? 'bg-accent text-accent-foreground hover:shadow-[0_0_30px_-5px_hsl(173_80%_40%_/_0.5)]'
                     : 'border border-border text-foreground hover:border-accent hover:text-accent'
                 }`}
               >

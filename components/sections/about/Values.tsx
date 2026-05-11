@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 import { TiltCard } from '@/components/motion/TiltCard';
@@ -8,7 +8,7 @@ const VALUES = [
     icon: (
       <svg viewBox="0 0 32 32" fill="none" className="h-8 w-8">
         <rect x="4" y="4" width="24" height="24" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M10 16l4 4 8-8" stroke="hsl(189 100% 50%)" strokeWidth="1.5" strokeLinecap="square" />
+        <path d="M10 16l4 4 8-8" stroke="#14B8A6" strokeWidth="1.5" strokeLinecap="square" />
       </svg>
     ),
     title: 'Güven',
@@ -19,7 +19,7 @@ const VALUES = [
     icon: (
       <svg viewBox="0 0 32 32" fill="none" className="h-8 w-8">
         <circle cx="16" cy="16" r="11" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M16 8v8l5 3" stroke="hsl(189 100% 50%)" strokeWidth="1.5" strokeLinecap="square" />
+        <path d="M16 8v8l5 3" stroke="#14B8A6" strokeWidth="1.5" strokeLinecap="square" />
       </svg>
     ),
     title: 'Hız',
@@ -30,7 +30,7 @@ const VALUES = [
     icon: (
       <svg viewBox="0 0 32 32" fill="none" className="h-8 w-8">
         <path d="M4 8h24M4 16h16M4 24h20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
-        <rect x="22" y="20" width="6" height="6" stroke="hsl(189 100% 50%)" strokeWidth="1.5" />
+        <rect x="22" y="20" width="6" height="6" stroke="#14B8A6" strokeWidth="1.5" />
       </svg>
     ),
     title: 'Dünya Çapında',
@@ -41,7 +41,7 @@ const VALUES = [
     icon: (
       <svg viewBox="0 0 32 32" fill="none" className="h-8 w-8">
         <path d="M8 24V12M16 24V8M24 24V16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
-        <path d="M4 24h24" stroke="hsl(189 100% 50%)" strokeWidth="1.5" />
+        <path d="M4 24h24" stroke="#14B8A6" strokeWidth="1.5" />
       </svg>
     ),
     title: 'Uzmanlık',
@@ -58,7 +58,7 @@ export function Values() {
         className="pointer-events-none absolute inset-0 opacity-30"
         style={{
           background:
-            'radial-gradient(ellipse 50% 60% at 20% 50%, hsl(189 100% 50% / 0.06), transparent 70%)',
+            'radial-gradient(ellipse 50% 60% at 20% 50%, rgb(20 184 166 / 0.06), transparent 70%)',
         }}
       />
       <Container as="div" className="relative">

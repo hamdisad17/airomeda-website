@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 
 interface PullquoteProps {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ export function Pullquote({ children, attribution, role }: PullquoteProps) {
       <div
         aria-hidden
         className="pointer-events-none absolute -left-px top-0 bottom-0"
-        style={{ background: 'linear-gradient(to bottom, hsl(189 100% 50% / 0.4), hsl(189 100% 50% / 0.05))' }}
+        style={{ background: 'linear-gradient(to bottom, rgb(20 184 166 / 0.4), rgb(20 184 166 / 0.05))' }}
       />
       <p
         className="text-xl md:text-2xl font-semibold tracking-tight text-foreground leading-snug"

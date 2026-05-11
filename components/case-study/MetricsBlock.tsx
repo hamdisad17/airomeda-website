@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
@@ -13,7 +13,7 @@ export async function MetricsBlock({ metrics }: { metrics: CaseStudyFrontmatter[
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 60% 100% at 50% 100%, hsl(189 100% 50% / 0.05), transparent 70%)',
+            'radial-gradient(ellipse 60% 100% at 50% 100%, rgb(20 184 166 / 0.05), transparent 70%)',
         }}
       />
       <Container as="div" className="relative py-20">

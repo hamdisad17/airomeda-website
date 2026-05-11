@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import Image from 'next/image';
 import { Container } from '@/components/layout/Container';
@@ -92,7 +92,7 @@ function TeamCard({ member }: { member: TeamMember }) {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 60% 80% at 50% 100%, hsl(189 100% 50% / 0.1), transparent 60%)',
+              'radial-gradient(ellipse 60% 80% at 50% 100%, rgb(20 184 166 / 0.1), transparent 60%)',
           }}
         />
         <Image

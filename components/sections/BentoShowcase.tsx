@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
@@ -25,8 +25,8 @@ function MiniChart() {
     <svg viewBox="0 0 200 80" className="w-full h-full" aria-hidden>
       <defs>
         <linearGradient id="bento-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="hsl(189 100% 50% / 0.4)"/>
-          <stop offset="100%" stopColor="hsl(189 100% 50% / 0)"/>
+          <stop offset="0%" stopColor="rgb(20 184 166 / 0.4)"/>
+          <stop offset="100%" stopColor="rgb(20 184 166 / 0)"/>
         </linearGradient>
       </defs>
       <path
@@ -37,7 +37,7 @@ function MiniChart() {
         ref={ref}
         d="M0,60 L25,55 L50,58 L75,42 L100,48 L125,30 L150,35 L175,18 L200,22"
         fill="none"
-        stroke="hsl(189 100% 50%)"
+        stroke="#14B8A6"
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
@@ -60,7 +60,7 @@ export function BentoShowcase() {
           {/* Big featured — güven ve deneyim */}
           <TiltCard className="md:col-span-2 md:row-span-2 p-8 relative overflow-hidden border border-border bg-elevated">
             <div aria-hidden className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full"
-              style={{ background: 'radial-gradient(circle, hsl(189 100% 50% / 0.15), transparent 60%)' }}/>
+              style={{ background: 'radial-gradient(circle, rgb(20 184 166 / 0.15), transparent 60%)' }}/>
             <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">11 yıllık deneyim</p>
             <h3 className="mt-4 text-2xl font-semibold tracking-tight">11 yıllık birikim, 7 sektörde uzmanlaşmış güvenilir yazılım ortağı.</h3>
             <p className="mt-3 text-sm text-muted-foreground max-w-sm">

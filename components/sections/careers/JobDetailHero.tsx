@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 import { MagneticButton } from '@/components/motion/MagneticButton';
@@ -16,7 +16,7 @@ export function JobDetailHero({ job }: JobDetailHeroProps) {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 60% 50% at 50% 30%, hsl(189 100% 50% / 0.07), transparent 70%)',
+            'radial-gradient(ellipse 60% 50% at 50% 30%, rgb(20 184 166 / 0.07), transparent 70%)',
         }}
       />
       <Container as="div" className="relative py-20 md:py-28">
@@ -39,7 +39,7 @@ export function JobDetailHero({ job }: JobDetailHeroProps) {
             <MagneticButton>
               <a
                 href="#apply"
-                className="inline-flex items-center gap-2 bg-accent px-6 py-3 text-sm font-medium text-accent-foreground transition-all hover:shadow-[0_0_40px_-5px_hsl(189_100%_50%_/_0.6)]"
+                className="inline-flex items-center gap-2 bg-accent px-6 py-3 text-sm font-medium text-accent-foreground transition-all hover:shadow-[0_0_40px_-5px_hsl(173_80%_40%_/_0.6)]"
               >
                 Şimdi başvur <span>→</span>
               </a>

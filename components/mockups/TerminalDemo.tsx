@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 
 type TerminalLine =
@@ -49,7 +49,7 @@ export function TerminalDemo() {
   }, [cycle]);
 
   return (
-    <div className="border border-border bg-elevated shadow-[0_0_60px_-15px_hsl(189_100%_50%_/_0.3)]">
+    <div className="border border-border bg-elevated shadow-[0_0_60px_-15px_hsl(173_80%_40%_/_0.3)]">
       <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-4 py-2.5">
         <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]/70" />

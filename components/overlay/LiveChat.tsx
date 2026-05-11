@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 
 interface QuickReply {
@@ -48,7 +48,7 @@ export function LiveChat() {
       <button
         type="button"
         onClick={handleOpen}
-        className="fixed bottom-6 left-6 z-40 group flex items-center gap-3 bg-accent text-accent-foreground px-5 py-3.5 shadow-[0_10px_40px_-10px_hsl(189_100%_50%_/_0.6)] hover:shadow-[0_20px_60px_-10px_hsl(189_100%_50%_/_0.8)] transition-shadow"
+        className="fixed bottom-6 left-6 z-40 group flex items-center gap-3 bg-accent text-accent-foreground px-5 py-3.5 shadow-[0_10px_40px_-10px_hsl(173_80%_40%_/_0.6)] hover:shadow-[0_20px_60px_-10px_hsl(173_80%_40%_/_0.8)] transition-shadow"
         aria-label={open ? 'Canlı desteği kapat' : 'Canlı destek başlat'}
       >
         <span className="relative flex items-center justify-center w-6 h-6">
@@ -77,7 +77,7 @@ export function LiveChat() {
 
       {/* Chat panel */}
       {open && (
-        <div className="fixed bottom-24 left-6 z-40 w-[360px] max-w-[calc(100vw-3rem)] border border-border bg-elevated shadow-[0_30px_80px_-20px_hsl(189_100%_50%_/_0.3)] animate-chat-slide">
+        <div className="fixed bottom-24 left-6 z-40 w-[360px] max-w-[calc(100vw-3rem)] border border-border bg-elevated shadow-[0_30px_80px_-20px_hsl(173_80%_40%_/_0.3)] animate-chat-slide">
           <div className="border-b border-border bg-background px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">

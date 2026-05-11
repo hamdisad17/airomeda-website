@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+﻿import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { listCaseStudies, loadCaseStudyContent } from '@/lib/mdx';
@@ -105,7 +105,7 @@ export default async function CaseStudyDetail({
           className="pointer-events-none absolute inset-0 opacity-30"
           style={{
             background:
-              'radial-gradient(ellipse 40% 60% at 80% 50%, hsl(189 100% 50% / 0.04), transparent 70%)',
+              'radial-gradient(ellipse 40% 60% at 80% 50%, rgb(20 184 166 / 0.04), transparent 70%)',
           }}
         />
         <Container as="div" className="relative">

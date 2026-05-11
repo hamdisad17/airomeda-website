@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 
 // Pre-computed once at module load — stable random bar heights for gaming shot
@@ -49,7 +49,7 @@ function Shot({ kind }: { kind: ShotKind }) {
             <svg viewBox="0 0 200 80" className="w-full h-full">
               <path
                 d="M0,60 L25,55 L50,40 L75,45 L100,30 L125,25 L150,15 L175,18 L200,10"
-                stroke="hsl(189 100% 50%)"
+                stroke="#14B8A6"
                 strokeWidth="1.2"
                 fill="none"
               />
@@ -92,7 +92,7 @@ function Shot({ kind }: { kind: ShotKind }) {
                 cx="50"
                 cy="50"
                 r="35"
-                stroke="hsl(189 100% 50%)"
+                stroke="#14B8A6"
                 strokeWidth="6"
                 fill="none"
                 strokeDasharray="160 220"
@@ -126,7 +126,7 @@ function Shot({ kind }: { kind: ShotKind }) {
                 cy={y}
                 r="6"
                 fill="none"
-                stroke={i === 4 ? 'hsl(189 100% 50%)' : 'hsl(0 0% 35%)'}
+                stroke={i === 4 ? '#14B8A6' : 'hsl(0 0% 35%)'}
                 strokeWidth="1"
               />
             ))}
@@ -144,7 +144,7 @@ function Shot({ kind }: { kind: ShotKind }) {
                 y1={y}
                 x2="100"
                 y2="60"
-                stroke="hsl(189 100% 50% / 0.4)"
+                stroke="rgb(20 184 166 / 0.4)"
                 strokeWidth="0.5"
                 strokeDasharray="2 2"
               />

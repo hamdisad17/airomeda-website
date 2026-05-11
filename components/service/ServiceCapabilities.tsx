@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 import { TiltCard } from '@/components/motion/TiltCard';
@@ -27,7 +27,7 @@ export function ServiceCapabilities({ items }: { items: ServiceFrontmatter['capa
                   className="pointer-events-none absolute top-0 right-0 h-24 w-24 opacity-0 group-hover:opacity-100 transition-opacity"
                   style={{
                     background:
-                      'radial-gradient(circle at 100% 0%, hsl(189 100% 50% / 0.1), transparent 70%)',
+                      'radial-gradient(circle at 100% 0%, rgb(20 184 166 / 0.1), transparent 70%)',
                   }}
                 />
                 <div className="flex items-start gap-4">

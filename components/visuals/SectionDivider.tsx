@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -57,7 +57,7 @@ export function SectionDivider({ label }: SectionDividerProps) {
           <path
             className="divider-path"
             d="M0,0.5 L1000,0.5"
-            stroke="hsl(189 100% 50%)"
+            stroke="#14B8A6"
             strokeWidth="0.5"
             strokeDasharray="4 4"
             fill="none"

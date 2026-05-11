@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { TextReveal } from '@/components/motion/TextReveal';
@@ -12,7 +12,7 @@ export function WorksHero({ count }: { count?: number }) {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 60% 50% at 50% 30%, hsl(189 100% 50% / 0.08), transparent 70%)',
+            'radial-gradient(ellipse 60% 50% at 50% 30%, rgb(20 184 166 / 0.08), transparent 70%)',
         }}
       />
       {/* Dot grid atmosphere */}
@@ -21,7 +21,7 @@ export function WorksHero({ count }: { count?: number }) {
         className="pointer-events-none absolute inset-0 opacity-20"
         style={{
           backgroundImage:
-            'radial-gradient(circle, hsl(189 100% 50% / 0.2) 1px, transparent 1px)',
+            'radial-gradient(circle, rgb(20 184 166 / 0.2) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
           maskImage:
             'radial-gradient(ellipse 60% 50% at 50% 50%, black 0%, transparent 80%)',

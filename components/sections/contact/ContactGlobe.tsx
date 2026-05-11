@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 import { DeploymentGlobe } from '@/components/sections/DeploymentGlobe';
@@ -14,7 +14,7 @@ export function ContactGlobe() {
               aria-hidden
               className="pointer-events-none absolute inset-0"
               style={{
-                background: 'radial-gradient(ellipse 80% 60% at 50% 50%, hsl(189 100% 50% / 0.05), transparent 70%)',
+                background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgb(20 184 166 / 0.05), transparent 70%)',
               }}
             />
             <div className="absolute inset-0">

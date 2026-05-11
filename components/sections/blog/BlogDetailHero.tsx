@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 import type { BlogPostFrontmatter } from '@/lib/schemas/blog-post';
@@ -15,7 +15,7 @@ export function BlogDetailHero({ post }: BlogDetailHeroProps) {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 60% 50% at 50% 0%, hsl(189 100% 50% / 0.07), transparent 70%)',
+            'radial-gradient(ellipse 60% 50% at 50% 0%, rgb(20 184 166 / 0.07), transparent 70%)',
         }}
       />
       <Container as="div" className="relative py-20 md:py-28 max-w-4xl mx-auto">

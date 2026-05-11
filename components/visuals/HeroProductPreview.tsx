@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -83,12 +83,12 @@ export function HeroProductPreview() {
           <svg viewBox="0 0 300 80" className="w-full h-20">
             <defs>
               <linearGradient id="hp-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(189 100% 50% / 0.3)"/>
-                <stop offset="100%" stopColor="hsl(189 100% 50% / 0)"/>
+                <stop offset="0%" stopColor="rgb(20 184 166 / 0.3)"/>
+                <stop offset="100%" stopColor="rgb(20 184 166 / 0)"/>
               </linearGradient>
             </defs>
             <path d="M 0 60 L 50 55 L 100 48 L 150 38 L 200 28 L 250 22 L 300 12 L 300 80 L 0 80 Z" fill="url(#hp-grad)"/>
-            <path className="hp-chart-line" d="M 0 60 L 50 55 L 100 48 L 150 38 L 200 28 L 250 22 L 300 12" fill="none" stroke="hsl(189 100% 50%)" strokeWidth="2" strokeLinejoin="round"/>
+            <path className="hp-chart-line" d="M 0 60 L 50 55 L 100 48 L 150 38 L 200 28 L 250 22 L 300 12" fill="none" stroke="#14B8A6" strokeWidth="2" strokeLinejoin="round"/>
           </svg>
           <div className="mt-2 grid grid-cols-7 gap-1 text-[10px] text-muted-foreground text-center">
             {['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'].map((d) => <span key={d}>{d}</span>)}

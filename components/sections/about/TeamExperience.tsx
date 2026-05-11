@@ -1,4 +1,4 @@
-import { Container } from '@/components/layout/Container';
+﻿import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 
 const EXPERIENCE = [
@@ -22,7 +22,7 @@ export function TeamExperience() {
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
           background:
-            'radial-gradient(ellipse 60% 40% at 50% 50%, hsl(189 100% 50% / 0.06), transparent 70%)',
+            'radial-gradient(ellipse 60% 40% at 50% 50%, rgb(20 184 166 / 0.06), transparent 70%)',
         }}
       />
       <Container as="div" className="relative">

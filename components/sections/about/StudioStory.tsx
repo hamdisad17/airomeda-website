@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 import { Pullquote } from '@/components/sections/shared/Pullquote';
@@ -11,7 +11,7 @@ export function StudioStory() {
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
           background:
-            'radial-gradient(ellipse 40% 60% at 80% 50%, hsl(189 100% 50% / 0.05), transparent 70%)',
+            'radial-gradient(ellipse 40% 60% at 80% 50%, rgb(20 184 166 / 0.05), transparent 70%)',
         }}
       />
       <Container as="div" className="relative">

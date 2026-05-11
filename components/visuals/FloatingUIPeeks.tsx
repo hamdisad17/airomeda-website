@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -49,7 +49,7 @@ export function FloatingUIPeeks() {
             <path
               d="M0,20 L15,18 L30,22 L45,12 L60,15 L75,8 L90,10 L100,5"
               fill="none"
-              stroke="hsl(189 100% 50%)"
+              stroke="#14B8A6"
               strokeWidth="1.2"
               strokeLinejoin="round"
             />

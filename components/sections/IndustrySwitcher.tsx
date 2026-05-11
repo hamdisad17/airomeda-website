@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
@@ -180,7 +180,7 @@ export function IndustrySwitcher() {
               className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full opacity-30"
               style={{
                 background:
-                  'radial-gradient(circle, hsl(189 100% 50% / 0.4), transparent 60%)',
+                  'radial-gradient(circle, rgb(20 184 166 / 0.4), transparent 60%)',
               }}
             />
             <div className="relative">

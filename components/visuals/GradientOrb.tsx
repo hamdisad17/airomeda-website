@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import * as React from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -23,7 +23,7 @@ export function GradientOrb() {
       aria-hidden
       className="pointer-events-none absolute -top-32 right-10 h-[600px] w-[600px] rounded-full"
       style={{
-        background: 'radial-gradient(circle, hsl(189 100% 50% / 0.18), transparent 65%)',
+        background: 'radial-gradient(circle, rgb(20 184 166 / 0.18), transparent 65%)',
         filter: 'blur(80px)',
       }}
     />
