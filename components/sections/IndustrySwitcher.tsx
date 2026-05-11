@@ -7,7 +7,8 @@ const INDUSTRIES = [
   {
     key: 'finance',
     label: 'Finans',
-    tagline: 'Bankacılık ve finans sektörünün ihtiyaç duyduğu güvenli yazılımları kuruyoruz. 11 yıllık deneyimimizle finans alanının güvenle kullandığı çözümleri size de sunuyoruz.',
+    tagline:
+      'Bankacılık ve finans sektörünün ihtiyaç duyduğu güvenli yazılımları kuruyoruz. 11 yıllık deneyimimizle finans alanının güvenle kullandığı çözümleri size de sunuyoruz.',
     points: [
       'Bankacılık ve ödeme sistemleri geliştirme',
       'Güvenli ödeme bağlantıları (Iyzico, Stripe, havale)',
@@ -18,8 +19,9 @@ const INDUSTRIES = [
   },
   {
     key: 'gaming',
-    label: 'iGaming',
-    tagline: 'Lisans süreçlerinden canlı yayına kadar tüm oyun platformunu kuruyoruz. Hızlı, güvenilir ve dünyanın her yerinden erişilebilir.',
+    label: 'Şans Oyunları',
+    tagline:
+      'Lisans süreçlerinden canlı yayına kadar tüm oyun platformunu kuruyoruz. Hızlı, güvenilir ve dünyanın her yerinden erişilebilir.',
     points: [
       'Casino ve spor bahisleri platform geliştirme',
       'Lisans gereksinimlerine uygun sayı üretim sistemi',
@@ -31,7 +33,8 @@ const INDUSTRIES = [
   {
     key: 'commerce',
     label: 'E-Ticaret',
-    tagline: 'Hızlı yüklenen, kolay yönetilen ve satışlarınızı artıran e-ticaret çözümleri tasarlıyoruz. Mevcut sisteminizi yükseltmek veya sıfırdan kurmak için hazırız.',
+    tagline:
+      'Hızlı yüklenen, kolay yönetilen ve satışlarınızı artıran e-ticaret çözümleri tasarlıyoruz. Mevcut sisteminizi yükseltmek veya sıfırdan kurmak için hazırız.',
     points: [
       'Özel e-ticaret ve pazar yeri geliştirme',
       'Stok ve depo yönetim sistemi bağlantısı',
@@ -43,7 +46,8 @@ const INDUSTRIES = [
   {
     key: 'integration',
     label: 'Entegrasyon',
-    tagline: "Sistemleriniz birbiriyle sorunsuz çalışsın. Kargodan stok yönetimine, ödemeden e-faturaya — her şeyi tek noktadan yönetin.",
+    tagline:
+      'Sistemleriniz birbiriyle sorunsuz çalışsın. Kargodan stok yönetimine, ödemeden e-faturaya — her şeyi tek noktadan yönetin.',
     points: [
       'Stok yönetim sistemi bağlantısı (Logo, Netsis, NetSuite)',
       'Kargo firmaları ile otomatik takip ve bildirim',
@@ -51,6 +55,45 @@ const INDUSTRIES = [
       'Farklı sistemler arası veri aktarımı ve senkronizasyon',
     ],
     metric: { v: '10+', l: 'sistem bağlantısı' },
+  },
+  {
+    key: 'seo-reklam',
+    label: 'SEO & Reklam',
+    tagline:
+      'Google ve sosyal medyada görünürlüğünüzü artırın. Daha fazla müşteri, daha çok satış — ölçülebilir sonuçlarla.',
+    points: [
+      'Google arama sonuçlarında üst sıralarda yer alma',
+      'Google Ads ve Meta Ads reklam kampanyaları',
+      'Hedef kitle analizi ve dönüşüm optimizasyonu',
+      'Aylık detaylı performans raporları',
+    ],
+    metric: { v: '+%180', l: 'ortalama trafik artışı' },
+  },
+  {
+    key: 'sosyal-medya',
+    label: 'Sosyal Medya',
+    tagline:
+      'Markanızın sosyal medyada güçlü, tutarlı ve etkileşim alan bir sesi olsun. İçerikten topluluk yönetimine kadar her şey bizde.',
+    points: [
+      'Instagram, TikTok, X, LinkedIn içerik yönetimi',
+      'Marka kimliğine uygun görsel ve metin üretimi',
+      'Topluluk yönetimi ve mesaj yanıtlama',
+      'Aylık içerik takvimi ve etkileşim raporları',
+    ],
+    metric: { v: '5+', l: 'platformda yönetim' },
+  },
+  {
+    key: 'crm',
+    label: 'Müşteri Yönetimi',
+    tagline:
+      'Müşterilerinizi tanıyın, onları hatırlayan bir sistem kurun. Her etkileşim verisi ile satışlarınızı büyütün.',
+    points: [
+      'Müşteri kayıt ve segmentasyon sistemleri',
+      'Otomatik kampanya ve bildirim yönetimi',
+      'Müşteri sadakat programları (puan, kupon, indirim)',
+      'Satış sonrası takip ve memnuniyet anketleri',
+    ],
+    metric: { v: '+%65', l: 'tekrar satın alma oranı' },
   },
 ];
 
