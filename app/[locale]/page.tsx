@@ -23,7 +23,9 @@ import { ProcessStory } from '@/components/sections/ProcessStory';
 import { DeploymentPipeline } from '@/components/sections/DeploymentPipeline';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { FAQ } from '@/components/sections/FAQ';
-import { WordmarkMarquee } from '@/components/sections/WordmarkMarquee';
+import { DeploymentGlobe } from '@/components/sections/DeploymentGlobe';
+import { StudioGallery } from '@/components/sections/StudioGallery';
+import { ScreenshotMarquee } from '@/components/sections/ScreenshotMarquee';
 import { CTASection } from '@/components/sections/CTASection';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
@@ -61,18 +63,20 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <ProductionHeartbeat />
       <BentoShowcase />
       <StackPanel />
+      <DeploymentGlobe />
       <ProductShowcase variant="finance" />
       <CodeSample />
       <ProductShowcase variant="gaming" reverse />
       <Numbers />
       <SectionDivider label="manifesto" />
       <Manifesto />
+      <StudioGallery />
       <SelectedWork />
       <ProcessStory />
       <DeploymentPipeline />
       <Testimonials />
       <FAQ />
-      <WordmarkMarquee />
+      <ScreenshotMarquee />
       <SectionDivider label="iletişim" />
       <CTASection />
     </>

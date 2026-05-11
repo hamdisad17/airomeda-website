@@ -1,7 +1,6 @@
 import { Container } from '@/components/layout/Container';
 import { Reveal } from '@/components/ui/Reveal';
-import { FinanceDashboard } from '@/components/mockups/FinanceDashboard';
-import { GamingControlPanel } from '@/components/mockups/GamingControlPanel';
+import { CinemaMockup } from '@/components/mockups/CinemaMockup';
 
 type Variant = 'finance' | 'gaming';
 
@@ -56,7 +55,7 @@ export function ProductShowcase({ variant, reverse = false }: { variant: Variant
             </div>
           </Reveal>
           <Reveal delay={120}>
-            {variant === 'finance' ? <FinanceDashboard /> : <GamingControlPanel />}
+            <CinemaMockup kind={variant} />
           </Reveal>
         </div>
       </Container>
