@@ -18,7 +18,7 @@ export function ContactHero() {
       />
       <Container as="div" className="relative py-24 md:py-36">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// iletişim · brief gönder'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">İletişim</p>
         </RevealSection>
         <h1
           className="mt-6 font-semibold tracking-tight text-foreground"

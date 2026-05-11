@@ -33,7 +33,7 @@ export function PostGrid({ posts, title }: PostGridProps) {
       <Container as="div" className="py-16 md:py-20">
         {title && (
           <RevealSection>
-            <p className="font-mono text-eyebrow uppercase text-accent mb-10">{title}</p>
+            <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mb-10">{title}</p>
           </RevealSection>
         )}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

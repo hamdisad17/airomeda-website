@@ -47,7 +47,7 @@ export function ServiceBenefits({ benefits = DEFAULT_BENEFITS }: ServiceBenefits
     <section className="border-b border-border py-20 md:py-28">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// faydalar'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Faydalar</p>
           <h2
             className="mt-4 font-semibold tracking-tight text-foreground"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', letterSpacing: '-0.03em' }}

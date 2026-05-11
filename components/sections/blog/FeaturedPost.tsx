@@ -17,8 +17,8 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
   return (
     <RevealSection as="section" className="border-b border-border">
       <Container as="div" className="py-12 md:py-16">
-        <p className="font-mono text-eyebrow uppercase text-muted-foreground mb-6">
-          {'// öne çıkan yazı'}
+        <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium mb-6">
+          Öne Çıkan Yazı
         </p>
         <Link href={`/blog/${post.slug}`} className="group block">
           <div className="grid gap-8 md:grid-cols-[1fr_420px] border border-border bg-elevated/30 hover:bg-elevated/60 transition-colors overflow-hidden">

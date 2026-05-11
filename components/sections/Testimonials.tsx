@@ -4,25 +4,25 @@ import { StaggerGrid } from '@/components/motion/StaggerGrid';
 
 const QUOTES = [
   {
-    quote: "İlk görüşmeden 10 haftada canlıya geçtik. Teknik kalite ve süreç disiplini açısından şimdiye kadar çalıştığım en güçlü ekip. Finansal altyapımız hiç bu kadar sağlam olmamıştı.",
+    quote: "İlk görüşmeden 10 haftada sistemi canlıya aldık. Her adımda bize ne yapıldığını açıkladılar, süprizi yoktu. Ödeme sistemimiz hiç bu kadar güvenilir çalışmamıştı.",
     author: 'Murat Karaağaç',
-    role: 'CTO',
+    role: 'Genel Müdür',
     company: 'PayGate',
-    industry: 'Fintech',
+    industry: 'Finans',
   },
   {
-    quote: "E-ticaret platformumuzu sıfırdan kurarken Airomeda'nın 11 yıllık deneyimi gerçekten fark yarattı. Teknik detaylara hakim bir ekip — sürecin her aşamasında yanımızdaydılar.",
+    quote: "Platformumuzu sıfırdan kurarken Airomeda'nın 11 yıllık deneyimi gerçekten fark yarattı. Sürecin her aşamasında yanımızdaydılar, yayından sonra da bizi yalnız bırakmadılar.",
     author: 'Zeynep Yıldırım',
-    role: 'CPO',
+    role: 'Kurucu Ortak',
     company: 'Bahis.io',
-    industry: 'iGaming',
+    industry: 'Oyun Platformu',
   },
   {
-    quote: "Avrupa'dan bir şirkete bu kadar profesyonel hizmet verebilmeleri etkileyici. Dil engeli yok, saat farkı yok — uzaktan çalışma konusunda gerçekten deneyimliler.",
+    quote: "Avrupa'dan bir şirkete bu kadar profesyonel hizmet verebilmeleri etkileyici. Türkçe ve İngilizce destek, hızlı yanıt — uzaktan çalışmada hiç sorun yaşamadık.",
     author: 'Emre Demir',
     role: 'CEO',
     company: 'Hubert Commerce',
-    industry: 'Headless E-Ticaret',
+    industry: 'E-Ticaret',
   },
 ];
 
@@ -31,7 +31,7 @@ export function Testimonials() {
     <section className="border-b border-border py-24 md:py-32">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 07 · söz onların'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Müşterilerimizden</p>
           <h2 className="mt-4 max-w-3xl text-display-2 font-semibold tracking-tight">
             Müşterilerimiz ne diyor?
           </h2>
@@ -39,7 +39,7 @@ export function Testimonials() {
         <StaggerGrid className="mt-12 grid gap-6 md:grid-cols-3">
           {QUOTES.map((q) => (
             <figure data-stagger-item key={q.company} className="flex h-full flex-col border border-border bg-elevated p-7">
-              <p className="font-mono text-eyebrow uppercase text-accent">{q.industry}</p>
+              <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">{q.industry}</p>
               <blockquote className="mt-4 flex-1 text-base leading-relaxed text-foreground">
                 &ldquo;{q.quote}&rdquo;
               </blockquote>

@@ -46,7 +46,7 @@ export function EditorialHero({
           {/* Left content */}
           <div className="flex flex-col justify-between">
             <div>
-              <p className="font-mono text-eyebrow uppercase text-accent">{eyebrow}</p>
+              <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">{eyebrow}</p>
               <h1
                 className="mt-6 font-semibold tracking-tight text-foreground"
                 style={{ fontSize: 'clamp(2.75rem, 7vw, 6rem)', lineHeight: 1, letterSpacing: '-0.04em' }}

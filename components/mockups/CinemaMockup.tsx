@@ -203,20 +203,17 @@ function FinanceContent() {
         </div>
 
         <div className="border border-border bg-background p-4">
-          <p className="font-mono text-[10px] uppercase text-muted-foreground">Bölgeler · P99</p>
+          <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">Aktif Bölgeler</p>
           <ul className="mt-3 space-y-2">
             {[
-              { r: 'fra1', v: 14 },
-              { r: 'lon1', v: 19 },
-              { r: 'iad1', v: 27 },
-              { r: 'sin1', v: 42 },
+              { r: 'Avrupa', v: '✓' },
+              { r: 'İngiltere', v: '✓' },
+              { r: 'Amerika', v: '✓' },
+              { r: 'Asya', v: '✓' },
             ].map((b, i) => (
-              <li key={i} className="font-mono text-[11px] flex items-center justify-between">
+              <li key={i} className="text-[11px] flex items-center justify-between">
                 <span className="text-foreground">{b.r}</span>
-                <span className="text-accent">
-                  {b.v}
-                  <span className="text-muted-foreground">ms</span>
-                </span>
+                <span className="text-accent">{b.v}</span>
               </li>
             ))}
           </ul>

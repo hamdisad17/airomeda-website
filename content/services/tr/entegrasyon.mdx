@@ -2,20 +2,20 @@
 title: Entegrasyon Yazılımları
 slug: entegrasyon
 excerpt: Kurumsal sistemler arasında güvenilir, izlenebilir ve bakımı kolay veri entegrasyonu.
-hero_subtitle: ERP, CRM ve üçüncü taraf servisler arasında olay güdümlü veya API tabanlı entegrasyon mimarisi tasarımı ve uygulaması.
+hero_subtitle: ERP, CRM ve üçüncü taraf sistemler arasında güvenilir, izlenebilir veri entegrasyonu tasarımı ve uygulaması.
 capabilities:
-  - title: API gateway tasarımı ve yönetimi
-    description: Merkezi güvenlik, hız sınırlama, sürüm yönetimi ve API gözlemlenebilirliği.
-  - title: ERP entegrasyonları
-    description: SAP, Logo, Netsis ve benzeri ERP sistemleriyle çift yönlü veri senkronizasyonu.
-  - title: EDI ve B2B mesajlaşma
-    description: EDIFACT, X12 ve AS2 tabanlı tedarikçi ve müşteri entegrasyonları.
-  - title: Olay akışı ve webhook altyapısı
-    description: Kafka veya RabbitMQ üzerinde güvenilir olay yayını ve tüketici yönetimi.
-  - title: Dönüşüm ve veri haritalama
-    description: Sistemler arası veri modeli farklılıklarını yöneten kural tabanlı dönüşüm katmanı.
-  - title: Entegrasyon izleme ve hata yönetimi
-    description: Başarısız mesaj yeniden gönderimi, uyarı mekanizmaları ve entegrasyon sağlık panoları.
+  - title: Merkezi sistem bağlantı yönetimi
+    description: Tüm sistem bağlantılarında merkezi güvenlik, izleme ve versiyon yönetimi.
+  - title: Kurumsal yazılım entegrasyonları
+    description: SAP, Logo, Netsis ve benzeri kurumsal yazılımlarla çift yönlü veri senkronizasyonu.
+  - title: Tedarikçi ve iş ortağı bağlantıları
+    description: Standart protokollerle tedarikçi ve müşteri entegrasyonları.
+  - title: Gerçek zamanlı veri akışı
+    description: Sistemler arasında güvenilir, anlık veri iletimi ve hata yönetimi.
+  - title: Veri dönüşümü ve haritalama
+    description: Sistemler arası farklı veri yapılarını otomatik olarak uyumlu hale getirir.
+  - title: İzleme ve hata yönetimi
+    description: Başarısız iletilerin otomatik yeniden gönderimi, uyarı mekanizmaları ve durum paneli.
 tech_stack:
   - Kafka
   - RabbitMQ
@@ -25,12 +25,12 @@ tech_stack:
   - PostgreSQL
   - Kong
 faq:
-  - question: Legacy sistemler veya belgelenmemiş API'lerle çalışabiliyor musunuz?
-    answer: Evet. Tersine mühendislik ile arayüz analizini entegrasyon öncesinde yapıyor, keşif bulgularını belgelendirerek proje kapsamını netleştiriyoruz.
-  - question: Gerçek zamanlı entegrasyon mu, yoksa toplu (batch) işleme mi tercih edilmeli?
-    answer: Bu karar veri gecikmesi toleransına, sistem yüküne ve iş sürecine göre değişir; her projeyi hem teknik hem iş perspektifinden değerlendirerek öneri sunuyoruz.
+  - question: Eski veya belgelenmemiş sistemlerle çalışabiliyor musunuz?
+    answer: Evet. Mevcut sistemleri analiz ederek başlıyor, entegrasyon öncesinde kapsamı ve riskleri belgelendiriyoruz.
+  - question: Anlık veri aktarımı mı, toplu işleme mi tercih edilmeli?
+    answer: Bu karar iş sürecine, veri hacmine ve sistem kapasitesine göre değişir; her projeyi birlikte değerlendirerek en uygun yaklaşımı öneriyoruz.
   - question: Entegrasyon güvenliği nasıl sağlanıyor?
-    answer: OAuth 2.0, API anahtarı rotasyonu, TLS zorunluluğu ve minimum ayrıcalık erişim politikaları standart güvenlik katmanımızı oluşturuyor.
+    answer: Tüm bağlantılar şifreli iletişim üzerinden çalışır, erişim yetkileri en düşük ayrıcalık ilkesiyle yönetilir.
   - question: Mevcut bir entegrasyon altyapısını devralmak mümkün mü?
     answer: Evet. Mevcut entegrasyonları önce denetleyip belgelendiriyor, sonra aşamalı iyileştirme veya yeniden yapılandırma önerisi sunuyoruz.
 cta_text: Entegrasyon mimarinizi birlikte değerlendirin
@@ -39,18 +39,18 @@ related_cases: []
 
 ## Neden Airomeda?
 
-Kurumsal yazılım ekosistemi büyüdükçe sistemler arası veri tutarlılığı en sık göz ardı edilen mühendislik sorunlarından biri haline gelir. Sipariş verisi ERP'de, müşteri verisi CRM'de, stok verisi WMS'de ayrı yaşadığında iş kararlarını besleyen raporlar güvenilmez olur.
+Yazılım ekosistemi büyüdükçe sistemler arası veri tutarlılığı en sık göz ardı edilen sorunlardan biri haline gelir. Sipariş verisi bir sistemde, müşteri verisi başka bir sistemde, stok verisi ayrı bir yerde yaşadığında iş kararlarını besleyen raporlar güvenilmez olur.
 
-Entegrasyon projelerini yalnızca teknik bağlantı kurma işi olarak değil, iş süreçlerini kesintisiz akıtma sorumluluğu olarak ele alıyoruz. Olay güdümlü mimarileri tercih etmemizin temel nedeni gözlemlenebilirlik: her mesajın durumu izlenebilir, başarısız teslimler yeniden denenebilir ve iş akışları bağımsız olarak ölçeklenebilir.
+Entegrasyon projelerini yalnızca teknik bağlantı kurma işi olarak değil, iş süreçlerini kesintisiz akıtma sorumluluğu olarak ele alıyoruz. Her aktarımın durumu izlenebilir, başarısız iletimler otomatik yeniden denenir ve sorunlar iş sürecine yansımadan önce tespit edilir.
 
 <Callout title="Bizim yaklaşımımız">
-Her entegrasyon, bağlı sistemlerden bağımsız olarak izlenebilir ve geri alınabilir olmalıdır.
+Her bağlantı, bağlı sistemlerden bağımsız olarak izlenebilir ve geri alınabilir olmalıdır.
 </Callout>
 
 ## Hangi sorunları çözüyoruz?
 
 - Sistemler arasında elle kopyalanan veriden kaynaklanan tutarsızlık ve hata maliyeti
-- Belgelenmemiş veya bakımsız point-to-point entegrasyon karmaşası
-- Yeni bir sisteme geçerken mevcut entegrasyonların kesintisiz sürdürülmesi
-- EDI tabanlı tedarikçi haberleşmesinin modernize edilmesi
+- Belgelenmemiş veya bakımsız sistem bağlantılarının yarattığı karmaşa
+- Yeni bir sisteme geçerken mevcut bağlantıların kesintisiz sürdürülmesi
+- Tedarikçi haberleşmesinin modernize edilmesi
 - Entegrasyon hatalarının ancak iş sürecinde görülmesiyle ortaya çıkan gecikmeli tespit sorunu

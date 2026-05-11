@@ -57,12 +57,12 @@ export function StudioGallery() {
         <RevealSection>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
-              <p className="font-mono text-eyebrow uppercase text-accent">{'// inside'}</p>
+              <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Stüdyodan</p>
               <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
                 Stüdyodan kareler.
               </h2>
             </div>
-            <p className="font-mono text-xs text-muted-foreground">İstanbul · Türkiye · GMT+3</p>
+            <p className="text-xs text-muted-foreground">İstanbul · Türkiye</p>
           </div>
         </RevealSection>
 

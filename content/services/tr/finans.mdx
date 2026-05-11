@@ -1,21 +1,21 @@
 ---
 title: Finans Yazılımları
 slug: finans
-excerpt: BDDK/MASAK uyumlu, audit-ready core banking ve ödeme sistemleri. 0 kesinti ile mainframe'den event-driven mimariye.
-hero_subtitle: Core banking modernizasyonundan ödeme orchestration'a — production-grade finans yazılımı. PayGate, FinCore, Akış Ödemeleri ve Mavi Hat Bankası referanslarıyla.
+excerpt: Finans kurumları için güvenilir, yasal gerekliliklere uygun bankacılık ve ödeme sistemleri. Kesintisiz çalışan altyapı.
+hero_subtitle: Bankacılık altyapısının modernizasyonundan ödeme sistemlerine — finans sektörüne özel yazılım. PayGate, FinCore, Akış Ödemeleri ve Mavi Hat Bankası referanslarıyla.
 capabilities:
-  - title: Core Banking modülleri
+  - title: Bankacılık yazılımı
     description: Hesap yönetimi, işlem işleme, mutabakat ve yasal raporlama altyapısı.
-  - title: Ödeme sistemleri entegrasyonları
-    description: PSP, kart şemaları, havale, SWIFT ve FAST hatlarında tam entegrasyon.
-  - title: KYC ve AML altyapısı
-    description: Müşteri onboarding, kimlik doğrulama, risk skorlama ve şüpheli işlem tespiti.
-  - title: Mobil ve web bankacılık istemcileri
-    description: Native iOS/Android ve PWA istemciler, biyometrik kimlik doğrulama ile.
-  - title: Open Banking API'leri
-    description: PSD2/PSD3 uyumlu AISP ve PISP uç noktaları, güvenli token yönetimi.
+  - title: Ödeme sistemleri
+    description: Ödeme sağlayıcıları, kart şemaları, havale ve hızlı ödeme hatlarında tam bağlantı.
+  - title: Kimlik doğrulama ve uyum
+    description: Müşteri onboarding, kimlik doğrulama, risk değerlendirme ve şüpheli işlem tespiti.
+  - title: Mobil ve web bankacılık
+    description: iOS, Android ve web uyumlu uygulamalar, biyometrik doğrulama ile.
+  - title: Açık bankacılık bağlantıları
+    description: Yasal düzenlemelere uygun üçüncü taraf bağlantıları ve güvenli yetkilendirme.
   - title: Denetim ve raporlama
-    description: Değişmez denetim izleri, regülator formatlarında otomatik rapor üretimi.
+    description: Kayıt altına alınan tüm işlemler, otomatik düzenleyici raporlama.
 tech_stack:
   - PostgreSQL
   - Kafka
@@ -25,41 +25,41 @@ tech_stack:
   - Redis
   - Vault
 faq:
-  - question: BDDK ve TCMB düzenleyici gereksinimlerine uygun yazılım geliştiriyor musunuz?
-    answer: Evet. Her projeye geçerli düzenleyici çerçeveyi haritalandırarak başlıyor, denetlenebilir mimari kararları belgeleyerek teslim ediyoruz.
-  - question: Mevcut core banking sistemimize entegre olabilir misiniz?
-    answer: Evet. ISO 8583, ISO 20022 ve REST tabanlı arayüzlerin yanı sıra mesaj aracısı entegrasyonlarını da gerçekleştiriyoruz.
+  - question: Finans sektörüne özgü yasal gerekliliklere uyumlu yazılım geliştiriyor musunuz?
+    answer: Evet. Her projeye geçerli düzenleyici gereklilikleri baştan netleştirerek başlıyor, denetlenebilir ve belgelenmiş sistemlerle teslim ediyoruz.
+  - question: Mevcut bankacılık sistemimize entegre olabilir misiniz?
+    answer: Evet. Yaygın kullanılan bankacılık sistemleri ve ödeme altyapılarıyla entegrasyon deneyimimiz var.
   - question: Tipik bir proje teslim süresi ne kadardır?
-    answer: Kapsama göre 6–14 hafta. İlk 2–3 hafta discovery + mimari tasarım; ardından sprintler ile demo edilebilir parçalar. Devir teslim dahil.
-  - question: Veri güvenliği ve şifreleme konularında nasıl yaklaşıyorsunuz?
-    answer: Hassas veriler için Vault tabanlı sır yönetimi, AES-256 şifreleme ve en az ayrıcalık erişim modeli uyguluyoruz.
+    answer: Kapsama göre 6–14 hafta. İlk 2–3 hafta analiz ve tasarım; ardından düzenli demo güncellemeleriyle ilerliyoruz. Devir teslim dahil.
+  - question: Veri güvenliği konusunda nasıl yaklaşıyorsunuz?
+    answer: Hassas veriler şifrelenir, erişim yetkileri en düşük ayrıcalık ilkesiyle yönetilir ve her değişiklik kayıt altına alınır.
 cta_text: Finans projeniz için bizimle konuşun
 related_cases: []
 ---
 
 ## Neden Airomeda?
 
-PayGate'in core banking yığınını 4 ayda mainframe'den event-driven Kafka mikroservislerine taşıdık. Planlanan 12 saatlik kesinti penceresi sıfıra indi; BDDK denetimi ilk sunuşta geçildi. İşlem kapasitesi 5 kat arttı, operasyonel maliyet %38 düştü.
+PayGate'in bankacılık altyapısını 4 ayda sıfır kesinti ile modernize ettik. Planlanan 12 saatlik kesinti penceresi sıfıra indi; düzenleyici denetim ilk sunuşta geçildi. İşlem kapasitesi 5 kat arttı, operasyonel maliyet %38 düştü.
 
-Bu proje tek bir örnek. 2018'den beri PayGate, FinCore, Akış Ödemeleri ve Mavi Hat Bankası ile çalıştık. Her projeye BDDK/MASAK düzenleyici çerçevesini haritalandırarak başlıyoruz; audit-ready, değişmez event log ile teslim ediyoruz.
+Bu proje tek bir örnek. 2018'den beri PayGate, FinCore, Akış Ödemeleri ve Mavi Hat Bankası ile çalıştık. Her projeye yasal düzenleyici gereklilikleri baştan netleştirerek başlıyoruz; denetlenebilir ve belgelenmiş sistemlerle teslim ediyoruz.
 
 <Callout title="Somut taahhüt">
-Regülatör soru sorduğunda cevabınız olur: her olay log'da, her karar belgelenmiş, denetim izleri eCOGRA/BDDK formatında.
+Denetim sorusu geldiğinde cevabınız hazır olur: her işlem kayıt altında, her karar belgelenmiş.
 </Callout>
 
 ## Hangi sorunları çözüyoruz?
 
-- Monolitik core banking'in event-driven mikroservislere sıfır kesinti ile taşınması (strangler-fig)
-- BDDK/MASAK uyumlu değişmez audit log ve regülasyon raporlama altyapısı
-- PSP, kart şemaları, ISO 20022 / 8583 entegrasyonu
-- KYC/AML pipeline otomasyonu — onboarding süresini günlerden dakikalara
-- PSD2 / Open Banking API'leri (AISP + PISP)
-- Real-time fraud detection ve risk skorlama
+- Eski bankacılık sistemlerinin kesintisiz modernizasyonu
+- Yasal düzenlemelere uyumlu kayıt tutma ve otomatik raporlama
+- Ödeme sağlayıcıları, kart şemaları ve hızlı ödeme hatlarına bağlantı
+- Müşteri kimlik doğrulama süreçlerinin günlerden dakikalara indirilmesi
+- Açık bankacılık entegrasyonları
+- Gerçek zamanlı dolandırıcılık tespiti ve risk değerlendirmesi
 
 ## Müşteri sonuçları
 
-**PayGate · 2025:** Mainframe→event-driven, 0 kesinti, 4 ay, 5× tx kapasitesi, %38 maliyet düşüşü.
+**PayGate · 2025:** Bankacılık altyapısı modernizasyonu, sıfır kesinti, 4 ayda teslim, 5× kapasite artışı, %38 maliyet düşüşü.
 
-**Akış Ödemeleri · 2024:** ISO 20022 + FAST entegrasyonu, 99.99% webhook delivery, 8 hafta teslim.
+**Akış Ödemeleri · 2024:** Hızlı ödeme entegrasyonu, 8 haftada teslim.
 
-**Mavi Hat Bankası · 2024:** Mobil bankacılık istemcisi, biyometrik KYC, 12 hafta teslim.
+**Mavi Hat Bankası · 2024:** Mobil bankacılık uygulaması, biyometrik kimlik doğrulama, 12 haftada teslim.

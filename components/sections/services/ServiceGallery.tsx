@@ -36,8 +36,8 @@ export function ServiceGallery({ images = DEFAULT_IMAGES }: ServiceGalleryProps)
     <section className="border-b border-border py-16 md:py-20 bg-muted/20">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-muted-foreground mb-8">
-            {'// projelerden kareler'}
+          <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium mb-8">
+            Projelerden Kareler
           </p>
         </RevealSection>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[160px]">

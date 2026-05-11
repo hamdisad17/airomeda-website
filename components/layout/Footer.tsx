@@ -14,7 +14,7 @@ export async function Footer() {
           <div className="md:col-span-1">
             <Logo href="/" />
             <p className="mt-5 max-w-xs text-sm text-muted-foreground">{t('tagline')}</p>
-            <p className="mt-8 font-mono text-eyebrow uppercase text-muted-foreground">{'// İstanbul · TR/EN'}</p>
+            <p className="mt-8 text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">İstanbul · Türkçe / İngilizce</p>
           </div>
           <FooterCol title={t('company')}>
             <FooterLink href="/hakkimizda">{tnav('about')}</FooterLink>
@@ -31,7 +31,7 @@ export async function Footer() {
             <FooterLink href="/cerez-politikasi">{t('cookies')}</FooterLink>
           </FooterCol>
         </div>
-        <div className="mt-16 flex flex-col gap-3 border-t border-border pt-6 font-mono text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
+        <div className="mt-16 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
           <p>© {year} Airomeda — {t('rights')}</p>
           <p>hello@airomeda.com</p>
         </div>
@@ -43,7 +43,7 @@ export async function Footer() {
 function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="font-mono text-eyebrow uppercase text-muted-foreground">{title}</h3>
+      <h3 className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">{title}</h3>
       <ul className="mt-4 space-y-2.5 text-sm">{children}</ul>
     </div>
   );

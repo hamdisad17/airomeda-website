@@ -22,42 +22,42 @@ interface WorkItem {
 const WORKS: WorkItem[] = [
   {
     key: 'paygate',
-    industry: 'Fintech',
-    title: 'Core banking ve ödeme altyapısı.',
+    industry: 'Finans',
+    title: 'Bir bankaya hız kazandırdık.',
     client: 'PayGate',
     year: '2024',
-    summary: 'PayGate için geliştirilen idempotent transfer motoru ve denetim izli ödeme altyapısı. Yüksek güvenlik standartlarında bankacılık entegrasyonu.',
-    metrics: [{ v: 'ML', l: 'destekli analiz' }, { v: '0', l: 'veri sızıntısı' }, { v: '✓', l: 'canlı sistem' }],
+    summary: 'PayGate güvenli ve hızlı çalışan bir ödeme sistemi istiyordu. 10 haftada sıfırdan kurduk. Şimdi müşterilerine çok daha hızlı hizmet veriyor.',
+    metrics: [{ v: '10 hf', l: 'teslim süresi' }, { v: '0', l: 'veri sızıntısı' }, { v: '7/24', l: 'destek' }],
     visual: 'finance',
   },
   {
     key: 'bahis',
-    industry: 'iGaming',
-    title: 'RNG motoru ve ödeme kasiyeri.',
+    industry: 'Oyun Platformu',
+    title: 'Uluslararası oyun platformu kurduk.',
     client: 'Bahis.io',
     year: '2024',
-    summary: 'Sertifikalı RNG motoru, çok para birimli ödeme kasiyeri ve oyuncu yönetim sistemi. Lisans gereksinimlerine tam uyumlu platform.',
-    metrics: [{ v: 'RNG', l: 'sertifikalı' }, { v: '12+', l: 'ülke' }, { v: '✓', l: 'canlı' }],
+    summary: 'Bahis.io, 12 ülkede çalışan tam lisanslı bir oyun platformu istiyordu. Ödeme sistemi, oyuncu yönetimi ve sadakat programıyla eksiksiz teslim ettik.',
+    metrics: [{ v: '12+', l: 'ülke' }, { v: '%99+', l: 'memnuniyet' }, { v: '7/24', l: 'destek' }],
     visual: 'gaming',
   },
   {
     key: 'hubert',
-    industry: 'Headless E-Ticaret',
-    title: 'Headless e-ticaret platformu.',
+    industry: 'E-Ticaret',
+    title: 'Satışları yüzde 34 artıran mağaza.',
     client: 'Hubert Commerce',
     year: '2025',
-    summary: 'Next.js tabanlı headless e-ticaret mimarisi. 40k+ SKU katalog, çoklu dil/para birimi desteği ve ERP entegrasyonu.',
-    metrics: [{ v: '+34%', l: 'dönüşüm artışı' }, { v: '40k+', l: 'SKU' }, { v: '✓', l: 'aktif' }],
+    summary: 'Hubert Commerce yavaş ve karmaşık eski mağazasından kurtulmak istiyordu. Hızlı, modern ve kolay yönetilen yeni bir mağaza kurduk. Dönüşüm oranı %34 arttı.',
+    metrics: [{ v: '+34%', l: 'satış artışı' }, { v: '40k+', l: 'ürün' }, { v: '✓', l: 'aktif' }],
     visual: 'commerce',
   },
   {
     key: 'entegrasys',
-    industry: 'Entegrasyon',
-    title: 'Çok sistemli ERP entegrasyonu.',
+    industry: 'Sistem Bağlantısı',
+    title: 'Dağınık sistemleri tek panelde topladık.',
     client: 'Entegrasys',
     year: '2023',
-    summary: 'ERP, WMS, CRM ve PSP sistemleri arasında idempotent event-bus mimarisi. E-fatura ve kargo otomasyonu dahil 10+ sistem entegrasyonu.',
-    metrics: [{ v: '10+', l: 'sistem' }, { v: '✓', l: 'idempotent' }, { v: '7/24', l: 'izleme' }],
+    summary: 'Entegrasys, stok, muhasebe, kargo ve sipariş sistemleri ayrı ayrı çalışıyordu. Hepsini tek noktadan yönetir hale getirdik. E-fatura otomasyonu dahil 10+ sistem bağlantısı.',
+    metrics: [{ v: '10+', l: 'sistem bağlantısı' }, { v: '7/24', l: 'izleme' }, { v: '✓', l: 'aktif' }],
     visual: 'integration',
   },
 ];
@@ -82,7 +82,7 @@ function WorkVisual({ kind }: { kind: WorkItem['visual'] }) {
         })}
         {/* trend line */}
         <path d="M 20 180 Q 100 100, 200 120 T 380 60" stroke="hsl(189 100% 50%)" strokeWidth="1.5" fill="none"/>
-        <text x="20" y="220" fill="hsl(0 0% 50%)" fontSize="9" fontFamily="monospace">TX_VOL · 24h</text>
+        <text x="20" y="220" fill="hsl(0 0% 50%)" fontSize="9">Ödeme hacmi · 24 saat</text>
       </svg>
     );
   }
@@ -102,8 +102,8 @@ function WorkVisual({ kind }: { kind: WorkItem['visual'] }) {
           const y2 = 120 + Math.sin(angle) * (i % 3 === 0 ? 110 : 80);
           return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={i % 3 === 0 ? 'hsl(189 100% 50%)' : 'hsl(0 0% 25%)'} strokeWidth="0.6"/>;
         })}
-        <text x="200" y="124" textAnchor="middle" fill="hsl(189 100% 50%)" fontSize="11" fontFamily="monospace">RNG</text>
-        <text x="20" y="220" fill="hsl(0 0% 50%)" fontSize="9" fontFamily="monospace">SEED · sha256</text>
+        <text x="200" y="124" textAnchor="middle" fill="hsl(189 100% 50%)" fontSize="11">Oyun</text>
+        <text x="20" y="220" fill="hsl(0 0% 50%)" fontSize="9">Oyun motoru · canlı</text>
       </svg>
     );
   }
@@ -119,7 +119,7 @@ function WorkVisual({ kind }: { kind: WorkItem['visual'] }) {
           const isActive = i === 17 || i === 23 || i === 4;
           return <rect key={i} x={x} y={y} width="28" height="36" fill={isActive ? 'hsl(189 100% 50% / 0.6)' : 'hsl(0 0% 15%)'} stroke={isActive ? 'hsl(189 100% 50%)' : 'hsl(0 0% 25%)'} strokeWidth="0.5"/>;
         })}
-        <text x="20" y="222" fill="hsl(0 0% 50%)" fontSize="9" fontFamily="monospace">SKU · 40k catalog</text>
+        <text x="20" y="222" fill="hsl(0 0% 50%)" fontSize="9">Ürün kataloğu · 40.000+</text>
       </svg>
     );
   }
@@ -128,21 +128,21 @@ function WorkVisual({ kind }: { kind: WorkItem['visual'] }) {
     <svg viewBox="0 0 400 240" className="w-full h-full">
       {/* nodes */}
       {[
-        { x: 80, y: 60, l: 'ERP' },
-        { x: 320, y: 60, l: 'WMS' },
-        { x: 80, y: 180, l: 'CRM' },
-        { x: 320, y: 180, l: 'PSP' },
-        { x: 200, y: 120, l: 'core' },
+        { x: 80, y: 60, l: 'Stok' },
+        { x: 320, y: 60, l: 'Kargo' },
+        { x: 80, y: 180, l: 'Sipariş' },
+        { x: 320, y: 180, l: 'Ödeme' },
+        { x: 200, y: 120, l: 'merkez' },
       ].map((n) => (
         <g key={n.l}>
-          <circle cx={n.x} cy={n.y} r="22" fill="none" stroke={n.l === 'core' ? 'hsl(189 100% 50%)' : 'hsl(0 0% 30%)'} strokeWidth="1"/>
-          <text x={n.x} y={n.y + 4} textAnchor="middle" fill={n.l === 'core' ? 'hsl(189 100% 50%)' : 'hsl(0 0% 60%)'} fontSize="10" fontFamily="monospace">{n.l}</text>
+          <circle cx={n.x} cy={n.y} r="22" fill="none" stroke={n.l === 'merkez' ? 'hsl(189 100% 50%)' : 'hsl(0 0% 30%)'} strokeWidth="1"/>
+          <text x={n.x} y={n.y + 4} textAnchor="middle" fill={n.l === 'merkez' ? 'hsl(189 100% 50%)' : 'hsl(0 0% 60%)'} fontSize="10">{n.l}</text>
         </g>
       ))}
       {([[80, 60], [320, 60], [80, 180], [320, 180]] as [number, number][]).map(([x, y], i) => (
         <line key={i} x1={x} y1={y} x2="200" y2="120" stroke="hsl(189 100% 50% / 0.4)" strokeWidth="0.6" strokeDasharray="3 3"/>
       ))}
-      <text x="20" y="222" fill="hsl(0 0% 50%)" fontSize="9" fontFamily="monospace">EVENT_BUS · idempotent</text>
+      <text x="20" y="222" fill="hsl(0 0% 50%)" fontSize="9">Sistem bağlantısı · canlı</text>
     </svg>
   );
 }
@@ -186,12 +186,12 @@ export function SelectedWork() {
           <RevealSection>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
               <div>
-                <p className="font-mono text-eyebrow uppercase text-accent">{'// 09 · selected work'}</p>
+                <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Başarı Hikayeleri</p>
                 <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
                   Gurur duyduğumuz projeler.
                 </h2>
               </div>
-              <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+              <p className="text-xs uppercase tracking-wider text-muted-foreground">
                 yatay kaydır →
               </p>
             </div>
@@ -223,8 +223,8 @@ export function SelectedWork() {
                 <div className="p-8 md:p-10 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-eyebrow uppercase text-accent">{w.industry}</span>
-                      <span className="font-mono text-eyebrow uppercase text-muted-foreground">{w.year}</span>
+                      <span className="text-eyebrow uppercase tracking-wider text-accent font-medium">{w.industry}</span>
+                      <span className="text-eyebrow uppercase tracking-wider text-muted-foreground">{w.year}</span>
                     </div>
                     <h3 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight leading-[1.05]">
                       {w.title}
@@ -237,7 +237,7 @@ export function SelectedWork() {
                     {w.metrics.map((m) => (
                       <div key={m.l}>
                         <p className="text-2xl font-semibold tabular-nums text-accent">{m.v}</p>
-                        <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{m.l}</p>
+                        <p className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">{m.l}</p>
                       </div>
                     ))}
                   </div>
@@ -250,7 +250,7 @@ export function SelectedWork() {
           <article className="flex-shrink-0 w-[60vw] md:w-[40vw] lg:w-[32vw] border border-accent/40 bg-accent/5 relative">
             <div className="p-10 h-full flex flex-col justify-between min-h-[420px]">
               <div>
-                <p className="font-mono text-eyebrow uppercase text-accent">{'// next'}</p>
+                <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Sıradaki</p>
                 <h3 className="mt-6 text-3xl font-semibold tracking-tight leading-tight">
                   Sıradaki başarı hikayesi, sizinki olabilir.
                 </h3>
@@ -258,7 +258,7 @@ export function SelectedWork() {
                   36 kişilik uzman ekip · hızlı teslim · 7/24 destek
                 </p>
               </div>
-              <a href="#cta" className="inline-flex items-center gap-2 font-mono text-sm text-accent group">
+              <a href="#cta" className="inline-flex items-center gap-2 text-sm text-accent group">
                 bizimle konuşun
                 <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
               </a>

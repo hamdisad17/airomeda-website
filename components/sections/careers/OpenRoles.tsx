@@ -22,7 +22,7 @@ export function OpenRoles({ jobs }: OpenRolesProps) {
     return (
       <section id="acik-pozisyonlar" className="border-b border-border">
         <Container as="div" className="py-20">
-          <p className="font-mono text-eyebrow uppercase text-accent mb-8">{'// açık pozisyonlar'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mb-8">Açık Pozisyonlar</p>
           <p className="text-muted-foreground">Şu an açık pozisyon bulunmuyor. Genel başvuru yapmak için bizimle iletişime geçin.</p>
         </Container>
       </section>
@@ -33,7 +33,7 @@ export function OpenRoles({ jobs }: OpenRolesProps) {
     <section id="acik-pozisyonlar" className="border-b border-border">
       <Container as="div" className="py-20">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent mb-8">{'// açık pozisyonlar'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mb-8">Açık Pozisyonlar</p>
           <h2
             className="font-semibold tracking-tight text-foreground mb-10"
             style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', letterSpacing: '-0.03em' }}

@@ -29,7 +29,7 @@ export function WhyJoin() {
   return (
     <RevealSection as="section" className="border-b border-border">
       <Container as="div" className="py-20">
-        <p className="font-mono text-eyebrow uppercase text-accent mb-4">{'// neden airomeda?'}</p>
+        <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mb-4">Neden Airomeda?</p>
         <h2
           className="font-semibold tracking-tight text-foreground mb-12"
           style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', letterSpacing: '-0.03em' }}

@@ -17,14 +17,14 @@ type ShotKind =
 // Inline SVG-based "screenshot" thumbnails — distinctive, NO external images needed
 function Shot({ kind }: { kind: ShotKind }) {
   const labels: Record<ShotKind, string> = {
-    finance: 'banking · tx',
-    gaming: 'gaming · live',
-    commerce: 'commerce · cart',
-    analytics: 'analytics · live',
-    integration: 'integration · bus',
-    crm: 'crm · pipeline',
-    erp: 'erp · stock',
-    cms: 'cms · publish',
+    finance: 'Bankacılık',
+    gaming: 'Oyun Platformu',
+    commerce: 'E-Ticaret',
+    analytics: 'Analiz Paneli',
+    integration: 'Sistem Bağlantısı',
+    crm: 'Müşteri Yönetimi',
+    erp: 'Stok Sistemi',
+    cms: 'İçerik Sistemi',
   };
   return (
     <div className="inline-flex flex-col w-[280px] h-[180px] mr-3 border border-border bg-elevated overflow-hidden flex-shrink-0 align-top">
@@ -34,7 +34,7 @@ function Shot({ kind }: { kind: ShotKind }) {
           <span className="h-1.5 w-1.5 rounded-full bg-foreground/15" />
           <span className="h-1.5 w-1.5 rounded-full bg-foreground/15" />
         </div>
-        <span className="font-mono text-[9px] text-muted-foreground">{labels[kind]}</span>
+        <span className="text-[9px] text-muted-foreground">{labels[kind]}</span>
       </div>
       <div className="p-2.5 flex-1 min-h-0">
         {kind === 'finance' && (
@@ -231,8 +231,8 @@ export function ScreenshotMarquee() {
       />
 
       <div className="mb-6 px-6">
-        <p className="font-mono text-eyebrow uppercase text-muted-foreground">
-          {'// product surfaces · 70+ shipped'}
+        <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">
+          Geliştirdiğimiz ürünlerden
         </p>
       </div>
 

@@ -40,7 +40,7 @@ export function FloatingUIPeeks() {
       {/* Peek 2 — bottom left, looks like analytics */}
       <div className="peek absolute left-[-70px] bottom-[8%] w-52 border border-border bg-elevated/70 backdrop-blur-md shadow-2xl rotate-[-4deg]">
         <div className="border-b border-border px-3 py-2 flex items-center justify-between">
-          <span className="text-[9px] font-mono text-muted-foreground">analytics.ts</span>
+          <span className="text-[9px] text-muted-foreground">Satış raporu</span>
           <span className="text-[9px] text-success">↑ 12%</span>
         </div>
         <div className="p-3">

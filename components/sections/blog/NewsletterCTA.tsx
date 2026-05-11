@@ -18,11 +18,11 @@ export function NewsletterCTA() {
       <Container as="div" className="py-20 md:py-24">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="font-mono text-eyebrow uppercase text-accent">{'// bülten'}</p>
+            <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Bülten</p>
             <h2 className="mt-4 font-semibold tracking-tight text-foreground"
               style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', letterSpacing: '-0.03em' }}>
               Aylık 1 mail.<br />
-              <span className="text-muted-foreground">{"Production'dan notlar."}</span>
+              <span className="text-muted-foreground">Sektörden notlar.</span>
             </h2>
             <p className="mt-4 text-muted-foreground leading-relaxed max-w-md">
               Spam yok. Reklam yok. Sadece üretim ortamından öğrendiklerimiz — her ayın ilk haftasında.

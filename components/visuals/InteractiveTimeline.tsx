@@ -40,13 +40,13 @@ export function InteractiveTimeline({ events }: { events: TimelineEvent[] }) {
         style={{ animation: 'fadeSlideIn 0.35s ease-out both' }}>
         <div className="grid lg:grid-cols-[1.5fr_1fr] gap-8">
           <div>
-            <p className="font-mono text-eyebrow uppercase text-accent">{current?.year}</p>
+            <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">{current?.year}</p>
             <h3 className="mt-3 text-3xl font-semibold tracking-tight text-foreground">{current?.title}</h3>
             <p className="mt-4 text-body-lg text-muted-foreground max-w-prose">{current?.body}</p>
           </div>
           {current?.metric && (
             <div className="lg:border-l border-border lg:pl-8">
-              <p className="font-mono text-eyebrow uppercase text-muted-foreground">o yıl</p>
+              <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">o yıl</p>
               <p className="mt-3 text-4xl font-semibold tabular-nums text-accent">{current.metric}</p>
             </div>
           )}

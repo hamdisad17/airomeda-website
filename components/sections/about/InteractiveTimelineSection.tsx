@@ -7,7 +7,7 @@ const TIMELINE_EVENTS = [
   {
     year: '2018',
     title: 'Kuruluş',
-    body: 'İstanbul, iki kurucu, bir fintech müşterisi. Core banking altyapısını sıfırdan yazmak için masaya oturuldu.',
+    body: 'İstanbul, iki kurucu, bir finans müşterisi. Bankacılık altyapısını sıfırdan yazmak için masaya oturuldu.',
     metric: 'x2',
   },
   {
@@ -24,8 +24,8 @@ const TIMELINE_EVENTS = [
   },
   {
     year: '2021',
-    title: 'Headless e-ticaret',
-    body: 'Headless e-ticaret çözümleri portföye eklendi. İlk B2B entegrasyon ürünü prototiplendi.',
+    title: 'E-ticaret çözümleri',
+    body: 'Modern e-ticaret çözümleri portföye eklendi. İlk kurumsal entegrasyon ürünü hayata geçirildi.',
     metric: '12 proje',
   },
   {
@@ -37,7 +37,7 @@ const TIMELINE_EVENTS = [
   {
     year: '2023',
     title: 'Multi-region',
-    body: 'İlk çok bölgeli deployment — 3 kıta, 8 POP. Latency SLA\'ları küresele taşındı.',
+    body: 'İlk çok bölgeli yayın — 3 kıta, 8 merkez. Hız garantileri küresel ölçeğe taşındı.',
     metric: '8 POP',
   },
   {
@@ -49,7 +49,7 @@ const TIMELINE_EVENTS = [
   {
     year: '2025',
     title: 'Ölçek',
-    body: '47+ canlı production sistemi, 12 bölge, 24 mühendis. Seneye global genişleme.',
+    body: '47+ aktif sistem, 12 bölge, 24 mühendis. Küresel genişleme yolunda.',
     metric: '47 sistem',
   },
 ];
@@ -58,7 +58,7 @@ export function InteractiveTimelineSection() {
   return (
     <RevealSection as="section" className="border-b border-border py-20 md:py-28">
       <Container as="div">
-        <p className="font-mono text-eyebrow uppercase text-accent mb-4">{'// kilometre taşları · interaktif'}</p>
+        <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mb-4">Kilometre Taşları</p>
         <h2
           className="font-semibold tracking-tight text-foreground mb-10"
           style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', letterSpacing: '-0.03em' }}

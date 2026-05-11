@@ -16,7 +16,7 @@ export function StudioStory() {
       />
       <Container as="div" className="relative">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 01 · hikaye'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Hikayemiz</p>
         </RevealSection>
 
         <div className="mt-8 grid md:grid-cols-[300px_1fr] gap-12 md:gap-20">

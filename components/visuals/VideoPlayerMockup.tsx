@@ -49,11 +49,11 @@ export function VideoPlayerMockup({ title, duration = '3:42', poster }: VideoPla
           </button>
         </div>
         {/* Top label */}
-        <div className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-wider text-foreground bg-elevated/60 backdrop-blur-md border border-border px-2 py-1">
-          ● rec · 4K · 60fps
+        <div className="absolute top-3 left-3 text-[10px] uppercase tracking-wider text-foreground bg-elevated/60 backdrop-blur-md border border-border px-2 py-1">
+          ● Airomeda
         </div>
-        <div className="absolute top-3 right-3 font-mono text-[10px] text-muted-foreground bg-elevated/60 backdrop-blur-md border border-border px-2 py-1">
-          airomeda · {title.split(' · ')[0]}
+        <div className="absolute top-3 right-3 text-[10px] text-muted-foreground bg-elevated/60 backdrop-blur-md border border-border px-2 py-1">
+          {title.split(' · ')[0]}
         </div>
       </div>
       {/* Controls */}
@@ -63,7 +63,7 @@ export function VideoPlayerMockup({ title, duration = '3:42', poster }: VideoPla
           <div className="absolute inset-y-0 left-0 bg-accent" style={{ width: `${progress}%` }}/>
           <div className="absolute top-1/2 -translate-y-1/2 h-3 w-3 bg-accent border border-background" style={{ left: `calc(${progress}% - 6px)` }}/>
         </div>
-        <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider">
+        <div className="flex items-center justify-between text-[10px] uppercase tracking-wider">
           <div className="flex items-center gap-3">
             <span className="text-foreground">{title}</span>
           </div>

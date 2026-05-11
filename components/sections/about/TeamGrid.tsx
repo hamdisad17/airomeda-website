@@ -31,7 +31,7 @@ const TEAM: TeamMember[] = [
     name: 'Burak Şahin',
     role: 'Lead Backend Geliştirici',
     seed: 'burak-sahin',
-    skills: ['Node.js', 'PostgreSQL', 'API Tasarımı'],
+    skills: ['Node.js', 'PostgreSQL', 'Entegrasyon'],
     bio: 'Ödeme sistemleri ve yüksek performanslı backend geliştirme. Bankacılık entegrasyon projelerinde uzman.',
   },
   {
@@ -108,12 +108,12 @@ function TeamCard({ member }: { member: TeamMember }) {
       {/* Info */}
       <div className="p-5">
         <p className="font-semibold tracking-tight text-foreground">{member.name}</p>
-        <p className="mt-1 font-mono text-eyebrow uppercase text-muted-foreground">{member.role}</p>
+        <p className="mt-1 text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">{member.role}</p>
         <div className="mt-3 flex flex-wrap gap-1">
           {member.skills.map((s) => (
             <span
               key={s}
-              className="border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
+              className="border border-border px-2 py-0.5 text-[10px] text-muted-foreground"
             >
               {s}
             </span>
@@ -136,7 +136,7 @@ export function TeamGrid() {
     <section className="border-b border-border py-20 md:py-28">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 02 · ekip'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Ekibimiz</p>
           <h2
             className="mt-4 font-semibold tracking-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', letterSpacing: '-0.03em' }}

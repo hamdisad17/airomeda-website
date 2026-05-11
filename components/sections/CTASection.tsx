@@ -27,7 +27,7 @@ export async function CTASection() {
       />
 
       <Container as="div" className="relative">
-        <p className="font-mono text-eyebrow uppercase text-accent">{'// 09 · konuşalım'}</p>
+        <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">İletişim</p>
         <h2
           className="mt-8 max-w-5xl text-display-1 font-semibold tracking-tight"
           style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}
@@ -55,7 +55,7 @@ export async function CTASection() {
           </a>
         </div>
 
-        <div className="mt-20 grid gap-x-12 gap-y-6 border-t border-border pt-10 font-mono text-xs text-muted-foreground md:grid-cols-3">
+        <div className="mt-20 grid gap-x-12 gap-y-6 border-t border-border pt-10 text-xs text-muted-foreground md:grid-cols-3">
           <div>
             <p className="text-foreground">İlk görüşme</p>
             <p className="mt-1">30 dk ücretsiz · ihtiyaçlarınızı dinleriz · hızlı değerlendirme</p>

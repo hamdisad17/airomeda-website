@@ -40,10 +40,10 @@ const PAIRS = [
   },
   {
     icon: ICONS.audit,
-    pain: 'Denetim ve uyumluluk endişesi',
-    painDetail: 'Yasal zorunluluklar ve sektör standartları karşısında yazılımınızın yeterli olup olmadığından emin değilsiniz.',
-    sol: 'Denetim ve regülasyona uyumlu çözüm',
-    solDetail: 'Bankacılık ve finans sektörünün gerektirdiği tüm kayıt ve raporlama standartlarını karşılayan altyapı.',
+    pain: 'Resmi denetimde sorun çıkıyor',
+    painDetail: 'Yasal gereklilikler ve sektör standartları karşısında yazılımınızın yeterli olup olmadığından emin değilsiniz.',
+    sol: 'Yasal gerekliliklere tam uyumlu yapı',
+    solDetail: 'Bankacılık ve finans sektörünün gerektirdiği tüm kayıt ve raporlama standartlarını karşılayan, şeffaf ve kontrol edilebilir altyapı.',
   },
   {
     icon: ICONS.lock,
@@ -67,7 +67,7 @@ export function WhyUs() {
       <Container as="div">
         <div className="max-w-3xl">
           <RevealSection>
-            <p className="font-mono text-eyebrow uppercase text-accent">{'// 02 · neden biz'}</p>
+            <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Neden Biz</p>
             <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
               Tanıdık problemler. Kalıcı çözümler.
             </h2>
@@ -82,12 +82,12 @@ export function WhyUs() {
             <div data-stagger-item key={p.pain} className="grid gap-0 border border-border bg-background md:grid-cols-2">
               <div className="border-r border-border p-6">
                 <div className="mb-3">{p.icon}</div>
-                <p className="font-mono text-eyebrow uppercase text-muted-foreground">× pain</p>
+                <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">Sorun</p>
                 <h3 className="mt-3 text-lg font-semibold tracking-tight">{p.pain}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.painDetail}</p>
               </div>
               <div className="bg-elevated p-6">
-                <p className="font-mono text-eyebrow uppercase text-accent">→ how we solve</p>
+                <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Çözümümüz</p>
                 <h3 className="mt-3 text-lg font-semibold tracking-tight">{p.sol}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.solDetail}</p>
               </div>

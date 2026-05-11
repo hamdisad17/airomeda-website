@@ -31,7 +31,7 @@ const PACKAGES_BY_SLUG: Record<string, Package[]> = {
     {
       name: 'Kurumsal',
       desc: 'Büyük kurumsal müşterilerimize özel çözümler',
-      features: ['Özel mimari tasarım', 'Sınırsız işlem', 'Dedicated ekip', 'Garantili SLA', 'Özel danışman'],
+      features: ['Özel mimari tasarım', 'Sınırsız işlem', 'Dedicated ekip', 'Kalite güvencesi', 'Özel danışman'],
       cta: 'Konuşalım',
       highlight: false,
     },
@@ -40,21 +40,21 @@ const PACKAGES_BY_SLUG: Record<string, Package[]> = {
     {
       name: 'Başlangıç',
       desc: 'Temel iGaming platformu kurulumu',
-      features: ['Casino platform temeli', 'Temel RNG entegrasyonu', 'Tek ödeme yöntemi', 'E-posta desteği'],
+      features: ['Casino platform temeli', 'Sayı üretim sistemi', 'Tek ödeme yöntemi', 'E-posta desteği'],
       cta: 'Başla',
       highlight: false,
     },
     {
       name: 'Profesyonel',
       desc: 'Tam kapsamlı lisanslı iGaming çözümü',
-      features: ['Casino + spor bahisleri', 'Sertifikalı RNG motoru', 'Çoklu ödeme yöntemi', 'Bonus sistemi', '7/24 destek'],
+      features: ['Casino + spor bahisleri', 'Sertifikalı sayı üretim sistemi', 'Çoklu ödeme yöntemi', 'Bonus sistemi', '7/24 destek'],
       cta: 'En çok tercih edilen',
       highlight: true,
     },
     {
       name: 'Kurumsal',
       desc: 'Çok bölgeli büyük ölçekli platform',
-      features: ['Çok bölge desteği (12+ ülke)', 'Özel lisans danışmanlığı', 'Oyuncu yönetim sistemi', 'Dedicated ekip', 'Özel SLA'],
+      features: ['Çok bölge desteği (12+ ülke)', 'Özel lisans danışmanlığı', 'Oyuncu yönetim sistemi', 'Özel ekip', 'Her zaman çalışır garanti'],
       cta: 'Konuşalım',
       highlight: false,
     },
@@ -100,7 +100,7 @@ const PACKAGES_BY_SLUG: Record<string, Package[]> = {
     {
       name: 'Kurumsal',
       desc: 'Büyük kurumlar için tam entegrasyon çözümü',
-      features: ['Sınırsız sistem entegrasyonu', 'Özel otomasyon geliştirme', 'Dedicated ekip', 'Garantili SLA', 'Özel danışman'],
+      features: ['Sınırsız sistem entegrasyonu', 'Özel otomasyon geliştirme', 'Dedicated ekip', 'Kalite güvencesi', 'Özel danışman'],
       cta: 'Konuşalım',
       highlight: false,
     },
@@ -194,7 +194,7 @@ const DEFAULT_PACKAGES: Package[] = [
   {
     name: 'Kurumsal',
     desc: 'Büyük kurumlar için özel çözümler',
-    features: ['Özel tasarım', 'Sınırsız kapasite', 'Dedicated ekip', 'Garantili SLA', 'Özel danışman'],
+    features: ['Özel tasarım', 'Sınırsız kapasite', 'Dedicated ekip', 'Kalite güvencesi', 'Özel danışman'],
     cta: 'Konuşalım',
     highlight: false,
   },
@@ -211,7 +211,7 @@ export function ServicePackages({ slug }: ServicePackagesProps) {
     <section className="border-b border-border py-20 md:py-28 bg-muted/20">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// paketler'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Paketler</p>
           <h2
             className="mt-4 font-semibold tracking-tight text-foreground"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', letterSpacing: '-0.03em' }}
@@ -234,11 +234,11 @@ export function ServicePackages({ slug }: ServicePackagesProps) {
               }`}
             >
               {pkg.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent px-4 py-1 font-mono text-[10px] uppercase tracking-wider text-accent-foreground">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent px-4 py-1 text-[10px] uppercase tracking-wider text-accent-foreground">
                   En popüler
                 </span>
               )}
-              <p className={`font-mono text-eyebrow uppercase ${pkg.highlight ? 'text-accent' : 'text-muted-foreground'}`}>
+              <p className={`text-eyebrow uppercase tracking-wider font-medium ${pkg.highlight ? 'text-accent' : 'text-muted-foreground'}`}>
                 {pkg.name}
               </p>
               <p className="mt-3 text-sm text-muted-foreground">{pkg.desc}</p>

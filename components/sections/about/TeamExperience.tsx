@@ -27,7 +27,7 @@ export function TeamExperience() {
       />
       <Container as="div" className="relative">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// ekip deneyimi'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Ekibimizin Deneyimi</p>
           <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
             Ekibimizdeki uzmanlar
             <br />
@@ -45,11 +45,11 @@ export function TeamExperience() {
               key={e.name}
               className="bg-background p-6 flex flex-col items-start hover:bg-elevated/40 transition-colors"
             >
-              <span className="font-mono text-eyebrow uppercase text-muted-foreground">
+              <span className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">
                 {e.mark}
               </span>
               <p className="mt-3 text-sm font-semibold text-foreground">{e.name}</p>
-              <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-accent">
+              <p className="mt-1 text-[10px] uppercase tracking-wider text-accent">
                 {e.sector}
               </p>
             </div>

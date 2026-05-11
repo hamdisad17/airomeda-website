@@ -216,7 +216,7 @@ export function DeploymentGlobe() {
       <Container as="div" className="relative">
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 items-center">
           <RevealSection>
-            <p className="font-mono text-eyebrow uppercase text-accent">{'// 10 · global'}</p>
+            <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Dünya Çapında</p>
             <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
               İstanbul&apos;dan yazıyoruz.
               <br />
@@ -227,7 +227,7 @@ export function DeploymentGlobe() {
             </p>
             <dl className="mt-10 grid grid-cols-2 gap-6">
               <div>
-                <dt className="font-mono text-eyebrow uppercase text-muted-foreground">
+                <dt className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">
                   hizmet verilen ülke
                 </dt>
                 <dd className="mt-1.5 text-2xl font-semibold tabular-nums text-foreground">
@@ -235,7 +235,7 @@ export function DeploymentGlobe() {
                 </dd>
               </div>
               <div>
-                <dt className="font-mono text-eyebrow uppercase text-muted-foreground">
+                <dt className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">
                   aktif müşteri
                 </dt>
                 <dd className="mt-1.5 text-2xl font-semibold tabular-nums text-foreground">
@@ -243,7 +243,7 @@ export function DeploymentGlobe() {
                 </dd>
               </div>
               <div>
-                <dt className="font-mono text-eyebrow uppercase text-muted-foreground">
+                <dt className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">
                   uzman ekip
                 </dt>
                 <dd className="mt-1.5 text-2xl font-semibold tabular-nums text-foreground">
@@ -251,8 +251,8 @@ export function DeploymentGlobe() {
                 </dd>
               </div>
               <div>
-                <dt className="font-mono text-eyebrow uppercase text-muted-foreground">
-                  yanıt süresi
+                <dt className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">
+                  destek hattı
                 </dt>
                 <dd className="mt-1.5 text-2xl font-semibold tabular-nums text-foreground">
                   7/24

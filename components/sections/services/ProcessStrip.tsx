@@ -3,11 +3,11 @@ import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 
 const STEPS = [
-  { num: '01', label: 'Brief', detail: 'Kapsam, gereksinimler, kısıtlar.' },
-  { num: '02', label: 'Plan', detail: 'Mimari, takvim, ekip yapısı.' },
-  { num: '03', label: 'Build', detail: 'Sprint döngüleri, continuous delivery.' },
-  { num: '04', label: 'Ship', detail: 'Production deploy, regülasyon geçişi.' },
-  { num: '05', label: 'Operate', detail: 'Monitoring, destek, iterasyon.' },
+  { num: '01', label: 'Görüşme', detail: 'Kapsam, hedefler ve bütçeyi birlikte netleştiririz.' },
+  { num: '02', label: 'Plan', detail: 'Çözüm tasarımı, takvim ve ekip yapısını hazırlarız.' },
+  { num: '03', label: 'Geliştirme', detail: 'Haftalar halinde ilerleyerek size düzenli güncellemeler veririz.' },
+  { num: '04', label: 'Yayın', detail: 'Test edilmiş sistemi canlıya alır, onay alırız.' },
+  { num: '05', label: 'Destek', detail: 'Yayın sonrası takip, destek ve geliştirme.' },
 ];
 
 export function ProcessStrip() {
@@ -15,19 +15,19 @@ export function ProcessStrip() {
     <section className="border-b border-border py-16 md:py-24">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 02 · nasıl çalışırız'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Nasıl Çalışırız</p>
           <h2
             className="mt-4 font-semibold tracking-tight"
             style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', letterSpacing: '-0.03em' }}
           >
-            Brief&apos;ten production&apos;a.
+            İlk görüşmeden yayına.
           </h2>
         </RevealSection>
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-5 gap-0 border border-border divide-y md:divide-y-0 md:divide-x divide-border overflow-hidden">
           {STEPS.map((step) => (
             <div key={step.num} className="p-6 bg-elevated group hover:bg-muted/40 transition-colors">
-              <p className="font-mono text-eyebrow uppercase text-muted-foreground">{step.num}</p>
+              <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">{step.num}</p>
               <h3 className="mt-3 text-lg font-semibold tracking-tight text-foreground group-hover:text-accent transition-colors">
                 {step.label}
               </h3>

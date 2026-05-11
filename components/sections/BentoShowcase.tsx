@@ -50,7 +50,7 @@ export function BentoShowcase() {
     <section className="border-b border-border py-20 md:py-28 relative">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 07 · ne yapıyoruz'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Neden Airomeda</p>
           <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
             Neden Airomeda?
           </h2>
@@ -61,7 +61,7 @@ export function BentoShowcase() {
           <TiltCard className="md:col-span-2 md:row-span-2 p-8 relative overflow-hidden border border-border bg-elevated">
             <div aria-hidden className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full"
               style={{ background: 'radial-gradient(circle, hsl(189 100% 50% / 0.15), transparent 60%)' }}/>
-            <p className="font-mono text-eyebrow uppercase text-accent">11 yıllık deneyim</p>
+            <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">11 yıllık deneyim</p>
             <h3 className="mt-4 text-2xl font-semibold tracking-tight">11 yıllık birikim, 7 sektörde uzmanlaşmış güvenilir yazılım ortağı.</h3>
             <p className="mt-3 text-sm text-muted-foreground max-w-sm">
               2014&apos;ten bu yana bankacılık, lojistik, sağlık ve e-ticaret gibi kritik sektörlerde işletmelerin dijital dönüşümüne destek oluyoruz. İhtiyaçlarınıza göre şekillenen çözümler, uzun vadeli ortaklık.
@@ -73,19 +73,19 @@ export function BentoShowcase() {
 
           {/* Stat card — proje */}
           <TiltCard className="p-6 border border-border bg-elevated flex flex-col justify-between">
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">tamamlanan proje</p>
+            <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">tamamlanan proje</p>
             <div>
               <p className="text-5xl font-semibold tabular-nums tracking-tight">180<span className="text-accent">+</span></p>
-              <p className="mt-2 text-xs text-muted-foreground font-mono">2014&apos;ten bu yana · 85+ aktif müşteri</p>
+              <p className="mt-2 text-xs text-muted-foreground">2014&apos;ten bu yana · 85+ mutlu müşteri</p>
             </div>
           </TiltCard>
 
           {/* Sertifika mini */}
           <TiltCard className="p-6 border border-border bg-background">
-            <p className="font-mono text-eyebrow uppercase text-accent">sertifikalı ekip</p>
+            <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Uzman ekip</p>
             <div className="mt-3 space-y-1.5">
               {['Johns Hopkins · Veri Bilimi', 'Duke University · Makine Öğrenmesi', 'Google · Veri Temelleri', 'Meta · Pazarlama Analitiği'].map((cert) => (
-                <p key={cert} className="font-mono text-[10px] leading-relaxed text-muted-foreground flex items-center gap-1.5">
+                <p key={cert} className="text-[10px] leading-relaxed text-muted-foreground flex items-center gap-1.5">
                   <span className="text-accent">✓</span>{cert}
                 </p>
               ))}
@@ -94,28 +94,29 @@ export function BentoShowcase() {
 
           {/* Quote */}
           <TiltCard className="p-6 border border-border bg-elevated md:col-span-2">
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">PayGate · Fintech</p>
+            <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">PayGate · Fintech</p>
             <p className="mt-3 text-base md:text-lg font-medium leading-snug">
               <span className="text-accent">&ldquo;</span>İlk görüşmeden 10 haftada canlıya geçtik. Teknik kalite ve süreç disiplini açısından şimdiye kadar çalıştığım en güçlü ekip.<span className="text-accent">&rdquo;</span>
             </p>
-            <p className="mt-3 font-mono text-xs text-muted-foreground">— Murat Karaağaç, CTO · PayGate</p>
+            <p className="mt-3 text-xs text-muted-foreground">— Murat Karaağaç, Genel Müdür · PayGate</p>
           </TiltCard>
 
           {/* Ekip stat */}
           <TiltCard className="p-6 border border-border bg-elevated flex flex-col justify-between">
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">uzman ekip</p>
+            <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">uzman ekip</p>
             <div>
               <p className="text-3xl font-semibold tracking-tight">36 <span className="text-base text-muted-foreground">kişi</span></p>
-              <p className="mt-2 text-xs text-muted-foreground font-mono">İstanbul · 7/24 destek</p>
+              <p className="mt-2 text-xs text-muted-foreground">İstanbul · 7/24 destek</p>
             </div>
           </TiltCard>
 
-          {/* Teknoloji */}
+          {/* Platform desteği */}
           <TiltCard className="p-6 border border-border bg-elevated md:col-span-2">
-            <p className="font-mono text-eyebrow uppercase text-accent">teknolojiler</p>
+            <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Her cihazda çalışır</p>
+            <p className="mt-2 text-sm text-muted-foreground">Mobilden masaüstüne — kullandığınız her cihazda kusursuz çalışır.</p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {['React', 'Next.js', 'Flutter', 'Python', 'Node.js', 'Odoo ERP', 'Unity/C#', 'PostgreSQL'].map((t) => (
-                <span key={t} className="font-mono text-[11px] border border-border px-2 py-1 text-muted-foreground">
+              {['Web sitesi', 'Mobil uygulama', 'iOS', 'Android', 'Bulut sistemi', 'Otomasyon', 'Entegrasyon', 'Raporlama'].map((t) => (
+                <span key={t} className="text-[11px] border border-border px-2 py-1 text-muted-foreground">
                   {t}
                 </span>
               ))}

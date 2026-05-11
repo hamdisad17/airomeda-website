@@ -5,28 +5,28 @@ import { RevealSection } from '@/components/motion/RevealSection';
 
 const ITEMS = [
   {
-    q: 'Hem büyük kurumsal projeler hem de küçük işletmeler için hizmet veriyor musunuz?',
-    a: 'Evet, kesinlikle. 11 yıllık deneyimimizde hem büyük ölçekli kurumsal projeler hem de büyümekte olan işletmeler için çözümler geliştirdik. Her projeyi ihtiyacınıza göre özel olarak değerlendiriyoruz.',
+    q: 'Bizimle çalışmaya nasıl başlarız?',
+    a: 'Çok basit. Bize mesaj atın veya iletişim formunu doldurun. 24 saat içinde sizi arayıp ihtiyaçlarınızı dinleriz. İlk görüşme ücretsizdir, herhangi bir taahhüt gerektirmez.',
   },
   {
-    q: 'Projenizin teslim süresi ne kadardır?',
-    a: 'Projenin kapsamına göre değişiyor. Küçük projeler birkaç haftada, orta ölçekli projeler 6-12 haftada, büyük kurumsal projeler ise 3-6 ayda tamamlanabiliyor. İlk görüşmede size net bir plan sunuyoruz.',
-  },
-  {
-    q: 'Mevcut yazılımımız veya sistemlerimiz var. Bunlarla entegre çalışır mısınız?',
-    a: 'Evet. ERP\'ler, kargo firmalar, ödeme sistemleri, muhasebe yazılımları — mevcut sistemlerinizle sorunsuz entegrasyon sağlıyoruz. Var olanı değiştirmeden üstüne katman ekliyoruz.',
-  },
-  {
-    q: 'Proje bittikten sonra yazılımın bakımını kim yapacak?',
-    a: 'İki seçenek sunuyoruz: 1) Yazılımı sizin ekibinize teslim ederiz — tam belgeleme ve eğitim dahil. 2) Bizim devam eden destek paketimize dahil olursunuz — 7/24 yanınızdayız.',
-  },
-  {
-    q: 'Fiyatlandırma nasıl çalışıyor?',
+    q: 'Fiyatlar nasıl belirleniyor?',
     a: 'Her projeyi ayrı değerlendiriyoruz çünkü her işletmenin ihtiyacı farklı. Başlangıç, Profesyonel ve Kurumsal paket seçeneklerimiz var. 30 dakikalık ücretsiz ilk görüşmede size en uygun seçeneği birlikte belirleyelim.',
   },
   {
-    q: 'Türkiye dışındaki müşterilerinizle nasıl çalışıyorsunuz?',
-    a: '130\'dan fazla ülkeye hizmet veriyoruz. Avrupa, Orta Doğu ve Amerika\'daki uluslararası müşterilerimiz var. Uzaktan çalışma konusunda 11 yıllık deneyimimizle her ülkeden müşteriyle sorunsuz iletişim kuruyoruz.',
+    q: 'Projeyi ne kadar sürede teslim ediyorsunuz?',
+    a: 'Projenin kapsamına göre değişiyor. Küçük projeler birkaç haftada, orta ölçekli projeler 6-12 haftada, büyük projeler ise 3-6 ayda tamamlanabiliyor. İlk görüşmede size net bir zaman çizelgesi sunuyoruz.',
+  },
+  {
+    q: 'Yayından sonra destek veriyor musunuz?',
+    a: 'Evet, her zaman. İki seçenek sunuyoruz: 1) Yazılımı sizin ekibinize eksiksiz teslim ederiz — belgeler ve eğitim dahil. 2) Devam eden destek paketimize dahil olursunuz — 7/24 yanınızdayız.',
+  },
+  {
+    q: 'Çalışmaya başlamak için sözleşme şart mı?',
+    a: 'Evet, her proje için bir iş anlaşması yapıyoruz. Bu hem sizi hem bizi korur. Sözleşmede ne yapılacağı, ne zaman teslim edileceği ve fiyat net olarak yer alır. Sürpriz yoktur.',
+  },
+  {
+    q: 'Sektörümüzde tecrübeniz var mı?',
+    a: '11 yıldır finans, e-ticaret, oyun, lojistik, sağlık ve daha birçok sektörde çalışıyoruz. Sizin sektörünüzdeki deneyimimizi ilk görüşmede paylaşırız. Benzer projelerden örnekler gösterebiliriz.',
   },
 ];
 
@@ -38,7 +38,7 @@ export function FAQ() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <RevealSection>
-              <p className="font-mono text-eyebrow uppercase text-accent">{'// 08 · sıkça sorulanlar'}</p>
+              <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Sıkça Sorulanlar</p>
               <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
                 Bilinmek istenenler.
               </h2>

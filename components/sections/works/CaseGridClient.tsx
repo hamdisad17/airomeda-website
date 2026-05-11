@@ -27,15 +27,15 @@ function CaseCard({ data }: { data: CaseStudyFrontmatter }) {
         <div className="p-6 md:p-8 h-full flex flex-col">
           {/* Header */}
           <div className="flex items-center justify-between gap-4">
-            <span className="font-mono text-eyebrow uppercase text-accent">{data.industry}</span>
-            <span className="font-mono text-eyebrow uppercase text-muted-foreground">
+            <span className="text-eyebrow uppercase tracking-wider text-accent font-medium">{data.industry}</span>
+            <span className="text-eyebrow uppercase tracking-wider text-muted-foreground">
               {data.year}
             </span>
           </div>
 
           {/* Client + title */}
           <div className="mt-4 flex-1">
-            <p className="font-mono text-xs text-muted-foreground uppercase tracking-wider">
+            <p className="text-xs text-muted-foreground uppercase tracking-wider">
               {data.client}
             </p>
             <h3 className="mt-2 text-xl font-semibold tracking-tight text-foreground leading-tight group-hover:text-accent transition-colors">
@@ -89,7 +89,7 @@ export function CaseGridClient({ cases }: CaseGridClientProps) {
         <RevealSection>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
-              <p className="font-mono text-eyebrow uppercase text-accent">{'// tüm vakalar'}</p>
+              <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Tüm Vakalar</p>
               <h2
                 className="mt-3 font-semibold tracking-tight"
                 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', letterSpacing: '-0.03em' }}

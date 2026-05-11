@@ -35,7 +35,7 @@ export function ServicesHero() {
         }}
       />
       <Container as="div" className="relative py-24 md:py-36">
-        <p className="font-mono text-eyebrow uppercase text-accent">{'// hizmetler'}</p>
+        <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Hizmetlerimiz</p>
         <h1
           className="mt-6 font-semibold tracking-tight text-foreground max-w-3xl"
           style={{

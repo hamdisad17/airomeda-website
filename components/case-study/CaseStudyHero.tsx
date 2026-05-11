@@ -26,8 +26,8 @@ export async function CaseStudyHero({ data }: { data: CaseStudyFrontmatter }) {
           <span className="text-foreground/60">{data.slug}</span>
         </nav>
 
-        <p className="font-mono text-eyebrow uppercase text-accent">
-          {'// vaka · '}{data.industry}
+        <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">
+          Vaka · {data.industry}
         </p>
         <h1
           className="mt-6 max-w-4xl font-semibold tracking-tight text-foreground"

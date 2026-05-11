@@ -12,13 +12,13 @@ interface ServiceMatrixProps {
 }
 
 const SERVICE_METRICS: Record<string, { value: string; label: string }> = {
-  finans: { value: '5×', label: 'tx throughput' },
-  'sans-oyunlari': { value: '4ms', label: 'spin latency' },
-  'e-ticaret': { value: '0.9s', label: 'LCP' },
-  entegrasyon: { value: '99.99%', label: 'webhook SLA' },
-  'seo-reklam': { value: '+210%', label: 'organik trafik' },
-  'sosyal-medya': { value: '3×', label: 'etkileşim' },
-  crm: { value: '-40%', label: 'churn' },
+  finans: { value: '11 yıl', label: 'finans deneyimi' },
+  'sans-oyunlari': { value: '12+', label: 'ülkede aktif' },
+  'e-ticaret': { value: '+34%', label: 'satış artışı' },
+  entegrasyon: { value: '10+', label: 'sistem bağlantısı' },
+  'seo-reklam': { value: '+210%', label: 'organik büyüme' },
+  'sosyal-medya': { value: '3×', label: 'daha fazla etkileşim' },
+  crm: { value: '-40%', label: 'müşteri kaybı azaldı' },
 };
 
 function ServiceCard({
@@ -48,8 +48,8 @@ function ServiceCard({
         <div className="flex items-center justify-between gap-4">
           <CapabilityIcon slug={service.slug} className="h-6 w-6 text-accent" />
           {featured && (
-            <span className="font-mono text-[10px] border border-accent/30 px-2 py-0.5 text-accent uppercase tracking-wider">
-              featured
+            <span className="text-[10px] border border-accent/30 px-2 py-0.5 text-accent uppercase tracking-wider">
+              Öne Çıkan
             </span>
           )}
         </div>
@@ -71,7 +71,7 @@ function ServiceCard({
           {tags.map((t) => (
             <span
               key={t}
-              className="border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
+              className="border border-border px-2 py-0.5 text-[10px] text-muted-foreground"
             >
               {t}
             </span>
@@ -84,9 +84,9 @@ function ServiceCard({
             <p className={`font-semibold tabular-nums text-accent ${featured ? 'text-3xl' : 'text-2xl'}`}>
               {metric.value}
             </p>
-            <p className="font-mono text-[10px] uppercase text-muted-foreground">{metric.label}</p>
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{metric.label}</p>
           </div>
-          <span className="font-mono text-xs text-muted-foreground group-hover:text-accent transition-colors">
+          <span className="text-xs text-muted-foreground group-hover:text-accent transition-colors">
             incele{' '}
             <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
           </span>
@@ -103,7 +103,7 @@ export function ServiceMatrix({ services }: ServiceMatrixProps) {
     <section className="border-b border-border py-20 md:py-28">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 01 · disiplinler'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Hizmetlerimiz</p>
           <h2
             className="mt-4 font-semibold tracking-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', letterSpacing: '-0.03em' }}

@@ -33,7 +33,7 @@ export function PressLogos() {
     <section className="border-b border-border py-20">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 05 · ekip deneyimi'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Ekibimizin Deneyimi</p>
           <h2 className="mt-2 text-xl font-semibold tracking-tight">
             Ekibimizdeki uzmanlar daha önce şu kurumlarda görev aldı
           </h2>

@@ -26,7 +26,7 @@ export function BlogHero({ postCount, lastUpdated }: BlogHeroProps) {
           {/* Left */}
           <div>
             <RevealSection>
-              <p className="font-mono text-eyebrow uppercase text-accent">{'// blog · 2026'}</p>
+              <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Blog</p>
             </RevealSection>
             <h1
               className="mt-6 font-semibold tracking-tight text-foreground"

@@ -21,16 +21,16 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
         <RevealSection>
           <div className="flex items-end justify-between">
             <div>
-              <p className="font-mono text-eyebrow uppercase text-accent">
-                {'// 08 · selected work'}
+              <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">
+                Başarı Hikayeleri
               </p>
               <h2 className="mt-4 text-display-2 font-semibold tracking-tight">{t('title')}</h2>
             </div>
             <Link
               href="/calismalarimiz"
-              className="hidden font-mono text-xs uppercase tracking-wider text-accent hover:underline md:inline-block"
+              className="hidden text-xs uppercase tracking-wider text-accent hover:underline md:inline-block"
             >
-              all work →
+              Tüm çalışmalar →
             </Link>
           </div>
         </RevealSection>
@@ -44,7 +44,7 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
           >
             <div className="grid gap-0 lg:grid-cols-12">
               <div className="p-8 lg:col-span-7 md:p-12">
-                <p className="font-mono text-eyebrow uppercase text-accent">{featured.client}</p>
+                <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">{featured.client}</p>
                 <h3 className="mt-4 text-display-3 font-semibold tracking-tight">
                   {featured.title}
                 </h3>
@@ -95,10 +95,10 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
                   href={`/calismalarimiz/${c.slug}`}
                   className="group block border border-border bg-elevated p-8 transition-colors hover:border-accent"
                 >
-                  <p className="font-mono text-eyebrow uppercase text-accent">{c.client}</p>
+                  <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">{c.client}</p>
                   <h3 className="mt-3 text-lg font-semibold tracking-tight">{c.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.excerpt}</p>
-                  <div className="mt-5 flex flex-wrap gap-x-4 font-mono text-xs text-muted-foreground">
+                  <div className="mt-5 flex flex-wrap gap-x-4 text-xs text-muted-foreground">
                     <span>{c.industry}</span>
                     <span>·</span>
                     <span>{c.year}</span>

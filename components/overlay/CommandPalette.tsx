@@ -26,14 +26,14 @@ export function CommandPalette() {
     { group: 'Sayfalar', label: 'Blog', hint: 'blog', href: '/tr/blog' },
     { group: 'Sayfalar', label: 'Kariyer', hint: 'careers', href: '/tr/kariyer' },
     { group: 'Sayfalar', label: 'İletişim', hint: 'contact', href: '/tr/iletisim' },
-    { group: 'Sektörler', label: 'Finans', hint: 'industry', keywords: ['fintech', 'bddk'], action: () => scrollToId('industry-switcher') },
-    { group: 'Sektörler', label: 'iGaming', hint: 'industry', keywords: ['gaming', 'rng'], action: () => scrollToId('industry-switcher') },
+    { group: 'Sektörler', label: 'Finans', hint: 'industry', keywords: ['fintech', 'bankacılık'], action: () => scrollToId('industry-switcher') },
+    { group: 'Sektörler', label: 'Oyun Platformu', hint: 'industry', keywords: ['gaming', 'oyun'], action: () => scrollToId('industry-switcher') },
     { group: 'Sektörler', label: 'E-Ticaret', hint: 'industry', action: () => scrollToId('industry-switcher') },
     { group: 'Sektörler', label: 'Entegrasyon', hint: 'industry', action: () => scrollToId('industry-switcher') },
-    { group: 'Aksiyonlar', label: 'Brief gönder', hint: 'enter →', href: '/tr/iletisim' },
+    { group: 'Aksiyonlar', label: 'Bizimle konuşun', hint: 'enter →', href: '/tr/iletisim' },
     { group: 'Aksiyonlar', label: 'Karanlık moda geç', hint: 'theme', action: () => document.documentElement.classList.toggle('light') },
-    { group: 'Aksiyonlar', label: 'Production durumu', hint: 'live', action: () => scrollToId('production-heartbeat') },
-    { group: 'Aksiyonlar', label: 'Mimari', hint: 'architecture', action: () => scrollToId('architecture') },
+    { group: 'Aksiyonlar', label: 'Sistem bağlantısı', hint: 'live', action: () => scrollToId('architecture') },
+    { group: 'Aksiyonlar', label: 'Hizmetlerimiz', hint: 'capabilities', action: () => scrollToId('architecture') },
   ], []);
 
   function scrollToId(id: string) {

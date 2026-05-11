@@ -28,9 +28,8 @@ export function WorksHero({ count }: { count?: number }) {
         }}
       />
       <Container as="div" className="relative py-24 md:py-40">
-        <p className="font-mono text-eyebrow uppercase text-accent">
-          {'// vakalar · '}
-          <CountUp end={count ?? 47} suffix=" production" className="tabular-nums" />
+        <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">
+          Vakalar · <CountUp end={count ?? 47} suffix="+ tamamlanmış proje" className="tabular-nums" />
         </p>
         <h1
           className="mt-6 font-semibold tracking-tight text-foreground max-w-4xl"

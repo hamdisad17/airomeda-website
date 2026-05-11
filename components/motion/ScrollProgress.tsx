@@ -4,11 +4,9 @@ import * as React from 'react';
 const CHAPTERS = [
   { id: 'hero', label: '00 · Giriş' },
   { id: 'industry-switcher', label: '01 · Sektörler' },
-  { id: 'architecture', label: '02 · Mimari' },
-  { id: 'production-heartbeat', label: '03 · Canlı sistem' },
-  { id: 'case-studies', label: '04 · Vakalar' },
-  { id: 'process-story', label: '05 · Süreç' },
-  { id: 'cta', label: '06 · İletişim' },
+  { id: 'architecture', label: '02 · Sistem' },
+  { id: 'case-studies', label: '03 · Vakalar' },
+  { id: 'cta', label: '04 · İletişim' },
 ];
 
 export function ScrollProgress() {
@@ -48,7 +46,7 @@ export function ScrollProgress() {
       {/* Chapter indicator — far right, vertical */}
       <div
         aria-hidden
-        className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-30 pointer-events-none flex-col gap-3 font-mono text-[10px] uppercase tracking-[0.2em]"
+        className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-30 pointer-events-none flex-col gap-3 text-[10px] uppercase tracking-[0.2em]"
       >
         {CHAPTERS.map((ch) => {
           const isActive = ch.label === activeChapter;

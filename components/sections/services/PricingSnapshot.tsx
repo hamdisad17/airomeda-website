@@ -39,7 +39,7 @@ const PLANS = [
       'Öncelikli yanıt süresi',
       'Yol haritası ortaklığı',
       'Aylık metrik raporları',
-      'SLA güvencesi',
+      'Hizmet kalite güvencesi',
     ],
     accent: false,
   },
@@ -58,7 +58,7 @@ export function PricingSnapshot() {
       />
       <Container as="div" className="relative">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 03 · engagement modeller'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Çalışma Modelleri</p>
           <h2
             className="mt-4 font-semibold tracking-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', letterSpacing: '-0.03em' }}
@@ -88,7 +88,7 @@ export function PricingSnapshot() {
                   />
                 )}
                 <div>
-                  <p className="font-mono text-eyebrow uppercase text-muted-foreground">
+                  <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">
                     {plan.model}
                   </p>
                   <h3

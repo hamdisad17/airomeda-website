@@ -29,8 +29,8 @@ export function ServiceHero({ title, subtitle, ctaText, slug }: Props) {
           <span>/</span>
           <span className="text-foreground/60">{slug ?? title.toLowerCase()}</span>
         </nav>
-        <p className="font-mono text-eyebrow uppercase text-accent">
-          {'// hizmetler · '}{slug ?? ''}
+        <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">
+          Hizmetler
         </p>
         <h1
           className="mt-6 max-w-3xl font-semibold tracking-tight text-foreground"

@@ -8,20 +8,26 @@ import { Container } from '@/components/layout/Container';
 gsap.registerPlugin(ScrollTrigger);
 
 const STATEMENTS = [
-  { word: 'Güven', tone: 'accent' },
-  { word: 'inşa', tone: 'accent' },
-  { word: 'ediyoruz.', tone: 'muted' },
+  { word: 'Sizi', tone: 'muted' },
+  { word: 'dinleriz.', tone: 'accent' },
+  { word: 'Boş', tone: 'muted' },
+  { word: 'vaatler', tone: 'muted' },
+  { word: 'vermeyiz.', tone: 'muted' },
 ];
 
 const STATEMENT_2 = [
-  { word: 'İşinizi', tone: 'muted' },
-  { word: 'kolaylaştırır.', tone: 'accent' },
+  { word: 'Söz', tone: 'muted' },
+  { word: 'veririz.', tone: 'accent' },
+  { word: 'Sözümüzde', tone: 'muted' },
+  { word: 'dururuz.', tone: 'muted' },
 ];
 
 const STATEMENT_3 = [
-  { word: 'Size', tone: 'muted' },
-  { word: 'özel', tone: 'muted' },
-  { word: 'çözüm.', tone: 'accent' },
+  { word: 'Yanınızda', tone: 'muted' },
+  { word: 'kalırız.', tone: 'accent' },
+  { word: 'Yayından', tone: 'muted' },
+  { word: 'sonra', tone: 'muted' },
+  { word: 'da.', tone: 'muted' },
 ];
 
 export function Manifesto() {
@@ -58,7 +64,7 @@ export function Manifesto() {
         style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, hsl(189 100% 50% / 0.07), transparent 70%)' }}/>
       <Container as="div" className="relative">
         <div ref={ref}>
-        <p className="font-mono text-eyebrow uppercase text-accent mb-20">{'// manifesto'}</p>
+        <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mb-20">Sözümüz</p>
 
         <div className="space-y-16 md:space-y-24">
           {[STATEMENTS, STATEMENT_2, STATEMENT_3].map((line, li) => (
@@ -74,16 +80,16 @@ export function Manifesto() {
 
         <div className="mt-24 grid md:grid-cols-3 gap-8 max-w-4xl border-t border-border pt-12">
           <div>
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">teslim</p>
+            <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">teslim</p>
             <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">Hızlı ve güvenilir</p>
           </div>
           <div>
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">yanıt süresi</p>
-            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">24 saat · 7/24 destek</p>
+            <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">yanıt</p>
+            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">24 saat içinde · 7/24 destek</p>
           </div>
           <div>
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">sahiplik</p>
-            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">yazılım tamamen sizin</p>
+            <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">sahiplik</p>
+            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">Yazılım tamamen sizin</p>
           </div>
         </div>
         </div>

@@ -22,7 +22,7 @@ export function JobDetailHero({ job }: JobDetailHeroProps) {
       <Container as="div" className="relative py-20 md:py-28">
         <RevealSection>
           {/* Eyebrow */}
-          <p className="font-mono text-eyebrow uppercase text-accent mb-6">
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mb-6">
             {`${job.department} · ${job.location} · ${job.employment_type}`}
           </p>
 

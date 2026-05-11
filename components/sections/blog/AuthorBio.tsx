@@ -20,8 +20,8 @@ const AUTHOR_BIOS: Record<string, { seed: string; bio: string; role: string }> =
   },
   'Selin Aydın': {
     seed: 'selin',
-    bio: 'CTO & Co-founder. Core banking ve event-driven mimari uzmanı. CQRS / event sourcing savunucusu.',
-    role: 'CTO & Co-founder',
+    bio: 'Kurucu Ortak. Bankacılık ve yazılım sistemleri alanında 10+ yıl deneyim. İşletmeler için güvenilir yazılım çözümleri tasarlar.',
+    role: 'Kurucu Ortak',
   },
 };
 
@@ -42,7 +42,7 @@ export function AuthorBio({ author }: AuthorBioProps) {
   return (
     <section className="border-t border-b border-border bg-elevated/30">
       <Container as="div" className="py-12 max-w-3xl mx-auto">
-        <p className="font-mono text-eyebrow uppercase text-muted-foreground mb-6">{'// yazar hakkında'}</p>
+        <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium mb-6">Yazar Hakkında</p>
         <div className="flex items-start gap-6">
           <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden border border-border bg-background">
             <Image
@@ -56,7 +56,7 @@ export function AuthorBio({ author }: AuthorBioProps) {
           </div>
           <div>
             <p className="font-semibold text-foreground">{author}</p>
-            <p className="font-mono text-eyebrow uppercase text-accent mt-1">{data.role}</p>
+            <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mt-1">{data.role}</p>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-lg">{data.bio}</p>
           </div>
         </div>

@@ -36,38 +36,38 @@ export function GamingControlPanel() {
         <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]/70" />
-        <span className="ml-3 font-mono text-xs text-muted-foreground">
-          ops.bahis.io/operator
+        <span className="ml-3 text-xs text-muted-foreground">
+          Operatör Paneli · Bahis.io
         </span>
       </div>
       <div className="p-5 space-y-4">
         <div className="grid grid-cols-3 gap-3">
           <div className="border border-border bg-muted/30 p-3">
             <p className="text-[10px] uppercase tracking-wider text-muted-foreground">
-              Live Bets/sec
+              Anlık Bahis
             </p>
             <p className="mt-1 text-xl font-semibold tabular-nums text-foreground">847</p>
           </div>
           <div className="border border-border bg-muted/30 p-3">
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground">RTP</p>
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Geri Ödeme</p>
             <p className="mt-1 text-xl font-semibold tabular-nums text-foreground">96.2%</p>
           </div>
           <div className="border border-border bg-muted/30 p-3">
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground">RNG Seed</p>
-            <p className="mt-1 text-sm font-mono text-foreground">0x7a..f2c</p>
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Güvenlik</p>
+            <p className="mt-1 text-sm text-foreground">Sertifikalı</p>
           </div>
         </div>
         <div className="border border-border bg-muted/30 p-4">
           <div className="flex items-center justify-between mb-3">
             <p className="text-xs uppercase tracking-wider text-muted-foreground">
-              Game Throughput
+              Oyun Trafiği
             </p>
             <span className="inline-flex items-center gap-1.5 text-xs text-success font-medium">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
               </span>
-              live
+              canlı
             </span>
           </div>
           <svg viewBox="0 0 320 60" className="w-full h-14" preserveAspectRatio="none">
@@ -82,23 +82,19 @@ export function GamingControlPanel() {
           </svg>
         </div>
         <div className="space-y-1.5">
-          {['blackjack-eu', 'roulette-tr', 'baccarat-eu', 'slots-mega'].map((g) => (
+          {[
+            { name: 'Blackjack', players: '183' },
+            { name: 'Rulet', players: '97' },
+            { name: 'Bakara', players: '214' },
+            { name: 'Slot Oyunları', players: '156' },
+          ].map((g) => (
             <div
-              key={g}
+              key={g.name}
               className="flex items-center justify-between text-xs py-1.5 border-b border-border/50 last:border-0"
             >
-              <span className="font-mono text-muted-foreground">{g}</span>
-              <span className="text-muted-foreground">
-                {g === 'blackjack-eu'
-                  ? '183'
-                  : g === 'roulette-tr'
-                    ? '97'
-                    : g === 'baccarat-eu'
-                      ? '214'
-                      : '156'}{' '}
-                active
-              </span>
-              <span className="px-1.5 py-0.5 text-success bg-success/10">healthy</span>
+              <span className="text-muted-foreground">{g.name}</span>
+              <span className="text-muted-foreground">{g.players} aktif</span>
+              <span className="px-1.5 py-0.5 text-success bg-success/10">çevrimiçi</span>
             </div>
           ))}
         </div>

@@ -10,7 +10,7 @@ export function CinematicContactForm() {
         <div className="grid gap-12 md:grid-cols-[340px_1fr] items-start">
           {/* Left editorial column */}
           <div>
-            <p className="font-mono text-eyebrow uppercase text-accent mb-4">{'// brief'}</p>
+            <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mb-4">İletişim</p>
             <h2
               className="font-semibold tracking-tight text-foreground"
               style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', letterSpacing: '-0.03em', lineHeight: 1.05 }}

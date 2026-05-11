@@ -12,7 +12,7 @@ export function ServiceFAQ({ items }: { items: ServiceFrontmatter['faq'] }) {
     <section className="border-b border-border py-20 md:py-28">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// sss'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Sıkça Sorulanlar</p>
           <h2
             className="mt-4 font-semibold tracking-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', letterSpacing: '-0.03em' }}

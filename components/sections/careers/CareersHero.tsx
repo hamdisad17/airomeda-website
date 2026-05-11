@@ -25,8 +25,8 @@ export function CareersHero({ openCount }: CareersHeroProps) {
         <div className="grid gap-12 md:grid-cols-[1fr_360px]">
           <div>
             <RevealSection>
-              <p className="font-mono text-eyebrow uppercase text-accent">
-                {`// kariyer · ${openCount} açık pozisyon · istanbul`}
+              <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">
+                {`Kariyer · ${openCount} açık pozisyon · İstanbul`}
               </p>
             </RevealSection>
             <h1

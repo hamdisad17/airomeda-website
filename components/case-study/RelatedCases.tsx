@@ -21,11 +21,11 @@ function RelatedCard({ data }: { data: CaseStudyFrontmatter }) {
             'radial-gradient(circle at 100% 0%, hsl(189 100% 50% / 0.1), transparent 70%)',
         }}
       />
-      <p className="font-mono text-eyebrow uppercase text-accent">{data.industry}</p>
+      <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">{data.industry}</p>
       <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground leading-tight group-hover:text-accent transition-colors">
         {data.title}
       </h3>
-      <p className="mt-2 font-mono text-xs text-muted-foreground">{data.client} · {data.year}</p>
+      <p className="mt-2 text-xs text-muted-foreground">{data.client} · {data.year}</p>
       <p className="mt-3 text-sm text-muted-foreground leading-relaxed line-clamp-2">{data.excerpt}</p>
       <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
         <div className="flex flex-wrap gap-1">
@@ -36,7 +36,7 @@ function RelatedCard({ data }: { data: CaseStudyFrontmatter }) {
             </span>
           ))}
         </div>
-        <span className="font-mono text-xs text-muted-foreground group-hover:text-accent transition-colors">
+        <span className="text-xs text-muted-foreground group-hover:text-accent transition-colors">
           incele →
         </span>
       </div>
@@ -61,7 +61,7 @@ export async function RelatedCases({
     <section className="border-b border-border py-20">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// ilgili vakalar'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">İlgili Vakalar</p>
           <h2
             className="mt-4 font-semibold tracking-tight"
             style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', letterSpacing: '-0.03em' }}

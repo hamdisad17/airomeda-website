@@ -26,8 +26,8 @@ export function AboutHero() {
         <div className="grid md:grid-cols-[1fr_340px] gap-12 items-start">
           {/* Left — headline */}
           <div>
-            <p className="font-mono text-eyebrow uppercase text-accent">
-              {'// hakkımızda · 11 yıl · 36 kişi · 130+ ülke'}
+            <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">
+              Hakkımızda
             </p>
             <h1
               className="mt-6 font-semibold tracking-tight text-foreground"
@@ -44,28 +44,28 @@ export function AboutHero() {
             </p>
           </div>
 
-          {/* Right — terminal metadata box */}
-          <div className="border border-border bg-elevated font-mono text-xs mt-4 md:mt-12">
+          {/* Right — company info card */}
+          <div className="border border-border bg-elevated text-xs mt-4 md:mt-12">
             <div className="border-b border-border px-4 py-2 flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-accent" />
-              <span className="text-muted-foreground uppercase tracking-wider">airomeda.sys</span>
+              <span className="text-muted-foreground uppercase tracking-wider font-medium">Airomeda Bilgi</span>
             </div>
             <div className="p-4 space-y-2">
               {[
-                ['kuruluş', '2014 · İstanbul'],
-                ['merkez ofis', 'İstanbul · TR'],
-                ['ekip', '36 uzman'],
-                ['dil', 'TR / EN'],
-                ['hizmet alanı', '130+ ülke · dünya geneli'],
+                ['Kuruluş', '2014 · İstanbul'],
+                ['Merkez ofis', 'İstanbul, Türkiye'],
+                ['Ekip', '36 uzman'],
+                ['Dil', 'Türkçe / İngilizce'],
+                ['Hizmet alanı', '130+ ülke · dünya geneli'],
               ].map(([label, val]) => (
                 <p key={label} className="flex gap-2">
-                  <span className="text-muted-foreground w-24 shrink-0">{label}</span>
-                  <span className="text-accent">{val}</span>
+                  <span className="text-muted-foreground w-28 shrink-0">{label}</span>
+                  <span className="text-foreground font-medium">{val}</span>
                 </p>
               ))}
-              <p className="pt-2 text-muted-foreground/50">
-                {'> status: OPERATIONAL'}
-                <span className="animate-terminal-blink ml-0.5">_</span>
+              <p className="pt-2 text-muted-foreground/50 flex items-center gap-1.5">
+                <span className="inline-flex h-1.5 w-1.5 rounded-full bg-success flex-shrink-0" />
+                <span>Aktif · 7/24 hizmet</span>
               </p>
             </div>
           </div>
@@ -78,7 +78,7 @@ export function AboutHero() {
               <p className="text-4xl font-semibold tabular-nums tracking-tight text-foreground">
                 <CountUp end={s.v} suffix={s.suffix} />
               </p>
-              <p className="mt-2 font-mono text-eyebrow uppercase text-muted-foreground">{s.label}</p>
+              <p className="mt-2 text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">{s.label}</p>
             </div>
           ))}
         </div>

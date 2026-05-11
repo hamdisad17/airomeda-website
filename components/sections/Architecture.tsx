@@ -133,7 +133,7 @@ export function Architecture() {
         <div ref={ref}>
           <RevealSection>
             <div className="max-w-3xl">
-              <p className="font-mono text-eyebrow uppercase text-accent">{'// 04 · entegrasyon'}</p>
+              <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Sistem Bağlantısı</p>
               <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
                 Mevcut sistemlerinizle<br />sorunsuz çalışır.
               </h2>
@@ -147,8 +147,8 @@ export function Architecture() {
           <div className="mt-16 grid lg:grid-cols-[1fr_1.2fr_1fr] gap-8 lg:gap-12 items-stretch">
             {/* Left: source categories */}
             <div className="space-y-2">
-              <p className="font-mono text-eyebrow uppercase text-muted-foreground mb-4">
-                {'// kaynaklarınız'}
+              <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium mb-4">
+                Mevcut sistemleriniz
               </p>
               {CATEGORIES.map((c) => (
                 <div
@@ -158,11 +158,11 @@ export function Architecture() {
                   <span className="font-mono text-accent text-base w-5 text-center flex-shrink-0">{c.icon}</span>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-foreground">{c.label}</p>
-                    <p className="font-mono text-[10px] text-muted-foreground truncate">
+                    <p className="text-[10px] text-muted-foreground truncate">
                       {c.brands.slice(0, 3).join(' · ')}
                     </p>
                   </div>
-                  <span className="font-mono text-[10px] text-muted-foreground/60 tabular-nums">{c.brands.length}+</span>
+                  <span className="text-[10px] text-muted-foreground/60 tabular-nums">{c.brands.length}+</span>
                 </div>
               ))}
             </div>
@@ -223,14 +223,14 @@ export function Architecture() {
               <div className="relative z-10">
                 <div className="hub-pulse relative">
                   <div className="w-48 h-48 border-2 border-accent bg-elevated/80 backdrop-blur-md flex flex-col items-center justify-center shadow-[0_20px_60px_-15px_hsl(189_100%_50%_/_0.5)]">
-                    <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent mb-2">core platform</div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-accent mb-2">Ana Sistem</div>
                     <div className="text-2xl font-bold tracking-tight text-foreground">airomeda<span className="text-accent">.</span></div>
                     <div className="mt-3 flex items-center gap-1.5">
                       <span className="relative flex h-1.5 w-1.5">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75"/>
                         <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success"/>
                       </span>
-                      <span className="font-mono text-[10px] text-muted-foreground">canlı</span>
+                      <span className="text-[10px] text-muted-foreground">canlı</span>
                     </div>
                   </div>
                   {/* Pulsing ring */}
@@ -238,7 +238,7 @@ export function Architecture() {
                     style={{ animation: 'cta-pulse 3s ease-in-out infinite' }}/>
                 </div>
                 <div className="mt-6 text-center">
-                  <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                  <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-wider text-muted-foreground">
                     <span className="tabular-nums text-accent">200+</span>
                     <span>entegrasyon</span>
                     <span className="text-muted-foreground/40">·</span>
@@ -251,8 +251,8 @@ export function Architecture() {
 
             {/* Right: outcomes */}
             <div className="space-y-3 flex flex-col">
-              <p className="font-mono text-eyebrow uppercase text-muted-foreground mb-4">
-                {'// sonuç'}
+              <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium mb-4">
+                Size ne kazandırır
               </p>
               {OUTCOMES.map((o) => (
                 <div

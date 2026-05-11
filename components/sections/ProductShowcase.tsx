@@ -6,23 +6,23 @@ type Variant = 'finance' | 'gaming';
 
 const COPY: Record<Variant, { eyebrow: string; title: string; body: string; bullets: string[] }> = {
   finance: {
-    eyebrow: '// 04 · finans',
+    eyebrow: 'Finans',
     title: 'Bankacılık ve finans için güvenilir yazılım çözümleri.',
-    body: 'Bankacılık ve finans sektörünün gerektirdiği tüm güvenlik standartlarını karşılayan yazılım altyapısı. Denetim ve regülasyona uyumlu, güvenli ve hızlı.',
+    body: 'Bankacılık ve finans sektörünün ihtiyaç duyduğu güvenli yazılım altyapısını kuruyoruz. Yasal gerekliliklere tam uyumlu, güvenli ve hızlı.',
     bullets: [
       'Bankacılık modülleri (hesap, ödeme, raporlama)',
-      'Ödeme sistemleri entegrasyonu (Iyzico, havale, FAST)',
+      'Ödeme sistemi bağlantıları (Iyzico, havale, FAST)',
       'Müşteri kimlik doğrulama ve güvenlik',
       'Mobil ve web bankacılık uygulamaları',
     ],
   },
   gaming: {
-    eyebrow: '// 07 · iGaming',
-    title: 'Güvenilir ve lisansa uygun oyun platformları.',
+    eyebrow: 'Oyun Platformu',
+    title: 'Güvenilir ve tam lisanslı oyun platformları.',
     body: 'Şans oyunları sektörünün gerektirdiği tüm özelliklere sahip, hızlı ve güvenilir platformlar. Lisans gereksinimlerini eksiksiz karşılıyor.',
     bullets: [
       'Casino ve spor bahisleri platform geliştirme',
-      'Güvenli rastgele sayı üreteci (RNG)',
+      'Sertifikalı sayı üretim sistemi',
       'Çok para birimli ödeme kasiyeri',
       'Oyuncu yönetimi ve sadakat sistemi',
     ],
@@ -41,7 +41,7 @@ export function ProductShowcase({ variant, reverse = false }: { variant: Variant
         >
           <Reveal>
             <div>
-              <p className="font-mono text-eyebrow uppercase text-accent">{c.eyebrow}</p>
+              <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">{c.eyebrow}</p>
               <h2 className="mt-4 text-display-2 font-semibold tracking-tight">{c.title}</h2>
               <p className="mt-6 text-body-lg text-muted-foreground">{c.body}</p>
               <ul className="mt-8 space-y-3">

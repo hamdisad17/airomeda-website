@@ -46,7 +46,7 @@ export function CultureGallery() {
   return (
     <RevealSection as="section" className="border-b border-border">
       <Container as="div" className="py-16 md:py-20">
-        <p className="font-mono text-eyebrow uppercase text-accent mb-10">{'// stüdyo kültürü'}</p>
+        <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mb-10">Stüdyo Kültürü</p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {GALLERY_IMAGES.map((img, i) => (
             <RevealSection key={img.src} delay={i * 0.06}>

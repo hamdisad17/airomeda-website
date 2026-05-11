@@ -16,7 +16,7 @@ export function CaseStudyCard({ data }: { data: CaseStudyFrontmatter }) {
             'radial-gradient(circle at 100% 0%, hsl(189 100% 50% / 0.1), transparent 70%)',
         }}
       />
-      <p className="font-mono text-eyebrow uppercase text-accent">{data.client}</p>
+      <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">{data.client}</p>
       <h3 className="mt-3 text-xl font-semibold leading-tight tracking-tight text-foreground group-hover:text-accent transition-colors">
         {data.title}
       </h3>
@@ -25,7 +25,7 @@ export function CaseStudyCard({ data }: { data: CaseStudyFrontmatter }) {
         {data.services.map((s) => (
           <span
             key={s}
-            className="border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
+            className="border border-border px-2 py-0.5 text-[10px] text-muted-foreground"
           >
             {s}
           </span>

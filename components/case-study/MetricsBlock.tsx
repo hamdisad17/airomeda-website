@@ -18,7 +18,7 @@ export async function MetricsBlock({ metrics }: { metrics: CaseStudyFrontmatter[
       />
       <Container as="div" className="relative py-20">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-muted-foreground">
+          <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">
             {t('metric_results')}
           </p>
         </RevealSection>

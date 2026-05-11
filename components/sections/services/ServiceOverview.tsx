@@ -17,7 +17,7 @@ export function ServiceOverview({ title, body1, body2, imageUrl, imageAlt }: Ser
       <Container as="div">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           <RevealSection>
-            <p className="font-mono text-eyebrow uppercase text-accent">{'// ne yapıyoruz'}</p>
+            <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Ne Yapıyoruz</p>
             <h2
               className="mt-4 font-semibold tracking-tight text-foreground"
               style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', letterSpacing: '-0.03em' }}

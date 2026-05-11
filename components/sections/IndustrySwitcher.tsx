@@ -7,22 +7,22 @@ const INDUSTRIES = [
   {
     key: 'finance',
     label: 'Finans',
-    tagline: 'Bankacılık ve finans sektörünün gerektirdiği tüm güvenlik ve uyumluluk standartlarını karşılayan yazılım altyapısını kuruyoruz. 11 yıllık deneyimimizle finans alanının güven duyduğu çözümleri size de sunuyoruz.',
+    tagline: 'Bankacılık ve finans sektörünün ihtiyaç duyduğu güvenli yazılımları kuruyoruz. 11 yıllık deneyimimizle finans alanının güvenle kullandığı çözümleri size de sunuyoruz.',
     points: [
       'Bankacılık ve ödeme sistemleri geliştirme',
-      'Güvenli ödeme entegrasyonları (Iyzico, Stripe, havale)',
-      'Denetim ve regülasyona uyumlu kayıt altyapısı',
-      'KYC ve müşteri doğrulama sistemleri',
+      'Güvenli ödeme bağlantıları (Iyzico, Stripe, havale)',
+      'Yasal gerekliliklere uyumlu kayıt ve raporlama altyapısı',
+      'Müşteri kimlik doğrulama sistemleri',
     ],
     metric: { v: '11 yıl', l: 'finans deneyimi' },
   },
   {
     key: 'gaming',
     label: 'iGaming',
-    tagline: 'Lisans süreçlerinden canlı yayına kadar tüm şans oyunları altyapısını kuruyoruz. Hızlı, güvenilir ve dünyanın her yerinden erişilebilir.',
+    tagline: 'Lisans süreçlerinden canlı yayına kadar tüm oyun platformunu kuruyoruz. Hızlı, güvenilir ve dünyanın her yerinden erişilebilir.',
     points: [
       'Casino ve spor bahisleri platform geliştirme',
-      'Lisans gereksinimlerine uygun RNG motoru',
+      'Lisans gereksinimlerine uygun sayı üretim sistemi',
       'Çok para birimli ödeme kasiyeri',
       'Bonus ve oyuncu sadakat sistemleri',
     ],
@@ -34,7 +34,7 @@ const INDUSTRIES = [
     tagline: 'Hızlı yüklenen, kolay yönetilen ve satışlarınızı artıran e-ticaret çözümleri tasarlıyoruz. Mevcut sisteminizi yükseltmek veya sıfırdan kurmak için hazırız.',
     points: [
       'Özel e-ticaret ve pazar yeri geliştirme',
-      'ERP ve depo yönetim sistemi entegrasyonu',
+      'Stok ve depo yönetim sistemi bağlantısı',
       'Çoklu ödeme yöntemi ve kargo entegrasyonu',
       'Mobil uygulama ve hızlı web mağazası',
     ],
@@ -43,14 +43,14 @@ const INDUSTRIES = [
   {
     key: 'integration',
     label: 'Entegrasyon',
-    tagline: 'Sistemleriniz birbiriyle sorunsuz konuşsun. Kargodan ERP\'ye, ödemeden e-faturaya — her şeyi tek noktadan yönetin.',
+    tagline: "Sistemleriniz birbiriyle sorunsuz çalışsın. Kargodan stok yönetimine, ödemeden e-faturaya — her şeyi tek noktadan yönetin.",
     points: [
-      'ERP sistemleri entegrasyonu (Logo, Netsis, NetSuite)',
+      'Stok yönetim sistemi bağlantısı (Logo, Netsis, NetSuite)',
       'Kargo firmaları ile otomatik takip ve bildirim',
       'E-fatura ve e-irsaliye otomasyonu',
-      'Farklı sistemler arası veri akışı ve senkronizasyon',
+      'Farklı sistemler arası veri aktarımı ve senkronizasyon',
     ],
-    metric: { v: '10+', l: 'sistem entegrasyonu' },
+    metric: { v: '10+', l: 'sistem bağlantısı' },
   },
 ];
 
@@ -62,7 +62,7 @@ export function IndustrySwitcher() {
     <section id="industry-switcher" className="border-b border-border py-20 md:py-28">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 03 · sektör'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Sektörler</p>
           <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
             Hangi alanda{' '}
             <br className="md:hidden" />çalışıyorsun?
@@ -92,7 +92,7 @@ export function IndustrySwitcher() {
                   >
                     <span className="flex items-center gap-3">
                       <span
-                        className={`font-mono text-[11px] tabular-nums ${
+                        className={`text-[11px] tabular-nums ${
                           i === active ? 'text-accent' : 'text-muted-foreground/60'
                         }`}
                       >
@@ -127,7 +127,7 @@ export function IndustrySwitcher() {
               }}
             />
             <div className="relative">
-              <p className="font-mono text-eyebrow uppercase text-accent">{item.label}</p>
+              <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">{item.label}</p>
               <p className="mt-4 text-2xl md:text-3xl font-semibold tracking-tight text-foreground leading-tight">
                 {item.tagline}
               </p>
@@ -141,19 +141,19 @@ export function IndustrySwitcher() {
               </ul>
               <div className="mt-12 pt-6 border-t border-border flex items-center justify-between">
                 <div>
-                  <p className="font-mono text-eyebrow uppercase text-muted-foreground">
-                    benchmark
+                  <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">
+                    Öne çıkan
                   </p>
                   <p className="mt-1.5 text-2xl font-semibold tabular-nums text-accent">
                     {item.metric.v}
                   </p>
-                  <p className="font-mono text-[11px] text-muted-foreground mt-1">
+                  <p className="text-[11px] text-muted-foreground mt-1">
                     {item.metric.l}
                   </p>
                 </div>
                 <a
                   href="#cta"
-                  className="font-mono text-xs uppercase tracking-wider text-foreground hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                  className="text-xs uppercase tracking-wider text-foreground hover:text-accent transition-colors inline-flex items-center gap-2 group"
                 >
                   bizimle konuşun
                   <span className="inline-block transition-transform group-hover:translate-x-1">

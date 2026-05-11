@@ -21,7 +21,7 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
   return (
     <RevealSection as="section" className="border-b border-border">
       <Container as="div" className="py-16 md:py-20">
-        <p className="font-mono text-eyebrow uppercase text-accent mb-8">{'// ilgili yazılar'}</p>
+        <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mb-8">İlgili Yazılar</p>
         <div className="grid gap-4 md:grid-cols-3">
           {posts.map((post, i) => {
             const coverSrc: string = post.cover?.startsWith('http')

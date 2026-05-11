@@ -67,7 +67,7 @@ export function StudioTimeline() {
     <section className="border-b border-border py-20 md:py-28 relative">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 04 · kilometre taşları'}</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Kilometre Taşları</p>
           <h2
             className="mt-4 font-semibold tracking-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', letterSpacing: '-0.03em' }}
@@ -95,7 +95,7 @@ export function StudioTimeline() {
 
               {/* Content */}
               <div className="timeline-content pb-10 flex-1">
-                <p className="font-mono text-eyebrow uppercase text-accent">{m.year}</p>
+                <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">{m.year}</p>
                 <h3 className="mt-1 font-semibold tracking-tight text-foreground">{m.label}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{m.detail}</p>
               </div>

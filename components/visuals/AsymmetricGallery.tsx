@@ -18,7 +18,7 @@ const IMAGES: GalleryImage[] = [
   {
     src: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=900&q=85',
     alt: 'Code editor',
-    caption: 'core banking · TypeScript + Kotlin',
+    caption: 'Bankacılık Platformu · İstanbul',
     rotate: -1.5,
     colSpan: 5,
     aspectClass: 'aspect-[4/5]',
@@ -27,7 +27,7 @@ const IMAGES: GalleryImage[] = [
   {
     src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=85',
     alt: 'Finance dashboard',
-    caption: 'PayGate dashboard · production · fra1',
+    caption: 'PayGate · Finans Platformu',
     rotate: 1.2,
     colSpan: 4,
     aspectClass: 'aspect-[3/4]',
@@ -54,7 +54,7 @@ const IMAGES: GalleryImage[] = [
   {
     src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=85',
     alt: 'Network infrastructure',
-    caption: 'Cloudflare edge · 320+ POP',
+    caption: 'Altyapı · Küresel Ağ',
     rotate: -0.8,
     colSpan: 3,
     aspectClass: 'aspect-[3/4]',
@@ -94,7 +94,7 @@ function GalleryCard({ img }: { img: GalleryImage }) {
             }}
           />
           <figcaption
-            className="absolute bottom-3 left-3 right-3 font-mono text-[10px] uppercase tracking-wider text-foreground transition-all duration-400"
+            className="absolute bottom-3 left-3 right-3 text-[10px] uppercase tracking-wider text-foreground transition-all duration-400"
             style={{ opacity: hovered ? 1 : 0, transform: hovered ? 'translateY(0)' : 'translateY(6px)' }}
           >
             {img.caption}
@@ -112,7 +112,7 @@ export function AsymmetricGallery() {
         <RevealSection>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
             <div>
-              <p className="font-mono text-eyebrow uppercase text-accent">{'// kültür'}</p>
+              <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Stüdyodan</p>
               <h2
                 className="mt-4 font-semibold tracking-tight"
                 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', letterSpacing: '-0.03em' }}
@@ -120,7 +120,7 @@ export function AsymmetricGallery() {
                 Maslak&apos;tan kareler.
               </h2>
             </div>
-            <p className="font-mono text-xs text-muted-foreground">47 kişi · İstanbul + İzmir</p>
+            <p className="text-xs text-muted-foreground">47 kişi · İstanbul + İzmir</p>
           </div>
         </RevealSection>
 

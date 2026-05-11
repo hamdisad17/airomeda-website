@@ -20,8 +20,8 @@ export function CustomerLogos() {
     <section className="border-b border-border py-20">
       <Container as="div">
         <RevealSection>
-          <p className="text-center font-mono text-eyebrow uppercase text-muted-foreground">
-            {"2014'ten beri 85+ aktif müşteri · 180+ tamamlanmış proje · 130+ ülkeye hizmet"}
+          <p className="text-center text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">
+            {"Bizi tercih eden markalardan bazıları"}
           </p>
         </RevealSection>
       </Container>

@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
-import { TerminalDemo } from '@/components/mockups/TerminalDemo';
+import { HeroProductPreview } from '@/components/visuals/HeroProductPreview';
 import { ParticleField } from '@/components/visuals/ParticleField';
 import { FlowField } from '@/components/visuals/FlowField';
 import { FloatingUIPeeks } from '@/components/visuals/FloatingUIPeeks';
@@ -19,7 +19,7 @@ export async function Hero() {
       <Container as="div" className="relative pt-20 pb-24 md:pt-32 md:pb-36">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div>
-            <span className="inline-flex items-center gap-2 border border-border bg-elevated/50 backdrop-blur-sm px-3 py-1 font-mono text-eyebrow uppercase">
+            <span className="inline-flex items-center gap-2 border border-border bg-elevated/50 backdrop-blur-sm px-3 py-1 text-eyebrow uppercase tracking-wider">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
@@ -58,7 +58,7 @@ export async function Hero() {
             </div>
 
             {/* Trust mini-line */}
-            <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-2 font-mono text-xs text-muted-foreground">
+            <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-2 text-xs text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <span className="text-accent">✓</span> 11 yıl deneyim · 36 kişilik ekip
               </span>
@@ -74,10 +74,10 @@ export async function Hero() {
             <RecentShipments />
           </div>
 
-          {/* Terminal column with floating UI peeks */}
+          {/* Product preview with floating UI peeks */}
           <div className="relative">
             <FloatingUIPeeks />
-            <TerminalDemo />
+            <HeroProductPreview />
           </div>
         </div>
       </Container>

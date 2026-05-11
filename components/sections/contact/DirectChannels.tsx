@@ -37,7 +37,7 @@ export function DirectChannels() {
   return (
     <RevealSection as="section" className="border-b border-border">
       <Container as="div" className="py-16 md:py-20">
-        <p className="font-mono text-eyebrow uppercase text-accent mb-10">{'// doğrudan kanallar'}</p>
+        <p className="text-eyebrow uppercase tracking-wider text-accent font-medium mb-10">Doğrudan Kanallar</p>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {CHANNELS.map((ch, i) => (
             <RevealSection key={ch.label} delay={i * 0.07}>
