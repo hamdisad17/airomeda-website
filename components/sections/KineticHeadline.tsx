@@ -33,7 +33,7 @@ export function KineticHeadline({ words, connector, tailLine }: KineticHeadlineP
   );
 
   return (
-    <h1 className="mt-8 text-display-1 font-semibold tracking-tight leading-[0.95]">
+    <h1 className="mt-6 md:mt-8 text-display-1 font-semibold">
       <span className="block">
         <span
           className="inline-block overflow-hidden align-baseline"
