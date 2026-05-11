@@ -76,12 +76,14 @@ export function FlowField() {
     function tick() {
       if (!ctx) return;
       time++;
-      // Trail effect — fill bg with low alpha
-      ctx.fillStyle = 'hsla(240, 10%, 3.5%, 0.06)';
+      // Trail effect — erase old pixels with destination-out so it works on any bg (light/dark)
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
       ctx.fillRect(0, 0, width, height);
+      ctx.globalCompositeOperation = 'source-over';
 
-      ctx.strokeStyle = 'hsla(189, 100%, 50%, 0.35)';
-      ctx.lineWidth = 0.6;
+      ctx.strokeStyle = 'hsla(189, 100%, 55%, 0.45)';
+      ctx.lineWidth = 0.7;
 
       for (const p of particles) {
         // Flow field direction
