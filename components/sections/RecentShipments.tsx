@@ -27,8 +27,8 @@ export function RecentShipments() {
   const item = SHIPMENTS[idx]!;
 
   return (
-    <div className="mt-8 flex items-center gap-3 text-xs text-muted-foreground">
-      <span className="inline-flex items-center gap-1.5">
+    <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+      <span className="inline-flex items-center gap-1.5 flex-shrink-0">
         <span className="relative flex h-1.5 w-1.5">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
           <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
@@ -36,6 +36,7 @@ export function RecentShipments() {
         <span className="text-foreground">son teslim:</span>
       </span>
       <span
+        className="min-w-0"
         style={{
           display: 'inline-block',
           opacity: visible ? 1 : 0,
