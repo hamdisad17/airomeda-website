@@ -18,14 +18,14 @@ const TEAM: TeamMember[] = [
     role: 'CEO & Kurucu Ortak',
     seed: 'ahmet-kaya',
     skills: ['Strateji', 'Finans', 'Mimari'],
-    bio: "Bankacılık ve yazılım alanında 14 yıl. 2014'te Airomeda'yı kurdu. Büyük kurumsal projeler için çözüm kurguluyor.",
+    bio: "Bankacılık ve yazılım alanında 14 yıl deneyim. 2014'te Airomeda'yı kurdu. Büyük kurumsal projeler için çözüm kurguluyor.",
   },
   {
     name: 'Pınar Çelik',
     role: 'CTO & Kurucu Ortak',
     seed: 'pinar-celik',
     skills: ['Yazılım Mimarisi', 'Python', 'React'],
-    bio: 'Veri bilimi ve makine öğrenmesi uzmanı. Ziraat Bankası performans tahminleme projesinin teknik lideri.',
+    bio: 'Veri bilimi ve makine öğrenmesi uzmanı. Bankacılık ve finans sektörüne yönelik ML projelerinde teknik liderlik.',
   },
   {
     name: 'Burak Şahin',
@@ -46,7 +46,7 @@ const TEAM: TeamMember[] = [
     role: 'Mobil Geliştirici',
     seed: 'ilker-demirci',
     skills: ['Flutter', 'iOS', 'Android'],
-    bio: 'Aras Kargo ve diğer kurumsal müşteriler için mobil uygulamalar geliştirdi. Flutter uzmanı.',
+    bio: 'Lojistik ve kurumsal sektörlerde mobil uygulama geliştirme. Flutter uzmanı, iOS ve Android deneyimi.',
   },
   {
     name: 'Cansu Tekin',

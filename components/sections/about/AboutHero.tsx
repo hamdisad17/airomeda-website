@@ -40,7 +40,7 @@ export function AboutHero() {
               <TextReveal as="span">11 yıldır Türkiye&apos;nin önde gelen markalarına yazılım çözümleri sunuyoruz.</TextReveal>
             </h1>
             <p className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              Ziraat Bankası gibi kurumsal firmaların güvenle çalıştığı 36 kişilik uzman ekibimizle dünyanın her yerinden müşterilerimize hizmet veriyoruz.
+              36 kişilik uzman ekibimizle dünyanın her yerinden müşterilerimize hizmet veriyoruz. Ekibimizdeki uzmanlar daha önce Türkiye&apos;nin önde gelen kurumlarında görev almış profesyonellerdir.
             </p>
           </div>
 
@@ -52,9 +52,8 @@ export function AboutHero() {
             </div>
             <div className="p-4 space-y-2">
               {[
-                ['kuruluş', '2014 · Kayseri'],
+                ['kuruluş', '2014 · İstanbul'],
                 ['merkez ofis', 'İstanbul · TR'],
-                ['geliştirme merkezi', 'Kayseri · TR'],
                 ['ekip', '36 uzman'],
                 ['dil', 'TR / EN'],
                 ['hizmet alanı', '130+ ülke · dünya geneli'],

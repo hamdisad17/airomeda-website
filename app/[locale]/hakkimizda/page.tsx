@@ -3,6 +3,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { staticPageMetadata } from '@/lib/page-route';
 import { AboutHero } from '@/components/sections/about/AboutHero';
 import { StudioStory } from '@/components/sections/about/StudioStory';
+import { TeamExperience } from '@/components/sections/about/TeamExperience';
 import { TeamGrid } from '@/components/sections/about/TeamGrid';
 import { Values } from '@/components/sections/about/Values';
 import { StudioTimeline } from '@/components/sections/about/StudioTimeline';
@@ -31,6 +32,7 @@ export default async function Page({
     <>
       <AboutHero />
       <StudioStory />
+      <TeamExperience />
       <TeamGrid />
       <Values />
       <StudioTimeline />

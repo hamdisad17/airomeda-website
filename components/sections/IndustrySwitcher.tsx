@@ -7,7 +7,7 @@ const INDUSTRIES = [
   {
     key: 'finance',
     label: 'Finans',
-    tagline: 'Ziraat Bankası gibi büyük kurumların güvenle kullandığı yazılım altyapısını kuruyoruz. 11 yıllık deneyimimizle, bankaların güven duyduğu çözümleri size de sunuyoruz.',
+    tagline: 'Bankacılık ve finans sektörünün gerektirdiği tüm güvenlik ve uyumluluk standartlarını karşılayan yazılım altyapısını kuruyoruz. 11 yıllık deneyimimizle finans alanının güven duyduğu çözümleri size de sunuyoruz.',
     points: [
       'Bankacılık ve ödeme sistemleri geliştirme',
       'Güvenli ödeme entegrasyonları (Iyzico, Stripe, havale)',

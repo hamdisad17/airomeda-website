@@ -60,10 +60,10 @@ export async function Hero() {
             {/* Trust mini-line */}
             <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-2 font-mono text-xs text-muted-foreground">
               <span className="flex items-center gap-1.5">
-                <span className="text-accent">✓</span> Ziraat Bankası referanslı
+                <span className="text-accent">✓</span> 11 yıl deneyim · 36 kişilik ekip
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="text-accent">✓</span> Denetim ve regülasyona uyumlu
+                <span className="text-accent">✓</span> 130+ ülkeye hizmet
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="text-accent">✓</span> 7/24 destek

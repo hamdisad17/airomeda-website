@@ -36,7 +36,7 @@ const PAIRS = [
     pain: 'Yazılımınız sizi yavaşlatıyor',
     painDetail: 'Her yeni özellik beklenenden uzun sürüyor. Küçük değişiklikler beklenmedik sorunlara yol açıyor.',
     sol: 'Size özel, bakımı kolay yazılım',
-    solDetail: 'Ziraat Bankası gibi kurumların tercih ettiği kalitede yazılım. Her şey belgelenmiş, her değişiklik kontrollü.',
+    solDetail: 'Kurumsal kalitede yazılım. Her şey belgelenmiş, her değişiklik kontrollü, bakımı kolay.',
   },
   {
     icon: ICONS.audit,

@@ -38,10 +38,13 @@ export function StudioStory() {
           <RevealSection>
             <div className="space-y-6 text-muted-foreground leading-relaxed max-w-2xl">
               <p className="text-lg text-foreground/90">
-                2014&apos;te Kayseri&apos;de küçük bir ekipten yola çıktık. 11 yılda Türkiye&apos;nin önde gelen kurumlarına yazılım üreten 36 kişilik bir aile haline geldik.
+                2014&apos;te İstanbul&apos;da küçük bir ekipten yola çıktık. 11 yılda 36 kişilik uzman bir yazılım takımına dönüştük.
               </p>
               <p>
-                Bankacılık sektöründe Ziraat Bankası bünyesinde geliştirdiğimiz performans tahminleme sistemiyle başlayan yolculuğumuz, bugün finans, sağlık, e-ticaret, lojistik ve oyun gibi birçok alanda devam ediyor. AI destekli sağlık ürünlerinden ERP sistemlerine, AR/VR oyunlardan dijital pazarlama analitiğine kadar geniş bir yelpazede çözüm üretiyoruz.
+                Ekibimizdeki uzmanlar; bankacılık sektöründe <strong className="text-foreground">Ziraat Bankası</strong>, ev aletleri sanayisinde <strong className="text-foreground">Kumtel A.Ş.</strong>, lojistikte <strong className="text-foreground">Aras Kargo</strong>, sağlık teknolojilerinde <strong className="text-foreground">HSD Core Labs</strong>, eğitim teknolojilerinde <strong className="text-foreground">Kodland</strong>, oyun geliştirmede <strong className="text-foreground">Wide Game Studio</strong>, uluslararası medyada <strong className="text-foreground">Excellence Talks</strong> (Belçika) ve CMMI sertifikalı IT hizmetlerinde <strong className="text-foreground">Kolektif Teknoloji Grubu</strong> gibi prestijli kurumlarda görev almış profesyonellerdir.
+              </p>
+              <p>
+                Bu birikim, müşterilerimize özel çözümler tasarlarken farklı sektörlerin işleyişini içeriden bilen bir bakış açısı kazandırıyor. Finans, sağlık, e-ticaret, lojistik ve oyun gibi birçok alanda, yıllarca o sektörde çalışmış uzmanlarımızla projeler üretiyoruz.
               </p>
               <p>
                 Johns Hopkins, Duke ve Google gibi prestijli kurumlardan aldığımız sertifikalarla ekibimizin bilgi birikimini sürekli güncelliyoruz. Müşterilerimizin sadece bugünkü değil, yarınki ihtiyaçlarını da düşünerek tasarladığımız sistemlerle 130&apos;dan fazla ülkeye ulaşıyoruz.

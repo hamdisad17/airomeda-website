@@ -25,7 +25,7 @@
   "home": {
     "hero": {
       "title": "Karmaşık olanı, basit hale getiriyoruz.",
-      "subtitle": "2014'ten beri Ziraat Bankası gibi büyük kurumların tercih ettiği yazılım ortağı. İşinize odaklanın, teknolojiyi bize bırakın.",
+      "subtitle": "2014'ten beri işletmelerin güvenle tercih ettiği yazılım ortağı. İşinize odaklanın, teknolojiyi bize bırakın.",
       "kinetic_words": ["Finans", "iGaming", "E-Ticaret", "Entegrasyon", "SEO & Reklam", "CRM"],
       "kinetic_connector": "için."
     },
@@ -47,7 +47,7 @@
       "p1_title": "Sahiplik",
       "p1_body": "Kodu biz yazarız ama yazılım tamamen sizin olur. Her karar belgelenir, her sistem size devredilir.",
       "p2_title": "Güvenilirlik",
-      "p2_body": "Ziraat Bankası gibi kurumların güvenle kullandığı sistemleri siz de deneyimleyin.",
+      "p2_body": "Kurumsal kalitede, güvenle kullanılan sistemleri siz de deneyimleyin.",
       "p3_title": "Şeffaflık",
       "p3_body": "Riskleri, gecikmeleri ve her gelişmeyi başından açıkça paylaşırız."
     },
@@ -56,7 +56,7 @@
   "services_index": { "title": "Hizmetlerimiz" },
   "case_studies": {
     "title": "Çalışmalarımız",
-    "subtitle": "180+ tamamlanmış proje — Ziraat Bankası'ndan KOBİ'lere, her ölçekte başarılı teslimat.",
+    "subtitle": "180+ tamamlanmış proje — büyük kurumsal projelerden KOBİ'lere, her ölçekte başarılı teslimat.",
     "metric_results": "Sonuçlar",
     "related_label": "İlgili çalışmalar",
     "client_label": "Müşteri",

@@ -28,7 +28,7 @@ const IMAGES: ImgSpec[] = [
     src: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=85',
     alt: 'Ofis ortamı',
     span: 'sq',
-    caption: 'İstanbul + Kayseri ofislerimiz',
+    caption: 'İstanbul ofisimiz',
   },
   {
     src: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=900&q=85',
@@ -62,7 +62,7 @@ export function StudioGallery() {
                 Stüdyodan kareler.
               </h2>
             </div>
-            <p className="font-mono text-xs text-muted-foreground">İstanbul + Kayseri · Türkiye · GMT+3</p>
+            <p className="font-mono text-xs text-muted-foreground">İstanbul · Türkiye · GMT+3</p>
           </div>
         </RevealSection>
 

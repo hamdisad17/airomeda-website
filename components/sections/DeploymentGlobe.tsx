@@ -223,7 +223,7 @@ export function DeploymentGlobe() {
               Tüm dünyaya hizmet veriyoruz.
             </h2>
             <p className="mt-4 max-w-md text-body-lg text-muted-foreground">
-              İstanbul ve Kayseri ofislerimizden 130&apos;dan fazla ülkedeki müşterilerimize kesintisiz hizmet sunuyoruz. Dünyanın her yerinden erişilebilir, hızlı ve güvenilir.
+              İstanbul ofisimizden 130&apos;dan fazla ülkedeki müşterilerimize kesintisiz hizmet sunuyoruz. Dünyanın her yerinden erişilebilir, hızlı ve güvenilir.
             </p>
             <dl className="mt-10 grid grid-cols-2 gap-6">
               <div>

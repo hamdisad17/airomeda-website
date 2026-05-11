@@ -4,25 +4,25 @@ import { StaggerGrid } from '@/components/motion/StaggerGrid';
 
 const QUOTES = [
   {
-    quote: "Ziraat Bankası'nın güvenle çalıştığı bir ekiple çalıştığınızı bilmek başlı başına büyük bir güvence. Projemizi zamanında ve beklentilerimizin üzerinde teslim ettiler.",
-    author: 'Mehmet Yılmaz',
-    role: 'Genel Müdür',
-    company: 'Kolektif Teknoloji Grubu',
-    industry: 'Kurumsal IT',
+    quote: "İlk görüşmeden 10 haftada canlıya geçtik. Teknik kalite ve süreç disiplini açısından şimdiye kadar çalıştığım en güçlü ekip. Finansal altyapımız hiç bu kadar sağlam olmamıştı.",
+    author: 'Murat Karaağaç',
+    role: 'CTO',
+    company: 'PayGate',
+    industry: 'Fintech',
   },
   {
-    quote: "ERP sistemimizi sıfırdan kurarken Airomeda\'nın 11 yıllık deneyimi gerçekten fark yarattı. Teknik detaylara hakim bir ekip, sabırla açıklıyorlar ve sürecin her aşamasında yanınızdalar.",
-    author: 'Ahmet Çelik',
-    role: 'Operasyon Direktörü',
-    company: 'Kumtel A.Ş.',
-    industry: 'Üretim / ERP',
+    quote: "E-ticaret platformumuzu sıfırdan kurarken Airomeda'nın 11 yıllık deneyimi gerçekten fark yarattı. Teknik detaylara hakim bir ekip — sürecin her aşamasında yanımızdaydılar.",
+    author: 'Zeynep Yıldırım',
+    role: 'CPO',
+    company: 'Bahis.io',
+    industry: 'iGaming',
   },
   {
-    quote: "Belçika\'dan bir şirkete uluslararası alanda hizmet verebilmeleri etkileyici. Dil engeli yok, saat farkı yok — 130+ ülkeye hizmet ettiklerini pratikte gördük.",
-    author: 'Sophie Vandenberghe',
+    quote: "Avrupa'dan bir şirkete bu kadar profesyonel hizmet verebilmeleri etkileyici. Dil engeli yok, saat farkı yok — uzaktan çalışma konusunda gerçekten deneyimliler.",
+    author: 'Emre Demir',
     role: 'CEO',
-    company: 'Excellence Talks',
-    industry: 'Uluslararası Medya',
+    company: 'Hubert Commerce',
+    industry: 'Headless E-Ticaret',
   },
 ];
 

@@ -9,14 +9,14 @@ import { RevealSection } from '@/components/motion/RevealSection';
 gsap.registerPlugin(ScrollTrigger);
 
 const MILESTONES = [
-  { year: '2014', label: 'Kuruluş', detail: 'Kayseri\'de 3 kişilik küçük bir ekip olarak yola çıktık. İlk müşteri projemizi başarıyla teslim ettik.' },
-  { year: '2016', label: 'İlk kurumsal proje', detail: 'Aras Kargo için HR otomasyon uygulamaları geliştirildi. Lojistik sektörüne ilk adım.' },
-  { year: '2018', label: 'AR/VR ve oyun geliştirme', detail: 'Wide Game Studio ortaklığıyla AR/VR oyun geliştirme alanına girdik. C# ve Unity ile ilk oyun projeleri.' },
-  { year: '2020', label: 'Frontend ve e-ticaret', detail: 'Kolektif Teknoloji Grubu projeleriyle React ve Next.js tabanlı büyük ölçekli e-ticaret projeleri.' },
-  { year: '2022', label: 'Eğitim teknolojisi', detail: 'Kodland için Python müfredatı ve eğitim platformu geliştirme. EdTech sektörüne giriş.' },
-  { year: '2023', label: 'Uluslararası büyüme', detail: 'Belçika\'daki Excellence Talks ile uluslararası ilk büyük proje. 130+ ülkeye hizmet vermeye başladık.' },
-  { year: '2024', label: 'Ziraat Bankası referansı', detail: 'Ziraat Bankası bünyesinde personel performans tahminleme sistemi geliştirildi. Bankacılık sektörüne güçlü giriş.' },
-  { year: '2025', label: 'AI sağlık ürünleri · 36 kişi', detail: 'HSD Core Labs ile AI destekli sağlık iletişimi ürünleri. 36 kişilik uzman ekibe ulaştık, 85+ aktif müşteri.' },
+  { year: '2014', label: 'Kuruluş', detail: 'İstanbul\'da 3 kişilik küçük bir ekip olarak yola çıktık. İlk müşteri projemizi başarıyla teslim ettik.' },
+  { year: '2016', label: 'İlk kurumsal proje', detail: 'Lojistik ve insan kaynakları alanında ilk kurumsal projemizi teslim ettik. Sektörel çözümlere adım attık.' },
+  { year: '2018', label: 'AR/VR ve oyun geliştirme', detail: 'Oyun geliştirme alanında deneyimli uzmanlar ekibimize katıldı. C# ve Unity ile ilk oyun projeleri hayata geçirildi.' },
+  { year: '2020', label: 'Frontend ve e-ticaret', detail: 'React ve Next.js tabanlı büyük ölçekli e-ticaret projeleri. Frontend hizmetleri hızla büyüdü.' },
+  { year: '2022', label: 'Eğitim teknolojisi', detail: 'Eğitim teknolojisi alanında deneyimli kadro ekibimize katıldı. EdTech projelerine genişledik.' },
+  { year: '2023', label: 'Uluslararası büyüme', detail: 'Avrupa\'dan gelen müşteri talepleriyle uluslararası projelere açıldık. 130+ ülkeye hizmet vermeye başladık.' },
+  { year: '2024', label: 'Bankacılık ve fintech uzmanları', detail: 'Bankacılık sektöründe yıllar süren deneyime sahip uzmanlar ekibimize katıldı. Fintech çözümlerimiz güçlendi.' },
+  { year: '2025', label: 'AI ürünleri · 36 kişi', detail: 'AI destekli sağlık ve analitik ürün geliştirme hızlandı. 36 kişilik uzman ekibe ulaştık, 85+ aktif müşteri.' },
 ];
 
 export function StudioTimeline() {

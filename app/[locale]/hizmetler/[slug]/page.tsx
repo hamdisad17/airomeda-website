@@ -106,7 +106,7 @@ export default async function ServiceDetail({
       <ServiceOverview
         title={content.frontmatter.title}
         body1={content.frontmatter.excerpt ?? ''}
-        body2="11 yıllık deneyimimizle, her projeyi işletmenizin ihtiyaçlarına özel olarak tasarlıyoruz. Ziraat Bankası gibi büyük kurumların güvendiği yazılım kalitesini sizinle buluşturuyoruz."
+        body2="11 yıllık deneyimimizle, her projeyi işletmenizin ihtiyaçlarına özel olarak tasarlıyoruz. Kurumsal kalitede yazılım çözümlerini sizinle buluşturuyoruz."
         imageUrl="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
         imageAlt={content.frontmatter.title}
       />

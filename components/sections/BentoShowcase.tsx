@@ -62,7 +62,7 @@ export function BentoShowcase() {
             <div aria-hidden className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full"
               style={{ background: 'radial-gradient(circle, hsl(189 100% 50% / 0.15), transparent 60%)' }}/>
             <p className="font-mono text-eyebrow uppercase text-accent">11 yıllık deneyim</p>
-            <h3 className="mt-4 text-2xl font-semibold tracking-tight">Ziraat Bankası gibi büyük kurumların tercih ettiği güvenilir partner.</h3>
+            <h3 className="mt-4 text-2xl font-semibold tracking-tight">11 yıllık birikim, 7 sektörde uzmanlaşmış güvenilir yazılım ortağı.</h3>
             <p className="mt-3 text-sm text-muted-foreground max-w-sm">
               2014&apos;ten bu yana bankacılık, lojistik, sağlık ve e-ticaret gibi kritik sektörlerde işletmelerin dijital dönüşümüne destek oluyoruz. İhtiyaçlarınıza göre şekillenen çözümler, uzun vadeli ortaklık.
             </p>
@@ -94,10 +94,11 @@ export function BentoShowcase() {
 
           {/* Quote */}
           <TiltCard className="p-6 border border-border bg-elevated md:col-span-2">
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">Ziraat Bankası referansı · Bankacılık</p>
+            <p className="font-mono text-eyebrow uppercase text-muted-foreground">PayGate · Fintech</p>
             <p className="mt-3 text-base md:text-lg font-medium leading-snug">
-              <span className="text-accent">&ldquo;</span>Ziraat Bankası bünyesinde geliştirdiğimiz performans tahminleme sistemi, bankacılık sektöründeki uzmanlığımızın en güçlü kanıtı. Güven, en değerli referansımız.<span className="text-accent">&rdquo;</span>
+              <span className="text-accent">&ldquo;</span>İlk görüşmeden 10 haftada canlıya geçtik. Teknik kalite ve süreç disiplini açısından şimdiye kadar çalıştığım en güçlü ekip.<span className="text-accent">&rdquo;</span>
             </p>
+            <p className="mt-3 font-mono text-xs text-muted-foreground">— Murat Karaağaç, CTO · PayGate</p>
           </TiltCard>
 
           {/* Ekip stat */}
@@ -105,7 +106,7 @@ export function BentoShowcase() {
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">uzman ekip</p>
             <div>
               <p className="text-3xl font-semibold tracking-tight">36 <span className="text-base text-muted-foreground">kişi</span></p>
-              <p className="mt-2 text-xs text-muted-foreground font-mono">İstanbul + Kayseri · 7/24 destek</p>
+              <p className="mt-2 text-xs text-muted-foreground font-mono">İstanbul · 7/24 destek</p>
             </div>
           </TiltCard>
 

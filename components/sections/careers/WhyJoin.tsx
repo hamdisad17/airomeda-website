@@ -5,7 +5,7 @@ import { RevealSection } from '@/components/motion/RevealSection';
 const CARDS = [
   {
     icon: '⬡',
-    title: 'Ziraat Bankası gibi projeler',
+    title: 'Anlamlı ve çeşitli projeler',
     body: 'Bankacılık, sağlık AI, lojistik, oyun — çok farklı ve anlamlı projelerde çalışırsınız. Her projede yeni şeyler öğrenirsiniz.',
   },
   {
@@ -21,7 +21,7 @@ const CARDS = [
   {
     icon: '◧',
     title: 'Esnek çalışma',
-    body: '5 açık pozisyon. İstanbul veya Kayseri ofisinden ya da uzaktan çalışma seçeneği. Sağlıklı iş-yaşam dengesi.',
+    body: '5 açık pozisyon. İstanbul ofisinden ya da uzaktan çalışma seçeneği. Sağlıklı iş-yaşam dengesi.',
   },
 ];
 

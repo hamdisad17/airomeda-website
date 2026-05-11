@@ -214,7 +214,7 @@ export function CodeSample() {
                 </li>
                 <li className="flex gap-3">
                   <span className="text-accent">→</span>
-                  Ziraat Bankası düzeyinde güvenilirlik
+                  Kurumsal düzeyde güvenilirlik ve stabilite
                 </li>
               </ul>
             </div>

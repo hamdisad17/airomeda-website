@@ -13,7 +13,7 @@ const VALUES = [
     ),
     title: 'Güven',
     description:
-      '11 yıllık deneyim ve Ziraat Bankası gibi güçlü referanslar. Güvenilirliği her şeyin önünde tutuyoruz.',
+      '11 yıllık deneyim ve 85+ aktif müşteri. Güvenilirliği her şeyin önünde tutuyoruz.',
   },
   {
     icon: (

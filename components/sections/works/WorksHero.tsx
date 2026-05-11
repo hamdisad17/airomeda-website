@@ -49,7 +49,7 @@ export function WorksHero({ count }: { count?: number }) {
           </span>
         </h1>
         <p className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed">
-          Ziraat Bankası&apos;ndan küçük işletmelere, 180+ projede gerçek müşteriler için gerçek sonuçlar ürettik.
+          Fintech&apos;ten iGaming&apos;e, e-ticaretten entegrasyona — 180+ projede gerçek müşteriler için gerçek sonuçlar ürettik.
         </p>
       </Container>
     </section>

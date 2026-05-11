@@ -25,7 +25,7 @@
   "home": {
     "hero": {
       "title": "We make the complex simple.",
-      "subtitle": "Since 2014, the trusted software partner of institutions like Ziraat Bank. Focus on your business — leave the technology to us.",
+      "subtitle": "Since 2014, the trusted software partner of businesses worldwide. Focus on your business — leave the technology to us.",
       "kinetic_words": ["Finance", "iGaming", "Commerce", "Integration", "SEO & Ads", "CRM"],
       "kinetic_connector": "for."
     },
@@ -47,7 +47,7 @@
       "p1_title": "Ownership",
       "p1_body": "We write the code but the software is entirely yours. Every decision is documented and transferred to you.",
       "p2_title": "Reliability",
-      "p2_body": "The same trust that Ziraat Bank places in our systems — now available to you too.",
+      "p2_body": "Enterprise-grade software quality and reliability — now available to you too.",
       "p3_title": "Transparency",
       "p3_body": "We share risks, delays, and every development openly from day one."
     },
@@ -56,7 +56,7 @@
   "services_index": { "title": "Our services" },
   "case_studies": {
     "title": "Our Work",
-    "subtitle": "180+ completed projects — from Ziraat Bank to SMEs, successful delivery at every scale.",
+    "subtitle": "180+ completed projects — from large-scale enterprises to SMEs, successful delivery at every scale.",
     "metric_results": "Results",
     "related_label": "Related work",
     "client_label": "Client",

@@ -37,7 +37,7 @@ export function CareersHero({ openCount }: CareersHeroProps) {
             </h1>
             <RevealSection delay={0.2}>
               <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-                Ziraat Bankası&apos;ndan HSD Core Labs&apos;e, Aras Kargo&apos;dan uluslararası projelere — çok farklı alanlarda güzel işler yapıyoruz. İşini seven, öğrenmeye açık ve birlikte büyümek isteyen insanlar arıyoruz.
+                Bankacılıktan sağlık AI&apos;ye, lojistikten uluslararası projelere — 7 farklı sektörde anlamlı işler yapıyoruz. Ekibimizdeki uzmanlar bankacılık, lojistik, oyun ve eğitim teknolojisi alanlarında yıllar süren deneyim biriktirmiş profesyonellerden oluşuyor. İşini seven, öğrenmeye açık ve birlikte büyümek isteyen insanlar arıyoruz.
               </p>
             </RevealSection>
             <RevealSection delay={0.3}>
@@ -60,8 +60,8 @@ export function CareersHero({ openCount }: CareersHeroProps) {
               <p className="text-muted-foreground uppercase tracking-wider">{'> ekip'}</p>
               {[
                 { label: 'toplam ekip', value: '36 uzman' },
-                { label: 'kuruluş', value: '2014 · Kayseri' },
-                { label: 'lokasyon', value: 'İstanbul · Kayseri · uzaktan' },
+                { label: 'kuruluş', value: '2014 · İstanbul' },
+                { label: 'lokasyon', value: 'İstanbul · uzaktan' },
                 { label: 'sektörler', value: 'finans · sağlık · lojistik · oyun · e-ticaret' },
               ].map((row) => (
                 <div key={row.label} className="flex items-baseline justify-between gap-4">

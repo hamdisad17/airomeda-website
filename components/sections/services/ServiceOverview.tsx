@@ -31,7 +31,7 @@ export function ServiceOverview({ title, body1, body2, imageUrl, imageAlt }: Ser
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
               </span>
-              <span>2014&apos;ten beri · Ziraat Bankası referanslı · 7/24 destek</span>
+              <span>2014&apos;ten beri · 11 yıllık deneyim · 7/24 destek</span>
             </div>
           </RevealSection>
           <RevealSection delay={0.15}>

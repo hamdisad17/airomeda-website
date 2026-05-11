@@ -30,7 +30,7 @@ const PACKAGES_BY_SLUG: Record<string, Package[]> = {
     },
     {
       name: 'Kurumsal',
-      desc: 'Ziraat Bankası gibi büyük kurumlara özel çözümler',
+      desc: 'Büyük kurumsal müşterilerimize özel çözümler',
       features: ['Özel mimari tasarım', 'Sınırsız işlem', 'Dedicated ekip', 'Garantili SLA', 'Özel danışman'],
       cta: 'Konuşalım',
       highlight: false,

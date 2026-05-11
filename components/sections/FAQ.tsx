@@ -5,8 +5,8 @@ import { RevealSection } from '@/components/motion/RevealSection';
 
 const ITEMS = [
   {
-    q: 'Ziraat Bankası gibi büyük kurumlarla çalışıyorsanız, küçük işletmelere de hizmet veriyor musunuz?',
-    a: 'Evet, kesinlikle. 11 yıllık deneyimimizde hem kurumsal firmalar hem de büyümekte olan işletmeler için çözümler geliştirdik. Her projeyi ihtiyacınıza göre özel olarak değerlendiriyoruz.',
+    q: 'Hem büyük kurumsal projeler hem de küçük işletmeler için hizmet veriyor musunuz?',
+    a: 'Evet, kesinlikle. 11 yıllık deneyimimizde hem büyük ölçekli kurumsal projeler hem de büyümekte olan işletmeler için çözümler geliştirdik. Her projeyi ihtiyacınıza göre özel olarak değerlendiriyoruz.',
   },
   {
     q: 'Projenizin teslim süresi ne kadardır?',
@@ -26,7 +26,7 @@ const ITEMS = [
   },
   {
     q: 'Türkiye dışındaki müşterilerinizle nasıl çalışıyorsunuz?',
-    a: '130\'dan fazla ülkeye hizmet veriyoruz. Belçika\'daki Excellence Talks gibi uluslararası müşterilerimiz var. Uzaktan çalışma konusunda 11 yıllık deneyimimizle her ülkeden müşteriyle sorunsuz iletişim kuruyoruz.',
+    a: '130\'dan fazla ülkeye hizmet veriyoruz. Avrupa, Orta Doğu ve Amerika\'daki uluslararası müşterilerimiz var. Uzaktan çalışma konusunda 11 yıllık deneyimimizle her ülkeden müşteriyle sorunsuz iletişim kuruyoruz.',
   },
 ];
 

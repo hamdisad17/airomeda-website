@@ -8,7 +8,7 @@ const COPY: Record<Variant, { eyebrow: string; title: string; body: string; bull
   finance: {
     eyebrow: '// 04 · finans',
     title: 'Bankacılık ve finans için güvenilir yazılım çözümleri.',
-    body: 'Ziraat Bankası gibi büyük kurumların güvenle kullandığı yazılım altyapısı. Denetim ve regülasyona uyumlu, güvenli ve hızlı.',
+    body: 'Bankacılık ve finans sektörünün gerektirdiği tüm güvenlik standartlarını karşılayan yazılım altyapısı. Denetim ve regülasyona uyumlu, güvenli ve hızlı.',
     bullets: [
       'Bankacılık modülleri (hesap, ödeme, raporlama)',
       'Ödeme sistemleri entegrasyonu (Iyzico, havale, FAST)',
