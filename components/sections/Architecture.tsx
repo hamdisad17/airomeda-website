@@ -9,15 +9,121 @@ import { Link } from '@/i18n/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CATEGORIES = [
-  { key: 'odeme', icon: '₺', label: 'Ödeme', brands: ['iyzico', 'PayTR', 'Param', 'Stripe'] },
-  { key: 'kargo', icon: '📦', label: 'Kargo', brands: ['Aras', 'Yurtiçi', 'MNG', 'PTT'] },
-  { key: 'erp', icon: '⚙', label: 'ERP', brands: ['Logo', 'Mikro', 'Netsis', 'NetSuite'] },
-  { key: 'pazaryeri', icon: '◇', label: 'Pazaryeri', brands: ['Trendyol', 'Hepsiburada', 'N11', 'Amazon'] },
-  { key: 'sosyal', icon: '✦', label: 'Sosyal Medya', brands: ['Meta', 'Instagram', 'TikTok', 'X'] },
-  { key: 'reklam', icon: '◊', label: 'Reklam', brands: ['Google Ads', 'Meta Ads', 'TikTok Ads'] },
-  { key: 'banka', icon: '◉', label: 'Banka', brands: ['SWIFT', 'EFT', 'FAST', 'Havale'] },
-  { key: 'efatura', icon: '☰', label: 'E-Belge', brands: ['e-Fatura', 'e-Arşiv', 'e-İrsaliye'] },
+type IconName =
+  | 'odeme'
+  | 'banka'
+  | 'erp'
+  | 'efatura'
+  | 'kargo'
+  | 'pazaryeri'
+  | 'sosyal'
+  | 'reklam';
+
+function CategoryIcon({ name }: { name: IconName }) {
+  const common = {
+    width: 20,
+    height: 20,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.5,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+    'aria-hidden': true,
+  };
+  switch (name) {
+    case 'odeme':
+      // Credit card
+      return (
+        <svg {...common}>
+          <rect x="2" y="6" width="20" height="13" rx="1.5" />
+          <path d="M2 10h20" />
+          <path d="M6 15h3" />
+        </svg>
+      );
+    case 'banka':
+      // Bank with columns
+      return (
+        <svg {...common}>
+          <path d="M3 10l9-6 9 6" />
+          <path d="M5 10v8" />
+          <path d="M9 10v8" />
+          <path d="M15 10v8" />
+          <path d="M19 10v8" />
+          <path d="M3 20h18" />
+        </svg>
+      );
+    case 'erp':
+      // Stacked servers / database
+      return (
+        <svg {...common}>
+          <rect x="3" y="3" width="18" height="5" rx="1" />
+          <rect x="3" y="10" width="18" height="5" rx="1" />
+          <rect x="3" y="17" width="18" height="4" rx="1" />
+          <circle cx="7" cy="5.5" r="0.5" fill="currentColor" />
+          <circle cx="7" cy="12.5" r="0.5" fill="currentColor" />
+          <circle cx="7" cy="19" r="0.5" fill="currentColor" />
+        </svg>
+      );
+    case 'efatura':
+      // Document with lines
+      return (
+        <svg {...common}>
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <path d="M14 2v6h6" />
+          <path d="M8 13h8" />
+          <path d="M8 17h6" />
+        </svg>
+      );
+    case 'kargo':
+      // Truck
+      return (
+        <svg {...common}>
+          <path d="M1 8h13v9H1z" />
+          <path d="M14 11h4l3 3v3h-7" />
+          <circle cx="6" cy="19" r="2" />
+          <circle cx="17.5" cy="19" r="2" />
+        </svg>
+      );
+    case 'pazaryeri':
+      // Shopping bag with handles
+      return (
+        <svg {...common}>
+          <path d="M4 7h16l-1.5 13a1 1 0 0 1-1 1H6.5a1 1 0 0 1-1-1L4 7z" />
+          <path d="M9 7V4a3 3 0 0 1 6 0v3" />
+        </svg>
+      );
+    case 'sosyal':
+      // Chat / users
+      return (
+        <svg {...common}>
+          <path d="M21 11a8 8 0 1 1-3.4-6.5L21 3v6h-6" />
+          <circle cx="9" cy="12" r="1" fill="currentColor" />
+          <circle cx="13" cy="12" r="1" fill="currentColor" />
+          <circle cx="17" cy="12" r="1" fill="currentColor" />
+        </svg>
+      );
+    case 'reklam':
+      // Megaphone
+      return (
+        <svg {...common}>
+          <path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z" />
+          <path d="M15 8a4 4 0 0 1 0 8" />
+          <path d="M18 5a8 8 0 0 1 0 14" />
+        </svg>
+      );
+  }
+}
+
+const CATEGORIES: { key: IconName; label: string; brands: string[] }[] = [
+  { key: 'odeme', label: 'Ödeme Sistemleri', brands: ['iyzico', 'PayTR', 'Param', 'Stripe'] },
+  { key: 'banka', label: 'Banka & Havale', brands: ['SWIFT', 'EFT', 'FAST', 'Havale'] },
+  { key: 'erp', label: 'ERP & Muhasebe', brands: ['Logo', 'Mikro', 'Netsis', 'NetSuite'] },
+  { key: 'efatura', label: 'E-Fatura & Belge', brands: ['e-Fatura', 'e-Arşiv', 'e-İrsaliye'] },
+  { key: 'kargo', label: 'Kargo & Lojistik', brands: ['Aras', 'Yurtiçi', 'MNG', 'PTT'] },
+  { key: 'pazaryeri', label: 'Pazaryerleri', brands: ['Trendyol', 'Hepsiburada', 'N11', 'Amazon'] },
+  { key: 'sosyal', label: 'Sosyal Medya', brands: ['Meta', 'Instagram', 'TikTok', 'X'] },
+  { key: 'reklam', label: 'Reklam Platformları', brands: ['Google Ads', 'Meta Ads', 'TikTok Ads'] },
 ];
 
 const OUTCOMES = [
@@ -148,21 +254,22 @@ export function Architecture() {
             {/* Left: source categories */}
             <div className="space-y-2">
               <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium mb-4">
-                Mevcut sistemleriniz
+                Bağlanan sistemler
               </p>
               {CATEGORIES.map((c) => (
                 <div
                   key={c.key}
                   className="cat-card border border-border bg-background px-4 py-3 flex items-center gap-3 hover:border-accent transition-colors group"
                 >
-                  <span className="font-mono text-accent text-base w-5 text-center flex-shrink-0">{c.icon}</span>
+                  <span className="text-accent w-8 h-8 flex items-center justify-center border border-border bg-elevated/40 flex-shrink-0 transition-colors group-hover:border-accent group-hover:bg-accent/10">
+                    <CategoryIcon name={c.key} />
+                  </span>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-foreground">{c.label}</p>
                     <p className="text-[10px] text-muted-foreground truncate">
                       {c.brands.slice(0, 3).join(' · ')}
                     </p>
                   </div>
-                  <span className="text-[10px] text-muted-foreground/60 tabular-nums">{c.brands.length}+</span>
                 </div>
               ))}
             </div>
