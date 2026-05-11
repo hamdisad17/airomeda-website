@@ -3,10 +3,12 @@ import type { Locale } from '@/i18n/routing';
 import { listJobs } from '@/lib/mdx';
 import { SITE } from '@/lib/seo/site';
 import { makeAlternates } from '@/lib/seo/alternates';
-import { Container } from '@/components/layout/Container';
-import { JobList } from '@/components/careers/JobList';
-import { TeamCultureSection } from '@/components/careers/TeamCultureSection';
 import { CTASection } from '@/components/sections/CTASection';
+import { CareersHero } from '@/components/sections/careers/CareersHero';
+import { CultureGallery } from '@/components/sections/careers/CultureGallery';
+import { WhyJoin } from '@/components/sections/careers/WhyJoin';
+import { OpenRoles } from '@/components/sections/careers/OpenRoles';
+import { PerksStrip } from '@/components/sections/careers/PerksStrip';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -36,26 +38,15 @@ export default async function CareersIndex({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: 'careers' });
   const jobs = (await listJobs(locale)).filter((j) => j.active);
 
   return (
     <>
-      <Container as="section" className="py-20">
-        <h1 className="text-display-1 font-bold tracking-tight">{t('title')}</h1>
-        <p className="mt-4 max-w-2xl text-muted-foreground">{t('subtitle')}</p>
-      </Container>
-      <TeamCultureSection />
-      <Container as="section" className="py-20">
-        <h2 className="mb-10 text-display-2 font-semibold tracking-tight">
-          {t('open_positions')}
-        </h2>
-        {jobs.length > 0 ? (
-          <JobList jobs={jobs} />
-        ) : (
-          <p className="text-muted-foreground">{t('no_open_positions')}</p>
-        )}
-      </Container>
+      <CareersHero openCount={jobs.length} />
+      <PerksStrip />
+      <CultureGallery />
+      <WhyJoin />
+      <OpenRoles jobs={jobs} />
       <CTASection />
     </>
   );

@@ -6,6 +6,7 @@ import { StudioStory } from '@/components/sections/about/StudioStory';
 import { TeamGrid } from '@/components/sections/about/TeamGrid';
 import { Values } from '@/components/sections/about/Values';
 import { StudioTimeline } from '@/components/sections/about/StudioTimeline';
+import { InteractiveTimelineSection } from '@/components/sections/about/InteractiveTimelineSection';
 import { PressLogos } from '@/components/sections/about/PressLogos';
 import { CTASection } from '@/components/sections/CTASection';
 
@@ -33,6 +34,7 @@ export default async function Page({
       <TeamGrid />
       <Values />
       <StudioTimeline />
+      <InteractiveTimelineSection />
       <PressLogos />
       <CTASection />
     </>

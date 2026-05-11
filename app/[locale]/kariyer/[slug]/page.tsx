@@ -4,13 +4,13 @@ import { routing, type Locale } from '@/i18n/routing';
 import { listJobs, loadJobContent } from '@/lib/mdx';
 import { Container } from '@/components/layout/Container';
 import { MDXContent } from '@/components/mdx/MDXContent';
-import { JobMeta } from '@/components/careers/JobMeta';
 import { CTASection } from '@/components/sections/CTASection';
-import { JobApplicationForm } from '@/components/forms/JobApplicationForm';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { jobPostingSchema, jobSchemaEmploymentType, breadcrumbSchema } from '@/lib/seo/jsonld';
 import { SITE } from '@/lib/seo/site';
 import { makeAlternates } from '@/lib/seo/alternates';
+import { JobDetailHero } from '@/components/sections/careers/JobDetailHero';
+import { ApplyForm } from '@/components/sections/careers/ApplyForm';
 
 export async function generateStaticParams() {
   const params: { locale: Locale; slug: string }[] = [];
@@ -58,7 +58,6 @@ export default async function JobDetail({
   if (!content || !content.frontmatter.active) notFound();
   const { frontmatter, body } = content;
   const t = await getTranslations({ locale, namespace: 'careers' });
-  const tApp = await getTranslations({ locale, namespace: 'application_form' });
 
   const url = makeAlternates(`/kariyer/${slug}`, locale).canonical;
   const jobLd = jobPostingSchema({
@@ -84,47 +83,59 @@ export default async function JobDetail({
   return (
     <>
       <JsonLd data={[jobLd, breadcrumbs]} />
-      <Container as="section" className="border-b border-border py-16 md:py-24">
-        <h1 className="max-w-3xl text-display-2 font-bold tracking-tight">{frontmatter.title}</h1>
-        <div className="mt-8">
-          <JobMeta job={frontmatter} />
-        </div>
-      </Container>
-      <Container as="article" className="prose-invert max-w-3xl py-12">
+      <JobDetailHero job={frontmatter} />
+
+      {/* Job body */}
+      <Container as="article" className="max-w-3xl mx-auto py-16
+        prose prose-invert
+        prose-headings:font-semibold prose-headings:tracking-tight
+        prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+        prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+        prose-p:text-muted-foreground prose-p:leading-relaxed
+        prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+        prose-code:font-mono prose-code:text-accent prose-code:text-sm
+        prose-strong:text-foreground prose-li:text-muted-foreground
+      ">
         <MDXContent source={body} />
 
-        <h2 className="mt-12 text-2xl font-semibold tracking-tight">
+        <h2 className="mt-12 !text-2xl font-semibold tracking-tight text-foreground">
           {t('responsibilities_title')}
         </h2>
-        <ul className="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
+        <ul className="mt-4 space-y-2 pl-0 list-none">
           {frontmatter.responsibilities.map((r) => (
-            <li key={r}>{r}</li>
+            <li key={r} className="flex items-start gap-3 text-muted-foreground">
+              <span className="text-accent mt-1 shrink-0">→</span>
+              <span>{r}</span>
+            </li>
           ))}
         </ul>
 
-        <h2 className="mt-12 text-2xl font-semibold tracking-tight">{t('requirements_title')}</h2>
-        <ul className="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
+        <h2 className="mt-12 !text-2xl font-semibold tracking-tight text-foreground">
+          {t('requirements_title')}
+        </h2>
+        <ul className="mt-4 space-y-2 pl-0 list-none">
           {frontmatter.requirements.map((r) => (
-            <li key={r}>{r}</li>
+            <li key={r} className="flex items-start gap-3 text-muted-foreground">
+              <span className="text-accent mt-1 shrink-0">·</span>
+              <span>{r}</span>
+            </li>
           ))}
         </ul>
 
-        <h2 className="mt-12 text-2xl font-semibold tracking-tight">{t('benefits_title')}</h2>
-        <ul className="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
+        <h2 className="mt-12 !text-2xl font-semibold tracking-tight text-foreground">
+          {t('benefits_title')}
+        </h2>
+        <ul className="mt-4 space-y-2 pl-0 list-none">
           {frontmatter.benefits.map((b) => (
-            <li key={b}>{b}</li>
+            <li key={b} className="flex items-start gap-3 text-muted-foreground">
+              <span className="text-accent mt-1 shrink-0">✓</span>
+              <span>{b}</span>
+            </li>
           ))}
         </ul>
-
-        <div className="mt-12">
-          <h2 className="text-2xl font-semibold tracking-tight">
-            {tApp('title')}
-          </h2>
-          <div className="mt-8">
-            <JobApplicationForm jobSlug={slug} />
-          </div>
-        </div>
       </Container>
+
+      <ApplyForm jobSlug={slug} jobTitle={frontmatter.title} />
       <CTASection />
     </>
   );

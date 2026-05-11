@@ -1,16 +1,19 @@
 import { notFound } from 'next/navigation';
-import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { listBlogPosts, loadBlogPostContent } from '@/lib/mdx';
 import { Container } from '@/components/layout/Container';
 import { MDXContent } from '@/components/mdx/MDXContent';
-import { BlogMeta } from '@/components/blog/BlogMeta';
-import { BlogList } from '@/components/blog/BlogList';
 import { CTASection } from '@/components/sections/CTASection';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { articleSchema, breadcrumbSchema } from '@/lib/seo/jsonld';
 import { SITE } from '@/lib/seo/site';
 import { makeAlternates } from '@/lib/seo/alternates';
+import { BlogDetailHero } from '@/components/sections/blog/BlogDetailHero';
+import { ReadingProgress } from '@/components/sections/blog/ReadingProgress';
+import { AuthorBio } from '@/components/sections/blog/AuthorBio';
+import { RelatedPosts } from '@/components/sections/blog/RelatedPosts';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
   const params: { locale: Locale; slug: string }[] = [];
@@ -54,6 +57,8 @@ export async function generateMetadata({
   };
 }
 
+const COVER_FALLBACK = 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80';
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -64,7 +69,6 @@ export default async function BlogPostPage({
   const content = await loadBlogPostContent(slug, locale);
   if (!content) notFound();
   const { frontmatter, body } = content;
-  const t = await getTranslations({ locale, namespace: 'blog' });
 
   // Related posts: same categories, exclude current, top 3
   const allPosts = await listBlogPosts(locale);
@@ -92,34 +96,47 @@ export default async function BlogPostPage({
     { name: frontmatter.title, url },
   ]);
 
+  const coverSrc = frontmatter.cover?.startsWith('http') ? frontmatter.cover : COVER_FALLBACK;
+
   return (
     <>
       <JsonLd data={[article, breadcrumbs]} />
-      <Container as="section" className="py-12 md:py-20">
-        <ul className="mb-6 flex flex-wrap gap-2 text-xs text-muted-foreground">
-          {frontmatter.categories.map((c) => (
-            <li key={c} className="rounded-full border border-border px-2 py-0.5">
-              {c}
-            </li>
-          ))}
-        </ul>
-        <h1 className="max-w-3xl text-display-2 font-bold tracking-tight">{frontmatter.title}</h1>
-        <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{frontmatter.excerpt}</p>
-        <div className="mt-6">
-          <BlogMeta post={frontmatter} />
-        </div>
-      </Container>
-      <Container as="article" className="prose-invert max-w-3xl py-12">
+      <ReadingProgress />
+      <BlogDetailHero post={frontmatter} />
+
+      {/* Hero image */}
+      <div className="relative border-b border-border overflow-hidden" style={{ height: 'clamp(240px, 40vh, 520px)' }}>
+        <Image
+          src={coverSrc}
+          alt={frontmatter.title}
+          fill
+          className="object-cover grayscale-[20%] contrast-[1.05]"
+          priority
+          sizes="100vw"
+          unoptimized={coverSrc.startsWith('https://images.unsplash')}
+        />
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'linear-gradient(180deg, transparent 60%, hsl(240 10% 3.5% / 0.8))' }}
+        />
+      </div>
+
+      {/* Article body */}
+      <Container as="article" className="max-w-3xl mx-auto py-16 prose prose-invert
+        prose-headings:font-semibold prose-headings:tracking-tight
+        prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+        prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+        prose-p:text-muted-foreground prose-p:leading-relaxed
+        prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+        prose-code:font-mono prose-code:text-accent prose-code:text-sm
+        prose-pre:bg-elevated prose-pre:border prose-pre:border-border
+        prose-blockquote:border-l-accent prose-blockquote:text-muted-foreground
+        prose-strong:text-foreground prose-li:text-muted-foreground
+      ">
         <MDXContent source={body} />
       </Container>
-      {related.length > 0 && (
-        <Container as="section" className="py-20">
-          <h2 className="text-display-2 font-semibold tracking-tight">{t('related_posts')}</h2>
-          <div className="mt-10">
-            <BlogList posts={related} />
-          </div>
-        </Container>
-      )}
+
+      <AuthorBio author={frontmatter.author} />
+      <RelatedPosts posts={related} />
       <CTASection />
     </>
   );

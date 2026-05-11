@@ -10,6 +10,7 @@ import { Quote } from '@/components/mdx/Quote';
 import { Container } from '@/components/layout/Container';
 import { CTASection } from '@/components/sections/CTASection';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { VideoPlayerMockup } from '@/components/visuals/VideoPlayerMockup';
 import { articleSchema, breadcrumbSchema } from '@/lib/seo/jsonld';
 import { SITE } from '@/lib/seo/site';
 import { makeAlternates } from '@/lib/seo/alternates';
@@ -85,6 +86,17 @@ export default async function CaseStudyDetail({
       <JsonLd data={[article, breadcrumbs]} />
       <CaseStudyHero data={frontmatter} />
       <MetricsBlock metrics={frontmatter.metrics} />
+
+      {/* Featured demo video mockup */}
+      <section className="border-b border-border">
+        <Container as="div" className="py-10">
+          <VideoPlayerMockup
+            title={`${frontmatter.client} · ${frontmatter.title}`}
+            duration="3:42"
+            poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80"
+          />
+        </Container>
+      </section>
 
       {/* Narrative / MDX content with cinematic wrapper */}
       <section className="border-b border-border py-20 md:py-28 relative">

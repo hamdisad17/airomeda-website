@@ -6,6 +6,7 @@ import { makeAlternates } from '@/lib/seo/alternates';
 import { WorksHero } from '@/components/sections/works/WorksHero';
 import { CaseGridClient } from '@/components/sections/works/CaseGridClient';
 import { CTASection } from '@/components/sections/CTASection';
+import { HoverVideoMarquee } from '@/components/visuals/HoverVideoMarquee';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -40,6 +41,7 @@ export default async function CaseStudiesIndex({
   return (
     <>
       <WorksHero count={cases.length > 0 ? cases.length : 47} />
+      <HoverVideoMarquee />
       <CaseGridClient cases={cases} />
       <CTASection />
     </>

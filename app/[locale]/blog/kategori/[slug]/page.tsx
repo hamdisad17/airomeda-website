@@ -4,9 +4,10 @@ import { routing, type Locale } from '@/i18n/routing';
 import { listBlogPosts, listBlogCategories } from '@/lib/mdx';
 import { SITE } from '@/lib/seo/site';
 import { makeAlternates } from '@/lib/seo/alternates';
-import { Container } from '@/components/layout/Container';
-import { BlogList } from '@/components/blog/BlogList';
-import { CategoryFilter } from '@/components/blog/CategoryFilter';
+import { BlogHero } from '@/components/sections/blog/BlogHero';
+import { CinematicCategoryFilter } from '@/components/sections/blog/CategoryFilter';
+import { PostGrid } from '@/components/sections/blog/PostGrid';
+import { NewsletterCTA } from '@/components/sections/blog/NewsletterCTA';
 
 export async function generateStaticParams() {
   const params: { locale: Locale; slug: string }[] = [];
@@ -52,28 +53,20 @@ export default async function CategoryPage({
   setRequestLocale(locale);
   const cats = await listBlogCategories(locale);
   if (!cats.includes(slug)) notFound();
-  const t = await getTranslations({ locale, namespace: 'blog' });
+
   const allPosts = await listBlogPosts(locale);
   const posts = allPosts
     .filter((p) => p.categories.includes(slug))
     .sort((a, b) => b.published_at.localeCompare(a.published_at));
 
+  const lastUpdated = posts[0]?.published_at ?? '—';
+
   return (
     <>
-      <Container as="section" className="py-20">
-        <h1 className="text-display-1 font-bold tracking-tight">{slug}</h1>
-        <p className="mt-4 text-muted-foreground">{t('subtitle')}</p>
-        <div className="mt-10">
-          <CategoryFilter locale={locale} active={slug} />
-        </div>
-      </Container>
-      <Container as="section" className="py-12">
-        {posts.length > 0 ? (
-          <BlogList posts={posts} />
-        ) : (
-          <p className="text-muted-foreground">{t('no_posts')}</p>
-        )}
-      </Container>
+      <BlogHero postCount={posts.length} lastUpdated={lastUpdated} />
+      <CinematicCategoryFilter categories={cats} active={slug} />
+      <PostGrid posts={posts} title={`// ${slug} · ${posts.length} yazı`} />
+      <NewsletterCTA />
     </>
   );
 }
