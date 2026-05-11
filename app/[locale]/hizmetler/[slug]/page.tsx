@@ -15,6 +15,10 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { serviceSchema, breadcrumbSchema } from '@/lib/seo/jsonld';
 import { SITE } from '@/lib/seo/site';
 import { makeAlternates } from '@/lib/seo/alternates';
+import { ServiceOverview } from '@/components/sections/services/ServiceOverview';
+import { ServiceGallery } from '@/components/sections/services/ServiceGallery';
+import { ServiceBenefits } from '@/components/sections/services/ServiceBenefits';
+import { ServicePackages } from '@/components/sections/services/ServicePackages';
 
 export async function generateStaticParams() {
   const params: { locale: Locale; slug: string }[] = [];
@@ -99,10 +103,20 @@ export default async function ServiceDetail({
         ctaText={content.frontmatter.cta_text}
         slug={slug}
       />
+      <ServiceOverview
+        title={content.frontmatter.title}
+        body1={content.frontmatter.excerpt ?? ''}
+        body2="11 yıllık deneyimimizle, her projeyi işletmenizin ihtiyaçlarına özel olarak tasarlıyoruz. Ziraat Bankası gibi büyük kurumların güvendiği yazılım kalitesini sizinle buluşturuyoruz."
+        imageUrl="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
+        imageAlt={content.frontmatter.title}
+      />
+      <ServiceGallery />
+      <ServiceBenefits />
       <Container as="article" className="prose-invert max-w-3xl py-20">
         <MDXContent source={content.body} />
       </Container>
       <ServiceCapabilities items={content.frontmatter.capabilities} />
+      <ServicePackages slug={slug} />
       <ServiceTechStrip items={content.frontmatter.tech_stack} />
       <ServiceFAQ items={content.frontmatter.faq} />
       {serviceKey ? (

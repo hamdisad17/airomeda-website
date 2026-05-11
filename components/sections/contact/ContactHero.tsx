@@ -28,7 +28,7 @@ export function ContactHero() {
         </h1>
         <RevealSection delay={0.2}>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-            Brief gönderin, 24 saat içinde dönelim. Proje kapsamı, bütçe ya da teknik danışmanlık — her konuda hazırız.
+            Mesajınızı gönderin, 24 saat içinde dönelim. Proje fikri, fiyat bilgisi ya da herhangi bir sorunuz — her konuda yardımcı olmaya hazırız. WhatsApp&apos;tan da yazabilirsiniz: +90 507 637 0052
           </p>
         </RevealSection>
         <RevealSection delay={0.3}>

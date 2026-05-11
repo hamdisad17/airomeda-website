@@ -3,14 +3,14 @@ import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 
 const LOGOS = [
-  { v: 'paygate', industry: 'Finans' },
-  { v: 'bahis', industry: 'iGaming' },
-  { v: 'hubert', industry: 'E-Ticaret' },
-  { v: 'topratebet', industry: 'iGaming' },
-  { v: 'pazarliman', industry: 'E-Ticaret' },
-  { v: 'entegrasys', industry: 'Entegrasyon' },
-  { v: 'markaco', industry: 'Marka & Stüdyo' },
-  { v: 'studio', industry: 'Yaratıcı' },
+  { v: 'ziraat', industry: 'Bankacılık' },
+  { v: 'kumtel', industry: 'Beyaz Eşya / ERP' },
+  { v: 'aras', industry: 'Lojistik' },
+  { v: 'hsd', industry: 'Sağlık AI' },
+  { v: 'kodland', industry: 'Eğitim Teknolojisi' },
+  { v: 'widegame', industry: 'Oyun' },
+  { v: 'tsdigital', industry: 'Dijital Pazarlama' },
+  { v: 'excellence', industry: 'Uluslararası Medya' },
 ] as const;
 
 const doubled = [...LOGOS, ...LOGOS];
@@ -21,7 +21,7 @@ export function CustomerLogos() {
       <Container as="div">
         <RevealSection>
           <p className="text-center font-mono text-eyebrow uppercase text-muted-foreground">
-            {"2018'den beri 68 aktif müşteri, 134 tamamlanmış proje"}
+            {"2014'ten beri 85+ aktif müşteri, 180+ tamamlanmış proje · Ziraat Bankası'nın güvenle çalıştığı yazılım ortağı"}
           </p>
         </RevealSection>
       </Container>

@@ -220,42 +220,42 @@ export function DeploymentGlobe() {
             <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
               İstanbul&apos;dan yazıyoruz.
               <br />
-              Dünyaya dağıtıyoruz.
+              Tüm dünyaya hizmet veriyoruz.
             </h2>
             <p className="mt-4 max-w-md text-body-lg text-muted-foreground">
-              Cloudflare global ağı (320+ POP), 4 aktif bölge — fra1 birincil, lon1 yedek, ist1 edge, iad1 read-replica. Failover 8 saniye altı.
+              İstanbul ve Kayseri ofislerimizden 130&apos;dan fazla ülkedeki müşterilerimize kesintisiz hizmet sunuyoruz. Dünyanın her yerinden erişilebilir, hızlı ve güvenilir.
             </p>
             <dl className="mt-10 grid grid-cols-2 gap-6">
               <div>
                 <dt className="font-mono text-eyebrow uppercase text-muted-foreground">
-                  edge POP
+                  hizmet verilen ülke
                 </dt>
                 <dd className="mt-1.5 text-2xl font-semibold tabular-nums text-foreground">
-                  320+
+                  130+
                 </dd>
               </div>
               <div>
                 <dt className="font-mono text-eyebrow uppercase text-muted-foreground">
-                  bölge
+                  aktif müşteri
                 </dt>
                 <dd className="mt-1.5 text-2xl font-semibold tabular-nums text-foreground">
-                  4
+                  85+
                 </dd>
               </div>
               <div>
                 <dt className="font-mono text-eyebrow uppercase text-muted-foreground">
-                  P50 yanıt
+                  uzman ekip
                 </dt>
                 <dd className="mt-1.5 text-2xl font-semibold tabular-nums text-foreground">
-                  18<span className="text-base text-muted-foreground">ms</span>
+                  36 <span className="text-base text-muted-foreground">kişi</span>
                 </dd>
               </div>
               <div>
                 <dt className="font-mono text-eyebrow uppercase text-muted-foreground">
-                  failover
+                  yanıt süresi
                 </dt>
                 <dd className="mt-1.5 text-2xl font-semibold tabular-nums text-foreground">
-                  &lt; 8<span className="text-base text-muted-foreground">s</span>
+                  7/24
                 </dd>
               </div>
             </dl>

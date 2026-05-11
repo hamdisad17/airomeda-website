@@ -1,6 +1,6 @@
 {
   "common": {
-    "primary_cta": "Demo Talep Et",
+    "primary_cta": "Bizimle Konuşun",
     "secondary_cta": "Çalışmalarımız",
     "read_more": "Daha fazla",
     "all_services": "Tüm hizmetler"
@@ -14,7 +14,7 @@
     "contact": "İletişim"
   },
   "footer": {
-    "tagline": "Slayt değil. Yazılım yazıyoruz.",
+    "tagline": "11 yıldır güvenilir yazılım ortağınız.",
     "company": "Şirket",
     "services": "Hizmetler",
     "legal": "Yasal",
@@ -24,39 +24,39 @@
   },
   "home": {
     "hero": {
-      "title": "Karmaşık olanı, production'a taşı.",
-      "subtitle": "2018'den beri finans, iGaming, e-ticaret ve entegrasyon için audit-ready, ölçeklenebilir yazılım.",
+      "title": "Karmaşık olanı, basit hale getiriyoruz.",
+      "subtitle": "2014'ten beri Ziraat Bankası gibi büyük kurumların tercih ettiği yazılım ortağı. İşinize odaklanın, teknolojiyi bize bırakın.",
       "kinetic_words": ["Finans", "iGaming", "E-Ticaret", "Entegrasyon", "SEO & Reklam", "CRM"],
       "kinetic_connector": "için."
     },
-    "services_section": { "title": "Hizmetlerimiz", "subtitle": "Yedi disiplin, tek standart." },
+    "services_section": { "title": "Hizmetlerimiz", "subtitle": "7 alanda uzman ekip, ihtiyaçlarınıza özel çözüm." },
     "industries": { "title": "Çalıştığımız sektörler" },
     "process": {
       "title": "Nasıl çalışırız",
       "steps": {
-        "discovery": { "title": "Keşif", "description": "İhtiyacı ve bağlamı netleştiririz." },
-        "design": { "title": "Tasarım", "description": "Çözümü mimarisinden arayüzüne kurarız." },
-        "build": { "title": "Geliştirme", "description": "Hızla ve test ederek inşa ederiz." },
-        "support": { "title": "Destek", "description": "Yayın sonrasında yanınızda kalırız." }
+        "discovery": { "title": "Keşif", "description": "İhtiyacınızı ve hedeflerinizi birlikte netleştiririz." },
+        "design": { "title": "Tasarım", "description": "Size özel çözümü baştan sona tasarlarız." },
+        "build": { "title": "Geliştirme", "description": "Hızlı ve güvenilir biçimde hayata geçiririz." },
+        "support": { "title": "Destek", "description": "Teslim sonrasında 7/24 yanınızdayız." }
       }
     },
     "cta": { "title": "Karmaşık problem mi?", "subtitle": "Konuşalım." },
     "manifesto": {
-      "lead": "Yazılımı bir broşür gibi değil, denetlenebilir bir altyapı gibi inşa ediyoruz.",
-      "extension": "Çalışmadığında insanlar para kaybeder, regülatör arar, müşteri gider. Bu yüzden her mimari kararı audit izine göre kuruyoruz; hızı kaliteden değil, ekip disiplininden kazanıyoruz.",
+      "lead": "Uzun yıllar boyunca güvenle kullanılacak yazılımlar inşa ediyoruz.",
+      "extension": "Çalışmadığında işletmeniz durur, müşterileriniz gider. Bu yüzden her çözümü sağlam temeller üzerine kuruyoruz — hızı ekip disiplininden, kaliteyi deneyimimizden kazanıyoruz.",
       "p1_title": "Sahiplik",
-      "p1_body": "Kodu biz yazmış olabiliriz ama IP sizin. Her karar belgelenir, her sistem devredilir.",
-      "p2_title": "Zanaat",
-      "p2_body": "6–14 haftada production, ama temiz mimari ile. Teknik borç surprizi yok.",
+      "p1_body": "Kodu biz yazarız ama yazılım tamamen sizin olur. Her karar belgelenir, her sistem size devredilir.",
+      "p2_title": "Güvenilirlik",
+      "p2_body": "Ziraat Bankası gibi kurumların güvenle kullandığı sistemleri siz de deneyimleyin.",
       "p3_title": "Şeffaflık",
-      "p3_body": "Riski, hatayı ve gecikmeli teslimi saklamadan, ilk günde açıkça konuşuruz."
+      "p3_body": "Riskleri, gecikmeleri ve her gelişmeyi başından açıkça paylaşırız."
     },
-    "selected_work": { "title": "Son teslim ettiklerimizden." }
+    "selected_work": { "title": "Gurur duyduğumuz projeler." }
   },
   "services_index": { "title": "Hizmetlerimiz" },
   "case_studies": {
     "title": "Çalışmalarımız",
-    "subtitle": "134 tamamlanmış proje — her biri production'da, ölçülebilir sonuçlarla.",
+    "subtitle": "180+ tamamlanmış proje — Ziraat Bankası'ndan KOBİ'lere, her ölçekte başarılı teslimat.",
     "metric_results": "Sonuçlar",
     "related_label": "İlgili çalışmalar",
     "client_label": "Müşteri",
@@ -76,7 +76,7 @@
   },
   "careers": {
     "title": "Kariyer",
-    "subtitle": "47 kişilik ekip, 5 açık pozisyon — production sistemler inşa eden mühendisler arıyoruz.",
+    "subtitle": "36 kişilik sıcak bir ekip, 5 açık pozisyon — birlikte büyüyecek yetenekler arıyoruz.",
     "team_culture_title": "Ekip kültürümüz",
     "team_culture_intro": "Birlikte çalışırken inandığımız üç temel ilke.",
     "values": {

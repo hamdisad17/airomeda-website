@@ -44,17 +44,16 @@ export function ServicesHero() {
             letterSpacing: '-0.04em',
           }}
         >
-          <TextReveal as="span">Yedi disiplin.</TextReveal>
+          <TextReveal as="span">7 alanda uzman.</TextReveal>
           <br />
           <span className="text-accent">
             <TextReveal as="span" delay={0.3}>
-              Tek standart.
+              Size özel çözüm.
             </TextReveal>
           </span>
         </h1>
         <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-          Düzenlenmiş endüstrilerden yüksek büyüme gösteren platformlara — production-grade yazılım
-          geliştirme ve entegrasyon.
+          Bankacılıktan e-ticarete, sağlıktan oyun geliştirmeye — ihtiyaçlarınıza göre şekillenen çözümlerle işinizi kolaylaştırıyoruz.
         </p>
 
         {/* Disciplines strip */}

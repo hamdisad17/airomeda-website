@@ -11,9 +11,9 @@ const VALUES = [
         <path d="M10 16l4 4 8-8" stroke="hsl(189 100% 50%)" strokeWidth="1.5" strokeLinecap="square" />
       </svg>
     ),
-    title: 'Production-grade',
+    title: 'Güven',
     description:
-      'Her satır kod production ortamında çalışmak için yazılır. Demo için değil, gerçek yük için.',
+      '11 yıllık deneyim ve Ziraat Bankası gibi güçlü referanslar. Güvenilirliği her şeyin önünde tutuyoruz.',
   },
   {
     icon: (
@@ -22,9 +22,9 @@ const VALUES = [
         <path d="M16 8v8l5 3" stroke="hsl(189 100% 50%)" strokeWidth="1.5" strokeLinecap="square" />
       </svg>
     ),
-    title: 'Devir teslim',
+    title: 'Hız',
     description:
-      'Projeyi bitirince gidip gitmiyor, devrediyoruz. Belgelenmiş mimari, eğitilmiş ekip, dokümanlar.',
+      'İki haftada ilk sonuç. Hızlı teslim ve sürekli iletişimle beklentilerin her zaman üzerindeyiz.',
   },
   {
     icon: (
@@ -33,9 +33,9 @@ const VALUES = [
         <rect x="22" y="20" width="6" height="6" stroke="hsl(189 100% 50%)" strokeWidth="1.5" />
       </svg>
     ),
-    title: 'Audit-ready',
+    title: 'Dünya Çapında',
     description:
-      'Regülasyon uyumu önce gelir. BDDK, lisans gereklilikleri ve denetim izleri baştan tasarlanır.',
+      '130+ ülkeden müşteri, 7/24 destek. Nerede olursanız olun, yanınızdayız.',
   },
   {
     icon: (
@@ -44,9 +44,9 @@ const VALUES = [
         <path d="M4 24h24" stroke="hsl(189 100% 50%)" strokeWidth="1.5" />
       </svg>
     ),
-    title: 'Long-term',
+    title: 'Uzmanlık',
     description:
-      'İlişkimiz projenin bitişiyle bitmez. Sistemin yaşadığı sürece yanındayız.',
+      'Johns Hopkins, Duke ve Google sertifikalı ekibimiz bilgisini sürekli güncelliyor. İhtiyaçlarınıza özel en iyi çözümü sunuyoruz.',
   },
 ];
 
@@ -68,7 +68,7 @@ export function Values() {
             className="mt-4 font-semibold tracking-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', letterSpacing: '-0.03em' }}
           >
-            Ne için duruyoruz.
+            Neden bizi seçiyorlar?
           </h2>
         </RevealSection>
 

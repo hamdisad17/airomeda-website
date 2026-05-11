@@ -2,11 +2,11 @@
 import * as React from 'react';
 
 const SHIPMENTS = [
-  { type: 'Core banking migrasyonu', client: 'PayGate', date: '3 hf önce' },
-  { type: 'RNG + cashier', client: 'Bahis.io', date: '5 hf önce' },
-  { type: 'Headless storefront', client: 'Hubert Commerce', date: '8 hf önce' },
-  { type: 'ERP köprüsü', client: 'Entegrasys', date: '10 hf önce' },
-  { type: 'Sportsbook platformu', client: 'TopRateBet', date: '13 hf önce' },
+  { type: 'Bankacılık yazılımı', client: 'Ziraat Bankası', date: '4 hf önce' },
+  { type: 'ERP sistemi', client: 'Kumtel A.Ş.', date: '7 hf önce' },
+  { type: 'Lojistik HR uygulaması', client: 'Aras Kargo', date: '10 hf önce' },
+  { type: 'AI sağlık ürünü', client: 'HSD Core Labs', date: '12 hf önce' },
+  { type: 'Eğitim platformu', client: 'Kodland', date: '15 hf önce' },
 ];
 
 export function RecentShipments() {
@@ -33,7 +33,7 @@ export function RecentShipments() {
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
           <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
         </span>
-        <span className="text-foreground">son sevkiyat:</span>
+        <span className="text-foreground">son teslim:</span>
       </span>
       <span
         style={{

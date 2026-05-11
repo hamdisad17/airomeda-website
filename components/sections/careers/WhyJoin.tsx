@@ -5,23 +5,23 @@ import { RevealSection } from '@/components/motion/RevealSection';
 const CARDS = [
   {
     icon: '⬡',
-    title: 'Production sistemi yönet',
-    body: '47 production sistem, 280+ aylık deployment. Gerçek yük, gerçek sorumluluk — kafa karıştırıcı sandbox ortamı yok.',
+    title: 'Ziraat Bankası gibi projeler',
+    body: 'Bankacılık, sağlık AI, lojistik, oyun — çok farklı ve anlamlı projelerde çalışırsınız. Her projede yeni şeyler öğrenirsiniz.',
   },
   {
     icon: '◈',
-    title: 'Devir teslim standartlarında çalış',
-    body: "Kod IP müşterinin. Bu yüzden belgelendirme, test kapsamı ve maintainability her sprint'te birinci sınıf kriter.",
+    title: 'Güçlü takım kültürü',
+    body: '11 yıllık bir ekipten öğrenirsiniz. Deneyimli meslektaşlar, açık iletişim ve gerçek mentörlük.',
   },
   {
     icon: '◉',
-    title: 'Regülasyonla kod yaz',
-    body: 'BDDK, MASAK, eCOGRA — finans ve iGaming regülasyonları kod kalitesini zorunlu kılıyor. Bu disiplin kariyer boyu fayda sağlar.',
+    title: 'Sürekli gelişim',
+    body: 'Johns Hopkins, Duke, Google gibi sertifika programlarına destek. Konferans ve eğitim bütçesi her çalışana.',
   },
   {
     icon: '◧',
-    title: 'Büyüyen ekipte yer al',
-    body: '5 açık pozisyon. Çalışan başına 12.000 TL konferans bütçesi. Maslak İstanbul veya İzmir ofisi ya da tam uzaktan.',
+    title: 'Esnek çalışma',
+    body: '5 açık pozisyon. İstanbul veya Kayseri ofisinden ya da uzaktan çalışma seçeneği. Sağlıklı iş-yaşam dengesi.',
   },
 ];
 
@@ -34,7 +34,7 @@ export function WhyJoin() {
           className="font-semibold tracking-tight text-foreground mb-12"
           style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', letterSpacing: '-0.03em' }}
         >
-          Sıradan bir yazılım şirketi değil.
+          Birlikte büyüyelim.
         </h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {CARDS.map((card, i) => (

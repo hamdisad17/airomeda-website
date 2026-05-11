@@ -4,10 +4,10 @@ import { CountUp } from '@/components/motion/CountUp';
 import { StaggerGrid } from '@/components/motion/StaggerGrid';
 
 const STATS = [
-  { end: 134, suffix: '', decimals: 0, label: 'tamamlanmış proje' },
-  { end: 99.973, suffix: '%', decimals: 3, label: 'gözlemlenen aylık uptime' },
-  { end: 47, suffix: '', decimals: 0, label: "production'da çalışan sistem" },
-  { end: 8, suffix: ' yıl', decimals: 0, label: 'üretim ortamında' },
+  { end: 180, suffix: '+', decimals: 0, label: 'tamamlanmış proje' },
+  { end: 85, suffix: '+', decimals: 0, label: 'mutlu müşteri' },
+  { end: 36, suffix: '', decimals: 0, label: 'kişilik uzman ekip' },
+  { end: 11, suffix: ' yıl', decimals: 0, label: 'sektör deneyimi' },
 ];
 
 export function Numbers() {
@@ -15,9 +15,9 @@ export function Numbers() {
     <section className="border-b border-border py-24 md:py-32">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 05 · at scale'}</p>
+          <p className="font-mono text-eyebrow uppercase text-accent">{'// 05 · rakamlarla biz'}</p>
           <h2 className="mt-4 max-w-3xl text-display-2 font-semibold tracking-tight">
-            Sayılar konuşur. <span className="text-muted-foreground">Bizimkiler de.</span>
+            11 yıllık deneyim, <span className="text-muted-foreground">sayılarla.</span>
           </h2>
         </RevealSection>
         <StaggerGrid className="mt-12 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2 lg:grid-cols-4">

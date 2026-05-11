@@ -15,59 +15,59 @@ interface TeamMember {
 const TEAM: TeamMember[] = [
   {
     name: 'Ahmet Kaya',
-    role: 'CEO & Co-founder',
+    role: 'CEO & Kurucu Ortak',
     seed: 'ahmet-kaya',
-    skills: ['Strategy', 'Fintech', 'Architecture'],
-    bio: "Finans ve iGaming alanında 12 yıl. 2018'de Airomeda'yı kurdu. Sistemleri kurgular, ekipleri büyütür.",
+    skills: ['Strateji', 'Finans', 'Mimari'],
+    bio: "Bankacılık ve yazılım alanında 14 yıl. 2014'te Airomeda'yı kurdu. Büyük kurumsal projeler için çözüm kurguluyor.",
   },
   {
     name: 'Pınar Çelik',
-    role: 'CTO & Co-founder',
+    role: 'CTO & Kurucu Ortak',
     seed: 'pinar-celik',
-    skills: ['Distributed Systems', 'Kotlin', 'Go'],
-    bio: 'Core banking ve event-driven mimari uzmanı. CQRS / event sourcing savunucusu. 28 mühendislik ekibini yönetiyor.',
+    skills: ['Yazılım Mimarisi', 'Python', 'React'],
+    bio: 'Veri bilimi ve makine öğrenmesi uzmanı. Ziraat Bankası performans tahminleme projesinin teknik lideri.',
   },
   {
     name: 'Burak Şahin',
-    role: 'Lead Backend Engineer',
+    role: 'Lead Backend Geliştirici',
     seed: 'burak-sahin',
-    skills: ['Java 21', 'Kafka', 'PostgreSQL'],
-    bio: 'Ödeme orchestration ve yüksek erişilebilirlik altyapısı. PayGate core banking projesinin teknik lideri.',
+    skills: ['Node.js', 'PostgreSQL', 'API Tasarımı'],
+    bio: 'Ödeme sistemleri ve yüksek performanslı backend geliştirme. Bankacılık entegrasyon projelerinde uzman.',
   },
   {
     name: 'Deniz Polat',
-    role: 'Head of Frontend',
+    role: 'Frontend Lead',
     seed: 'deniz-polat',
     skills: ['React', 'Next.js', 'TypeScript'],
-    bio: 'Performans odaklı UI. LCP ve Core Web Vitals obsesyonu. Hubert Commerce headless geçişini yönetti.',
+    bio: 'Hızlı ve kullanıcı dostu arayüzler. E-ticaret ve kurumsal web projelerinde deneyimli.',
   },
   {
     name: 'İlker Demirci',
-    role: 'Senior SRE / DevOps',
+    role: 'Mobil Geliştirici',
     seed: 'ilker-demirci',
-    skills: ['k8s', 'Terraform', 'Grafana'],
-    bio: 'Multi-region altyapı, sıfır downtime deployment, chaos engineering. fra1 + lon1 + ist1 + iad1.',
+    skills: ['Flutter', 'iOS', 'Android'],
+    bio: 'Aras Kargo ve diğer kurumsal müşteriler için mobil uygulamalar geliştirdi. Flutter uzmanı.',
   },
   {
     name: 'Cansu Tekin',
-    role: 'Product Manager',
+    role: 'Veri Bilimcisi',
     seed: 'cansu-tekin',
-    skills: ['Roadmap', 'Agile', 'Fintech'],
-    bio: "Brief'ten production'a en kısa yolu bulan PM. Finans ve iGaming projelerinde sprint koordinasyonu.",
+    skills: ['Python', 'ML', 'Veri Analizi'],
+    bio: 'Johns Hopkins sertifikalı veri bilimcisi. AI destekli sağlık ürünleri ve pazarlama analitiği projeleri.',
   },
   {
     name: 'Murat Karaağaç',
-    role: 'iGaming & Compliance',
+    role: 'Ürün Tasarımcısı',
     seed: 'murat-karaagac',
-    skills: ['RNG', 'eCOGRA', 'MASAK'],
-    bio: 'Lisanslı iGaming sistemleri, RNG sertifikasyonu, 12 jurisdiction. Bahis.io eCOGRA denetim sürecini yönetti.',
+    skills: ['UX/UI', 'Figma', 'Kullanıcı Araştırması'],
+    bio: 'Kullanımı kolay, güzel görünen arayüzler tasarlıyor. Eğitim teknolojisi ve kurumsal projeler deneyimi.',
   },
   {
     name: 'Selin Aydın',
-    role: 'Security Engineer',
+    role: 'DevOps Mühendisi',
     seed: 'selin-aydin',
-    skills: ['Vault', 'Zero-trust', 'BDDK'],
-    bio: 'Regülasyon uyumu ve güvenlik mimarisi. BDDK/MASAK audit log altyapısı ve KYC/AML pipeline uzmanı.',
+    skills: ['Altyapı', 'Güvenlik', 'Otomasyon'],
+    bio: 'Sistemlerin kesintisiz çalışmasını sağlıyor. Güvenlik ve altyapı optimizasyonu konusunda uzman.',
   },
 ];
 
@@ -141,7 +141,7 @@ export function TeamGrid() {
             className="mt-4 font-semibold tracking-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', letterSpacing: '-0.03em' }}
           >
-            Kod yazan insanlar.
+            36 kişilik uzman ekip.
           </h2>
         </RevealSection>
 

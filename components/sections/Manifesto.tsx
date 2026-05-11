@@ -8,23 +8,20 @@ import { Container } from '@/components/layout/Container';
 gsap.registerPlugin(ScrollTrigger);
 
 const STATEMENTS = [
-  { word: 'Slayt', tone: 'muted' },
-  { word: 'değil.', tone: 'muted' },
-  { word: 'Yazılım', tone: 'accent' },
-  { word: 'yazıyoruz.', tone: 'accent' },
+  { word: 'Güven', tone: 'accent' },
+  { word: 'inşa', tone: 'accent' },
+  { word: 'ediyoruz.', tone: 'muted' },
 ];
 
 const STATEMENT_2 = [
-  { word: 'Prototip', tone: 'muted' },
-  { word: 'değil.', tone: 'muted' },
-  { word: 'Production.', tone: 'accent' },
+  { word: 'İşinizi', tone: 'muted' },
+  { word: 'kolaylaştırır.', tone: 'accent' },
 ];
 
 const STATEMENT_3 = [
-  { word: 'Demo', tone: 'muted' },
-  { word: 'değil.', tone: 'muted' },
-  { word: 'Production', tone: 'accent' },
-  { word: 'hattı.', tone: 'accent' },
+  { word: 'Size', tone: 'muted' },
+  { word: 'özel', tone: 'muted' },
+  { word: 'çözüm.', tone: 'accent' },
 ];
 
 export function Manifesto() {
@@ -78,15 +75,15 @@ export function Manifesto() {
         <div className="mt-24 grid md:grid-cols-3 gap-8 max-w-4xl border-t border-border pt-12">
           <div>
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">teslim</p>
-            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">6–14 hafta</p>
+            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">Hızlı ve güvenilir</p>
           </div>
           <div>
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">brief&apos;e yanıt</p>
-            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">24 saat · NDA 2 iş günü</p>
+            <p className="font-mono text-eyebrow uppercase text-muted-foreground">yanıt süresi</p>
+            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">24 saat · 7/24 destek</p>
           </div>
           <div>
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">sahiplik</p>
-            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">kod sizin · IP sizin</p>
+            <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">yazılım tamamen sizin</p>
           </div>
         </div>
         </div>

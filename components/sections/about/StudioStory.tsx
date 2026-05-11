@@ -38,24 +38,24 @@ export function StudioStory() {
           <RevealSection>
             <div className="space-y-6 text-muted-foreground leading-relaxed max-w-2xl">
               <p className="text-lg text-foreground/90">
-                2018&apos;de iki mühendis, bir fintech müşterisi ve Maslak&apos;ta küçük bir ofis. Bugün 47 kişilik bir ekip, 4 aktif bölgede çalışan 47 production sistemi ve düzenlenmiş endüstrilerde kanıtlanmış 8 yıllık yol.
+                2014&apos;te Kayseri&apos;de küçük bir ekipten yola çıktık. 11 yılda Türkiye&apos;nin önde gelen kurumlarına yazılım üreten 36 kişilik bir aile haline geldik.
               </p>
               <p>
-                Airomeda&apos;yı kurarken bir ilkeyle başladık: yazdığımız kodun kalitesi, onu destekleyecek altyapının sağlamlığı ve teslim ettiğimizde müşterinin elinde gerçek anlamda çalışan bir sistem olması. Demo değil, production hattı.
+                Bankacılık sektöründe Ziraat Bankası bünyesinde geliştirdiğimiz performans tahminleme sistemiyle başlayan yolculuğumuz, bugün finans, sağlık, e-ticaret, lojistik ve oyun gibi birçok alanda devam ediyor. AI destekli sağlık ürünlerinden ERP sistemlerine, AR/VR oyunlardan dijital pazarlama analitiğine kadar geniş bir yelpazede çözüm üretiyoruz.
               </p>
               <p>
-                Finans sektörünün BDDK/MASAK regülasyon ağırlığını, iGaming&apos;in eCOGRA lisans hassasiyetini, e-ticaretin hız baskısını ve entegrasyon projelerinin idempotency karmaşıklığını ilk elden bilen bir ekip. Bu deneyim bize sektörel kısayolları, kaçınılması gereken teknik borçları ve her disiplinin özgün risklerini öğretti.
+                Johns Hopkins, Duke ve Google gibi prestijli kurumlardan aldığımız sertifikalarla ekibimizin bilgi birikimini sürekli güncelliyoruz. Müşterilerimizin sadece bugünkü değil, yarınki ihtiyaçlarını da düşünerek tasarladığımız sistemlerle 130&apos;dan fazla ülkeye ulaşıyoruz.
               </p>
 
               <Pullquote
                 attribution="Ahmet Kaya"
                 role="CEO, Airomeda"
               >
-                Production&apos;da değilse, bitmemiştir.
+                Bizim için yazılım, sadece kod değil — uzun yıllar boyunca güvenle kullanılacak, kolayca büyütülebilecek bir partner.
               </Pullquote>
 
               <p>
-                Bugün 68 aktif müşteri ile uzun vadeli ortaklıklar sürdürüyoruz. 280+ aylık deployment, %99.973 gözlemlenen uptime. Projeyi bitirip gitmiyor, devrediyoruz — kod sizin, IP sizin, mimari kararlar belgelenmiş ve denetlenebilir.
+                Bugün 85+ aktif müşteri ile uzun vadeli ortaklıklar sürdürüyoruz. Projeyi bitirip gitmiyor, devrediyoruz — yazılım tamamen sizin, belgeler elinizde, ekibinizi eğitiyoruz.
               </p>
             </div>
           </RevealSection>

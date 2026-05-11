@@ -33,11 +33,11 @@ export function CareersHero({ openCount }: CareersHeroProps) {
               className="mt-6 font-semibold tracking-tight text-foreground"
               style={{ fontSize: 'clamp(2.75rem, 7vw, 6rem)', lineHeight: 1, letterSpacing: '-0.04em' }}
             >
-              <TextReveal as="span">Yazılım yazan bir takım arıyoruz.</TextReveal>
+              <TextReveal as="span">36 kişilik sıcak bir ekibe katılın.</TextReveal>
             </h1>
             <RevealSection delay={0.2}>
               <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-                Fintech, iGaming ve e-ticaret sektörlerinde production-grade sistemler inşa ediyoruz. Koda sahip çıkan, sorunları paylaşan ve kariyer yerine ürün çıkarmayı tercih eden mühendisler arıyoruz.
+                Ziraat Bankası&apos;ndan HSD Core Labs&apos;e, Aras Kargo&apos;dan uluslararası projelere — çok farklı alanlarda güzel işler yapıyoruz. İşini seven, öğrenmeye açık ve birlikte büyümek isteyen insanlar arıyoruz.
               </p>
             </RevealSection>
             <RevealSection delay={0.3}>
@@ -59,10 +59,10 @@ export function CareersHero({ openCount }: CareersHeroProps) {
             <div className="border border-border bg-elevated p-6 font-mono text-xs space-y-5">
               <p className="text-muted-foreground uppercase tracking-wider">{'> ekip'}</p>
               {[
-                { label: 'mühendis', value: '28' },
-                { label: 'toplam ekip', value: '47 kişi' },
-                { label: 'lokasyon', value: 'Maslak İstanbul · İzmir · remote' },
-                { label: 'sektörler', value: 'fintech · iGaming · e-ticaret · entegrasyon' },
+                { label: 'toplam ekip', value: '36 uzman' },
+                { label: 'kuruluş', value: '2014 · Kayseri' },
+                { label: 'lokasyon', value: 'İstanbul · Kayseri · uzaktan' },
+                { label: 'sektörler', value: 'finans · sağlık · lojistik · oyun · e-ticaret' },
               ].map((row) => (
                 <div key={row.label} className="flex items-baseline justify-between gap-4">
                   <span className="text-muted-foreground uppercase">{row.label}</span>

@@ -194,28 +194,27 @@ export function CodeSample() {
                 {'// 03 · architecture'}
               </p>
               <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-                Üretim ortamı için yazılmış kod.
+                Her iş alanına özel çözümler.
               </h2>
               <p className="mt-6 text-body-lg text-muted-foreground">
-                İdempotent, audit-ready, transactional. Her satır bir karar — geri alınabilir,
-                denetlenebilir, dokümante. Regülatör denetiminden geri dönen müşterimiz yok.
+                Finans&apos;tan e-ticarete, oyun sektöründen sağlığa — her sektörün kendine özgü ihtiyaçlarını bilen 36 kişilik uzman ekibimizle çözüm üretiyoruz.
               </p>
               <ul className="mt-8 space-y-3 text-sm">
                 <li className="flex gap-3">
                   <span className="text-accent">→</span>
-                  Idempotency keys for retry safety
+                  Güvenli ödeme ve bankacılık yazılımı
                 </li>
                 <li className="flex gap-3">
                   <span className="text-accent">→</span>
-                  Distributed transactions for consistency
+                  Denetim ve regülasyona tam uyum
                 </li>
                 <li className="flex gap-3">
                   <span className="text-accent">→</span>
-                  Full audit trail — success + failure
+                  Her işlem kayıt altında, tam şeffaflık
                 </li>
                 <li className="flex gap-3">
                   <span className="text-accent">→</span>
-                  BDDK / TCMB compliant retention
+                  Ziraat Bankası düzeyinde güvenilirlik
                 </li>
               </ul>
             </div>

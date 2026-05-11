@@ -5,10 +5,10 @@ import { TextReveal } from '@/components/motion/TextReveal';
 import { CountUp } from '@/components/motion/CountUp';
 
 const STATS = [
-  { v: 28, suffix: '', label: 'mühendis' },
-  { v: 47, suffix: '', label: 'production sistem' },
-  { v: 134, suffix: '', label: 'tamamlanmış proje' },
-  { v: 8, suffix: ' yıl', label: 'üretim deneyimi' },
+  { v: 11, suffix: ' yıl', label: 'sektör deneyimi' },
+  { v: 36, suffix: '', label: 'kişilik uzman ekip' },
+  { v: 180, suffix: '+', label: 'tamamlanmış proje' },
+  { v: 130, suffix: '+', label: 'ülkeye hizmet' },
 ];
 
 export function AboutHero() {
@@ -27,7 +27,7 @@ export function AboutHero() {
           {/* Left — headline */}
           <div>
             <p className="font-mono text-eyebrow uppercase text-accent">
-              {'// hakkımızda · v.2026.05'}
+              {'// hakkımızda · 11 yıl · 36 kişi · 130+ ülke'}
             </p>
             <h1
               className="mt-6 font-semibold tracking-tight text-foreground"
@@ -37,16 +37,10 @@ export function AboutHero() {
                 letterSpacing: '-0.04em',
               }}
             >
-              <TextReveal as="span">Yazılım yazan bir şirket.</TextReveal>
-              <br />
-              <span className="text-accent block mt-2">
-                <TextReveal as="span" delay={0.3}>
-                  İstanbul&apos;dan, 2018&apos;den beri.
-                </TextReveal>
-              </span>
+              <TextReveal as="span">11 yıldır Türkiye&apos;nin önde gelen markalarına yazılım çözümleri sunuyoruz.</TextReveal>
             </h1>
             <p className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              2018&apos;den beri 7 disiplin, 47 kişilik ekip, 134 tamamlanmış proje. Finans, iGaming, e-ticaret ve entegrasyon alanlarında production-grade yazılım. Kodun sahibi sizsiniz — her zaman, her koşulda.
+              Ziraat Bankası gibi kurumsal firmaların güvenle çalıştığı 36 kişilik uzman ekibimizle dünyanın her yerinden müşterilerimize hizmet veriyoruz.
             </p>
           </div>
 
@@ -58,12 +52,12 @@ export function AboutHero() {
             </div>
             <div className="p-4 space-y-2">
               {[
-                ['kuruluş', '2018 · İstanbul'],
-                ['lokasyon', 'Maslak · İstanbul · TR'],
-                ['ekip', '47 kişi · 28 mühendis'],
+                ['kuruluş', '2014 · Kayseri'],
+                ['merkez ofis', 'İstanbul · TR'],
+                ['geliştirme merkezi', 'Kayseri · TR'],
+                ['ekip', '36 uzman'],
                 ['dil', 'TR / EN'],
-                ['bölge', '4 aktif · fra1 · lon1 · ist1 · iad1'],
-                ['model', 'sprint · project · retainer'],
+                ['hizmet alanı', '130+ ülke · dünya geneli'],
               ].map(([label, val]) => (
                 <p key={label} className="flex gap-2">
                   <span className="text-muted-foreground w-24 shrink-0">{label}</span>

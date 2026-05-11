@@ -9,12 +9,12 @@ import { RevealSection } from '@/components/motion/RevealSection';
 gsap.registerPlugin(ScrollTrigger);
 
 const STAGES = [
-  { id: 'commit', label: 'commit', detail: 'feat(banking): add 3DS challenge flow', logs: ['Counting objects: 17, done.', 'Compressing objects: 100% (12/12), done.', 'Total 17 (delta 9), reused 0 (delta 0)'] },
-  { id: 'ci', label: 'CI', detail: 'GitHub Actions · build #4827 · 4m 18s', logs: ['↻ Setting up Node 24...', '↻ Installing dependencies (pnpm)...', '✓ Lockfile up to date'] },
-  { id: 'test', label: 'tests', detail: '847 unit · 124 integration · 28 e2e', logs: ['✓ unit (3.4s) 847 passed', '✓ integration (12.1s) 124 passed', '✓ e2e (47.8s) 28 passed'] },
-  { id: 'build', label: 'build', detail: 'multi-arch docker · ghcr.io · 4 layers cached', logs: ['↻ Building image airomeda/core:6422b59...', '✓ Layer cache hit: 3/4', '✓ Pushed to ghcr.io (24.8 MB)'] },
-  { id: 'deploy', label: 'deploy', detail: 'k8s rolling update · fra1 birincil · lon1 yedek', logs: ['↻ Applying manifest...', '✓ Deployment updated', '✓ Readiness probe passed in 8s'] },
-  { id: 'live', label: 'live', detail: 'production · 100% traffic · 99.973% uptime · 18ms P50', logs: ['✓ Health: all pods healthy (fra1 + lon1 + ist1)', '✓ Traffic: 100% on new version', '● production · running'] },
+  { id: 'ihtiyac', label: 'İhtiyaç Belirleme', detail: 'Projenizin kapsamı ve hedefleri netleştiriliyor', logs: ['✓ İlk görüşme tamamlandı', '✓ İhtiyaçlar belgelendi', '✓ Proje planı hazırlandı'] },
+  { id: 'tasarim', label: 'Tasarım', detail: 'Size özel çözüm mimarisinin tasarımı', logs: ['↻ Çözüm mimarisi hazırlanıyor...', '✓ Onayınız alındı', '✓ Tasarım belgelendi'] },
+  { id: 'gelistirme', label: 'Geliştirme', detail: 'Her iki haftada demo edilebilir ilerleme', logs: ['✓ Sprint 1 tamamlandı · demo hazır', '✓ Sprint 2 tamamlandı · geri bildirim alındı', '✓ Sprint 3 tamamlandı · testler geçildi'] },
+  { id: 'test', label: 'Test', detail: 'Kapsamlı kalite güvencesi ve doğrulama', logs: ['✓ Fonksiyonel testler geçildi', '✓ Güvenlik kontrolü tamamlandı', '✓ Performans testi başarılı'] },
+  { id: 'teslim', label: 'Teslim', detail: 'Sisteminiz canlıya alınıyor', logs: ['↻ Sistem canlıya alınıyor...', '✓ Canlıya geçiş tamamlandı', '✓ İzleme aktif · kesintisiz çalışıyor'] },
+  { id: 'destek', label: 'Destek', detail: 'Teslim sonrası 7/24 yanınızdayız', logs: ['✓ 7/24 destek aktif', '✓ Eğitim tamamlandı · belgeler teslim edildi', '● aktif · kesintisiz çalışıyor'] },
 ];
 
 export function DeploymentPipeline() {
@@ -44,12 +44,12 @@ export function DeploymentPipeline() {
         style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, hsl(189 100% 50% / 0.1), transparent 70%)' }}/>
       <Container as="div" className="relative pt-20 pb-20 min-h-screen flex flex-col justify-center">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 08 · sevkiyat'}</p>
+          <p className="font-mono text-eyebrow uppercase text-accent">{'// 08 · geliştirme süreci'}</p>
           <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-            Kodun production&apos;a yolculuğu.
+            Fikrinizden teslimata.
           </h2>
           <p className="mt-4 max-w-2xl text-body-lg text-muted-foreground">
-            Her commit&apos;in geçtiği denetlenebilir, otomatik hat. Devir teslimde bu hat sizin olacak.
+            Her adımda ne yapıldığını açıkça görürsünüz. Şeffaf süreç, hızlı teslim, uzun vadeli destek.
           </p>
         </RevealSection>
 

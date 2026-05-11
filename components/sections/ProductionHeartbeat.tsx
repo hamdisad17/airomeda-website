@@ -199,7 +199,7 @@ export function ProductionHeartbeat() {
             <div>
               <p className="font-mono text-eyebrow uppercase text-accent">{'// 05 · canlı sistem'}</p>
               <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-                Bizim sistemlerimiz.<br />Şu anda canlı.
+                Müşterilerimizin sistemleri.<br />Kesintisiz çalışıyor.
               </h2>
             </div>
             <div className="font-mono text-xs text-muted-foreground flex items-center gap-2">
@@ -216,7 +216,7 @@ export function ProductionHeartbeat() {
           {/* Card: Transactions */}
           <div className="bg-background p-6">
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">
-              Bugün işlenen işlem
+              Bugünkü işlemler
             </p>
             <p className="mt-4 text-3xl font-semibold tabular-nums text-foreground">
               {Math.floor(txns).toLocaleString('tr-TR')}
@@ -230,7 +230,7 @@ export function ProductionHeartbeat() {
           {/* Card: Latency */}
           <div className="bg-background p-6">
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">
-              Ortalama yanıt (P50)
+              Sistem hızı
             </p>
             <p className="mt-4 text-3xl font-semibold tabular-nums text-foreground">
               <span>{latency.toFixed(0)}</span>
@@ -247,7 +247,7 @@ export function ProductionHeartbeat() {
           {/* Card: Uptime */}
           <div className="bg-background p-6">
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">
-              Aylık çalışma süresi
+              Kesintisiz çalışma
             </p>
             <p className="mt-4 text-3xl font-semibold tabular-nums text-foreground">
               {uptime.toFixed(3)}
@@ -272,7 +272,7 @@ export function ProductionHeartbeat() {
           {/* Card: Deploys */}
           <div className="bg-background p-6">
             <p className="font-mono text-eyebrow uppercase text-muted-foreground">
-              Aylık deployment
+              Aylık güncelleme
             </p>
             <p className="mt-4 text-3xl font-semibold tabular-nums text-foreground">
               {Math.floor(deploys).toLocaleString('tr-TR')}
@@ -282,7 +282,7 @@ export function ProductionHeartbeat() {
               <span className="text-muted-foreground">son: 22 dk önce · fra1</span>
             </div>
             <p className="mt-2 font-mono text-[10px] text-muted-foreground">
-              production · k8s rolling · auto-deploy
+              otomatik · kesintisiz · hızlı
             </p>
           </div>
         </div>

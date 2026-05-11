@@ -7,24 +7,24 @@ type Variant = 'finance' | 'gaming';
 const COPY: Record<Variant, { eyebrow: string; title: string; body: string; bullets: string[] }> = {
   finance: {
     eyebrow: '// 04 · finans',
-    title: 'Düzenlenmiş alanlar için, denetlenebilir altyapı.',
-    body: 'BDDK ve TCMB uyumlu mimari. ISO 8583, ISO 20022, swift ve fast hatları. Olay-bazlı reconciliation, audit-ready event store.',
+    title: 'Bankacılık ve finans için güvenilir yazılım çözümleri.',
+    body: 'Ziraat Bankası gibi büyük kurumların güvenle kullandığı yazılım altyapısı. Denetim ve regülasyona uyumlu, güvenli ve hızlı.',
     bullets: [
-      'Core banking modülleri (account, transaction, settlement)',
-      'PSP, kart kuruluşları ve düzenleyici entegrasyonları',
-      'KYC / AML — onboarding ve risk skorlama',
-      'Mobil ve web bankacılık istemcileri',
+      'Bankacılık modülleri (hesap, ödeme, raporlama)',
+      'Ödeme sistemleri entegrasyonu (Iyzico, havale, FAST)',
+      'Müşteri kimlik doğrulama ve güvenlik',
+      'Mobil ve web bankacılık uygulamaları',
     ],
   },
   gaming: {
     eyebrow: '// 07 · iGaming',
-    title: 'Lisans-uyumlu oyun altyapısı, üretim hızında.',
-    body: 'RNG sertifikalandırma, çoklu sağlayıcı entegrasyonu, real-time risk ve cashier altyapısı. Düzenleyici raporları otomatik.',
+    title: 'Güvenilir ve lisansa uygun oyun platformları.',
+    body: 'Şans oyunları sektörünün gerektirdiği tüm özelliklere sahip, hızlı ve güvenilir platformlar. Lisans gereksinimlerini eksiksiz karşılıyor.',
     bullets: [
-      'Lisanslı operatör platformu — multi-tenant',
-      'RNG ve oyun motoru entegrasyonları',
-      'Ödeme kasiyeri — multi-currency, fraud rules',
-      'Risk yönetimi & KYC pipeline',
+      'Casino ve spor bahisleri platform geliştirme',
+      'Güvenli rastgele sayı üreteci (RNG)',
+      'Çok para birimli ödeme kasiyeri',
+      'Oyuncu yönetimi ve sadakat sistemi',
     ],
   },
 };

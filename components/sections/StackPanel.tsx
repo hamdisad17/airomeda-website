@@ -3,10 +3,10 @@ import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 
 const STACK = [
-  { category: 'Languages', items: ['TypeScript', 'Java / Kotlin', 'Go', 'Python', 'Solidity'] },
-  { category: 'Data', items: ['PostgreSQL', 'Kafka', 'Redis', 'ClickHouse', 'Elasticsearch'] },
-  { category: 'Infra', items: ['Kubernetes', 'AWS', 'GCP', 'Cloudflare', 'Terraform'] },
-  { category: 'Front', items: ['React', 'Next.js', 'Vue', 'Svelte', 'Tailwind'] },
+  { category: 'Web & Mobil', items: ['React', 'Next.js', 'Flutter', 'Vue', 'TypeScript'] },
+  { category: 'Veri & AI', items: ['Python', 'PostgreSQL', 'Machine Learning', 'Redis', 'Elasticsearch'] },
+  { category: 'ERP & Entegrasyon', items: ['Odoo ERP', 'Logo', 'Netsis', 'REST API', 'Webhook'] },
+  { category: 'Oyun & AR/VR', items: ['Unity', 'C#', 'AR/VR', 'Game Engine', 'Blender'] },
 ];
 
 export function StackPanel() {
@@ -16,10 +16,10 @@ export function StackPanel() {
         <RevealSection>
           <p className="font-mono text-eyebrow uppercase text-accent">{'// 05 · stack'}</p>
           <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-            Üretim ortamımız.
+            Kullandığımız teknolojiler.
           </h2>
           <p className="mt-4 max-w-2xl text-body-lg text-muted-foreground">
-            2018&apos;den beri 47 production sisteminde test edilmiş. Müşterinin mevcut yığını veya hedeflediği mimari ne olursa olsun, 28 mühendislik ekibi onunla teslim edecek deneyime sahip.
+            2014&apos;ten beri 180+ projede kullandığımız ve kanıtlanmış teknolojiler. Sizin mevcut sisteminiz ne olursa olsun, 36 kişilik uzman ekibimiz onunla çalışabilir.
           </p>
         </RevealSection>
         <div className="mt-16 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2 lg:grid-cols-4">

@@ -3,12 +3,14 @@ import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 
 const PRESS = [
-  { name: 'Webrazzi', slug: 'webrazzi' },
-  { name: 'Fintech Istanbul', slug: 'fintech-istanbul' },
-  { name: 'Startup Türkiye', slug: 'startup-turkiye' },
-  { name: 'TechCrunch TR', slug: 'techcrunch-tr' },
-  { name: 'Karar', slug: 'karar' },
-  { name: 'Dünya', slug: 'dunya' },
+  { name: 'Ziraat Bankası', slug: 'ziraat' },
+  { name: 'Kumtel A.Ş.', slug: 'kumtel' },
+  { name: 'Aras Kargo', slug: 'aras' },
+  { name: 'HSD Core Labs', slug: 'hsd' },
+  { name: 'Kodland', slug: 'kodland' },
+  { name: 'Wide Game Studio', slug: 'widegame' },
+  { name: 'TS Digital', slug: 'tsdigital' },
+  { name: 'Excellence Talks', slug: 'excellence' },
 ];
 
 function PressPlaceholder({ name }: { name: string }) {
@@ -26,9 +28,9 @@ export function PressLogos() {
     <section className="border-b border-border py-20">
       <Container as="div">
         <RevealSection>
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 05 · basında'}</p>
+          <p className="font-mono text-eyebrow uppercase text-accent">{'// 05 · referanslarımız'}</p>
           <p className="mt-2 text-muted-foreground text-sm">
-            Sektör medyasında yer aldığımız kaynaklar.
+            Türkiye&apos;nin önde gelen kurumları ve uluslararası firmaların güvendiği yazılım ortağı.
           </p>
         </RevealSection>
 

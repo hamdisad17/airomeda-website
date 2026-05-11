@@ -9,14 +9,14 @@ import { RevealSection } from '@/components/motion/RevealSection';
 gsap.registerPlugin(ScrollTrigger);
 
 const MILESTONES = [
-  { year: '2018', label: 'Kuruluş', detail: 'Maslak, İstanbul — iki kurucu, bir PSP müşterisi, tek ofis.' },
-  { year: '2019', label: 'İlk ödeme entegrasyonu', detail: "Akış Ödemeleri için PSP entegrasyon projesi production'a alındı. İlk BDDK uyumlu audit log." },
-  { year: '2020', label: 'iGaming portfolyosu', detail: 'Bahis.io için lisanslı casino platformu ve eCOGRA uyumlu RNG teslim edildi.' },
-  { year: '2021', label: 'Headless e-ticaret', detail: 'Hubert Commerce için Magento→Next.js migrasyonu. LCP 3.1s → 0.9s.' },
-  { year: '2022', label: 'Ekip 28 mühendise ulaştı', detail: 'İzmir uydu ofisi açıldı. 28 mühendis, 6 designer, ilk SRE/DevOps rotasyonu.' },
-  { year: '2023', label: 'Multi-region deployment', detail: 'fra1 birincil, lon1 yedek, ist1 edge — 3 bölge, Cloudflare 320+ POP.' },
-  { year: '2024', label: 'Entegrasyon ürünü', detail: 'Entegrasys için ERP/WMS/kargo agregatör köprüsü. 10+ taşıyıcı, tek idempotent router.' },
-  { year: '2025', label: '47 production sistem · 134 proje', detail: '4 aktif bölge (fra1 · lon1 · ist1 · iad1), 68 aktif müşteri, 280+ aylık deployment.' },
+  { year: '2014', label: 'Kuruluş', detail: 'Kayseri\'de 3 kişilik küçük bir ekip olarak yola çıktık. İlk müşteri projemizi başarıyla teslim ettik.' },
+  { year: '2016', label: 'İlk kurumsal proje', detail: 'Aras Kargo için HR otomasyon uygulamaları geliştirildi. Lojistik sektörüne ilk adım.' },
+  { year: '2018', label: 'AR/VR ve oyun geliştirme', detail: 'Wide Game Studio ortaklığıyla AR/VR oyun geliştirme alanına girdik. C# ve Unity ile ilk oyun projeleri.' },
+  { year: '2020', label: 'Frontend ve e-ticaret', detail: 'Kolektif Teknoloji Grubu projeleriyle React ve Next.js tabanlı büyük ölçekli e-ticaret projeleri.' },
+  { year: '2022', label: 'Eğitim teknolojisi', detail: 'Kodland için Python müfredatı ve eğitim platformu geliştirme. EdTech sektörüne giriş.' },
+  { year: '2023', label: 'Uluslararası büyüme', detail: 'Belçika\'daki Excellence Talks ile uluslararası ilk büyük proje. 130+ ülkeye hizmet vermeye başladık.' },
+  { year: '2024', label: 'Ziraat Bankası referansı', detail: 'Ziraat Bankası bünyesinde personel performans tahminleme sistemi geliştirildi. Bankacılık sektörüne güçlü giriş.' },
+  { year: '2025', label: 'AI sağlık ürünleri · 36 kişi', detail: 'HSD Core Labs ile AI destekli sağlık iletişimi ürünleri. 36 kişilik uzman ekibe ulaştık, 85+ aktif müşteri.' },
 ];
 
 export function StudioTimeline() {

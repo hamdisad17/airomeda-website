@@ -1,6 +1,6 @@
 {
   "common": {
-    "primary_cta": "Request Demo",
+    "primary_cta": "Get in Touch",
     "secondary_cta": "Our Work",
     "read_more": "Read more",
     "all_services": "All services"
@@ -14,7 +14,7 @@
     "contact": "Contact"
   },
   "footer": {
-    "tagline": "No slides. We write software.",
+    "tagline": "Your trusted software partner for 11 years.",
     "company": "Company",
     "services": "Services",
     "legal": "Legal",
@@ -24,39 +24,39 @@
   },
   "home": {
     "hero": {
-      "title": "Ship the complex to production.",
-      "subtitle": "Audit-ready, scalable software for finance, iGaming, e-commerce and integration — since 2018.",
+      "title": "We make the complex simple.",
+      "subtitle": "Since 2014, the trusted software partner of institutions like Ziraat Bank. Focus on your business — leave the technology to us.",
       "kinetic_words": ["Finance", "iGaming", "Commerce", "Integration", "SEO & Ads", "CRM"],
       "kinetic_connector": "for."
     },
-    "services_section": { "title": "Our services", "subtitle": "Seven disciplines, one standard." },
+    "services_section": { "title": "Our services", "subtitle": "Expert team across 7 fields, solutions tailored to your needs." },
     "industries": { "title": "Industries we serve" },
     "process": {
       "title": "How we work",
       "steps": {
-        "discovery": { "title": "Discovery", "description": "We clarify the need and context." },
-        "design": { "title": "Design", "description": "We shape the solution end to end." },
-        "build": { "title": "Build", "description": "We ship fast, with tests." },
-        "support": { "title": "Support", "description": "We stay with you after launch." }
+        "discovery": { "title": "Discovery", "description": "We clarify your needs and goals together." },
+        "design": { "title": "Design", "description": "We design a tailored solution from start to finish." },
+        "build": { "title": "Build", "description": "We deliver fast and reliably." },
+        "support": { "title": "Support", "description": "We stay by your side 24/7 after delivery." }
       }
     },
-    "cta": { "title": "A hard problem?", "subtitle": "Let's talk." },
+    "cta": { "title": "A complex challenge?", "subtitle": "Let's talk." },
     "manifesto": {
-      "lead": "We build software like auditable infrastructure, not a brochure.",
-      "extension": "When it fails, people lose money, regulators call, customers leave. That's why every architecture decision traces to an audit log — and we earn speed from team discipline, never from quality shortcuts.",
+      "lead": "We build software that works reliably for years to come.",
+      "extension": "When it fails, your business stops and customers leave. That's why we build every solution on solid foundations — earning speed through team discipline, quality through experience.",
       "p1_title": "Ownership",
-      "p1_body": "The code is yours. IP is yours. Every decision is documented and transferable.",
-      "p2_title": "Craft",
-      "p2_body": "6–14 weeks to production — clean architecture included. No tech-debt surprises on handover.",
+      "p1_body": "We write the code but the software is entirely yours. Every decision is documented and transferred to you.",
+      "p2_title": "Reliability",
+      "p2_body": "The same trust that Ziraat Bank places in our systems — now available to you too.",
       "p3_title": "Transparency",
-      "p3_body": "We talk about risk, delays, and mistakes on day one. No surprises at handover."
+      "p3_body": "We share risks, delays, and every development openly from day one."
     },
-    "selected_work": { "title": "Recent shipments." }
+    "selected_work": { "title": "Projects we are proud of." }
   },
   "services_index": { "title": "Our services" },
   "case_studies": {
     "title": "Our Work",
-    "subtitle": "134 completed projects — every one in production, with measurable results.",
+    "subtitle": "180+ completed projects — from Ziraat Bank to SMEs, successful delivery at every scale.",
     "metric_results": "Results",
     "related_label": "Related work",
     "client_label": "Client",
@@ -76,7 +76,7 @@
   },
   "careers": {
     "title": "Careers",
-    "subtitle": "47-person team, 5 open roles — we're looking for engineers who build production systems.",
+    "subtitle": "A warm 36-person team, 5 open roles — looking for talented people to grow with us.",
     "team_culture_title": "Our team culture",
     "team_culture_intro": "Three principles we hold to as we work together.",
     "values": {

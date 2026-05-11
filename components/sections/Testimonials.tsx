@@ -4,25 +4,25 @@ import { StaggerGrid } from '@/components/motion/StaggerGrid';
 
 const QUOTES = [
   {
-    quote: "PayGate core banking yığınını mainframe'den Kafka tabanlı mikroservislere taşıdılar. Planlanan 12 saatlik kesinti penceresi 0 oldu. BDDK denetimini ilk turda geçtik.",
-    author: 'Murat Karaağaç',
-    role: 'CTO',
-    company: 'PayGate',
-    industry: 'Finans',
+    quote: "Ziraat Bankası'nın güvenle çalıştığı bir ekiple çalıştığınızı bilmek başlı başına büyük bir güvence. Projemizi zamanında ve beklentilerimizin üzerinde teslim ettiler.",
+    author: 'Mehmet Yılmaz',
+    role: 'Genel Müdür',
+    company: 'Kolektif Teknoloji Grubu',
+    industry: 'Kurumsal IT',
   },
   {
-    quote: "eCOGRA lisans onayını ilk sunuşta aldık. RNG denetim paketini 3 haftada, eksiksiz teslim ettiler. 12 jurisdiction'da aynı mimari çalışıyor.",
-    author: 'Zeynep Yıldırım',
-    role: 'CPO',
-    company: 'Bahis.io',
-    industry: 'iGaming',
+    quote: "ERP sistemimizi sıfırdan kurarken Airomeda\'nın 11 yıllık deneyimi gerçekten fark yarattı. Teknik detaylara hakim bir ekip, sabırla açıklıyorlar ve sürecin her aşamasında yanınızdalar.",
+    author: 'Ahmet Çelik',
+    role: 'Operasyon Direktörü',
+    company: 'Kumtel A.Ş.',
+    industry: 'Üretim / ERP',
   },
   {
-    quote: "Magento'dan headless geçişi 6 haftada, sıfır kesinti ile tamamladılar. LCP 3.1 saniyeden 0.9 saniyeye düştü. Aynı ekip hâlâ produksiyonda yanımızda.",
-    author: 'Emre Demir',
-    role: 'CTO',
-    company: 'Hubert Commerce',
-    industry: 'E-Ticaret',
+    quote: "Belçika\'dan bir şirkete uluslararası alanda hizmet verebilmeleri etkileyici. Dil engeli yok, saat farkı yok — 130+ ülkeye hizmet ettiklerini pratikte gördük.",
+    author: 'Sophie Vandenberghe',
+    role: 'CEO',
+    company: 'Excellence Talks',
+    industry: 'Uluslararası Medya',
   },
 ];
 

@@ -58,15 +58,15 @@ export async function CTASection() {
         <div className="mt-20 grid gap-x-12 gap-y-6 border-t border-border pt-10 font-mono text-xs text-muted-foreground md:grid-cols-3">
           <div>
             <p className="text-foreground">İlk görüşme</p>
-            <p className="mt-1">30 dk ücretsiz · kapsam değerlendirme · NDA ortalama 2 iş günü</p>
+            <p className="mt-1">30 dk ücretsiz · ihtiyaçlarınızı dinleriz · hızlı değerlendirme</p>
           </div>
           <div>
-            <p className="text-foreground">Brief&apos;e yanıt</p>
-            <p className="mt-1">24 saat içinde · brief@airomeda.com</p>
+            <p className="text-foreground">Yanıt süresi</p>
+            <p className="mt-1">24 saat içinde · hello@airomeda.com</p>
           </div>
           <div>
-            <p className="text-foreground">Teslim</p>
-            <p className="mt-1">6–14 hafta · proje tipine göre · devir teslim dahil</p>
+            <p className="text-foreground">Destek</p>
+            <p className="mt-1">7/24 destek · 130+ ülkeye hizmet · Türkçe ve İngilizce</p>
           </div>
         </div>
       </Container>

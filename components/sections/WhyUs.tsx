@@ -33,31 +33,31 @@ const ICONS = {
 const PAIRS = [
   {
     icon: ICONS.fragile,
-    pain: 'Sistem her deploy öncesi kırılıyor',
-    painDetail: 'Ayda iki kez production çıkıyorsunuz. Test ortamı yok, regression korkusu her sprintte var.',
-    sol: 'Production-grade CI/CD',
-    solDetail: "847 unit · 124 integration · 28 e2e test. Her commit'ten önce geçmesi gereken bir hat.",
+    pain: 'Yazılımınız sizi yavaşlatıyor',
+    painDetail: 'Her yeni özellik beklenenden uzun sürüyor. Küçük değişiklikler beklenmedik sorunlara yol açıyor.',
+    sol: 'Size özel, bakımı kolay yazılım',
+    solDetail: 'Ziraat Bankası gibi kurumların tercih ettiği kalitede yazılım. Her şey belgelenmiş, her değişiklik kontrollü.',
   },
   {
     icon: ICONS.audit,
-    pain: 'Regülatör soru sorduğunda cevap yok',
-    painDetail: "BDDK/MASAK denetiminde \"neden böyle yaptık\" sorusuna açıklayamadığınız kararlar var.",
-    sol: 'Audit-ready log altyapısı',
-    solDetail: "Her olay değişmez event log'da. BDDK/MASAK/eCOGRA formatında raporlama otomatik.",
+    pain: 'Denetim ve uyumluluk endişesi',
+    painDetail: 'Yasal zorunluluklar ve sektör standartları karşısında yazılımınızın yeterli olup olmadığından emin değilsiniz.',
+    sol: 'Denetim ve regülasyona uyumlu çözüm',
+    solDetail: 'Bankacılık ve finans sektörünün gerektirdiği tüm kayıt ve raporlama standartlarını karşılayan altyapı.',
   },
   {
     icon: ICONS.lock,
-    pain: 'Tedarikçiye veya tek kişiye bağımlısınız',
-    painDetail: "Bir geliştirici sistemin kritik %80'ini biliyor. Ayrıldığında veya fiyat artırdığında çıkış yok.",
-    sol: 'Kod sizin · IP sizin',
-    solDetail: 'Kapsamlı dokümantasyon, kod review standardı, ekip eğitimi dahil. Bizden bağımsız çalışır.',
+    pain: 'Tek tedarikçiye bağımlısınız',
+    painDetail: 'Mevcut yazılım firmanız fiyat artırdığında veya ayrıldığında ne yaparsınız? Sistemin tamamı onlara mı ait?',
+    sol: 'Yazılım tamamen sizin',
+    solDetail: 'Teslim ettiğimiz her yazılım sizin mülkünüz. Belgeler, eğitim ve kaynak kod dahil — bağımsız çalışırsınız.',
   },
   {
     icon: ICONS.speed,
-    pain: 'Hız mı kalite mi ikilemi',
-    painDetail: '"Önce ship, sonra refactor" döngüsünde teknik borç birikiyor. Her yeni özellik daha yavaş.',
-    sol: 'Sprint ile teslim, audit ile kabul',
-    solDetail: '6–14 haftada production. Temiz mimari ile. Devir teslimde sıfır teknik borç surprizi.',
+    pain: 'Hız ve kalite dengesi',
+    painDetail: 'Hızlı çözümler sonradan pahalıya patlıyor. Kaliteli iş ise çok uzun sürüyor gibi görünüyor.',
+    sol: 'İki haftada ilk sonuç, uzun ömürlü sistem',
+    solDetail: '11 yıllık deneyimle hız ve kaliteyi birlikte sunuyoruz. İlk görüşmeden 2 hafta içinde somut ilerleme.',
   },
 ];
 
@@ -69,10 +69,10 @@ export function WhyUs() {
           <RevealSection>
             <p className="font-mono text-eyebrow uppercase text-accent">{'// 02 · neden biz'}</p>
             <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-              Tanıdık problemler. Bizden çözümler.
+              Tanıdık problemler. Kalıcı çözümler.
             </h2>
             <p className="mt-4 text-body-lg text-muted-foreground">
-              Müşterilerimizin bize geldiğindeki tipik sorunlar — ve biz bunlara nasıl yaklaştığımız.
+              Müşterilerimizin bize geldiğinde anlattığı sorunlar — ve 11 yıllık deneyimimizle onlara nasıl yaklaştığımız.
             </p>
           </RevealSection>
         </div>

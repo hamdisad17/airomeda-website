@@ -52,70 +52,68 @@ export function BentoShowcase() {
         <RevealSection>
           <p className="font-mono text-eyebrow uppercase text-accent">{'// 07 · ne yapıyoruz'}</p>
           <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-            Bir bakışta yetkinlikler.
+            Neden Airomeda?
           </h2>
         </RevealSection>
 
         <div className="mt-14 grid grid-cols-1 md:grid-cols-3 md:grid-rows-[200px_200px_200px] gap-4">
-          {/* Big featured — observability */}
+          {/* Big featured — güven ve deneyim */}
           <TiltCard className="md:col-span-2 md:row-span-2 p-8 relative overflow-hidden border border-border bg-elevated">
             <div aria-hidden className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full"
               style={{ background: 'radial-gradient(circle, hsl(189 100% 50% / 0.15), transparent 60%)' }}/>
-            <p className="font-mono text-eyebrow uppercase text-accent">observability</p>
-            <h3 className="mt-4 text-2xl font-semibold tracking-tight">Her isteği, her sorguyu, her hata izini görüyoruz.</h3>
+            <p className="font-mono text-eyebrow uppercase text-accent">11 yıllık deneyim</p>
+            <h3 className="mt-4 text-2xl font-semibold tracking-tight">Ziraat Bankası gibi büyük kurumların tercih ettiği güvenilir partner.</h3>
             <p className="mt-3 text-sm text-muted-foreground max-w-sm">
-              OpenTelemetry + Grafana + Loki yığını ile dağıtık trace, log korelasyonu, P99 alarm — production&apos;da görmediğiniz bir şey kalmaz.
+              2014&apos;ten bu yana bankacılık, lojistik, sağlık ve e-ticaret gibi kritik sektörlerde işletmelerin dijital dönüşümüne destek oluyoruz. İhtiyaçlarınıza göre şekillenen çözümler, uzun vadeli ortaklık.
             </p>
             <div className="mt-8 h-32 relative">
               <MiniChart />
             </div>
           </TiltCard>
 
-          {/* Stat card — uptime */}
+          {/* Stat card — proje */}
           <TiltCard className="p-6 border border-border bg-elevated flex flex-col justify-between">
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">SLA</p>
+            <p className="font-mono text-eyebrow uppercase text-muted-foreground">tamamlanan proje</p>
             <div>
-              <p className="text-5xl font-semibold tabular-nums tracking-tight">99.95<span className="text-accent">%</span></p>
-              <p className="mt-2 text-xs text-muted-foreground font-mono">uptime SLA · gözlemlenen 99.973%</p>
+              <p className="text-5xl font-semibold tabular-nums tracking-tight">180<span className="text-accent">+</span></p>
+              <p className="mt-2 text-xs text-muted-foreground font-mono">2014&apos;ten bu yana · 85+ aktif müşteri</p>
             </div>
           </TiltCard>
 
-          {/* Code mini */}
+          {/* Sertifika mini */}
           <TiltCard className="p-6 border border-border bg-background">
-            <p className="font-mono text-eyebrow uppercase text-accent">type-safe API</p>
-            <pre className="mt-3 font-mono text-[10px] leading-relaxed text-foreground overflow-hidden">
-{`router.post('/spin', async ({ user }) => {
-  const result = await rng.generate({
-    seed: cryptoSeed(),
-    bet: user.bet,
-  });
-  return audit.commit(result);
-});`}
-            </pre>
+            <p className="font-mono text-eyebrow uppercase text-accent">sertifikalı ekip</p>
+            <div className="mt-3 space-y-1.5">
+              {['Johns Hopkins · Veri Bilimi', 'Duke University · Makine Öğrenmesi', 'Google · Veri Temelleri', 'Meta · Pazarlama Analitiği'].map((cert) => (
+                <p key={cert} className="font-mono text-[10px] leading-relaxed text-muted-foreground flex items-center gap-1.5">
+                  <span className="text-accent">✓</span>{cert}
+                </p>
+              ))}
+            </div>
           </TiltCard>
 
           {/* Quote */}
           <TiltCard className="p-6 border border-border bg-elevated md:col-span-2">
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">Murat Karaağaç · CTO, PayGate</p>
+            <p className="font-mono text-eyebrow uppercase text-muted-foreground">Ziraat Bankası referansı · Bankacılık</p>
             <p className="mt-3 text-base md:text-lg font-medium leading-snug">
-              <span className="text-accent">&ldquo;</span>4 ayda core banking migrasyonu tamamlandı. Planlanan 12 saatlik kesinti penceresini sıfıra indirdiler; BDDK denetimi ilk turda geçildi.<span className="text-accent">&rdquo;</span>
+              <span className="text-accent">&ldquo;</span>Ziraat Bankası bünyesinde geliştirdiğimiz performans tahminleme sistemi, bankacılık sektöründeki uzmanlığımızın en güçlü kanıtı. Güven, en değerli referansımız.<span className="text-accent">&rdquo;</span>
             </p>
           </TiltCard>
 
-          {/* Pill stat */}
+          {/* Ekip stat */}
           <TiltCard className="p-6 border border-border bg-elevated flex flex-col justify-between">
-            <p className="font-mono text-eyebrow uppercase text-muted-foreground">teslim</p>
+            <p className="font-mono text-eyebrow uppercase text-muted-foreground">uzman ekip</p>
             <div>
-              <p className="text-3xl font-semibold tracking-tight">6–14 <span className="text-base text-muted-foreground">hafta</span></p>
-              <p className="mt-2 text-xs text-muted-foreground font-mono">brief → production</p>
+              <p className="text-3xl font-semibold tracking-tight">36 <span className="text-base text-muted-foreground">kişi</span></p>
+              <p className="mt-2 text-xs text-muted-foreground font-mono">İstanbul + Kayseri · 7/24 destek</p>
             </div>
           </TiltCard>
 
-          {/* Tech */}
+          {/* Teknoloji */}
           <TiltCard className="p-6 border border-border bg-elevated md:col-span-2">
-            <p className="font-mono text-eyebrow uppercase text-accent">tech</p>
+            <p className="font-mono text-eyebrow uppercase text-accent">teknolojiler</p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {['TypeScript', 'Go', 'Kotlin', 'PostgreSQL', 'Kafka', 'k8s', 'Cloudflare', 'OpenTelemetry'].map((t) => (
+              {['React', 'Next.js', 'Flutter', 'Python', 'Node.js', 'Odoo ERP', 'Unity/C#', 'PostgreSQL'].map((t) => (
                 <span key={t} className="font-mono text-[11px] border border-border px-2 py-1 text-muted-foreground">
                   {t}
                 </span>

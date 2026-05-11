@@ -8,14 +8,14 @@ import { Container } from '@/components/layout/Container';
 gsap.registerPlugin(ScrollTrigger);
 
 const NODES = [
-  { name: 'PSP / Card',     x: 20, y: 20 },
-  { name: 'KYC / AML',     x: 80, y: 20 },
-  { name: 'Core Banking',  x: 8,  y: 50 },
-  { name: 'ERP / WMS',     x: 92, y: 50 },
-  { name: 'Gaming Eng.',   x: 20, y: 80 },
-  { name: 'BDDK / TCMB',   x: 80, y: 80 },
-  { name: 'CDP / Analytics', x: 50, y: 10 },
-  { name: 'Ad Platforms',  x: 50, y: 90 },
+  { name: 'Ödeme Sistemi',  x: 20, y: 20 },
+  { name: 'Müşteri Doğrulama', x: 80, y: 20 },
+  { name: 'Bankacılık',    x: 8,  y: 50 },
+  { name: 'ERP / Depo',    x: 92, y: 50 },
+  { name: 'Oyun / AR-VR',  x: 20, y: 80 },
+  { name: 'Regülasyon',    x: 80, y: 80 },
+  { name: 'Veri & Analitik', x: 50, y: 10 },
+  { name: 'Dijital Pazarlama', x: 50, y: 90 },
 ];
 
 export function Architecture() {
@@ -80,11 +80,10 @@ export function Architecture() {
         <div className="mb-16 max-w-3xl">
           <p className="font-mono text-eyebrow uppercase text-accent">{'// 04 · integration'}</p>
           <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-            Mevcut yığınınızla konuşur, vermek istediğiniz şey kadar veri alır.
+            Mevcut sistemlerinizle sorunsuz çalışır.
           </h2>
           <p className="mt-4 text-body-lg text-muted-foreground">
-            8 yıllık yapılandırılmış entegrasyon deneyimi. PSP, KYC, ERP, core banking, gaming
-            providers, regülatör bağlantıları — production&apos;da hepsi bizim üzerimizden geçti.
+            11 yıllık entegrasyon deneyimi. Ödeme sistemleri, ERP, bankacılık, oyun platformları — hangi altyapınız olursa olsun, sistemlerinizi birbirine bağlarız.
           </p>
         </div>
 

@@ -14,39 +14,39 @@ interface ImgSpec {
 const IMAGES: ImgSpec[] = [
   {
     src: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=900&q=85',
-    alt: 'Code editor',
+    alt: 'Yazılım geliştirme',
     span: 'tall',
-    caption: 'core banking · TypeScript + Kotlin',
+    caption: 'Yazılım geliştirme · İstanbul ofisi',
   },
   {
     src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=85',
-    alt: 'Dashboard',
+    alt: 'Proje dashboard',
     span: 'wide',
-    caption: 'PayGate dashboard · production · fra1',
+    caption: 'Müşteri projeleri · canlı takip',
   },
   {
     src: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=85',
-    alt: 'Workspace',
+    alt: 'Ofis ortamı',
     span: 'sq',
-    caption: 'Maslak · İstanbul ofisi',
+    caption: 'İstanbul + Kayseri ofislerimiz',
   },
   {
     src: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=900&q=85',
-    alt: 'Servers',
+    alt: 'Sunucu altyapısı',
     span: 'tall',
-    caption: 'fra1 birincil · k8s cluster · live',
+    caption: 'Güvenilir altyapı · kesintisiz hizmet',
   },
   {
     src: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=600&q=85',
-    alt: 'Code review',
+    alt: 'Ekip çalışması',
     span: 'sq',
-    caption: 'sprint review · 28 mühendis',
+    caption: 'Proje değerlendirmesi · 36 kişilik ekip',
   },
   {
     src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=85',
-    alt: 'Network',
+    alt: 'Teknoloji altyapısı',
     span: 'wide',
-    caption: 'Cloudflare edge · 320+ POP · 4 bölge',
+    caption: 'Tüm dünya · 130+ ülke · 7/24',
   },
 ];
 
@@ -62,7 +62,7 @@ export function StudioGallery() {
                 Stüdyodan kareler.
               </h2>
             </div>
-            <p className="font-mono text-xs text-muted-foreground">Maslak · İstanbul · GMT+3</p>
+            <p className="font-mono text-xs text-muted-foreground">İstanbul + Kayseri · Türkiye · GMT+3</p>
           </div>
         </RevealSection>
 

@@ -11,6 +11,7 @@ import { SmoothScroll } from '@/components/motion/SmoothScroll';
 import { MorphCursor } from '@/components/motion/MorphCursor';
 import { CommandPalette } from '@/components/overlay/CommandPalette';
 import { ScrollProgress } from '@/components/motion/ScrollProgress';
+import { LiveChat } from '@/components/overlay/LiveChat';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -33,6 +34,7 @@ export default async function LocaleLayout({
       <MorphCursor />
       <ScrollProgress />
       <CommandPalette />
+      <LiveChat />
       <SmoothScroll>
         <Header />
         <main className="min-h-[60vh]">{children}</main>

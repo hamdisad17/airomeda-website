@@ -21,44 +21,44 @@ interface WorkItem {
 
 const WORKS: WorkItem[] = [
   {
-    key: 'paygate',
-    industry: 'Finans',
-    title: 'Core banking modernizasyonu.',
-    client: 'PayGate',
-    year: '2025',
-    summary: 'Mainframe→event-driven Kafka mikroservisleri. 0 kesinti, BDDK denetimi ilk sunuşta geçildi, 4 ay teslim.',
-    metrics: [{ v: '0', l: 'kesinti' }, { v: '142ms', l: 'P99 tx' }, { v: '5×', l: 'tx kapasitesi' }],
+    key: 'ziraat',
+    industry: 'Bankacılık',
+    title: 'Personel performans tahmin sistemi.',
+    client: 'Ziraat Bankası',
+    year: '2024',
+    summary: 'Ziraat Teknoloji bünyesinde geliştirilen makine öğrenmesi destekli personel performans tahminleme sistemi. Bankacılık sektörünün en güçlü referansı.',
+    metrics: [{ v: 'ML', l: 'destekli analiz' }, { v: '0', l: 'veri sızıntısı' }, { v: '✓', l: 'banka onaylı' }],
     visual: 'finance',
   },
   {
-    key: 'bahisio',
-    industry: 'iGaming',
-    title: 'Casino platform & RNG motoru.',
-    client: 'Bahis.io',
-    year: '2025',
-    summary: 'Lisanslı casino + sportsbook + cashier. eCOGRA uyumlu RNG, 12 jurisdiction desteği, 10 haftada production.',
-    metrics: [{ v: '4ms', l: 'spin response' }, { v: '12', l: 'jurisdiction' }, { v: '99.95%', l: 'uptime' }],
-    visual: 'gaming',
+    key: 'aras',
+    industry: 'Lojistik',
+    title: 'İK ve lojistik otomasyon uygulamaları.',
+    client: 'Aras Kargo',
+    year: '2024',
+    summary: 'Aras Kargo için geliştirilen HR otomasyon ve lojistik yönetim uygulamaları. Flutter ile iOS ve Android platformlarında sorunsuz çalışan mobil çözümler.',
+    metrics: [{ v: 'Flutter', l: 'mobil uygulama' }, { v: '2', l: 'platform' }, { v: '✓', l: 'canlı sistem' }],
+    visual: 'integration',
   },
   {
-    key: 'hubert',
-    industry: 'E-Ticaret',
-    title: 'Headless storefront migrasyonu.',
-    client: 'Hubert Commerce',
-    year: '2024',
-    summary: 'Magento→Next.js headless geçişi, sıfır kesinti. LCP 3.1s→0.9s, conversion +34%, 6 hafta teslim.',
-    metrics: [{ v: '0.9s', l: 'LCP mobile' }, { v: '+34%', l: 'conversion' }, { v: '6 hf', l: 'teslim' }],
+    key: 'hsd',
+    industry: 'Sağlık AI',
+    title: 'AI destekli sağlık ürünleri.',
+    client: 'HSD Core Labs',
+    year: '2025',
+    summary: 'AI destekli sağlık iletişimi ve transkripsiyon ürünleri. Doktorlar ve hastalar için akıllı sesli analiz ve otomatik raporlama sistemi.',
+    metrics: [{ v: 'AI', l: 'destekli analiz' }, { v: '✓', l: 'sağlık uyumlu' }, { v: '2025', l: 'canlı' }],
     visual: 'commerce',
   },
   {
-    key: 'entegrasys',
-    industry: 'Entegrasyon',
-    title: 'ERP + kargo agregatörü.',
-    client: 'Entegrasys',
-    year: '2024',
-    summary: 'Logo, Netsis, NetSuite + 10+ kargo taşıyıcısı, tek idempotent webhook router. %99.99 teslimat SLA.',
-    metrics: [{ v: '10+', l: 'taşıyıcı' }, { v: '99.99%', l: 'webhook SLA' }, { v: '4', l: 'ERP sistemi' }],
-    visual: 'integration',
+    key: 'kumtel',
+    industry: 'Beyaz Eşya / ERP',
+    title: 'ERP yazılım geliştirme (Odoo).',
+    client: 'Kumtel A.Ş.',
+    year: '2023',
+    summary: 'Kumtel\'in iş süreçleri için Odoo tabanlı ERP sistemi geliştirme. Stok, satış, satın alma ve finans modüllerinin özelleştirilmesi.',
+    metrics: [{ v: 'Odoo', l: 'ERP platformu' }, { v: '6+', l: 'modül' }, { v: '✓', l: 'aktif kullanımda' }],
+    visual: 'gaming',
   },
 ];
 
@@ -188,7 +188,7 @@ export function SelectedWork() {
               <div>
                 <p className="font-mono text-eyebrow uppercase text-accent">{'// 09 · selected work'}</p>
                 <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
-                  Production&apos;da, halen yaşıyor.
+                  Gurur duyduğumuz projeler.
                 </h2>
               </div>
               <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
@@ -252,14 +252,14 @@ export function SelectedWork() {
               <div>
                 <p className="font-mono text-eyebrow uppercase text-accent">{'// next'}</p>
                 <h3 className="mt-6 text-3xl font-semibold tracking-tight leading-tight">
-                  Sıradaki vaka, sizinki olabilir.
+                  Sıradaki başarı hikayesi, sizinki olabilir.
                 </h3>
                 <p className="mt-4 text-sm text-muted-foreground">
-                  Production&apos;a hazır ekip · 6–14 hafta teslim · devir teslim.
+                  36 kişilik uzman ekip · hızlı teslim · 7/24 destek
                 </p>
               </div>
               <a href="#cta" className="inline-flex items-center gap-2 font-mono text-sm text-accent group">
-                brief gönder
+                bizimle konuşun
                 <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
               </a>
             </div>

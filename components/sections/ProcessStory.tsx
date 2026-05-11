@@ -11,26 +11,26 @@ const PHASES = [
   {
     id: 'discovery',
     n: '01',
-    title: 'Discovery',
-    body: "İhtiyacı haritalandırırız. Regülasyon gereksinimleri, sistem bağımlılıkları, teknik borç haritası. Brief'e 24 saat, NDA'ya ortalama 2 iş günü. İlk 2–3 hafta.",
+    title: 'Keşif',
+    body: 'İhtiyaçlarınızı ve hedeflerinizi birlikte anlıyoruz. 30 dakikalık ücretsiz ilk görüşme ile başlıyoruz. 24 saat içinde size somut bir plan sunuyoruz.',
   },
   {
     id: 'design',
     n: '02',
-    title: 'Design',
-    body: 'Mimari kararlar, servis sınırları, API kontratları, veri modeli. Her karar belgelenir, müşteri onaylar. Audit-ready mimari ilk günden.',
+    title: 'Tasarım',
+    body: 'Size özel çözümü baştan sona tasarlıyoruz. Her karar onayınızla ilerliyor, her adım belgeleniyor. Sizi sürprizlerle karşılaştırmıyoruz.',
   },
   {
     id: 'build',
     n: '03',
-    title: 'Build',
-    body: "Sprintler halinde teslim. Her sprint sonunda demo edilebilir bir parça. 847 unit, 124 integration, 28 e2e test. CI/CD hattı ve observability her commit'ten itibaren.",
+    title: 'Geliştirme',
+    body: 'İki haftada bir ilerlemeyi görebilirsiniz. Her aşamanın sonunda çalışan bir parça teslim ediyoruz. Süreç boyunca sürekli iletişim halindeyiz.',
   },
   {
     id: 'support',
     n: '04',
-    title: 'Support',
-    body: "Production'a aldığımız her şeyin arkasındayız. On-call rotation, %99.95 SLA, OpenTelemetry izleme. Devir teslim: kod, doküman, ekip eğitimi.",
+    title: 'Destek',
+    body: 'Teslim sonrasında 7/24 yanınızdayız. İstediğinizde yazılımı kendi ekibinize devrediyoruz veya devam eden destek paketimizle uzun vadeli ortağınız oluyoruz.',
   },
 ];
 
@@ -67,7 +67,7 @@ export function ProcessStory() {
     <section id="process-story" ref={wrap} className="border-b border-border py-24 md:py-32">
       <Container as="div">
         <div className="max-w-3xl">
-          <p className="font-mono text-eyebrow uppercase text-accent">{'// 06 · method'}</p>
+          <p className="font-mono text-eyebrow uppercase text-accent">{'// 06 · çalışma yöntemimiz'}</p>
           <h2 className="mt-4 text-display-2 font-semibold tracking-tight">Nasıl çalışırız.</h2>
         </div>
 
@@ -77,11 +77,10 @@ export function ProcessStory() {
             <div className="lg:sticky lg:top-32">
               <p className="font-mono text-eyebrow uppercase text-muted-foreground">{'// process'}</p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight">
-                4 faz, 6–14 hafta.
+                4 adım, hızlı teslim.
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                Her fazın sonunda müşteri görür, geri bildirim verir, biz devam ederiz.
-                Şeffaf sprint kadansı + audit-ready dokümantasyon. Devir teslim dahil.
+                Her adımın sonunda ilerlemeyi birlikte görürsünüz. Şeffaf süreç, sürekli iletişim, teslim sonrası tam destek dahil.
               </p>
             </div>
           </div>

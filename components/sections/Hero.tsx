@@ -24,9 +24,9 @@ export async function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
               </span>
-              <span className="text-foreground">v.2026.05</span>
+              <span className="text-foreground">11 yıl</span>
               <span className="text-muted-foreground">·</span>
-              <span className="text-muted-foreground">production</span>
+              <span className="text-muted-foreground">36 uzman · 130+ ülke</span>
             </span>
 
             <KineticHeadline
@@ -60,13 +60,13 @@ export async function Hero() {
             {/* Trust mini-line */}
             <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-2 font-mono text-xs text-muted-foreground">
               <span className="flex items-center gap-1.5">
-                <span className="text-accent">✓</span> BDDK/MASAK uyumlu
+                <span className="text-accent">✓</span> Ziraat Bankası referanslı
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="text-accent">✓</span> 99.973% uptime
+                <span className="text-accent">✓</span> Denetim ve regülasyona uyumlu
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="text-accent">✓</span> 6–14 hafta teslim
+                <span className="text-accent">✓</span> 7/24 destek
               </span>
             </div>
 

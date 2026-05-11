@@ -5,28 +5,28 @@ import { RevealSection } from '@/components/motion/RevealSection';
 
 const ITEMS = [
   {
-    q: 'Tipik bir projenin teslim süresi nedir?',
-    a: 'Kapsama göre 6 ile 14 hafta arasında değişiyor. İlk 2–3 hafta discovery + mimari tasarım; sonraki sprintlerde demo edilebilir parçalar; son faz devir teslim ve stabilizasyon.',
+    q: 'Ziraat Bankası gibi büyük kurumlarla çalışıyorsanız, küçük işletmelere de hizmet veriyor musunuz?',
+    a: 'Evet, kesinlikle. 11 yıllık deneyimimizde hem kurumsal firmalar hem de büyümekte olan işletmeler için çözümler geliştirdik. Her projeyi ihtiyacınıza göre özel olarak değerlendiriyoruz.',
   },
   {
-    q: 'BDDK / MASAK uyumlu yazılım üretiyor musunuz?',
-    a: 'Evet. Her finans projesinde regülasyon haritalandırması ile başlıyoruz: BDDK yönetmelikleri, MASAK bildirimleri, değişmez event log. Denetimde geri dönülebilir kararlar.',
+    q: 'Projenizin teslim süresi ne kadardır?',
+    a: 'Projenin kapsamına göre değişiyor. Küçük projeler birkaç haftada, orta ölçekli projeler 6-12 haftada, büyük kurumsal projeler ise 3-6 ayda tamamlanabiliyor. İlk görüşmede size net bir plan sunuyoruz.',
   },
   {
-    q: 'Mevcut sistemimize entegre olur musunuz?',
-    a: 'Evet. ISO 8583, ISO 20022, REST, GraphQL, Kafka/RabbitMQ tabanlı entegrasyonlar. Legacy coexistence (strangler-fig) stratejisi konusunda üretim deneyimimiz var.',
+    q: 'Mevcut yazılımımız veya sistemlerimiz var. Bunlarla entegre çalışır mısınız?',
+    a: 'Evet. ERP\'ler, kargo firmalar, ödeme sistemleri, muhasebe yazılımları — mevcut sistemlerinizle sorunsuz entegrasyon sağlıyoruz. Var olanı değiştirmeden üstüne katman ekliyoruz.',
   },
   {
-    q: 'Proje sonrasında devamlılık nasıl olacak?',
-    a: 'İki seçenek: 1) Devir teslim — belgelenmiş mimari, ekip eğitimi, runbook ve kod ile kendi ekibinize teslim. 2) Retainer — bizimle devam, %99.95 SLA.',
+    q: 'Proje bittikten sonra yazılımın bakımını kim yapacak?',
+    a: 'İki seçenek sunuyoruz: 1) Yazılımı sizin ekibinize teslim ederiz — tam belgeleme ve eğitim dahil. 2) Bizim devam eden destek paketimize dahil olursunuz — 7/24 yanınızdayız.',
   },
   {
     q: 'Fiyatlandırma nasıl çalışıyor?',
-    a: 'Sprint (4–6 hafta, sabit kapsam), Project (6–14 hafta, milestone tabanlı) veya Long-term retainer. İlk görüşmede kapsamı netleştirip tüm modelleri sunuyoruz.',
+    a: 'Her projeyi ayrı değerlendiriyoruz çünkü her işletmenin ihtiyacı farklı. Başlangıç, Profesyonel ve Kurumsal paket seçeneklerimiz var. 30 dakikalık ücretsiz ilk görüşmede size en uygun seçeneği birlikte belirleyelim.',
   },
   {
-    q: 'NDA ve veri güvenliği nasıl?',
-    a: 'Brief gönderdikten sonra ortalama 2 iş günü içinde iki yönlü NDA imzalanır. Geliştirme KVKK + GDPR uyumlu. Production veriniz hiçbir zaman bizim altyapımıza inmez.',
+    q: 'Türkiye dışındaki müşterilerinizle nasıl çalışıyorsunuz?',
+    a: '130\'dan fazla ülkeye hizmet veriyoruz. Belçika\'daki Excellence Talks gibi uluslararası müşterilerimiz var. Uzaktan çalışma konusunda 11 yıllık deneyimimizle her ülkeden müşteriyle sorunsuz iletişim kuruyoruz.',
   },
 ];
 

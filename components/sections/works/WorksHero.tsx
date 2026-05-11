@@ -40,17 +40,16 @@ export function WorksHero({ count }: { count?: number }) {
             letterSpacing: '-0.04em',
           }}
         >
-          <TextReveal as="span">Production&apos;da,</TextReveal>
+          <TextReveal as="span">Gurur duyduğumuz</TextReveal>
           <br />
           <span className="text-accent">
             <TextReveal as="span" delay={0.3}>
-              halen yaşıyor.
+              projeler.
             </TextReveal>
           </span>
         </h1>
         <p className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed">
-          Her vaka, gerçek bir müşteri, gerçek bir sorun ve ölçülebilir bir sonuç. Sunum değil,
-          production.
+          Ziraat Bankası&apos;ndan küçük işletmelere, 180+ projede gerçek müşteriler için gerçek sonuçlar ürettik.
         </p>
       </Container>
     </section>

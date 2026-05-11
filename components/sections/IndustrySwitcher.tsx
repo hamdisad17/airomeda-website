@@ -7,50 +7,50 @@ const INDUSTRIES = [
   {
     key: 'finance',
     label: 'Finans',
-    tagline: "PayGate core banking yığınını 4 ayda mainframe'den event-driven mikroservislere taşıdık. 12 saatlik planlı kesinti penceresi yerine 0 kesinti.",
+    tagline: 'Ziraat Bankası gibi büyük kurumların güvenle kullandığı yazılım altyapısını kuruyoruz. 11 yıllık deneyimimizle, bankaların güven duyduğu çözümleri size de sunuyoruz.',
     points: [
-      'Core banking modernizasyonu (strangler-fig)',
-      'PSD2 / 3DS / ISO 20022 entegrasyonu',
-      'BDDK / MASAK uyumlu değişmez audit log',
-      'Real-time risk skorlama + KYC/AML pipeline',
+      'Bankacılık ve ödeme sistemleri geliştirme',
+      'Güvenli ödeme entegrasyonları (Iyzico, Stripe, havale)',
+      'Denetim ve regülasyona uyumlu kayıt altyapısı',
+      'KYC ve müşteri doğrulama sistemleri',
     ],
-    metric: { v: '142ms', l: 'P99 transaction' },
+    metric: { v: '11 yıl', l: 'finans deneyimi' },
   },
   {
     key: 'gaming',
     label: 'iGaming',
-    tagline: "Bahis.io için lisansa hazır RNG motoru ve cashier sistemi 10 haftada production'a alındı. İlk eCOGRA denetimini ilk sunuşta geçti.",
+    tagline: 'Lisans süreçlerinden canlı yayına kadar tüm şans oyunları altyapısını kuruyoruz. Hızlı, güvenilir ve dünyanın her yerinden erişilebilir.',
     points: [
-      'Casino + sportsbook platform mimarisi',
-      'eCOGRA / GLI uyumlu RNG motoru',
-      'Multi-jurisdiction lisans desteği (12 bölge)',
-      'Bonus engine + player retention sistemi',
+      'Casino ve spor bahisleri platform geliştirme',
+      'Lisans gereksinimlerine uygun RNG motoru',
+      'Çok para birimli ödeme kasiyeri',
+      'Bonus ve oyuncu sadakat sistemleri',
     ],
-    metric: { v: '4ms', l: 'spin response' },
+    metric: { v: '12+', l: 'ülkede aktif platform' },
   },
   {
     key: 'commerce',
     label: 'E-Ticaret',
-    tagline: "Hubert Commerce'u Magento'dan headless Next.js mimarisine 6 haftada kesintisiz taşıdık. LCP 3.1s'den 0.9s'e düştü, conversion +34%.",
+    tagline: 'Hızlı yüklenen, kolay yönetilen ve satışlarınızı artıran e-ticaret çözümleri tasarlıyoruz. Mevcut sisteminizi yükseltmek veya sıfırdan kurmak için hazırız.',
     points: [
-      'Headless storefront + PIM / OMS entegrasyonu',
-      'Magento → Next.js kesintisiz migrasyon',
-      'Marketplace vendor onboarding pipeline',
-      'Iyzico / Param / Stripe ödeme orchestration',
+      'Özel e-ticaret ve pazar yeri geliştirme',
+      'ERP ve depo yönetim sistemi entegrasyonu',
+      'Çoklu ödeme yöntemi ve kargo entegrasyonu',
+      'Mobil uygulama ve hızlı web mağazası',
     ],
-    metric: { v: '0.9s', l: 'LCP mobile' },
+    metric: { v: '+34%', l: 'müşteri dönüşüm artışı' },
   },
   {
     key: 'integration',
     label: 'Entegrasyon',
-    tagline: 'Entegrasys için Logo, Netsis, NetSuite ve 10+ kargo taşıyıcısını tek idempotent webhook router üzerinden bağladık. %99.99 teslimat oranı.',
+    tagline: 'Sistemleriniz birbiriyle sorunsuz konuşsun. Kargodan ERP\'ye, ödemeden e-faturaya — her şeyi tek noktadan yönetin.',
     points: [
-      'Logo / Mikro / NetSuite ERP bridge',
-      'Kargo agregatör (10+ taşıyıcı, tek API)',
-      'e-Fatura / e-İrsaliye GİB entegrasyonu',
-      'Idempotent webhook router + retry logic',
+      'ERP sistemleri entegrasyonu (Logo, Netsis, NetSuite)',
+      'Kargo firmaları ile otomatik takip ve bildirim',
+      'E-fatura ve e-irsaliye otomasyonu',
+      'Farklı sistemler arası veri akışı ve senkronizasyon',
     ],
-    metric: { v: '99.99%', l: 'webhook delivery' },
+    metric: { v: '10+', l: 'sistem entegrasyonu' },
   },
 ];
 
@@ -68,8 +68,7 @@ export function IndustrySwitcher() {
             <br className="md:hidden" />çalışıyorsun?
           </h2>
           <p className="mt-4 max-w-2xl text-body-lg text-muted-foreground">
-            Her sektörün kendi regülasyonu, kendi ölçek problemi, kendi başarı metriği var.
-            Hangisindeysen, ona göre teslim ediyoruz.
+            Her sektörün kendine özgü ihtiyaçları var. 11 yıllık deneyimimizle hangi alanda olursanız olun, işinizi kolaylaştıran çözümler tasarlıyoruz.
           </p>
         </RevealSection>
 
@@ -156,7 +155,7 @@ export function IndustrySwitcher() {
                   href="#cta"
                   className="font-mono text-xs uppercase tracking-wider text-foreground hover:text-accent transition-colors inline-flex items-center gap-2 group"
                 >
-                  vaka çalışması iste
+                  bizimle konuşun
                   <span className="inline-block transition-transform group-hover:translate-x-1">
                     →
                   </span>
