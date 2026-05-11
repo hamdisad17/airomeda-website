@@ -249,8 +249,36 @@ export function Architecture() {
             </div>
           </RevealSection>
 
-          {/* Main visual — 3 column flow */}
-          <div className="mt-16 grid lg:grid-cols-[1fr_1.2fr_1fr] gap-8 lg:gap-12 items-stretch">
+          {/* Mobile: simple 2-col category grid + outcome list */}
+          <div className="mt-10 lg:hidden">
+            <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium mb-4">Bağlanan sistemler</p>
+            <div className="grid grid-cols-2 gap-2">
+              {CATEGORIES.map((c) => (
+                <div key={c.key} className="cat-card border border-border bg-background px-3 py-2.5 flex items-center gap-2">
+                  <span className="text-accent w-7 h-7 flex items-center justify-center border border-border bg-elevated/40 flex-shrink-0">
+                    <CategoryIcon name={c.key} />
+                  </span>
+                  <p className="text-xs font-semibold text-foreground leading-tight">{c.label}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 space-y-3">
+              <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium mb-4">Size ne kazandırır</p>
+              {OUTCOMES.map((o) => (
+                <div key={o.title} className="outcome-card border border-border bg-background p-4">
+                  <p className="font-semibold text-foreground text-sm">{o.title}</p>
+                  <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{o.body}</p>
+                </div>
+              ))}
+              <Link href="/iletisim" className="outcome-card mt-2 border border-accent bg-accent/5 px-4 py-3 flex items-center justify-between group">
+                <span className="font-semibold text-sm text-foreground">Sisteminizi bağlayalım</span>
+                <span className="font-mono text-sm text-accent transition-transform group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Main visual — 3 column flow (desktop only) */}
+          <div className="hidden mt-16 lg:grid lg:grid-cols-[1fr_1.2fr_1fr] gap-8 lg:gap-12 items-stretch">
             {/* Left: source categories */}
             <div className="space-y-2">
               <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium mb-4">

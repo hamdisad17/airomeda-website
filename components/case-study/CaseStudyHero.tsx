@@ -44,20 +44,20 @@ export async function CaseStudyHero({ data }: { data: CaseStudyFrontmatter }) {
         </p>
 
         {/* Meta row */}
-        <div className="mt-10 flex flex-wrap gap-0 border border-border divide-x divide-border overflow-hidden">
-          <div className="px-6 py-4 bg-elevated">
+        <div className="mt-10 grid grid-cols-2 md:flex md:flex-wrap gap-px border border-border bg-border overflow-hidden">
+          <div className="px-5 py-4 bg-elevated">
             <p className="font-mono text-[10px] uppercase text-muted-foreground">{t('client_label')}</p>
             <p className="mt-1 font-semibold text-foreground">{data.client}</p>
           </div>
-          <div className="px-6 py-4 bg-elevated">
+          <div className="px-5 py-4 bg-elevated">
             <p className="font-mono text-[10px] uppercase text-muted-foreground">{t('industry_label')}</p>
             <p className="mt-1 font-semibold text-accent">{data.industry}</p>
           </div>
-          <div className="px-6 py-4 bg-elevated">
+          <div className="px-5 py-4 bg-elevated">
             <p className="font-mono text-[10px] uppercase text-muted-foreground">{t('year_label')}</p>
             <p className="mt-1 font-semibold tabular-nums text-foreground">{data.year}</p>
           </div>
-          <div className="px-6 py-4 bg-elevated flex-1">
+          <div className="px-5 py-4 bg-elevated col-span-2 md:flex-1">
             <p className="font-mono text-[10px] uppercase text-muted-foreground">{t('services_label')}</p>
             <div className="mt-1 flex flex-wrap gap-1.5">
               {data.services.map((s) => (

@@ -149,7 +149,7 @@ export function CodeSample() {
   return (
     <section className="border-b border-border bg-muted/30 py-24 md:py-32">
       <Container as="div">
-        <div className="grid items-start gap-16 lg:grid-cols-2">
+        <div className="grid items-start gap-10 lg:gap-16 lg:grid-cols-2">
           <RevealSection>
             <div>
               <p className="font-mono text-eyebrow uppercase text-accent">

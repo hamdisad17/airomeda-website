@@ -153,6 +153,10 @@ export function SelectedWork() {
 
   useGSAP(() => {
     if (!sectionRef.current || !trackRef.current) return;
+
+    // Disable pinned horizontal scroll on mobile (touch) devices
+    if (window.innerWidth < 768) return;
+
     const track = trackRef.current;
     const section = sectionRef.current;
 
@@ -199,16 +203,16 @@ export function SelectedWork() {
         </Container>
       </div>
 
-      <div className="overflow-hidden">
-        <div ref={trackRef} className="flex gap-8 px-[5vw] pb-20" style={{ width: 'max-content' }}>
+      <div className="overflow-x-auto md:overflow-hidden">
+        <div ref={trackRef} className="flex gap-6 md:gap-8 px-5 md:px-[5vw] pb-12 md:pb-20" style={{ width: 'max-content' }}>
           {WORKS.map((w, i) => (
             <article
               key={w.key}
-              className="flex-shrink-0 w-[88vw] md:w-[68vw] lg:w-[52vw] border border-border bg-elevated relative overflow-hidden group"
+              className="flex-shrink-0 w-[85vw] sm:w-[80vw] md:w-[68vw] lg:w-[52vw] border border-border bg-elevated relative overflow-hidden group"
             >
-              <div className="grid md:grid-cols-[1.2fr_1fr] gap-0 h-full">
+              <div className="grid sm:grid-cols-[1.2fr_1fr] gap-0 h-full">
                 {/* Visual panel */}
-                <div className="relative bg-background border-r border-border min-h-[300px] md:min-h-[420px] p-6 flex items-center justify-center overflow-hidden">
+                <div className="relative bg-background sm:border-r border-b sm:border-b-0 border-border min-h-[200px] sm:min-h-[300px] md:min-h-[420px] p-6 flex items-center justify-center overflow-hidden">
                   <div aria-hidden className="pointer-events-none absolute inset-0"
                     style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgb(20 184 166 / 0.04), transparent 70%)' }}/>
                   <div className="relative w-full max-w-md">

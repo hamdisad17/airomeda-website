@@ -24,7 +24,7 @@ export async function MetricsBlock({ metrics }: { metrics: CaseStudyFrontmatter[
         </RevealSection>
         <div className="mt-10 grid grid-cols-2 md:grid-cols-4 border border-border divide-x divide-y md:divide-y-0 divide-border overflow-hidden">
           {metrics.map((m) => (
-            <div key={m.label} className="p-8 bg-elevated group hover:bg-muted/40 transition-colors">
+            <div key={m.label} className="p-5 md:p-8 bg-elevated group hover:bg-muted/40 transition-colors">
               <p
                 className="font-semibold tabular-nums text-accent leading-none"
                 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', letterSpacing: '-0.03em' }}

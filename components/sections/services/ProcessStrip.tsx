@@ -24,7 +24,7 @@ export function ProcessStrip() {
           </h2>
         </RevealSection>
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-5 gap-0 border border-border divide-y md:divide-y-0 md:divide-x divide-border overflow-hidden">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px border border-border bg-border overflow-hidden">
           {STEPS.map((step) => (
             <div key={step.num} className="p-6 bg-elevated group hover:bg-muted/40 transition-colors">
               <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">{step.num}</p>

@@ -22,7 +22,7 @@ export function Numbers() {
         </RevealSection>
         <StaggerGrid className="mt-12 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
           {STATS.map((s) => (
-            <div data-stagger-item key={s.label} className="bg-background p-8">
+            <div data-stagger-item key={s.label} className="bg-background p-5 md:p-8">
               <p className="font-mono text-display-2 font-semibold tracking-tight tabular-nums text-foreground">
                 <CountUp end={s.end} suffix={s.suffix} decimals={s.decimals} />
               </p>

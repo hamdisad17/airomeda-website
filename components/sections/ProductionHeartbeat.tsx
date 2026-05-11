@@ -154,15 +154,15 @@ function LiveLog() {
       {lines.map((l, i) => (
         <div
           key={l.key ?? i}
-          className="px-6 py-2 border-b border-border last:border-b-0 flex items-center gap-3 hover:bg-muted/30 transition-colors"
+          className="px-4 md:px-6 py-2 border-b border-border last:border-b-0 flex items-center gap-2 md:gap-3 hover:bg-muted/30 transition-colors"
         >
-          <span className="text-muted-foreground tabular-nums w-20 shrink-0">
-            {l.minsAgo} dk önce
+          <span className="text-muted-foreground tabular-nums w-16 md:w-20 shrink-0">
+            {l.minsAgo} dk
           </span>
-          <span className="font-medium text-foreground shrink-0">{l.actor}</span>
-          <span className="flex-1 text-muted-foreground truncate">{l.action}</span>
+          <span className="font-medium text-foreground shrink-0 hidden sm:inline">{l.actor}</span>
+          <span className="flex-1 text-muted-foreground truncate min-w-0">{l.action}</span>
           {l.badge && (
-            <span className={`px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider rounded-sm shrink-0 ${badgeClass(l.badgeTone)}`}>
+            <span className={`px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wider rounded-sm shrink-0 hidden sm:inline ${badgeClass(l.badgeTone)}`}>
               {l.badge}
             </span>
           )}

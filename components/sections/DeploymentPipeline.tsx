@@ -59,6 +59,8 @@ export function DeploymentPipeline() {
 
   useGSAP(() => {
     if (!sectionRef.current) return;
+    // Disable scroll-pinned animation on mobile
+    if (window.innerWidth < 768) return;
     const trigger = ScrollTrigger.create({
       trigger: sectionRef.current,
       start: 'top top',
@@ -75,7 +77,7 @@ export function DeploymentPipeline() {
   }, { scope: sectionRef });
 
   return (
-    <div ref={sectionRef} className="border-b border-border min-h-screen bg-elevated/40 relative overflow-hidden">
+    <div ref={sectionRef} className="border-b border-border md:min-h-screen bg-elevated/40 relative overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-50"
         style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgb(20 184 166 / 0.1), transparent 70%)' }}/>
       <Container as="div" className="relative pt-20 pb-20 min-h-screen flex flex-col justify-center">
@@ -89,7 +91,7 @@ export function DeploymentPipeline() {
           </p>
         </RevealSection>
 
-        <div className="mt-16 grid lg:grid-cols-[1fr_1.4fr] gap-12 items-start">
+        <div className="mt-10 md:mt-16 grid gap-8 lg:gap-12 lg:grid-cols-[1fr_1.4fr] items-start">
           {/* Stage list */}
           <ol className="space-y-0 border-l border-border">
             {STAGES.map((s, i) => {

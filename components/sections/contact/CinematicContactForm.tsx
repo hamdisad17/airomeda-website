@@ -31,7 +31,7 @@ export function CinematicContactForm() {
           </div>
 
           {/* Right form */}
-          <div className="border border-border bg-elevated/20 p-8">
+          <div className="border border-border bg-elevated/20 p-5 md:p-8">
             <ContactForm />
           </div>
         </div>

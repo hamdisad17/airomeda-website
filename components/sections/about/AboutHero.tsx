@@ -23,7 +23,7 @@ export function AboutHero() {
         }}
       />
       <Container as="div" className="relative py-24 md:py-40">
-        <div className="grid md:grid-cols-[1fr_340px] gap-12 items-start">
+        <div className="grid gap-8 md:gap-12 md:grid-cols-[1fr_340px] items-start">
           {/* Left — headline */}
           <div>
             <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">

@@ -73,7 +73,7 @@ export function StudioGallery() {
               span === 'tall'
                 ? 'row-span-2'
                 : span === 'wide'
-                  ? 'md:col-span-2'
+                  ? 'col-span-2'
                   : '';
             return (
               <figure

@@ -50,11 +50,11 @@ export function CustomerJourney() {
           {STEPS.map((s) => (
             <div
               key={s.num}
-              className="bg-background p-8 md:p-10 grid grid-cols-[auto_1fr_auto] gap-6 md:gap-12 items-center group hover:bg-elevated/40 transition-colors"
+              className="bg-background p-5 md:p-8 lg:p-10 grid grid-cols-[auto_1fr_auto] gap-4 md:gap-8 lg:gap-12 items-center group hover:bg-elevated/40 transition-colors"
             >
-              <span className="text-3xl md:text-5xl font-semibold tabular-nums text-accent">{s.num}</span>
+              <span className="text-2xl md:text-3xl lg:text-5xl font-semibold tabular-nums text-accent">{s.num}</span>
               <div>
-                <h3 className="text-2xl font-semibold tracking-tight">{s.title}</h3>
+                <h3 className="text-lg md:text-2xl font-semibold tracking-tight">{s.title}</h3>
                 <p className="mt-2 text-muted-foreground leading-relaxed max-w-2xl">{s.body}</p>
               </div>
               <span className="hidden md:block text-sm text-muted-foreground whitespace-nowrap">{s.duration}</span>

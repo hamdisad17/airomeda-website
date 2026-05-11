@@ -56,7 +56,7 @@ export function BentoShowcase() {
           </h2>
         </RevealSection>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 md:grid-rows-[200px_200px_200px] gap-4">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 md:grid-rows-[200px_200px_200px] gap-4 md:auto-rows-auto">
           {/* Big featured — güven ve deneyim */}
           <TiltCard className="md:col-span-2 md:row-span-2 p-8 relative overflow-hidden border border-border bg-elevated">
             <div aria-hidden className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full"

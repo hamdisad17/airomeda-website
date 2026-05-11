@@ -17,7 +17,7 @@ export async function Hero() {
       <ParticleField />
 
       <Container as="div" className="relative pt-20 pb-24 md:pt-32 md:pb-36">
-        <div className="grid items-center gap-16 lg:grid-cols-2">
+        <div className="grid items-center gap-10 lg:gap-16 lg:grid-cols-2">
           <div>
             <span className="inline-flex items-center gap-2 border border-border bg-elevated/50 backdrop-blur-sm px-3 py-1 text-eyebrow uppercase tracking-wider">
               <span className="relative flex h-1.5 w-1.5">
@@ -76,7 +76,9 @@ export async function Hero() {
 
           {/* Terminal demo with floating UI peeks */}
           <div className="relative">
-            <FloatingUIPeeks />
+            <div className="hidden lg:block">
+              <FloatingUIPeeks />
+            </div>
             <TerminalDemo />
           </div>
         </div>

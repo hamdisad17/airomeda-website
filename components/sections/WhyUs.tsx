@@ -80,7 +80,7 @@ export function WhyUs() {
         <StaggerGrid className="mt-16 grid gap-6 md:grid-cols-2">
           {PAIRS.map((p) => (
             <div data-stagger-item key={p.pain} className="grid gap-0 border border-border bg-background md:grid-cols-2">
-              <div className="border-r border-border p-6">
+              <div className="border-b md:border-b-0 md:border-r border-border p-6">
                 <div className="mb-3">{p.icon}</div>
                 <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">Sorun</p>
                 <h3 className="mt-3 text-lg font-semibold tracking-tight">{p.pain}</h3>

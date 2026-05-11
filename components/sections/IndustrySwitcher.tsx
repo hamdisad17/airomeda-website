@@ -129,9 +129,32 @@ export function IndustrySwitcher() {
           </p>
         </RevealSection>
 
-        <div className="mt-14 grid gap-px overflow-hidden border border-border bg-border lg:grid-cols-[1fr_1.5fr]">
-          {/* Tab rail */}
-          <div className="bg-background">
+        {/* Mobile: horizontal scroll tabs */}
+        <div className="mt-8 lg:hidden overflow-x-auto -mx-5 px-5 pb-1">
+          <ul role="tablist" className="flex gap-2 w-max">
+            {INDUSTRIES.map((ind, i) => (
+              <li key={ind.key}>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={i === active}
+                  onClick={() => setActive(i)}
+                  className={`whitespace-nowrap px-4 py-2 text-sm font-semibold border transition-colors ${
+                    i === active
+                      ? 'border-accent text-accent bg-accent/10'
+                      : 'border-border text-muted-foreground bg-elevated'
+                  }`}
+                >
+                  {ind.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-4 lg:mt-14 grid gap-px overflow-hidden border border-border bg-border lg:grid-cols-[1fr_1.5fr]">
+          {/* Tab rail — desktop only */}
+          <div className="hidden lg:block bg-background">
             <ul role="tablist" className="divide-y divide-border">
               {INDUSTRIES.map((ind, i) => (
                 <li key={ind.key}>

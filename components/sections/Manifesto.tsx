@@ -78,7 +78,7 @@ export function Manifesto() {
           ))}
         </div>
 
-        <div className="mt-24 grid md:grid-cols-3 gap-8 max-w-4xl border-t border-border pt-12">
+        <div className="mt-16 md:mt-24 grid gap-6 md:gap-8 md:grid-cols-3 max-w-4xl border-t border-border pt-8 md:pt-12">
           <div>
             <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">teslim</p>
             <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">Hızlı ve güvenilir</p>

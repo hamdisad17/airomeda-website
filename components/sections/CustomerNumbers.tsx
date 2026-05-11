@@ -23,8 +23,8 @@ export function CustomerNumbers() {
         </RevealSection>
         <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-px overflow-hidden border border-border bg-border">
           {STATS.map((s) => (
-            <div key={s.label} className="bg-background p-8 text-center md:text-left">
-              <div className="text-5xl md:text-6xl font-semibold tabular-nums tracking-tight text-foreground">
+            <div key={s.label} className="bg-background p-5 md:p-8 text-center md:text-left">
+              <div className="text-4xl md:text-5xl lg:text-6xl font-semibold tabular-nums tracking-tight text-foreground">
                 <CountUp end={s.value} />{s.suffix}
               </div>
               <p className="mt-3 text-sm text-muted-foreground">{s.label}</p>

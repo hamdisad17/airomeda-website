@@ -57,11 +57,11 @@ export function ServicesHero() {
         </p>
 
         {/* Disciplines strip */}
-        <div className="mt-12 flex flex-wrap gap-0 border border-border divide-x divide-border overflow-hidden">
+        <div className="mt-8 md:mt-12 grid grid-cols-2 sm:flex sm:flex-wrap gap-px border border-border bg-border overflow-hidden">
           {DISCIPLINES.map((d, i) => (
             <div
               key={d}
-              className="px-5 py-3 flex items-center gap-2 bg-elevated hover:bg-muted/40 transition-colors group"
+              className="px-4 py-3 flex items-center gap-2 bg-elevated hover:bg-muted/40 transition-colors group"
             >
               <span className="font-mono text-[10px] text-muted-foreground tabular-nums">
                 {String(i + 1).padStart(2, '0')}

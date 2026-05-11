@@ -214,7 +214,7 @@ export function DeploymentGlobe() {
         }}
       />
       <Container as="div" className="relative">
-        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 items-center">
+        <div className="grid gap-10 lg:gap-12 lg:grid-cols-[1fr_1.4fr] items-center">
           <RevealSection>
             <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Dünya Çapında</p>
             <h2 className="mt-4 text-display-2 font-semibold tracking-tight">
@@ -260,7 +260,7 @@ export function DeploymentGlobe() {
               </div>
             </dl>
           </RevealSection>
-          <div className="relative aspect-square w-full max-w-[640px] mx-auto">
+          <div className="relative aspect-square w-full max-w-[400px] md:max-w-[640px] mx-auto">
             <canvas ref={canvasRef} className="w-full h-full" aria-hidden />
           </div>
         </div>

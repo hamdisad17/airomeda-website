@@ -48,7 +48,7 @@ export function OpenRoles({ jobs }: OpenRolesProps) {
               <RevealSection key={job.slug} delay={i * 0.06}>
                 <Link
                   href={`/kariyer/${job.slug}`}
-                  className="group flex items-start justify-between gap-6 border border-border bg-elevated/20 hover:bg-elevated/60 hover:border-accent/50 transition-colors p-6"
+                  className="group flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-6 border border-border bg-elevated/20 hover:bg-elevated/60 hover:border-accent/50 transition-colors p-5 md:p-6"
                 >
                   <div className="flex items-start gap-4">
                     <span className="font-mono text-accent mt-0.5 text-lg shrink-0">{icon}</span>
@@ -65,7 +65,7 @@ export function OpenRoles({ jobs }: OpenRolesProps) {
                       </div>
                     </div>
                   </div>
-                  <span className="shrink-0 self-center font-mono text-xs text-accent group-hover:translate-x-1 transition-transform">
+                  <span className="sm:shrink-0 sm:self-center font-mono text-xs text-accent group-hover:translate-x-1 transition-transform self-start">
                     Başvur →
                   </span>
                 </Link>
