@@ -94,11 +94,11 @@ export function BentoShowcase() {
 
           {/* Quote */}
           <TiltCard className="p-6 border border-border bg-elevated md:col-span-2">
-            <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">PayGate · Fintech</p>
+            <p className="text-eyebrow uppercase tracking-wider text-muted-foreground font-medium">Fortuneris · Sermaye Piyasaları</p>
             <p className="mt-3 text-base md:text-lg font-medium leading-snug">
-              <span className="text-accent">&ldquo;</span>İlk görüşmeden 10 haftada canlıya geçtik. Teknik kalite ve süreç disiplini açısından şimdiye kadar çalıştığım en güçlü ekip.<span className="text-accent">&rdquo;</span>
+              <span className="text-accent">&ldquo;</span>Lisans dosyamızda istediğimiz her belgeyi panelden tek tıkla çekebildik. Denetçilerin sorduğu hiçbir soru için ek geliştirme yapmamız gerekmedi.<span className="text-accent">&rdquo;</span>
             </p>
-            <p className="mt-3 text-xs text-muted-foreground">— Murat Karaağaç, Genel Müdür · PayGate</p>
+            <p className="mt-3 text-xs text-muted-foreground">— Selin Aksu, Genel Müdür · Fortuneris</p>
           </TiltCard>
 
           {/* Ekip stat */}

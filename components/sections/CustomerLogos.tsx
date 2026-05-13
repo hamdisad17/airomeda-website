@@ -3,10 +3,10 @@ import { Container } from '@/components/layout/Container';
 import { RevealSection } from '@/components/motion/RevealSection';
 
 const LOGOS = [
-  { v: 'paygate', industry: 'Fintech' },
-  { v: 'bahis', industry: 'iGaming' },
-  { v: 'hubert', industry: 'E-Ticaret' },
+  { v: 'fortuneris', industry: 'Sermaye Piyasaları' },
   { v: 'topratebet', industry: 'iGaming' },
+  { v: 'airomedaMarkets', industry: 'Pazaryeri SaaS' },
+  { v: 'airomedata', industry: 'B2B Pazarlama' },
   { v: 'pazarliman', industry: 'Marketplace' },
   { v: 'entegrasys', industry: 'Entegrasyon' },
   { v: 'markaco', industry: 'Marka & Pazarlama' },

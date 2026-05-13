@@ -1,26 +1,28 @@
 import * as React from 'react';
 
-type Variant = 'paygate' | 'bahis' | 'hubert' | 'topratebet' | 'pazarliman' | 'entegrasys' | 'markaco' | 'studio' | 'ziraat' | 'kumtel' | 'aras' | 'hsd' | 'kodland' | 'widegame' | 'tsdigital' | 'excellence';
+type Variant = 'fortuneris' | 'airomedaMarkets' | 'airomedata' | 'topratebet' | 'pazarliman' | 'entegrasys' | 'markaco' | 'studio' | 'ziraat' | 'kumtel' | 'aras' | 'hsd' | 'kodland' | 'widegame' | 'tsdigital' | 'excellence';
 
 const SHAPES: Record<Variant, React.ReactNode> = {
-  paygate: (
-    <svg viewBox="0 0 100 24" fill="currentColor" aria-label="PayGate">
-      <path d="M4 18V6h8c3 0 5 1.5 5 4s-2 4-5 4H7v4H4zm3-7h4c1.5 0 2.5-.5 2.5-2S12.5 7 11 7H7v4z"/>
-      <text x="22" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">PayGate</text>
+  fortuneris: (
+    <svg viewBox="0 0 110 24" fill="currentColor" aria-label="Fortuneris">
+      <path d="M4 18V6h10v3H7v2h6v3H7v4H4z"/>
+      <text x="18" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Fortuneris</text>
     </svg>
   ),
-  bahis: (
-    <svg viewBox="0 0 100 24" fill="currentColor" aria-label="Bahis.io">
-      <circle cx="10" cy="12" r="6" fill="none" stroke="currentColor" strokeWidth="2"/>
-      <circle cx="10" cy="12" r="2"/>
-      <text x="22" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Bahis.io</text>
+  airomedaMarkets: (
+    <svg viewBox="0 0 140 24" fill="currentColor" aria-label="Airomeda Markets">
+      <path d="M4 18l4-12 4 12M6 14h4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      <text x="18" y="17" fontSize="10" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Airomeda Markets</text>
     </svg>
   ),
-  hubert: (
-    <svg viewBox="0 0 100 24" fill="currentColor" aria-label="Hubert">
-      <rect x="4" y="6" width="12" height="12" rx="0" fill="none" stroke="currentColor" strokeWidth="2"/>
-      <rect x="7" y="9" width="6" height="6"/>
-      <text x="22" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Hubert</text>
+  airomedata: (
+    <svg viewBox="0 0 120 24" fill="currentColor" aria-label="Airomedata">
+      <circle cx="6" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+      <circle cx="14" cy="8" r="2"/>
+      <circle cx="14" cy="16" r="2"/>
+      <line x1="8" y1="11" x2="13" y2="9" stroke="currentColor" strokeWidth="1"/>
+      <line x1="8" y1="13" x2="13" y2="15" stroke="currentColor" strokeWidth="1"/>
+      <text x="22" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Airomedata</text>
     </svg>
   ),
   topratebet: (

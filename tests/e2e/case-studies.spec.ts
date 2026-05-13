@@ -6,9 +6,9 @@ test('TR case studies index renders', async ({ page }) => {
 });
 
 test('TR case study detail renders', async ({ page }) => {
-  const res = await page.goto('/tr/calismalarimiz/paygate-core-banking');
+  const res = await page.goto('/tr/calismalarimiz/fortuneris');
   expect(res?.status()).toBe(200);
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('PayGate');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Fortuneris');
 });
 
 test('Unknown case study slug 404s', async ({ page }) => {

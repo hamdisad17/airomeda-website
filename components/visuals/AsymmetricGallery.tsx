@@ -27,7 +27,7 @@ const IMAGES: GalleryImage[] = [
   {
     src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=85',
     alt: 'Finance dashboard',
-    caption: 'PayGate · Finans Platformu',
+    caption: 'Fortuneris · Yatırım Platformu',
     rotate: 1.2,
     colSpan: 4,
     aspectClass: 'aspect-[3/4]',

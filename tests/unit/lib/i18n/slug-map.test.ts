@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { getServiceSlugInLocale, SERVICE_SLUGS } from '@/lib/i18n/slug-map';
 
 describe('slug-map', () => {
-  it('exports the 7 service entries', () => {
-    expect(SERVICE_SLUGS).toHaveLength(7);
+  it('exports the 8 service entries', () => {
+    expect(SERVICE_SLUGS).toHaveLength(8);
   });
 
   it('maps tr→en finans', () => {

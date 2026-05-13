@@ -37,7 +37,7 @@ export function GamingControlPanel() {
         <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]/70" />
         <span className="ml-3 text-xs text-muted-foreground">
-          Operatör Paneli · Bahis.io
+          Operatör Paneli · TopRateBet
         </span>
       </div>
       <div className="p-5 space-y-4">

@@ -4,25 +4,25 @@ import { StaggerGrid } from '@/components/motion/StaggerGrid';
 
 const QUOTES = [
   {
-    quote: "İlk görüşmeden 10 haftada sistemi canlıya aldık. Her adımda bize ne yapıldığını açıkladılar, süprizi yoktu. Ödeme sistemimiz hiç bu kadar güvenilir çalışmamıştı.",
-    author: 'Murat Karaağaç',
+    quote: "Lisans dosyamızda istediğimiz her belgeyi panelden tek tıkla çekebildik. Denetçilerin sorduğu hiçbir soru için ek geliştirme yapmamız gerekmedi. İlk müşterimizden gelen başvuru on dakikada hesap olarak açıldı.",
+    author: 'Selin Aksu',
     role: 'Genel Müdür',
-    company: 'PayGate',
-    industry: 'Finans',
+    company: 'Fortuneris',
+    industry: 'Sermaye Piyasaları',
   },
   {
-    quote: "Platformumuzu sıfırdan kurarken Airomeda'nın 11 yıllık deneyimi gerçekten fark yarattı. Sürecin her aşamasında yanımızdaydılar, yayından sonra da bizi yalnız bırakmadılar.",
-    author: 'Zeynep Yıldırım',
-    role: 'Kurucu Ortak',
-    company: 'Bahis.io',
-    industry: 'Oyun Platformu',
+    quote: "Markamızı ilk günden destekleyen, lisans gerekliliklerini bizden önce sorgulayan bir ekiple çalıştık. Açılış gününde tek bir kesinti yaşamadık; turnuvalarımız ilk haftasında planladığımız hedefin iki katı oyuncuya ulaştı.",
+    author: 'Onur Karaca',
+    role: 'Operasyon Direktörü',
+    company: 'TopRateBet',
+    industry: 'Şans Oyunları',
   },
   {
-    quote: "Avrupa'dan bir şirkete bu kadar profesyonel hizmet verebilmeleri etkileyici. Türkçe ve İngilizce destek, hızlı yanıt — uzaktan çalışmada hiç sorun yaşamadık.",
-    author: 'Emre Demir',
-    role: 'CEO',
-    company: 'Hubert Commerce',
-    industry: 'E-Ticaret',
+    quote: "Eskiden her pazaryerinde ayrı ekip vardı; şimdi tek bir kişi tüm kanalları yönetiyor. Telefonla çektiğimiz ürün fotoğraflarını yarım dakikada vitrine koyabildiğimiz için fotoğraf çekim bütçemizi başka yerlere ayırabiliyoruz.",
+    author: 'Mehmet Korkmaz',
+    role: 'E-Ticaret Müdürü',
+    company: 'Airomeda Markets',
+    industry: 'E-Ticaret SaaS',
   },
 ];
 

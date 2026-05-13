@@ -4,10 +4,10 @@ import Image from 'next/image';
 
 interface MarqueeItem { src: string; title: string; client: string; duration: string; }
 const ITEMS: MarqueeItem[] = [
-  { src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80', title: 'Bankacılık Platformu', client: 'PayGate', duration: '3:42' },
-  { src: 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=600&q=80', title: 'Oyun Platformu', client: 'Bahis.io', duration: '4:12' },
-  { src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80', title: 'E-Ticaret Mağazası', client: 'Hubert', duration: '2:48' },
-  { src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80', title: 'Sistem Entegrasyonu', client: 'Entegrasys', duration: '3:18' },
+  { src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80', title: 'Yatırım Platformu', client: 'Fortuneris', duration: '3:42' },
+  { src: 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=600&q=80', title: 'iGaming Platformu', client: 'TopRateBet', duration: '4:12' },
+  { src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80', title: 'Pazaryeri SaaS', client: 'Airomeda Markets', duration: '2:48' },
+  { src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80', title: 'Lead Bulma Platformu', client: 'Airomedata', duration: '3:18' },
 ];
 
 export function HoverVideoMarquee() {

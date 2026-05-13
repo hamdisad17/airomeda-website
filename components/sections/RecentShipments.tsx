@@ -2,11 +2,11 @@
 import * as React from 'react';
 
 const SHIPMENTS = [
-  { type: 'Ödeme altyapısı', client: 'PayGate', date: '3 hf önce' },
-  { type: 'iGaming platform', client: 'Bahis.io', date: '6 hf önce' },
-  { type: 'E-ticaret mağazası', client: 'Hubert Commerce', date: '9 hf önce' },
-  { type: 'ERP entegrasyonu', client: 'Entegrasys', date: '11 hf önce' },
-  { type: 'Marketplace altyapısı', client: 'Pazarlıman', date: '14 hf önce' },
+  { type: 'Lead bulma platformu', client: 'Airomedata', date: '2 hf önce' },
+  { type: 'Pazaryeri SaaS', client: 'Airomeda Markets', date: '5 hf önce' },
+  { type: 'Yatırım platformu', client: 'Fortuneris', date: '8 hf önce' },
+  { type: 'iGaming platformu', client: 'TopRateBet', date: '12 hf önce' },
+  { type: 'Marketplace altyapısı', client: 'Pazarlıman', date: '16 hf önce' },
 ];
 
 export function RecentShipments() {
