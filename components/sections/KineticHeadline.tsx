@@ -25,8 +25,8 @@ export function KineticHeadline({ words, connector, tailLine }: KineticHeadlineP
       if (!target) return;
       gsap.fromTo(
         target,
-        { yPercent: 100, opacity: 0, rotateX: -45 },
-        { yPercent: 0, opacity: 1, rotateX: 0, duration: 0.7, ease: 'power3.out' },
+        { opacity: 0 },
+        { opacity: 1, duration: 0.4, ease: 'power3.out' },
       );
     },
     { dependencies: [active], scope: containerRef },
@@ -35,12 +35,8 @@ export function KineticHeadline({ words, connector, tailLine }: KineticHeadlineP
   return (
     <h1 className="mt-6 md:mt-8 text-display-1 font-semibold">
       <span className="block">
-        <span
-          ref={containerRef}
-          className="inline-block align-baseline"
-          style={{ perspective: '800px' }}
-        >
-          <span key={active} className="kinetic-word inline-block text-accent">
+        <span ref={containerRef} className="inline align-baseline">
+          <span key={active} className="kinetic-word text-accent">
             {words[active]}
           </span>
         </span>
