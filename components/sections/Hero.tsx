@@ -4,7 +4,6 @@ import { Container } from '@/components/layout/Container';
 import { TerminalDemo } from '@/components/mockups/TerminalDemo';
 import { ParticleField } from '@/components/visuals/ParticleField';
 import { FlowField } from '@/components/visuals/FlowField';
-import { FloatingUIPeeks } from '@/components/visuals/FloatingUIPeeks';
 import { MagneticButton } from '@/components/motion/MagneticButton';
 import { KineticHeadline } from '@/components/sections/KineticHeadline';
 import { RecentShipments } from '@/components/sections/RecentShipments';
@@ -81,11 +80,8 @@ export async function Hero() {
             <RecentShipments />
           </div>
 
-          {/* Terminal demo with floating UI peeks */}
+          {/* Terminal demo */}
           <div className="relative">
-            <div className="hidden lg:block">
-              <FloatingUIPeeks />
-            </div>
             <TerminalDemo />
           </div>
         </div>
