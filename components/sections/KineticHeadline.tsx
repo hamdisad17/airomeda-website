@@ -36,17 +36,12 @@ export function KineticHeadline({ words, connector, tailLine }: KineticHeadlineP
     <h1 className="mt-6 md:mt-8 text-display-1 font-semibold">
       <span className="block">
         <span
-          className="inline-block overflow-hidden align-baseline"
-          style={{
-            perspective: '800px',
-            paddingBottom: '0.2em',
-            marginBottom: '-0.2em',
-          }}
+          ref={containerRef}
+          className="inline-block align-baseline"
+          style={{ perspective: '800px' }}
         >
-          <span ref={containerRef} className="inline-flex">
-            <span key={active} className="kinetic-word inline-block text-accent">
-              {words[active]}
-            </span>
+          <span key={active} className="kinetic-word inline-block text-accent">
+            {words[active]}
           </span>
         </span>
         <span className="text-muted-foreground"> {connector}</span>
