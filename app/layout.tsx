@@ -1,5 +1,5 @@
 import './globals.css';
-import { Manrope, Inter, IBM_Plex_Mono } from 'next/font/google';
+import { Manrope, Inter } from 'next/font/google';
 import { headers } from 'next/headers';
 import { ThemeProvider } from 'next-themes';
 import { routing } from '@/i18n/routing';
@@ -14,13 +14,6 @@ const manrope = Manrope({
 const inter = Inter({
   subsets: ['latin', 'latin-ext'],
   variable: '--font-inter',
-  display: 'swap',
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  variable: '--font-ibm-plex-mono',
-  weight: ['400', '500', '600'],
   display: 'swap',
 });
 
@@ -50,7 +43,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       : routing.defaultLocale;
 
   return (
-    <html lang={locale} className={`${manrope.variable} ${inter.variable} ${ibmPlexMono.variable}`} suppressHydrationWarning>
+    <html lang={locale} className={`${manrope.variable} ${inter.variable}`} suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           {children}

@@ -37,7 +37,11 @@ export function KineticHeadline({ words, connector, tailLine }: KineticHeadlineP
       <span className="block">
         <span
           className="inline-block overflow-hidden align-baseline"
-          style={{ perspective: '800px' }}
+          style={{
+            perspective: '800px',
+            paddingBottom: '0.2em',
+            marginBottom: '-0.2em',
+          }}
         >
           <span ref={containerRef} className="inline-flex">
             <span key={active} className="kinetic-word inline-block text-accent">
