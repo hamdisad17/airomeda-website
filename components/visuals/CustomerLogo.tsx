@@ -1,6 +1,12 @@
 import * as React from 'react';
 
-type Variant = 'fortuneris' | 'airomedaMarkets' | 'airomedata' | 'topratebet' | 'pazarliman' | 'entegrasys' | 'markaco' | 'studio' | 'ziraat' | 'kumtel' | 'aras' | 'hsd' | 'kodland' | 'widegame' | 'tsdigital' | 'excellence';
+type Variant =
+  | 'fortuneris' | 'airomedaMarkets' | 'airomedata' | 'topratebet'
+  | 'pazarliman' | 'entegrasys' | 'markaco' | 'studio'
+  | 'ziraat' | 'kumtel' | 'aras' | 'hsd' | 'kodland' | 'widegame' | 'tsdigital' | 'excellence'
+  | 'mavikule' | 'finansa' | 'vitrinplus' | 'stokakis'
+  | 'casinoy' | 'spor7' | 'bulutla' | 'klinika'
+  | 'hizliyol' | 'akademi360' | 'reformmob' | 'driveplus';
 
 const SHAPES: Record<Variant, React.ReactNode> = {
   fortuneris: (
@@ -112,6 +118,80 @@ const SHAPES: Record<Variant, React.ReactNode> = {
     <svg viewBox="0 0 130 24" fill="currentColor" aria-label="Excellence Talks">
       <path d="M4 8h10v3H7v2h6v3H7v1h7v3H4z" fill="currentColor"/>
       <text x="22" y="17" fontSize="10" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Excellence Talks</text>
+    </svg>
+  ),
+  mavikule: (
+    <svg viewBox="0 0 110 24" fill="currentColor" aria-label="Mavikule">
+      <path d="M5 18V6h3v5h4V6h3v12h-3v-4H8v4H5z"/>
+      <text x="22" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Mavikule</text>
+    </svg>
+  ),
+  finansa: (
+    <svg viewBox="0 0 100 24" fill="currentColor" aria-label="Finansa">
+      <path d="M5 18V6h9v3H8v2h5v3H8v4H5z"/>
+      <text x="20" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Finansa</text>
+    </svg>
+  ),
+  vitrinplus: (
+    <svg viewBox="0 0 100 24" fill="currentColor" aria-label="Vitrin+">
+      <path d="M4 6l5 12 5-12h-2L9 14 6 6H4z"/>
+      <text x="18" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Vitrin+</text>
+    </svg>
+  ),
+  stokakis: (
+    <svg viewBox="0 0 110 24" fill="currentColor" aria-label="StokAkış">
+      <path d="M5 8h8v3H8v2h5v3H5z"/>
+      <text x="18" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">StokAkış</text>
+    </svg>
+  ),
+  casinoy: (
+    <svg viewBox="0 0 100 24" fill="currentColor" aria-label="CasinoY">
+      <circle cx="9" cy="12" r="5" fill="none" stroke="currentColor" strokeWidth="2"/>
+      <circle cx="9" cy="12" r="1.5"/>
+      <text x="20" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">CasinoY</text>
+    </svg>
+  ),
+  spor7: (
+    <svg viewBox="0 0 90 24" fill="currentColor" aria-label="Spor7">
+      <path d="M5 6h10l-7 12" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      <text x="20" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Spor7</text>
+    </svg>
+  ),
+  bulutla: (
+    <svg viewBox="0 0 100 24" fill="currentColor" aria-label="Bulutla">
+      <path d="M6 14a3 3 0 010-6 4 4 0 017-1 3 3 0 011 6H6z" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+      <text x="20" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Bulutla</text>
+    </svg>
+  ),
+  klinika: (
+    <svg viewBox="0 0 100 24" fill="currentColor" aria-label="Klinika">
+      <path d="M8 6v12M4 12h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      <text x="18" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Klinika</text>
+    </svg>
+  ),
+  hizliyol: (
+    <svg viewBox="0 0 110 24" fill="currentColor" aria-label="Hızlı Yol">
+      <path d="M4 12h10M11 9l3 3-3 3" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      <text x="20" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Hızlı Yol</text>
+    </svg>
+  ),
+  akademi360: (
+    <svg viewBox="0 0 130 24" fill="currentColor" aria-label="Akademi360">
+      <path d="M9 6L4 9l5 3 5-3-5-3zM4 13l5 3 5-3" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinejoin="round"/>
+      <text x="20" y="17" fontSize="10" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Akademi360</text>
+    </svg>
+  ),
+  reformmob: (
+    <svg viewBox="0 0 130 24" fill="currentColor" aria-label="Reform Mobilya">
+      <rect x="4" y="8" width="12" height="6" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M6 14v3M14 14v3" stroke="currentColor" strokeWidth="1.5"/>
+      <text x="22" y="17" fontSize="10" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Reform Mobilya</text>
+    </svg>
+  ),
+  driveplus: (
+    <svg viewBox="0 0 100 24" fill="currentColor" aria-label="Drive+">
+      <path d="M4 14h12l-2-5H6l-2 5zM6 15v2M14 15v2" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round"/>
+      <text x="20" y="17" fontSize="11" fontFamily="Geist, sans-serif" fontWeight="600" letterSpacing="-0.02em">Drive+</text>
     </svg>
   ),
 };
