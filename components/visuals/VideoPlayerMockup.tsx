@@ -3,7 +3,7 @@ import * as React from 'react';
 import Image from 'next/image';
 
 interface VideoPlayerMockupProps {
-  title: string;       // e.g., "PayGate · Core Banking Migration"
+  title: string;       // e.g., "Fortuneris · Investment Platform"
   duration?: string;   // "3:42"
   poster?: string;     // optional Unsplash url for fake "frame"
 }
