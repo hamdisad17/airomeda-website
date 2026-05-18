@@ -30,6 +30,9 @@ const CHECKS: ReadonlyArray<Omit<EnvCheck, 'present'>> = [
   { name: 'AIROMEDA_DB_PATH', group: 'core', required: false },
   { name: 'ADMIN_USER', group: 'core', required: false },
   { name: 'ADMIN_PASS', group: 'core', required: false },
+
+  // Analytics — optional
+  { name: 'NEXT_PUBLIC_PLAUSIBLE_DOMAIN', group: 'observability', required: false },
 ];
 
 export function inspectEnv(): { checks: EnvCheck[]; missingRequired: string[] } {

@@ -7,6 +7,7 @@ import { Footer } from '@/components/layout/Footer';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { organizationSchema, websiteSchema } from '@/lib/seo/jsonld';
 import { CookieConsent } from '@/components/legal/CookieConsent';
+import { PlausibleAnalytics } from '@/components/analytics/PlausibleAnalytics';
 import { SmoothScroll } from '@/components/motion/SmoothScroll';
 import { MorphCursor } from '@/components/motion/MorphCursor';
 import { CommandPalette } from '@/components/overlay/CommandPalette';
@@ -40,6 +41,7 @@ export default async function LocaleLayout({
         <main className="min-h-[60vh]">{children}</main>
         <Footer />
         <CookieConsent />
+        <PlausibleAnalytics />
       </SmoothScroll>
     </NextIntlClientProvider>
   );
