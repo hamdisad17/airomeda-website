@@ -104,15 +104,26 @@ jobs:
       - name: Smoke check
         id: smoke
         run: |
+          # Health check verifies the Node process itself, not a static page.
+          # A cached /tr from nginx could return 200 even if PM2 is down;
+          # /api/health forces a request through to the app.
           for i in 1 2 3 4 5; do
-            STATUS=$(curl -sfL -o /dev/null -w "%{http_code}" https://${{ vars.PUBLIC_HOSTNAME }}/tr || echo "000")
+            STATUS=$(curl -sfL -o /dev/null -w "%{http_code}" "https://${{ vars.PUBLIC_HOSTNAME }}/api/health" || echo "000")
             if [ "$STATUS" = "200" ]; then
-              echo "✓ site healthy ($STATUS at /tr)"
+              echo "✓ app healthy (200 at /api/health)"
               exit 0
             fi
-            echo "Attempt $i: status $STATUS — retrying..."
+            if [ "$STATUS" = "503" ]; then
+              echo "Attempt $i: app reachable but env-degraded (503 at /api/health) — retrying..."
+            else
+              echo "Attempt $i: status $STATUS — retrying..."
+            fi
             sleep 5
           done
+          # Final attempt: show the response body to aid debugging
+          echo "--- /api/health response ---"
+          curl -sL "https://${{ vars.PUBLIC_HOSTNAME }}/api/health" || true
+          echo
           echo "Site failed health check"
           exit 1
 
