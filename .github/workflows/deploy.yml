@@ -38,12 +38,36 @@ jobs:
           # Bundle PM2 config so the deploy step can reload from the release dir
           cp ecosystem.config.cjs .next/standalone/ecosystem.config.cjs
 
-      - name: Set up SSH
+      - name: Set up SSH (with retry)
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.VPS_SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H -p ${{ vars.VPS_PORT || 22 }} ${{ vars.VPS_HOST }} >> ~/.ssh/known_hosts
+
+          # ssh-keyscan can fail transiently when the VPS sshd is briefly
+          # unresponsive (Hostinger maintenance window, brief network
+          # blip). Retry up to 3 times with a 10s gap so a one-off blip
+          # doesn't kill the deploy.
+          for attempt in 1 2 3; do
+            if ssh-keyscan -T 10 -H -p ${{ vars.VPS_PORT || 22 }} ${{ vars.VPS_HOST }} >> ~/.ssh/known_hosts 2>/dev/null; then
+              if [ -s ~/.ssh/known_hosts ]; then
+                echo "✓ ssh-keyscan succeeded on attempt $attempt"
+                exit 0
+              fi
+            fi
+            echo "ssh-keyscan attempt $attempt failed — retrying in 10s..."
+            sleep 10
+          done
+          echo "✗ ssh-keyscan failed after 3 attempts — aborting deploy"
+          exit 1
+
+      - name: Capture previous release for rollback
+        id: prev
+        run: |
+          PREV=$(ssh -i ~/.ssh/deploy_key -p ${{ vars.VPS_PORT || 22 }} ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} \
+            "readlink /var/www/airomeda/current 2>/dev/null || echo none")
+          echo "Previous release: $PREV"
+          echo "release=$PREV" >> $GITHUB_OUTPUT
 
       - name: rsync release to VPS
         env:
@@ -78,6 +102,7 @@ jobs:
           EOF
 
       - name: Smoke check
+        id: smoke
         run: |
           for i in 1 2 3 4 5; do
             STATUS=$(curl -sfL -o /dev/null -w "%{http_code}" https://${{ vars.PUBLIC_HOSTNAME }}/tr || echo "000")
@@ -89,4 +114,28 @@ jobs:
             sleep 5
           done
           echo "Site failed health check"
+          exit 1
+
+      - name: Auto-rollback on smoke check failure
+        if: failure() && steps.smoke.conclusion == 'failure' && steps.prev.outputs.release != 'none'
+        env:
+          PREV: ${{ steps.prev.outputs.release }}
+        run: |
+          echo "⚠ smoke check failed — rolling back to $PREV"
+          ssh -i ~/.ssh/deploy_key -p ${{ vars.VPS_PORT || 22 }} ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} bash <<EOF
+            set -e
+            cd /var/www/airomeda
+            ln -sfn ${PREV} current
+            pm2 reload /var/www/airomeda/current/ecosystem.config.cjs --update-env
+          EOF
+          # Verify rollback worked
+          for i in 1 2 3; do
+            STATUS=$(curl -sfL -o /dev/null -w "%{http_code}" https://${{ vars.PUBLIC_HOSTNAME }}/tr || echo "000")
+            if [ "$STATUS" = "200" ]; then
+              echo "✓ rollback healthy"
+              exit 1   # still fail the workflow — the deploy attempt didn't succeed
+            fi
+            sleep 5
+          done
+          echo "✗ rollback also unhealthy — manual intervention required"
           exit 1
