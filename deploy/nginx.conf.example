@@ -2,6 +2,15 @@
 # Symlink: ln -s /etc/nginx/sites-available/airomeda /etc/nginx/sites-enabled/
 # SSL: provision via certbot (certbot --nginx -d airomeda.com -d www.airomeda.com)
 
+# Rate-limit zones (cluster-safe — nginx is the single source of truth
+# across all PM2 workers). Place these in the http {} block of
+# /etc/nginx/nginx.conf, NOT inside a server block.
+#
+#   limit_req_zone $binary_remote_addr zone=airomeda_general:10m rate=60r/m;
+#   limit_req_zone $binary_remote_addr zone=airomeda_forms:10m   rate=5r/m;
+#
+# 10m holds ~160k unique IPs. Adjust if you serve more traffic.
+
 upstream airomeda_app {
     server 127.0.0.1:3010;
     keepalive 16;
@@ -67,8 +76,32 @@ server {
         add_header Cache-Control "public, max-age=604800";
     }
 
-    # Application
+    # Form submission rate limit — applies to Next.js Server Action POSTs.
+    # 5 req/min/IP with burst of 2 (matches lib/rate-limit.ts in-app limiter).
+    # Server Actions arrive as POST to the page URL with text/x-component
+    # accept header — limit any POST to the iletisim / kariyer / hizmetler
+    # routes here as a cluster-safe primary defense.
+    location ~ ^/[a-z]{2}/(iletisim|kariyer|hizmetler)(/.*)?$ {
+        limit_req zone=airomeda_forms burst=2 nodelay;
+        limit_req_status 429;
+
+        proxy_pass http://airomeda_app;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+        proxy_read_timeout 300s;
+    }
+
+    # Application — general site-wide rate limit (60 req/min/IP)
     location / {
+        limit_req zone=airomeda_general burst=20 nodelay;
+        limit_req_status 429;
+
         proxy_pass http://airomeda_app;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;

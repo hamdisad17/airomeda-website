@@ -1,5 +1,22 @@
 import { LRUCache } from 'lru-cache';
 
+// IMPORTANT — cluster-mode behavior
+// --------------------------------------------------------------------
+// This is an in-process LRU rate limiter. Under PM2 cluster mode
+// (ecosystem.config.cjs uses instances: 'max'), each worker maintains
+// its own bucket map, so a single IP can multiply its true limit by the
+// number of workers.
+//
+// In production this limiter is INTENTIONALLY a second line of defense.
+// The primary, cluster-safe rate limit lives at the nginx edge — see
+// deploy/nginx.conf.example for the limit_req_zone definitions
+// (airomeda_forms = 5r/m/IP applied to form routes).
+//
+// If you ever run this app outside an nginx (or equivalent) edge that
+// enforces request rates, downgrade ecosystem.config.cjs to
+// instances: 1 to make the in-app limiter authoritative.
+// --------------------------------------------------------------------
+
 type Bucket = { count: number; resetAt: number };
 
 export type RateLimiter = {
