@@ -4,7 +4,7 @@ export async function register() {
   if (process.env.NEXT_RUNTIME === 'nodejs') {
     // Log env readiness once per worker boot (visible in PM2 out logs)
     const { logEnvReadiness } = await import('./lib/env-validate');
-    logEnvReadiness();
+    await logEnvReadiness();
   }
 
   if (!process.env.SENTRY_DSN && !process.env.NEXT_PUBLIC_SENTRY_DSN) return;

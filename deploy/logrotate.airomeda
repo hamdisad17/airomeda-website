@@ -1,0 +1,23 @@
+# /etc/logrotate.d/airomeda
+# Rotates PM2 stdout / stderr files so /var/log/pm2 doesn't fill the disk.
+# Install with:
+#   sudo cp deploy/logrotate.airomeda /etc/logrotate.d/airomeda
+#   sudo chown root:root /etc/logrotate.d/airomeda
+#   sudo chmod 644 /etc/logrotate.d/airomeda
+# Test:
+#   sudo logrotate -d /etc/logrotate.d/airomeda   # debug, no rotate
+#   sudo logrotate -f /etc/logrotate.d/airomeda   # force rotate now
+
+/var/log/pm2/airomeda-website.out.log
+/var/log/pm2/airomeda-website.err.log
+{
+    daily
+    rotate 14
+    compress
+    delaycompress
+    missingok
+    notifempty
+    copytruncate
+    su root root
+    create 0640 root root
+}

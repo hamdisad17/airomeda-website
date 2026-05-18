@@ -48,7 +48,7 @@ export function inspectEnv(): { checks: EnvCheck[]; missingRequired: string[] } 
  * Logs a one-line readiness summary at server boot. Call from
  * instrumentation.ts register() so the deploy log shows config gaps.
  */
-export function logEnvReadiness(): void {
+export async function logEnvReadiness(): Promise<void> {
   const { checks, missingRequired } = inspectEnv();
   const byGroup = new Map<string, { ok: number; total: number }>();
   for (const c of checks) {
@@ -57,14 +57,13 @@ export function logEnvReadiness(): void {
     if (c.present) g.ok += 1;
     byGroup.set(c.group, g);
   }
-  const summary = [...byGroup.entries()]
-    .map(([g, { ok, total }]) => `${g}=${ok}/${total}`)
-    .join(' ');
+  const groups = Object.fromEntries(
+    [...byGroup.entries()].map(([g, { ok, total }]) => [g, `${ok}/${total}`]),
+  );
+  const { logger } = await import('./logger');
   if (missingRequired.length === 0) {
-    console.log(`[env] ready (${summary})`);
+    logger.info({ groups }, 'env ready');
   } else {
-    console.warn(
-      `[env] degraded (${summary}) — missing required: ${missingRequired.join(', ')}`,
-    );
+    logger.warn({ groups, missingRequired }, 'env degraded');
   }
 }

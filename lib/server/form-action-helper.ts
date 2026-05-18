@@ -4,7 +4,10 @@ import type { ZodType } from 'zod';
 import { verifyTurnstile, isTurnstileConfigured } from '@/lib/turnstile';
 import { isMailConfigured } from '@/lib/mail';
 import { formRateLimiter } from '@/lib/rate-limit';
+import { childLogger } from '@/lib/logger';
 import type { FormActionResult } from '@/lib/schemas/forms';
+
+const log = childLogger('form-action');
 
 async function getClientIp(): Promise<string> {
   const h = await headers();
@@ -56,9 +59,10 @@ export async function runFormAction<T>(opts: {
 
   try {
     await opts.handler(parsed.data, { ip });
+    log.info({ ip }, 'submission accepted');
     return { ok: true };
   } catch (err) {
-    console.error('[form-action] handler failed', err);
+    log.error({ err, ip }, 'handler failed');
     return { ok: false, error: 'server', message: 'Beklenmeyen bir hata oluştu.' };
   }
 }
