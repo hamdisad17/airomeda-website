@@ -153,8 +153,19 @@
   },
   "cookie_consent": {
     "title": "About cookies",
-    "body": "We use only strictly necessary cookies for the site to function. No analytics or advertising cookies.",
-    "accept": "Got it",
-    "manage_link": "Cookie policy"
+    "body": "We use strictly necessary cookies for the site to function. Analytics and marketing cookies only activate with your consent.",
+    "accept_all": "Accept all",
+    "reject_all": "Reject all",
+    "manage_preferences": "Manage preferences",
+    "save_preferences": "Save preferences",
+    "manage_link": "Cookie policy",
+    "preferences_title": "Cookie preferences",
+    "preferences_intro": "Choose which cookie categories you allow. You can change your preference any time.",
+    "necessary_title": "Necessary",
+    "necessary_desc": "Session, language, security. Cannot be disabled.",
+    "analytics_title": "Analytics",
+    "analytics_desc": "Page visits and performance metrics. No personal data collected.",
+    "marketing_title": "Marketing",
+    "marketing_desc": "Ads and retargeting. No marketing cookies are currently loaded."
   }
 }

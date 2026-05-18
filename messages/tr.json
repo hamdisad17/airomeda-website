@@ -154,8 +154,19 @@
   },
   "cookie_consent": {
     "title": "Çerezler hakkında",
-    "body": "Sitemizin çalışması için zorunlu çerezler kullanıyoruz. Analiz veya reklam çerezi yok.",
-    "accept": "Tamam, anladım",
-    "manage_link": "Çerez politikası"
+    "body": "Sitemizin temel çalışması için zorunlu çerezler kullanıyoruz. Analiz ve pazarlama çerezleri yalnızca onayınızla devreye girer.",
+    "accept_all": "Tümünü kabul et",
+    "reject_all": "Tümünü reddet",
+    "manage_preferences": "Tercih yönet",
+    "save_preferences": "Tercihlerimi kaydet",
+    "manage_link": "Çerez politikası",
+    "preferences_title": "Çerez tercihleri",
+    "preferences_intro": "Hangi çerez kategorilerine izin verdiğinizi seçin. Tercihinizi istediğiniz zaman değiştirebilirsiniz.",
+    "necessary_title": "Zorunlu",
+    "necessary_desc": "Oturum, dil tercihi, güvenlik. Devre dışı bırakılamaz.",
+    "analytics_title": "Analiz",
+    "analytics_desc": "Sayfa ziyaretleri ve performans ölçümleri. Kişisel veri toplamaz.",
+    "marketing_title": "Pazarlama",
+    "marketing_desc": "Reklam ve yeniden hedefleme. Şu anda hiçbir pazarlama çerezi yüklenmiyor."
   }
 }
