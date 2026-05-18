@@ -3,13 +3,14 @@ import { SITE, type SiteLocale } from './site';
 type WithContext<T> = T & { '@context': 'https://schema.org' };
 
 export function organizationSchema(): WithContext<Record<string, unknown>> {
-  return {
+  const base: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: SITE.name,
+    legalName: SITE.legalName,
     url: SITE.url,
-    logo: `${SITE.url}/logo.png`,
-    sameAs: [],
+    logo: `${SITE.url}/brand/mark-dark.png`,
+    sameAs: SITE.socialProfiles,
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -18,6 +19,33 @@ export function organizationSchema(): WithContext<Record<string, unknown>> {
         availableLanguage: ['tr', 'en'],
       },
     ],
+  };
+  if (SITE.address) {
+    base.address = {
+      '@type': 'PostalAddress',
+      streetAddress: SITE.address.streetAddress,
+      addressLocality: SITE.address.addressLocality,
+      postalCode: SITE.address.postalCode,
+      addressCountry: SITE.address.addressCountry,
+    };
+  }
+  return base as WithContext<Record<string, unknown>>;
+}
+
+export function faqPageSchema(
+  faqs: { question: string; answer: string }[],
+): WithContext<Record<string, unknown>> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: f.answer,
+      },
+    })),
   };
 }
 

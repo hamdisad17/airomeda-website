@@ -12,7 +12,7 @@ import { Container } from '@/components/layout/Container';
 import { DemoForm } from '@/components/forms/DemoForm';
 import { SERVICE_SLUGS, type ServiceKey } from '@/lib/i18n/slug-map';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { serviceSchema, breadcrumbSchema } from '@/lib/seo/jsonld';
+import { serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo/jsonld';
 import { SITE } from '@/lib/seo/site';
 import { makeAlternates } from '@/lib/seo/alternates';
 import { ServiceOverview } from '@/components/sections/services/ServiceOverview';
@@ -96,6 +96,9 @@ export default async function ServiceDetail({
             locale,
           }),
           breadcrumbs,
+          ...(content.frontmatter.faq && content.frontmatter.faq.length > 0
+            ? [faqPageSchema(content.frontmatter.faq)]
+            : []),
         ]}
       />
       <ServiceHero
