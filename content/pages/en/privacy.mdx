@@ -23,12 +23,13 @@ Contact: hello@airomeda.com
 
 We collect only the personal data you actively provide or that is generated automatically by your use of the site:
 
-- **Contact and demo request forms:** Full name, email address, company name (optional), and the message you write.
-- **Career application forms:** Full name, email address, phone number (optional), LinkedIn profile URL (optional), cover letter, and CV file (PDF or DOCX).
+- **Contact, demo, and career application forms:** Full name, email address, phone number (optional, career form only), LinkedIn profile URL (optional, career form only), company name (optional), the message you write, and CV file (PDF or DOCX, career form only). Submitted form data is both emailed to our internal team and stored in our SQLite database on our hosting server (Hostinger VPS, EU / Lithuania).
 - **Server and access logs:** IP address, browser user-agent string, request timestamps, and pages visited. These are generated automatically by our hosting infrastructure.
-- **Functional cookies:** Language preference cookie (`NEXT_LOCALE`) and Cloudflare Turnstile security cookies. See our Cookie Policy for details.
+- **Cookies and local storage:** Language preference cookie (`NEXT_LOCALE`), Cloudflare Turnstile security cookies, and `airomeda-consent-v1` (a local-storage record of your cookie preference). See our Cookie Policy for details.
+- **Consent-based analytics (optional):** If you accept "Analytics" cookies in our cookie banner, anonymous page-view statistics are collected via Plausible Analytics. Plausible uses no identifying cookies; IP addresses are not retained and no session trail is kept.
+- **Consent-based error tracking (optional):** When Sentry is active, technical records of application errors (error message, stack trace, anonymous session identifier) are stored. PII fields such as form contents are locally masked before transmission.
 
-We do **not** use analytics cookies, advertising pixels, or any third-party tracking technology.
+We do **not** use advertising pixels or third-party tracking for ad targeting.
 
 ## 3. How We Use Your Data
 
@@ -45,9 +46,10 @@ We share your data only with the following processors, to the minimum extent nec
 
 | Recipient | Country | Purpose | Safeguard |
 |-----------|---------|---------|-----------|
-| **Resend Inc.** | United States | Transactional email delivery of form submissions to our internal team | Standard Contractual Clauses (SCCs) / DPA |
+| **Hostinger International Ltd.** | Lithuania, European Union | Web hosting, infrastructure, and SMTP-based delivery of form notification emails | EU adequacy / GDPR Art. 28 DPA |
 | **Cloudflare, Inc.** | United States (global CDN) | Bot and spam protection via Turnstile widget on forms | SCCs / Cloudflare DPA |
-| **Hostinger International Ltd.** | Lithuania, European Union | Web hosting and infrastructure | EU adequacy / GDPR Art. 28 DPA |
+| **Plausible Analytics** (optional) | Germany / European Union | Cookieless, anonymous page-view statistics (only loaded with your "Analytics" consent) | EU adequacy / GDPR Art. 28 DPA |
+| **Functional Software, Inc. (Sentry)** (optional) | United States | Production error tracking — with PII masked before transmission | Standard Contractual Clauses (SCCs) / Sentry DPA |
 
 We do not sell, rent, or otherwise disclose personal data to third parties for marketing purposes.
 
@@ -62,7 +64,9 @@ We retain personal data only as long as necessary for the stated purpose or as r
 - **Contact and demo messages:** 2 years from the date of last correspondence.
 - **Career applications (unsuccessful candidates):** 6 months from the date of application.
 - **Career applications (successful candidates):** Duration of the employment relationship, subject to applicable statutory obligations.
-- **Server access logs:** 90 days.
+- **Server access logs:** 14 days (rotated via logrotate).
+- **Error-tracking records (Sentry):** 90 days.
+- **Analytics data (Plausible):** Aggregated statistics retained indefinitely; no per-user records kept.
 
 ## 6. Your Rights
 
@@ -90,4 +94,4 @@ We will publish material changes on this page and update the "Last updated" date
 
 ## 9. Last Updated
 
-Last updated: 10 May 2026
+Last updated: 18 May 2026
