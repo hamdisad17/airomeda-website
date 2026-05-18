@@ -3,6 +3,7 @@
 import { runFormAction } from '@/lib/server/form-action-helper';
 import { ContactFormSchema } from '@/lib/schemas/forms';
 import { sendMail } from '@/lib/mail';
+import { insertLead } from '@/lib/db';
 import type { FormActionResult } from '@/lib/schemas/forms';
 
 export async function submitContact(input: {
@@ -16,7 +17,20 @@ export async function submitContact(input: {
     schema: ContactFormSchema,
     data: input,
     turnstileToken: input.turnstileToken,
-    async handler(parsed) {
+    async handler(parsed, { ip }) {
+      // Persist lead first — never let a DB error block the email send
+      try {
+        insertLead({
+          type: 'contact',
+          name: parsed.name,
+          email: parsed.email,
+          payload: parsed,
+          ip,
+        });
+      } catch (err) {
+        console.error('[lead-insert] contact', err);
+      }
+
       const to = process.env.CONTACT_TO ?? 'sales@airomeda.com';
       const subject = `Yeni iletişim — ${parsed.name}`;
       const text = [

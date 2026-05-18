@@ -25,6 +25,11 @@ const CHECKS: ReadonlyArray<Omit<EnvCheck, 'present'>> = [
   // Observability — optional, no-op if absent
   { name: 'SENTRY_DSN', group: 'observability', required: false },
   { name: 'NEXT_PUBLIC_SENTRY_DSN', group: 'observability', required: false },
+
+  // Lead persistence / admin (optional but recommended in prod)
+  { name: 'AIROMEDA_DB_PATH', group: 'core', required: false },
+  { name: 'ADMIN_USER', group: 'core', required: false },
+  { name: 'ADMIN_PASS', group: 'core', required: false },
 ];
 
 export function inspectEnv(): { checks: EnvCheck[]; missingRequired: string[] } {

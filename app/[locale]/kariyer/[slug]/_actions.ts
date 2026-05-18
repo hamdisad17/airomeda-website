@@ -6,6 +6,7 @@ import { sendMail } from '@/lib/mail';
 import { verifyTurnstile, isTurnstileConfigured } from '@/lib/turnstile';
 import { isMailConfigured } from '@/lib/mail';
 import { formRateLimiter } from '@/lib/rate-limit';
+import { insertLead } from '@/lib/db';
 import type { FormActionResult } from '@/lib/schemas/forms';
 
 const MAX_CV_SIZE = 5 * 1024 * 1024; // 5MB
@@ -69,6 +70,29 @@ export async function submitJobApplication(formData: FormData): Promise<FormActi
 
   try {
     const cvBytes = Buffer.from(await cv.arrayBuffer());
+
+    try {
+      insertLead({
+        type: 'career',
+        name: parsed.data.name,
+        email: parsed.data.email,
+        payload: {
+          name: parsed.data.name,
+          email: parsed.data.email,
+          phone: parsed.data.phone,
+          linkedin_url: parsed.data.linkedin_url,
+          cover_letter: parsed.data.cover_letter,
+          cv_filename: cv.name,
+          cv_size: cv.size,
+          cv_type: cv.type,
+        },
+        ip,
+        jobSlug: parsed.data.job_slug,
+      });
+    } catch (err) {
+      console.error('[lead-insert] career', err);
+    }
+
     const to = process.env.CAREERS_TO ?? 'careers@airomeda.com';
     await sendMail({
       to,

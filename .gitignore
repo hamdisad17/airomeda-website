@@ -54,3 +54,6 @@ next-env.d.ts
 # playwright
 playwright-report/
 test-results/
+
+# local sqlite (dev — prod path comes from AIROMEDA_DB_PATH env)
+/.local-db/
