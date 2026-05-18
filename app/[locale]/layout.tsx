@@ -8,6 +8,7 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { organizationSchema, websiteSchema } from '@/lib/seo/jsonld';
 import { CookieConsent } from '@/components/legal/CookieConsent';
 import { PlausibleAnalytics } from '@/components/analytics/PlausibleAnalytics';
+import { WebVitalsReporter } from '@/components/analytics/WebVitalsReporter';
 import { SmoothScroll } from '@/components/motion/SmoothScroll';
 import { MorphCursor } from '@/components/motion/MorphCursor';
 import { CommandPalette } from '@/components/overlay/CommandPalette';
@@ -42,6 +43,7 @@ export default async function LocaleLayout({
         <Footer />
         <CookieConsent />
         <PlausibleAnalytics />
+        <WebVitalsReporter />
       </SmoothScroll>
     </NextIntlClientProvider>
   );
