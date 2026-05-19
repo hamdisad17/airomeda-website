@@ -17,6 +17,7 @@ export async function Header() {
 
   const navItems = [
     { label: t('work'), href: '/calismalarimiz' },
+    { label: t('pricing'), href: '/fiyatlar' },
     { label: t('blog'), href: '/blog' },
     { label: t('about'), href: '/hakkimizda' },
     { label: t('careers'), href: '/kariyer' },
