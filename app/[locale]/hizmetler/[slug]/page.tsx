@@ -19,6 +19,7 @@ import { ServiceOverview } from '@/components/sections/services/ServiceOverview'
 import { ServiceGallery } from '@/components/sections/services/ServiceGallery';
 import { ServiceBenefits } from '@/components/sections/services/ServiceBenefits';
 import { ServicePackages } from '@/components/sections/services/ServicePackages';
+import { AddOnList } from '@/components/sections/services/AddOnList';
 import { LegalDisclaimer } from '@/components/sections/services/LegalDisclaimer';
 
 export async function generateStaticParams() {
@@ -121,6 +122,7 @@ export default async function ServiceDetail({
       </Container>
       <ServiceCapabilities items={content.frontmatter.capabilities} />
       <ServicePackages slug={slug} />
+      <AddOnList slug={slug} />
       <ServiceTechStrip items={content.frontmatter.tech_stack} />
       <ServiceFAQ items={content.frontmatter.faq} />
       {(slug === 'sans-oyunlari' || slug === 'finans') && <LegalDisclaimer />}
