@@ -9,10 +9,12 @@ vi.mock('next/headers', () => ({
   }),
 }));
 
-const mailConfigured = vi.fn(() => true);
-const turnstileConfigured = vi.fn(() => true);
-const verifyTurnstile = vi.fn(async () => true);
-const rateLimitHit = vi.fn(() => true);
+const mailConfigured = vi.fn<() => boolean>(() => true);
+const turnstileConfigured = vi.fn<() => boolean>(() => true);
+const verifyTurnstile = vi.fn<(token: string, ip?: string) => Promise<boolean>>(
+  async () => true,
+);
+const rateLimitHit = vi.fn<(key: string) => boolean>(() => true);
 
 vi.mock('@/lib/mail', () => ({
   isMailConfigured: () => mailConfigured(),
@@ -20,7 +22,7 @@ vi.mock('@/lib/mail', () => ({
 }));
 vi.mock('@/lib/turnstile', () => ({
   isTurnstileConfigured: () => turnstileConfigured(),
-  verifyTurnstile: (...args: unknown[]) => verifyTurnstile(...(args as [string, string])),
+  verifyTurnstile: (token: string, ip?: string) => verifyTurnstile(token, ip),
 }));
 vi.mock('@/lib/rate-limit', () => ({
   formRateLimiter: { hit: (k: string) => rateLimitHit(k) },

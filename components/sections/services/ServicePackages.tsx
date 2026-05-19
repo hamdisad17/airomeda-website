@@ -7,8 +7,10 @@ import { Link } from '@/i18n/navigation';
 interface Package {
   name: string;
   desc: string;
-  price?: string;       // e.g., "$10,000", "₺7.500/ay", "₺45.000", "Özel teklif"
-  priceNote?: string;   // e.g., "tek seferlik", "aylık", "proje başı"
+  price?: string;          // e.g., "$10,000", "₺7.500/ay", "₺45.000", "Özel teklif"
+  priceNote?: string;      // e.g., "tek seferlik", "aylık", "proje başı"
+  annualPrice?: string;    // e.g., "₺76.500/yıl" (12 × monthly × 0.85)
+  annualSavings?: string;  // e.g., "%15 tasarruf"
   features: string[];
   cta: string;
   highlight: boolean;
@@ -210,45 +212,58 @@ const PACKAGES_BY_SLUG: Record<string, Package[]> = {
   'seo-reklam': [
     {
       name: 'Başlangıç',
-      desc: 'Küçük işletmeler için temel SEO ve reklam yönetimi.',
+      desc: 'Yeni başlayan ve aylık reklam bütçesi ₺5.000 altındaki işletmeler için.',
       price: '₺3.500',
-      priceNote: 'Aylık',
+      priceNote: 'Aylık · 3 ay min. taahhüt',
+      annualPrice: '₺35.700/yıl',
+      annualSavings: '%15 tasarruf',
       features: [
-        'Temel SEO optimizasyonu',
-        'Anahtar kelime analizi',
-        'Tek platformda Google Ads',
-        'Aylık performans raporu',
-        'E-posta desteği',
+        '10 anahtar kelime takibi',
+        'Teknik SEO denetimi (ilk ay)',
+        '1 reklam platformu (Google Ads veya Meta)',
+        '500 USD\'a kadar reklam yönetimi',
+        'Ayda 2 blog yazısı (800+ kelime)',
+        'Aylık Looker Studio raporu',
+        'E-posta destek (24 saat içinde yanıt)',
       ],
       cta: 'Başla',
       highlight: false,
     },
     {
       name: 'Profesyonel',
-      desc: 'Büyüyen markalar için kapsamlı dijital pazarlama.',
+      desc: 'Aylık ₺5.000–25.000 reklam bütçesi olan büyüyen markalar için.',
       price: '₺7.500',
-      priceNote: 'Aylık',
+      priceNote: 'Aylık · 6 ay min. taahhüt',
+      annualPrice: '₺76.500/yıl',
+      annualSavings: '%15 tasarruf',
       features: [
-        'Gelişmiş SEO + içerik stratejisi',
-        'Google Ads + Meta Ads yönetimi',
-        'Aylık 8 blog/içerik üretimi',
-        'Haftalık raporlama',
-        '7/24 destek',
+        '30 anahtar kelime takibi + rekabet analizi',
+        'Sürekli teknik SEO bakımı',
+        'Google Ads + Meta Ads + LinkedIn Ads',
+        '2.500 USD\'a kadar reklam yönetimi',
+        'Ayda 8 blog yazısı veya 4 uzun içerik',
+        'GA4 + GTM + dönüşüm izleme kurulumu',
+        'Haftalık Looker Studio raporu',
+        'Ayda 1 saat strateji toplantısı',
+        'WhatsApp destek (saatlik yanıt)',
       ],
       cta: 'En çok tercih edilen',
       highlight: true,
     },
     {
       name: 'Kurumsal',
-      desc: 'Büyük markalar için özel dijital pazarlama ekibi.',
+      desc: 'Aylık ₺25.000+ reklam bütçesi olan markalar için özel ekip.',
       price: 'Özel teklif',
-      priceNote: 'Projeye göre',
+      priceNote: 'Reklam bütçesinin %12–15\'i',
       features: [
-        'Stratejik danışmanlık',
-        'Çoklu kanal kampanya yönetimi',
-        'Veri bilimi destekli optimizasyon',
-        'Dedicated pazarlama ekibi',
-        'Aylık strateji toplantısı',
+        'Sınırsız anahtar kelime takibi',
+        'Tüm platformlar (Google, Meta, LinkedIn, TikTok, X)',
+        'Çoklu dil + çoklu pazar yönetimi',
+        'Veri bilimi destekli atıf modelleme',
+        'Adanmış SEO + reklam ekibi (3–5 kişi)',
+        'Ayda 4 saat strateji toplantısı',
+        'Aylık in-depth performans sunumu',
+        'Slack üzerinden ayrı kanal',
       ],
       cta: 'Konuşalım',
       highlight: false,
@@ -257,46 +272,56 @@ const PACKAGES_BY_SLUG: Record<string, Package[]> = {
   'sosyal-medya': [
     {
       name: 'Başlangıç',
-      desc: 'Küçük işletmeler için temel sosyal medya yönetimi.',
+      desc: 'Yeni başlayan markalar için temel sosyal medya yönetimi.',
       price: '₺4.000',
-      priceNote: 'Aylık',
+      priceNote: 'Aylık · 3 ay min. taahhüt',
+      annualPrice: '₺40.800/yıl',
+      annualSavings: '%15 tasarruf',
       features: [
-        '2 platform yönetimi',
-        'Haftada 3 içerik',
-        'Mesaj yanıtlama',
-        'Aylık rapor',
-        'E-posta desteği',
+        '2 platform (Instagram + LinkedIn veya benzeri)',
+        'Ayda 12 post (statik görsel)',
+        'Ayda 4 story',
+        'Yorum + DM yanıtı (mesai saatleri)',
+        'Aylık içerik takvimi',
+        'Aylık performans raporu',
       ],
       cta: 'Başla',
       highlight: false,
     },
     {
       name: 'Profesyonel',
-      desc: 'Büyüyen markalar için aktif sosyal medya yönetimi.',
+      desc: 'Aktif topluluk büyüten markalar için tam kapsamlı yönetim.',
       price: '₺9.000',
-      priceNote: 'Aylık',
+      priceNote: 'Aylık · 6 ay min. taahhüt',
+      annualPrice: '₺91.800/yıl',
+      annualSavings: '%15 tasarruf',
       features: [
-        '4 platform yönetimi',
-        'Günlük içerik (ayda 20+ post)',
-        'Reklam yönetimi',
-        'Topluluk yönetimi',
-        'Haftalık raporlama',
-        '7/24 destek',
+        '4 platform (Instagram, LinkedIn, TikTok, X)',
+        'Ayda 24 post + 12 reels/short',
+        'Günlük 5 story + interaktif öğeler',
+        '7/24 yorum + DM yanıtlama',
+        'Ayda 1.000 USD\'a kadar reklam yönetimi',
+        'Aylık 2 trend bazlı içerik briefingi',
+        'Haftalık performans raporu',
+        'Ayda 1 strateji toplantısı',
       ],
       cta: 'En çok tercih edilen',
       highlight: true,
     },
     {
       name: 'Kurumsal',
-      desc: 'Büyük markalar için tam kapsamlı marka yönetimi.',
+      desc: 'Büyük markalar için adanmış sosyal medya ekibi.',
       price: 'Özel teklif',
-      priceNote: 'Projeye göre',
+      priceNote: 'Kapsam + ekip büyüklüğüne göre',
       features: [
-        'Sınırsız platform',
-        'Influencer yönetimi',
-        'Kriz iletişimi',
-        'Dedicated ekip',
-        'Aylık strateji toplantısı',
+        'Sınırsız platform + influencer ağı',
+        'Adanmış creative ekip (designer + video editor)',
+        'Aylık çekim günü (foto + video)',
+        'Influencer kampanya yönetimi',
+        'Kriz iletişim protokolü',
+        'Aylık in-depth marka raporu',
+        'Slack üzerinden ayrı kanal',
+        'Üç ayda bir kreatif workshop',
       ],
       cta: 'Konuşalım',
       highlight: false,
@@ -305,44 +330,50 @@ const PACKAGES_BY_SLUG: Record<string, Package[]> = {
   crm: [
     {
       name: 'Başlangıç',
-      desc: 'Küçük işletmeler için temel CRM çözümü.',
+      desc: 'Küçük ekipler (3–10 satış temsilcisi) için hazır CRM kurulumu.',
       price: '₺12.000',
-      priceNote: 'Proje başı',
+      priceNote: 'Tek seferlik kurulum',
       features: [
-        'Temel CRM kurulumu',
-        'Müşteri takibi',
-        'E-posta entegrasyonu',
-        'E-posta desteği',
+        'HubSpot Starter veya Pipedrive seçimi',
+        '10 kullanıcıya kadar lisans yönetimi',
+        'E-posta + form entegrasyonu',
+        '5 otomasyon kuralı',
+        '2 saat ekip eğitimi',
+        '30 gün canlı destek',
       ],
       cta: 'Başla',
       highlight: false,
     },
     {
       name: 'Profesyonel',
-      desc: 'Büyüyen satış ekipleri için tam kapsamlı CRM.',
+      desc: 'Orta ölçekli satış ekipleri (10–50 kişi) için özelleştirme.',
       price: '₺38.000',
-      priceNote: 'Proje başı',
+      priceNote: 'Tek seferlik · ₺4.500/ay bakım',
       features: [
-        'Özelleştirilmiş CRM',
-        'Satış süreç otomasyonu',
-        'Entegre raporlama',
-        'Ekip eğitimi',
-        '7/24 destek',
+        'HubSpot Professional veya Salesforce kurulumu',
+        '50 kullanıcıya kadar özelleştirme',
+        'ERP + e-ticaret + WhatsApp entegrasyonu',
+        '20 otomasyon kuralı + lead skoring',
+        'Özel pano (3 pano)',
+        '8 saat ekip eğitimi',
+        'Aylık optimizasyon görüşmesi',
       ],
       cta: 'En çok tercih edilen',
       highlight: true,
     },
     {
       name: 'Kurumsal',
-      desc: 'Büyük kurumlar için özel CRM platformu.',
+      desc: 'Büyük kurumlar için sıfırdan özel CRM veya derin Salesforce.',
       price: 'Özel teklif',
-      priceNote: 'Projeye göre',
+      priceNote: 'Kullanıcı başı + geliştirme',
       features: [
-        'Özel CRM geliştirme',
-        'ERP entegrasyonu',
-        'AI destekli analitik',
-        'Dedicated ekip',
-        'Özel danışman',
+        'Sıfırdan özel CRM veya derin Salesforce',
+        'Sınırsız kullanıcı',
+        'AI destekli satış tahmini',
+        'Çoklu pazar + çoklu dil',
+        'KVKK + ISO 27001 uyumu',
+        'Adanmış mimar + 2 geliştirici',
+        'Yıllık SLA: 99.9% uptime',
       ],
       cta: 'Konuşalım',
       highlight: false,
@@ -475,6 +506,17 @@ export function ServicePackages({ slug }: ServicePackagesProps) {
                   <p className="text-3xl font-semibold tracking-tight text-foreground">{pkg.price}</p>
                   {pkg.priceNote && (
                     <p className="mt-1 text-xs text-muted-foreground">{pkg.priceNote}</p>
+                  )}
+                  {pkg.annualPrice && (
+                    <p className="mt-2 text-xs">
+                      <span className="text-muted-foreground">veya </span>
+                      <span className="text-foreground font-medium">{pkg.annualPrice}</span>
+                      {pkg.annualSavings && (
+                        <span className="ml-1.5 inline-flex items-center px-1.5 py-0.5 text-[10px] uppercase tracking-wider text-accent border border-accent/30 bg-accent/5">
+                          {pkg.annualSavings}
+                        </span>
+                      )}
+                    </p>
                   )}
                 </div>
               )}
