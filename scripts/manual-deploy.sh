@@ -24,7 +24,11 @@
 
 set -euo pipefail
 
-REPO_URL=${REPO_URL:-https://github.com/tahariftekin/airomeda-website.git}
+# Default to SSH URL — repo is private. If a GitHub deploy key is
+# configured (see deploy/SETUP_DEPLOY_KEY.md), this works without
+# extra env. For HTTPS+PAT or temporarily-public-repo, override
+# with REPO_URL=https://... when invoking the script.
+REPO_URL=${REPO_URL:-git@github.com:tahariftekin/airomeda-website.git}
 BRANCH=${BRANCH:-main}
 APP_ROOT=${APP_ROOT:-/var/www/airomeda}
 PUBLIC_HOST=${PUBLIC_HOST:-airomeda.com}
