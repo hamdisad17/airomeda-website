@@ -281,4 +281,48 @@ main, header, footer { position: relative; z-index: 2; }
     overflow-wrap: break-word;
     hyphens: none;
   }
+
+  /* Visible focus ring for keyboard users on every focusable element.
+     :focus-visible only triggers for keyboard focus, so mouse/touch
+     interactions keep their existing look. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+/* Skip-to-content link — visually hidden until focused. Lets keyboard
+   users jump past the header / cookie banner straight into <main>. */
+.skip-to-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.75rem 1rem;
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-150%);
+  transition: transform 200ms var(--ease-out-quint);
+  z-index: 100;
+}
+.skip-to-content:focus,
+.skip-to-content:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--color-accent-foreground);
+  outline-offset: 2px;
+}
+
+/* prefers-reduced-motion — dampen GSAP / Lenis / CSS animations so
+   vestibular issues aren't triggered. Layout stays intact, motion
+   essentially freezes. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

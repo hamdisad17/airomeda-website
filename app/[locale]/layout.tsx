@@ -37,9 +37,14 @@ export default async function LocaleLayout({
       <ScrollProgress />
       <CommandPalette />
       <LiveChat />
+      <a href="#main-content" className="skip-to-content">
+        İçeriğe atla
+      </a>
       <SmoothScroll>
         <Header />
-        <main className="min-h-[60vh]">{children}</main>
+        <main id="main-content" tabIndex={-1} className="min-h-[60vh]">
+          {children}
+        </main>
         <Footer />
         <CookieConsent />
         <PlausibleAnalytics />

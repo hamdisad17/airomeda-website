@@ -8,6 +8,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   React.useEffect(() => {
+    // Respect prefers-reduced-motion. Lenis interferes with native
+    // scroll-into-view and momentum on assistive tech; when the user
+    // has reduce-motion set we leave the browser to scroll normally.
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq.matches) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
