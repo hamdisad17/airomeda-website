@@ -15,6 +15,12 @@ export default defineConfig({
     css: true,
   },
   resolve: {
-    alias: { '@': path.resolve(__dirname, '.') },
+    alias: {
+      '@': path.resolve(__dirname, '.'),
+      // Stub 'server-only' so server-bound libs can be unit-tested
+      // under jsdom. The production guarantee still holds because
+      // Next.js evaluates the real package at build time.
+      'server-only': path.resolve(__dirname, 'tests/mocks/server-only.ts'),
+    },
   },
 });
