@@ -81,7 +81,7 @@ server {
     # Server Actions arrive as POST to the page URL with text/x-component
     # accept header — limit any POST to the iletisim / kariyer / hizmetler
     # routes here as a cluster-safe primary defense.
-    location ~ ^/[a-z]{2}/(iletisim|kariyer|hizmetler)(/.*)?$ {
+    location ~ "^/[a-z]{2}/(iletisim|kariyer|hizmetler)(/.*)?$" {
         limit_req zone=airomeda_forms burst=2 nodelay;
         limit_req_status 429;
 
