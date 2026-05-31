@@ -52,7 +52,17 @@ const CATEGORY_LABELS: Record<PricingCategory, { title: string; subtitle: string
   },
 };
 
-const CATEGORY_ORDER: PricingCategory[] = ['pazarlama', 'yazilim', 'web'];
+// Visitor journey order: software first (integration & e-commerce up top),
+// then corporate web, then marketing/SEO last.
+const CATEGORY_ORDER: PricingCategory[] = ['yazilim', 'web', 'pazarlama'];
+
+// Explicit service order *within* each category. Drives what a visitor sees
+// first: entegrasyon + e-ticaret, then oyun + finans, … SEO dead last.
+const SERVICE_ORDER: Record<PricingCategory, string[]> = {
+  yazilim: ['entegrasyon', 'e-ticaret', 'sans-oyunlari', 'finans'],
+  web: ['kurumsal-web'],
+  pazarlama: ['sosyal-medya', 'crm', 'seo-reklam'],
+};
 
 export default async function PricingPage({
   params,
@@ -62,37 +72,50 @@ export default async function PricingPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  // Group services by category
+  // Group services by category, honoring the explicit SERVICE_ORDER and
+  // dropping any slug that has no packages. Falls back to appending any
+  // slug that exists but wasn't listed in SERVICE_ORDER (defensive).
   const byCategory: Record<PricingCategory, string[]> = {
     pazarlama: [],
     yazilim: [],
     web: [],
   };
-  for (const slug of Object.keys(PACKAGES_BY_SLUG)) {
-    const cat = SERVICE_CATEGORY[slug];
-    if (cat) byCategory[cat].push(slug);
+  for (const cat of CATEGORY_ORDER) {
+    const ordered = SERVICE_ORDER[cat].filter((slug) => PACKAGES_BY_SLUG[slug]);
+    const extras = Object.keys(PACKAGES_BY_SLUG).filter(
+      (slug) => SERVICE_CATEGORY[slug] === cat && !ordered.includes(slug),
+    );
+    byCategory[cat] = [...ordered, ...extras];
   }
 
   return (
     <>
       {/* Hero */}
-      <section className="border-b border-border">
+      <section className="relative overflow-hidden border-b border-border">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={{
+            background:
+              'radial-gradient(50% 60% at 20% 0%, rgb(20 184 166 / 0.14), transparent 70%), radial-gradient(45% 55% at 85% 10%, rgb(129 140 248 / 0.14), transparent 70%)',
+          }}
+        />
         <Container as="div" className="py-20 md:py-28">
-          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Fiyatlar</p>
+          <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">Paketlerimiz</p>
           <h1
             className="mt-6 max-w-3xl font-semibold tracking-tight text-foreground"
             style={{
-              fontSize: 'clamp(2.5rem, 5.5vw, 4.5rem)',
-              lineHeight: 1.05,
+              fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+              lineHeight: 1.08,
               letterSpacing: '-0.03em',
             }}
           >
-            Şeffaf paketler, müzakere edilebilir kapsam.
+            Şeffaf paketler, <span className="text-gradient">müzakere edilebilir</span> kapsam.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            Her hizmet için üç ana paket: <strong>Başlangıç</strong> (küçük ve hızlı),
-            <strong> Profesyonel</strong> (büyüyen markalar için tam paket),
-            <strong> Kurumsal</strong> (özel ekip + SLA). Aylık aboneliklerde yıllık taahhütle
+            Her hizmet için üç ana paket: <strong className="text-foreground">Başlangıç</strong> (küçük ve hızlı),
+            <strong className="text-foreground"> Profesyonel</strong> (büyüyen markalar için tam paket),
+            <strong className="text-foreground"> Kurumsal</strong> (özel ekip + SLA). Aylık aboneliklerde yıllık taahhütle
             %15 indirim.
           </p>
 
@@ -102,9 +125,9 @@ export default async function PricingPage({
               <a
                 key={cat}
                 href={`#${cat}`}
-                className="inline-flex items-center gap-2 border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-elevated/50 px-4 py-2 text-sm font-medium text-foreground backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
               >
-                {CATEGORY_LABELS[cat].title} →
+                {CATEGORY_LABELS[cat].title} <span aria-hidden>→</span>
               </a>
             ))}
           </nav>
@@ -123,8 +146,8 @@ export default async function PricingPage({
               {CATEGORY_LABELS[cat].title}
             </p>
             <h2
-              className="mt-4 font-semibold tracking-tight text-foreground"
-              style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', letterSpacing: '-0.03em' }}
+              className="mt-4 max-w-3xl font-semibold tracking-tight text-foreground"
+              style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', letterSpacing: '-0.02em', lineHeight: 1.15 }}
             >
               {CATEGORY_LABELS[cat].subtitle}
             </h2>
@@ -177,19 +200,30 @@ function ServiceBlock({ slug, locale }: { slug: string; locale: Locale }) {
 function PackageCard({ pkg }: { pkg: ServicePackage }) {
   return (
     <div
-      className={`relative flex flex-col border p-6 ${
+      className={`hover-lift hover:hover-lift-on relative flex flex-col overflow-hidden rounded-2xl p-6 ${
         pkg.highlight
-          ? 'border-accent bg-accent/5'
-          : 'border-border bg-elevated'
+          ? 'border border-accent/60 bg-accent/[0.06] shadow-[0_24px_60px_-32px_hsl(173_80%_45%_/_0.5)]'
+          : 'surface-elevated'
       }`}
     >
+      {/* gradient top hairline on the highlighted card */}
       {pkg.highlight && (
-        <span className="absolute -top-2.5 left-4 bg-accent px-3 py-0.5 text-[10px] uppercase tracking-wider text-accent-foreground">
-          En popüler
+        <span
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-px"
+          style={{ background: 'var(--gradient-brand)' }}
+        />
+      )}
+      {pkg.highlight && (
+        <span
+          className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#07111d]"
+          style={{ background: 'var(--gradient-brand)' }}
+        >
+          ★ En popüler
         </span>
       )}
       <p
-        className={`text-eyebrow uppercase tracking-wider font-medium ${
+        className={`text-eyebrow uppercase tracking-wider font-semibold ${
           pkg.highlight ? 'text-accent' : 'text-muted-foreground'
         }`}
       >
@@ -199,42 +233,48 @@ function PackageCard({ pkg }: { pkg: ServicePackage }) {
         {pkg.desc}
       </p>
       {pkg.price && (
-        <div className="mt-3 pb-3 border-b border-border">
-          <p className="text-2xl font-semibold tracking-tight text-foreground tabular-nums">
+        <div className="mt-4 pb-4 border-b border-border">
+          <p
+            className={`text-3xl font-semibold tracking-tight tabular-nums ${
+              pkg.highlight ? 'text-gradient' : 'text-foreground'
+            }`}
+          >
             {pkg.price}
           </p>
           {pkg.priceNote && (
-            <p className="mt-0.5 text-[11px] text-muted-foreground">{pkg.priceNote}</p>
+            <p className="mt-1 text-[11px] text-muted-foreground">{pkg.priceNote}</p>
           )}
           {pkg.annualPrice && (
-            <p className="mt-1 text-[11px]">
+            <p className="mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2 py-0.5 text-[11px]">
               <span className="text-muted-foreground">yıllık </span>
               <span className="text-foreground font-medium">{pkg.annualPrice}</span>
               {pkg.annualSavings && (
-                <span className="ml-1 text-accent">· {pkg.annualSavings}</span>
+                <span className="font-semibold text-accent">· {pkg.annualSavings}</span>
               )}
             </p>
           )}
         </div>
       )}
-      <ul className="mt-4 space-y-1.5 flex-1 text-[13px]">
+      <ul className="mt-4 space-y-2 flex-1 text-[13px]">
         {pkg.features.slice(0, 5).map((f) => (
-          <li key={f} className="flex items-start gap-1.5 text-foreground/90">
-            <span className="mt-1 text-accent shrink-0">✓</span>
+          <li key={f} className="flex items-start gap-2 text-foreground/90">
+            <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-accent/15 text-[10px] text-accent">
+              ✓
+            </span>
             <span className="leading-snug">{f}</span>
           </li>
         ))}
         {pkg.features.length > 5 && (
-          <li className="text-[11px] text-muted-foreground pl-3.5">
+          <li className="text-[11px] text-muted-foreground pl-6">
             +{pkg.features.length - 5} özellik daha
           </li>
         )}
       </ul>
       <Link
         href="/iletisim"
-        className={`mt-5 block text-center px-3 py-2.5 text-xs font-medium transition-all ${
+        className={`mt-6 block rounded-xl px-3 py-2.5 text-center text-xs font-semibold transition-all ${
           pkg.highlight
-            ? 'bg-accent text-accent-foreground hover:shadow-[0_0_20px_-5px_hsl(173_80%_40%_/_0.5)]'
+            ? 'btn-brand hover:btn-brand-hover'
             : 'border border-border text-foreground hover:border-accent hover:text-accent'
         }`}
       >

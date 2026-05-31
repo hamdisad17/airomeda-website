@@ -38,7 +38,7 @@ export function Testimonials() {
         </RevealSection>
         <StaggerGrid className="mt-12 grid gap-6 md:grid-cols-3">
           {QUOTES.map((q) => (
-            <figure data-stagger-item key={q.company} className="flex h-full flex-col border border-border bg-elevated p-7">
+            <figure data-stagger-item key={q.company} className="hover-lift hover:hover-lift-on flex h-full flex-col rounded-2xl surface-elevated p-7">
               <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">{q.industry}</p>
               <blockquote className="mt-4 flex-1 text-base leading-relaxed text-foreground">
                 &ldquo;{q.quote}&rdquo;

@@ -22,6 +22,7 @@ import { SelectedWork } from '@/components/sections/SelectedWork';
 import { ScrollSequence } from '@/components/visuals/ScrollSequence';
 import { CustomerJourney } from '@/components/sections/CustomerJourney';
 import { DeploymentPipeline } from '@/components/sections/DeploymentPipeline';
+import { HappyClients } from '@/components/sections/HappyClients';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { FAQ } from '@/components/sections/FAQ';
 import { ScreenshotMarquee } from '@/components/sections/ScreenshotMarquee';
@@ -75,6 +76,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <CustomerJourney />
       <DeploymentPipeline />
       <DeploymentGlobe />
+      <HappyClients />
       <Testimonials />
       <FAQ />
       <ScreenshotMarquee />

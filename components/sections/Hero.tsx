@@ -18,7 +18,7 @@ export async function Hero() {
       <Container as="div" className="relative pt-16 pb-20 md:pt-32 md:pb-36">
         <div className="grid items-center gap-10 lg:gap-16 lg:grid-cols-2">
           <div className="min-w-0">
-            <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 border border-border bg-elevated/50 backdrop-blur-sm px-3 py-1 text-eyebrow uppercase tracking-wider">
+            <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-border bg-elevated/50 backdrop-blur-sm px-3 py-1 text-eyebrow uppercase tracking-wider">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
@@ -42,7 +42,7 @@ export async function Hero() {
               <MagneticButton>
                 <Link
                   href="/iletisim"
-                  className="group inline-flex items-center gap-2 bg-accent px-5 py-3 md:px-6 md:py-3.5 text-sm font-medium text-accent-foreground transition-all duration-300 ease-[var(--ease-out-quint)] hover:shadow-[0_0_40px_-5px_hsl(173_80%_40%_/_0.6)]"
+                  className="btn-brand hover:btn-brand-hover group inline-flex items-center gap-2 rounded-xl px-5 py-3 md:px-6 md:py-3.5 text-sm font-semibold"
                 >
                   {t('common.primary_cta')}
                   <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -50,7 +50,7 @@ export async function Hero() {
               </MagneticButton>
               <Link
                 href="/calismalarimiz"
-                className="group inline-flex items-center gap-2 border border-border px-5 py-3 md:px-6 md:py-3.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+                className="group inline-flex items-center gap-2 rounded-xl border border-border bg-elevated/40 px-5 py-3 md:px-6 md:py-3.5 text-sm font-medium text-foreground backdrop-blur-sm transition-colors hover:border-accent hover:text-accent"
               >
                 {t('common.secondary_cta')}
               </Link>

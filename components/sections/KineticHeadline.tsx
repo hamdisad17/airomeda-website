@@ -36,7 +36,7 @@ export function KineticHeadline({ words, connector, tailLine }: KineticHeadlineP
     <h1 className="mt-6 md:mt-8 text-display-1 font-semibold">
       <span className="block">
         <span ref={containerRef} className="inline align-baseline">
-          <span key={active} className="kinetic-word text-accent">
+          <span key={active} className="kinetic-word text-gradient">
             {words[active]}
           </span>
         </span>

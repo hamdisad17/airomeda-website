@@ -13,7 +13,8 @@ export async function CTASection() {
         aria-hidden
         className="pointer-events-none absolute inset-0 animate-cta-pulse"
         style={{
-          background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgb(20 184 166 / 0.25), transparent 70%)',
+          background:
+            'radial-gradient(ellipse 55% 50% at 35% 25%, rgb(20 184 166 / 0.28), transparent 70%), radial-gradient(ellipse 50% 45% at 72% 35%, rgb(129 140 248 / 0.22), transparent 70%)',
         }}
       />
       <div
@@ -30,11 +31,11 @@ export async function CTASection() {
         <p className="text-eyebrow uppercase tracking-wider text-accent font-medium">İletişim</p>
         <h2
           className="mt-8 max-w-5xl text-display-1 font-semibold tracking-tight"
-          style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}
+          style={{ fontSize: 'clamp(2.25rem, 5.5vw, 4.5rem)' }}
         >
           <TextReveal as="span">{t('title')}</TextReveal>
           <br />
-          <span className="text-accent">
+          <span className="text-gradient">
             <TextReveal as="span" delay={0.4}>{t('subtitle')}</TextReveal>
           </span>
         </h2>
@@ -42,9 +43,9 @@ export async function CTASection() {
           <MagneticButton>
             <Link
               href="/iletisim"
-              className="group inline-flex items-center gap-2 bg-accent px-6 py-3.5 text-sm font-medium text-accent-foreground transition-all duration-200 hover:shadow-[0_0_40px_-5px_hsl(173_80%_40%_/_0.6)]"
+              className="btn-brand hover:btn-brand-hover group inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold"
             >
-              {tc('primary_cta')} <span>→</span>
+              {tc('primary_cta')} <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
           </MagneticButton>
           <a

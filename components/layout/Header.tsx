@@ -24,7 +24,7 @@ export async function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/95 supports-[backdrop-filter]:bg-background/80 backdrop-blur-xl">
       <Container as="div" className="flex h-14 items-center justify-between">
         <Logo href="/" />
 
@@ -35,7 +35,7 @@ export async function Header() {
             <Link
               key={item.href}
               href={item.href as never}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-medium text-foreground/75 transition-colors hover:text-accent"
             >
               {item.label}
             </Link>
@@ -49,9 +49,9 @@ export async function Header() {
           <ThemeToggle />
           <Link
             href="/iletisim"
-            className="inline-flex items-center gap-1.5 bg-accent px-3.5 py-2 text-sm font-medium text-accent-foreground transition-colors hover:opacity-90"
+            className="btn-brand hover:btn-brand-hover group inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-sm font-semibold"
           >
-            {t('contact')} <span>→</span>
+            {t('contact')} <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
           </Link>
         </div>
 

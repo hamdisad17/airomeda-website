@@ -11,21 +11,21 @@ export async function MegaMenu({ locale }: { locale: Locale }) {
     <div className="group relative">
       <button
         type="button"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+        className="inline-flex items-center gap-1 text-sm font-medium text-foreground/75 transition-colors hover:text-accent group-hover:text-accent"
         aria-haspopup="menu"
       >
-        {t('services')} ▾
+        {t('services')} <span className="text-xs transition-transform duration-300 group-hover:rotate-180">▾</span>
       </button>
-      <div className="invisible absolute left-1/2 z-50 mt-3 w-[640px] -translate-x-1/2 rounded-lg border border-border bg-background p-4 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+      <div className="invisible absolute left-1/2 z-50 mt-3 w-[640px] -translate-x-1/2 translate-y-1 rounded-2xl border border-border bg-elevated/98 p-3 opacity-0 shadow-2xl shadow-black/40 backdrop-blur-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
         <ul className="grid grid-cols-2 gap-1">
           {services.map((s) => (
             <li key={s.slug}>
               <Link
                 href={`/hizmetler/${s.slug}`}
-                className="block rounded p-3 hover:bg-muted"
+                className="group/item block rounded-xl border border-transparent p-3 transition-colors hover:border-border hover:bg-background"
               >
-                <span className="font-medium">{s.title}</span>
-                <span className="mt-1 block text-xs text-muted-foreground line-clamp-2">
+                <span className="font-semibold text-foreground transition-colors group-hover/item:text-accent">{s.title}</span>
+                <span className="mt-1 block text-xs leading-relaxed text-muted-foreground line-clamp-2">
                   {s.excerpt}
                 </span>
               </Link>

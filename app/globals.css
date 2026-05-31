@@ -14,22 +14,28 @@
   --color-elevated: #131E2F;
   --color-accent: #14B8A6;
   --color-accent-foreground: #0B1320;
+  --color-accent-2: #818CF8;
   --color-secondary: #2563EB;
   --color-secondary-foreground: #F8FAFC;
   --color-border: #334155;
   --color-success: hsl(142 71% 45%);
   --color-ring: #14B8A6;
 
+  /* Brand gradient — used for hero text, key accents, glows */
+  --gradient-brand: linear-gradient(110deg, #2DD4BF 0%, #22D3EE 42%, #818CF8 100%);
+  --glow-accent: 173 80% 45%;
+  --glow-accent-2: 239 84% 74%;
+
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-heading: var(--font-manrope), var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-inter), system-ui, sans-serif;
 
-  --text-display-1: clamp(1.875rem, 7vw, 5rem);
-  --text-display-1--line-height: 1.05;
+  --text-display-1: clamp(1.75rem, 5vw, 3.75rem);
+  --text-display-1--line-height: 1.08;
   --text-display-1--letter-spacing: -0.03em;
   --text-display-1--font-weight: 600;
 
-  --text-display-2: clamp(1.625rem, 5vw, 3.5rem);
+  --text-display-2: clamp(1.5rem, 4vw, 2.875rem);
   --text-display-2--line-height: 1.1;
   --text-display-2--letter-spacing: -0.02em;
   --text-display-2--font-weight: 600;
@@ -46,7 +52,7 @@
   --text-eyebrow--line-height: 1;
   --text-eyebrow--letter-spacing: 0.1em;
 
-  --radius-lg: 0;
+  --radius-lg: 0.75rem;
   --ease-out-quint: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -59,6 +65,7 @@
   --color-elevated: #FFFFFF;
   --color-accent: #0F9484;
   --color-accent-foreground: #F8FAFC;
+  --color-accent-2: #6366F1;
   --color-secondary: #1D4FCF;
   --color-secondary-foreground: #F8FAFC;
   --color-border: #CBD5E1;
@@ -104,8 +111,32 @@ body::before {
   background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
   background-size: 32px 32px;
   background-position: 0 0;
-  opacity: 0.4;
+  opacity: 0.35;
   mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 0%, transparent 80%);
+}
+
+/* Living ambient glow — slow-drifting brand-colored light so the page
+   feels alive instead of a flat slab of navy. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: -20% -10% auto -10%;
+  height: 90vh;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(40% 55% at 18% 12%, hsl(var(--glow-accent) / 0.20) 0%, transparent 70%),
+    radial-gradient(38% 50% at 85% 8%, hsl(var(--glow-accent-2) / 0.18) 0%, transparent 70%),
+    radial-gradient(50% 60% at 60% 50%, hsl(var(--glow-accent) / 0.08) 0%, transparent 75%);
+  filter: blur(8px);
+  animation: ambient-drift 24s ease-in-out infinite alternate;
+}
+.light body::after { opacity: 0.6; }
+
+@keyframes ambient-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(-3%, 2%, 0) scale(1.08); }
+  100% { transform: translate3d(4%, -2%, 0) scale(1.04); }
 }
 
 main, header, footer { position: relative; z-index: 2; }
@@ -118,6 +149,52 @@ main, header, footer { position: relative; z-index: 2; }
   transition: opacity 700ms var(--ease-out-quint), transform 700ms var(--ease-out-quint);
 }
 @utility reveal-visible { opacity: 1; transform: translateY(0); }
+
+/* Brand gradient text — for hero headline & key emphasis */
+@utility text-gradient {
+  background: var(--gradient-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Elevated surface with depth + hairline top highlight (glass-lite).
+   Turns flat bordered boxes into surfaces that catch light. */
+@utility surface-elevated {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--color-elevated) 92%, white 8%) 0%, var(--color-elevated) 60%);
+  border: 1px solid var(--color-border);
+  box-shadow:
+    0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
+    0 18px 40px -24px hsl(220 60% 4% / 0.7);
+}
+.light .surface-elevated {
+  box-shadow:
+    0 1px 0 0 hsl(0 0% 100% / 0.8) inset,
+    0 18px 40px -28px hsl(220 40% 30% / 0.35);
+}
+
+/* Hover-lift — gentle rise + brand-tinted glow on interactive cards */
+@utility hover-lift {
+  transition: transform 350ms var(--ease-out-quint), box-shadow 350ms var(--ease-out-quint), border-color 350ms var(--ease-out-quint);
+}
+@utility hover-lift-on {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--color-accent) 55%, var(--color-border));
+  box-shadow: 0 24px 50px -28px hsl(var(--glow-accent) / 0.45);
+}
+
+/* Gradient-filled primary action with brand glow */
+@utility btn-brand {
+  background: var(--gradient-brand);
+  color: #07111d;
+  box-shadow: 0 8px 30px -10px hsl(var(--glow-accent) / 0.5);
+  transition: box-shadow 300ms var(--ease-out-quint), transform 300ms var(--ease-out-quint), filter 300ms var(--ease-out-quint);
+}
+@utility btn-brand-hover {
+  box-shadow: 0 12px 44px -8px hsl(var(--glow-accent) / 0.75);
+  filter: brightness(1.06);
+}
 
 @keyframes terminal-blink {
   0%, 50% { opacity: 1; }
@@ -177,12 +254,12 @@ main, header, footer { position: relative; z-index: 2; }
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: 0;
-  --radius-md: 0;
-  --radius-xl: 0;
-  --radius-2xl: 0;
-  --radius-3xl: 0;
-  --radius-4xl: 0;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
 }
 
 :root, .dark {
@@ -209,7 +286,7 @@ main, header, footer { position: relative; z-index: 2; }
   --chart-3: hsl(280 70% 65%);
   --chart-4: hsl(40 80% 65%);
   --chart-5: hsl(142 71% 45%);
-  --radius: 0;
+  --radius: 0.75rem;
   --sidebar: #0B1320;
   --sidebar-foreground: #F8FAFC;
   --sidebar-primary: #14B8A6;
