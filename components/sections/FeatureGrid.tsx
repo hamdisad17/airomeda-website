@@ -1,7 +1,6 @@
 'use client';
 import * as React from 'react';
 import { Container } from '@/components/layout/Container';
-import { Galaxy } from '@/components/visuals/Galaxy';
 
 type Feature = {
   title: string;
@@ -83,8 +82,8 @@ const FEATURES: Feature[] = [
 
 export function FeatureGrid() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <Galaxy density="normal" />
+    <section className="relative py-24 md:py-32 overflow-hidden cosmic-bg">
+      <div aria-hidden className="absolute inset-0 stars-bg pointer-events-none" />
 
       <Container as="div" className="relative">
         <div className="text-center max-w-3xl mx-auto">

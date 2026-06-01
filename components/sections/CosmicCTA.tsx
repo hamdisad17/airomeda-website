@@ -2,13 +2,12 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
 import { AiroMascot } from '@/components/visuals/AiroMascot';
-import { Galaxy } from '@/components/visuals/Galaxy';
 
 export async function CosmicCTA() {
   const t = await getTranslations();
   return (
-    <section className="relative overflow-hidden py-24 md:py-32">
-      <Galaxy density="high" />
+    <section className="relative overflow-hidden py-24 md:py-32 cosmic-bg shooting-stars">
+      <div aria-hidden className="absolute inset-0 stars-bg pointer-events-none" />
 
       {/* Giant central glow */}
       <div

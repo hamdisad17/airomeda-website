@@ -4,17 +4,15 @@ import { Container } from '@/components/layout/Container';
 import { MagneticButton } from '@/components/motion/MagneticButton';
 import { KineticHeadline } from '@/components/sections/KineticHeadline';
 import { AiroMascot } from '@/components/visuals/AiroMascot';
-import { Galaxy } from '@/components/visuals/Galaxy';
 
 export async function Hero() {
   const t = await getTranslations();
   return (
     <section
       id="hero"
-      className="relative overflow-hidden min-h-[92vh]"
+      className="relative overflow-hidden min-h-[92vh] cosmic-bg shooting-stars"
     >
-      {/* Real galaxy starfield + nebulae */}
-      <Galaxy density="high" />
+      <div aria-hidden className="absolute inset-0 stars-bg pointer-events-none" />
       <div aria-hidden className="absolute inset-0 neon-grid pointer-events-none opacity-30 mix-blend-screen" />
 
       {/* Floating cosmic orbs as decorative planets */}
