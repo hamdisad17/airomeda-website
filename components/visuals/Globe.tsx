@@ -59,17 +59,18 @@ export function Globe({ className }: Props) {
       phi: 0,
       theta: 0.32,
       dark: 1,
-      diffuse: 1.4,
-      mapSamples: 16000,
-      // mapBrightness controls how bright the continent dots are.
-      // baseColor is the OCEAN colour; the continent dots draw multiplied
-      // against baseColor and brightened by mapBrightness. We need a
-      // visible ocean tone + high enough brightness for crisp landmasses.
-      mapBrightness: 7,
-      mapBaseBrightness: 0.05,
-      baseColor: [0.15, 0.22, 0.42],
-      markerColor: [0.49, 1, 1],
-      glowColor: [0.4, 0.55, 1],
+      // High diffuse => stronger day/night terminator + brighter lit side.
+      diffuse: 3,
+      mapSamples: 20000,
+      // CRITICAL: this is what makes the continents glow cyan instead of
+      // sitting dim against the dark cosmic bg. 6-7 looked like a black
+      // hole; 16+ reads as a hologram earth.
+      mapBrightness: 16,
+      mapBaseBrightness: 0.12,
+      // Clearer ocean blue so the sphere reads as Earth, not a void.
+      baseColor: [0.1, 0.28, 0.62],
+      markerColor: [0.55, 1, 1],
+      glowColor: [0.2, 0.55, 1],
       markers: CITIES.map(([lat, lng, size]) => ({ location: [lat, lng], size })),
       onRender: (state) => {
         if (pointerInteracting.current === null) phi += 0.0035;
@@ -115,14 +116,15 @@ export function Globe({ className }: Props) {
 
   return (
     <div className={`relative inline-block ${className ?? ''}`}>
-      {/* Outer ambient pulse halo */}
+      {/* Outer ambient pulse halo — pushed wider + dimmer so it backlights
+          the globe instead of washing it out. */}
       <div
         aria-hidden
-        className="absolute inset-[-22%] pulse-halo pointer-events-none"
+        className="absolute inset-[-32%] pulse-halo pointer-events-none"
         style={{
           background:
-            'radial-gradient(circle, rgb(0 212 255 / 0.28) 0%, rgb(168 85 247 / 0.18) 45%, transparent 75%)',
-          filter: 'blur(40px)',
+            'radial-gradient(circle, transparent 35%, rgb(0 150 255 / 0.30) 50%, rgb(168 85 247 / 0.20) 70%, transparent 88%)',
+          filter: 'blur(50px)',
           borderRadius: '50%',
         }}
       />
@@ -218,15 +220,6 @@ export function Globe({ className }: Props) {
             opacity: 0,
             transition: 'opacity 800ms ease',
             contain: 'layout paint size',
-          }}
-        />
-        {/* Subtle inner vignette so the globe seats into the cosmic depth */}
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none rounded-full"
-          style={{
-            background:
-              'radial-gradient(circle, transparent 56%, rgba(2,5,18,0.35) 100%)',
           }}
         />
       </div>
