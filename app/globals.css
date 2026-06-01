@@ -235,6 +235,137 @@ main, header, footer { position: relative; z-index: 2; }
   animation: grid-pulse 6s ease-in-out infinite;
 }
 
+/* ============================================================
+   COSMIC / ALIEN-TECH layer — stars, shooting stars, planets
+   ============================================================ */
+
+/* Cosmic deep-space gradient base (replaces the flat navy) */
+@utility cosmic-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgb(168 85 247 / 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgb(0 212 255 / 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 20% 70%, rgb(236 72 153 / 0.10) 0%, transparent 60%),
+    linear-gradient(180deg, #05091a 0%, #0a0f24 50%, #05091a 100%);
+}
+
+/* Static twinkling-stars layer — 80 small stars laid out via CSS only.
+   Two-layer multi-background trick so we don't need 80 DOM nodes. */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+@utility stars-bg {
+  background-image:
+    radial-gradient(1px 1px at 12% 15%, white, transparent),
+    radial-gradient(1px 1px at 27% 38%, white, transparent),
+    radial-gradient(1px 1px at 42% 11%, white, transparent),
+    radial-gradient(1px 1px at 55% 47%, white, transparent),
+    radial-gradient(1px 1px at 73% 22%, white, transparent),
+    radial-gradient(1px 1px at 88% 41%, white, transparent),
+    radial-gradient(1px 1px at 8% 62%, white, transparent),
+    radial-gradient(1px 1px at 33% 78%, white, transparent),
+    radial-gradient(1px 1px at 64% 85%, white, transparent),
+    radial-gradient(1px 1px at 95% 76%, white, transparent),
+    radial-gradient(1.5px 1.5px at 18% 49%, rgb(0 212 255 / 0.9), transparent),
+    radial-gradient(1.5px 1.5px at 48% 24%, rgb(168 85 247 / 0.9), transparent),
+    radial-gradient(1.5px 1.5px at 82% 67%, rgb(0 212 255 / 0.85), transparent),
+    radial-gradient(2px 2px at 60% 12%, rgb(255 255 255 / 0.95), transparent),
+    radial-gradient(2px 2px at 25% 90%, rgb(168 85 247 / 0.9), transparent);
+  background-size: 100% 100%;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+/* Shooting star — diagonal streak with tail */
+@keyframes shoot-1 {
+  0% { transform: translate(-10vw, -10vh) rotate(45deg); opacity: 0; }
+  10% { opacity: 1; }
+  60% { opacity: 1; }
+  70% { transform: translate(110vw, 70vh) rotate(45deg); opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes shoot-2 {
+  0% { transform: translate(-5vw, 30vh) rotate(30deg); opacity: 0; }
+  15% { opacity: 0.9; }
+  70% { opacity: 0.9; }
+  80% { transform: translate(105vw, 80vh) rotate(30deg); opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes shoot-3 {
+  0% { transform: translate(40vw, -10vh) rotate(60deg); opacity: 0; }
+  20% { opacity: 1; }
+  65% { opacity: 1; }
+  80% { transform: translate(120vw, 90vh) rotate(60deg); opacity: 0; }
+  100% { opacity: 0; }
+}
+@utility shooting-stars {
+  position: relative;
+  overflow: hidden;
+}
+.shooting-stars::before,
+.shooting-stars::after,
+.shooting-stars > .shoot-3 {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, white 50%, transparent);
+  filter: drop-shadow(0 0 6px white) drop-shadow(0 0 12px rgb(0 212 255 / 0.7));
+  pointer-events: none;
+}
+.shooting-stars::before {
+  animation: shoot-1 8s ease-out infinite;
+  animation-delay: 1s;
+}
+.shooting-stars::after {
+  animation: shoot-2 11s ease-out infinite;
+  animation-delay: 4s;
+  background: linear-gradient(90deg, transparent, rgb(168 85 247) 50%, transparent);
+}
+
+/* Rotating cosmic orb — for "planet" effects */
+@keyframes orb-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes orb-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@utility cosmic-orb {
+  position: relative;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgb(255 255 255 / 0.4), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgb(168 85 247 / 0.6), transparent 60%),
+    linear-gradient(135deg, #0e2856 0%, #1e1247 50%, #0a1a3c 100%);
+  box-shadow:
+    0 0 60px rgb(168 85 247 / 0.5),
+    0 0 120px rgb(0 212 255 / 0.3),
+    inset 0 0 60px rgb(0 0 0 / 0.5);
+  animation: orb-float 6s ease-in-out infinite;
+}
+
+/* Floating animation for mascots / cards */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@utility float-soft   { animation: float-soft 5s ease-in-out infinite; }
+
+/* Pulse glow ring (mascot halo) */
+@keyframes pulse-halo {
+  0%, 100% { transform: scale(1);   opacity: 0.6; }
+  50%      { transform: scale(1.1); opacity: 0.9; }
+}
+@utility pulse-halo { animation: pulse-halo 3s ease-in-out infinite; }
+
+/* Slow rotating gradient (for ring/orbit elements) */
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@utility rotate-slow { animation: rotate-slow 20s linear infinite; }
+
 /* Elevated surface with depth + hairline top highlight (glass-lite).
    Turns flat bordered boxes into surfaces that catch light. */
 @utility surface-elevated {

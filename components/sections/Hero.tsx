@@ -1,54 +1,60 @@
-﻿import { getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
-import { TerminalDemo } from '@/components/mockups/TerminalDemo';
-import { ParticleField } from '@/components/visuals/ParticleField';
-import { FlowField } from '@/components/visuals/FlowField';
 import { MagneticButton } from '@/components/motion/MagneticButton';
 import { KineticHeadline } from '@/components/sections/KineticHeadline';
-import { RecentShipments } from '@/components/sections/RecentShipments';
+import { AiroMascot } from '@/components/visuals/AiroMascot';
 
 export async function Hero() {
   const t = await getTranslations();
   return (
     <section
       id="hero"
-      className="relative overflow-hidden border-b border-border mesh-bg"
+      className="relative overflow-hidden cosmic-bg shooting-stars min-h-[92vh]"
     >
-      {/* Animated neon grid + brand flow field + particles, layered */}
-      <div aria-hidden className="absolute inset-0 neon-grid pointer-events-none" />
-      <FlowField />
-      <ParticleField />
+      {/* Layered cosmic backdrops */}
+      <div aria-hidden className="absolute inset-0 stars-bg pointer-events-none" />
+      <div aria-hidden className="absolute inset-0 neon-grid pointer-events-none opacity-50" />
 
-      {/* Glow blobs add image-#10-style violet+cyan depth */}
+      {/* Floating cosmic orbs as decorative planets */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full"
+        className="pointer-events-none absolute top-20 left-[8%] w-24 h-24 cosmic-orb opacity-80 hidden md:block"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-32 right-[6%] w-16 h-16 cosmic-orb opacity-70 hidden md:block"
+        style={{ animationDelay: '2s' }}
+      />
+
+      {/* Big violet glow blob (planet aura) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-32 -right-32 h-[36rem] w-[36rem] rounded-full"
         style={{
-          background: 'radial-gradient(circle, rgb(168 85 247 / 0.30), transparent 70%)',
-          filter: 'blur(40px)',
+          background: 'radial-gradient(circle, rgb(168 85 247 / 0.35), transparent 70%)',
+          filter: 'blur(60px)',
         }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute top-1/3 -right-24 h-[28rem] w-[28rem] rounded-full"
+        className="pointer-events-none absolute bottom-0 -left-32 h-[32rem] w-[32rem] rounded-full"
         style={{
-          background: 'radial-gradient(circle, rgb(0 212 255 / 0.22), transparent 70%)',
-          filter: 'blur(50px)',
+          background: 'radial-gradient(circle, rgb(0 212 255 / 0.30), transparent 70%)',
+          filter: 'blur(60px)',
         }}
       />
 
-      <Container as="div" className="relative pt-16 pb-20 md:pt-32 md:pb-36">
-        <div className="grid items-center gap-10 lg:gap-16 lg:grid-cols-2">
-          <div className="min-w-0">
-            <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-border bg-elevated/50 backdrop-blur-sm px-3 py-1 text-eyebrow uppercase tracking-wider">
+      <Container as="div" className="relative pt-20 pb-24 md:pt-32 md:pb-36">
+        <div className="grid items-center gap-12 lg:gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="min-w-0 text-center lg:text-left">
+            {/* Eyebrow pill — glass with cyan ping */}
+            <span className="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 text-eyebrow uppercase tracking-wider relative z-10">
               <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-neon-cyan)] opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--color-neon-cyan)]" />
               </span>
-              <span className="text-foreground">11 yıl</span>
-              <span className="text-muted-foreground">·</span>
-              <span className="text-muted-foreground">36 uzman · 130+ ülke</span>
+              <span className="text-foreground">{t('home.hero.eyebrow') || 'Yapay Zeka · Gelecek · Şimdi'}</span>
             </span>
 
             <KineticHeadline
@@ -57,69 +63,62 @@ export async function Hero() {
               tailLine={t('home.hero.title')}
             />
 
-            <p className="mt-5 max-w-xl text-base md:text-body-lg text-muted-foreground">
+            <p className="mt-6 max-w-xl mx-auto lg:mx-0 text-base md:text-body-lg text-muted-foreground leading-relaxed">
               {t('home.hero.subtitle')}
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-3">
               <MagneticButton>
                 <Link
                   href="/iletisim"
-                  className="btn-brand hover:btn-brand-hover group inline-flex items-center gap-2 rounded-xl px-5 py-3 md:px-6 md:py-3.5 text-sm font-semibold"
+                  className="group relative inline-flex items-center gap-2 px-7 py-4 text-sm md:text-base font-semibold text-white overflow-hidden rounded-full transition-all duration-300 ease-[var(--ease-out-quint)] glow-cyan-md hover:glow-cyan-lg"
+                  style={{
+                    background:
+                      'linear-gradient(120deg, var(--color-neon-cyan) 0%, var(--color-neon-violet) 100%)',
+                  }}
                 >
-                  {t('common.primary_cta')}
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  <span className="relative z-10">{t('common.primary_cta')}</span>
+                  <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
                 </Link>
               </MagneticButton>
               <Link
                 href="/calismalarimiz"
-                className="group inline-flex items-center gap-2 rounded-xl border border-border bg-elevated/40 px-5 py-3 md:px-6 md:py-3.5 text-sm font-medium text-foreground backdrop-blur-sm transition-colors hover:border-accent hover:text-accent"
+                className="group inline-flex items-center gap-2 glass-panel rounded-full px-7 py-4 text-sm md:text-base font-medium text-foreground transition-all hover:text-[var(--color-neon-cyan)]"
               >
                 {t('common.secondary_cta')}
               </Link>
             </div>
 
-            {/* Trust mini-line */}
-            <div className="mt-10 flex flex-wrap items-center gap-x-4 md:gap-x-8 gap-y-1.5 text-xs text-muted-foreground">
-              <span className="flex items-center gap-1.5">
-                <span className="text-accent">✓</span>
-                <span>11 yıl deneyim</span>
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="text-accent">✓</span>
-                <span>36 kişilik ekip</span>
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="text-accent">✓</span>
-                <span>130+ ülkeye hizmet</span>
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="text-accent">✓</span>
-                <span>7/24 destek</span>
-              </span>
+            {/* Trust dots — minimal */}
+            <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs md:text-sm text-muted-foreground">
+              {['11 yıl deneyim', '36 uzman ekip', '130+ ülke', '7/24 destek'].map((label) => (
+                <span key={label} className="flex items-center gap-1.5">
+                  <span className="text-neon font-semibold">✦</span>
+                  <span>{label}</span>
+                </span>
+              ))}
             </div>
-
-            {/* Recent shipments rotating indicator */}
-            <RecentShipments />
           </div>
 
-          {/* Terminal demo — wrapped in glass + neon halo (image #10 vibe) */}
-          <div className="relative">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -inset-8 rounded-3xl opacity-60"
-              style={{
-                background:
-                  'radial-gradient(ellipse 70% 70% at 50% 50%, rgb(0 212 255 / 0.28), rgb(168 85 247 / 0.20) 50%, transparent 75%)',
-                filter: 'blur(30px)',
-              }}
-            />
-            <div className="relative glass-panel rounded-2xl overflow-hidden glow-cyan-sm">
-              <TerminalDemo />
-            </div>
+          {/* Mascot — Airo character with cosmic halo */}
+          <div className="relative flex items-center justify-center">
+            <AiroMascot className="w-72 h-72 md:w-96 md:h-96" />
           </div>
         </div>
       </Container>
+
+      {/* Bottom edge gradient line */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 left-0 right-0 h-px"
+        style={{
+          background:
+            'linear-gradient(90deg, transparent, var(--color-neon-violet) 30%, var(--color-neon-cyan) 70%, transparent)',
+          opacity: 0.5,
+        }}
+      />
     </section>
   );
 }

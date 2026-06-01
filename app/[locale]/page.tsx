@@ -5,30 +5,11 @@ import { makeAlternates } from '@/lib/seo/alternates';
 import { getTranslations } from 'next-intl/server';
 
 import { Hero } from '@/components/sections/Hero';
-import { CustomerLogos } from '@/components/sections/CustomerLogos';
-import { WhyUs } from '@/components/sections/WhyUs';
-import { IndustrySwitcher } from '@/components/sections/IndustrySwitcher';
-import { Capabilities } from '@/components/sections/Capabilities';
-import { Architecture } from '@/components/sections/Architecture';
-import { ProductionHeartbeat } from '@/components/sections/ProductionHeartbeat';
-import { BentoShowcase } from '@/components/sections/BentoShowcase';
-import { StackPanel } from '@/components/sections/StackPanel';
-import { ProductShowcase } from '@/components/sections/ProductShowcase';
-import { CodeSample } from '@/components/sections/CodeSample';
-import { CustomerNumbers } from '@/components/sections/CustomerNumbers';
-import { Manifesto } from '@/components/sections/Manifesto';
-import { StudioGallery } from '@/components/sections/StudioGallery';
+import { FeatureGrid } from '@/components/sections/FeatureGrid';
+import { HowItWorks } from '@/components/sections/HowItWorks';
 import { SelectedWork } from '@/components/sections/SelectedWork';
-import { ScrollSequence } from '@/components/visuals/ScrollSequence';
-import { CustomerJourney } from '@/components/sections/CustomerJourney';
-import { DeploymentPipeline } from '@/components/sections/DeploymentPipeline';
-import { HappyClients } from '@/components/sections/HappyClients';
 import { Testimonials } from '@/components/sections/Testimonials';
-import { FAQ } from '@/components/sections/FAQ';
-import { ScreenshotMarquee } from '@/components/sections/ScreenshotMarquee';
-import { CTASection } from '@/components/sections/CTASection';
-import { DeploymentGlobe } from '@/components/sections/DeploymentGlobe';
-import { StatTicker } from '@/components/visuals/StatTicker';
+import { CosmicCTA } from '@/components/sections/CosmicCTA';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -56,31 +37,11 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   return (
     <>
       <Hero />
-      <StatTicker />
-      <CustomerLogos />
-      <WhyUs />
-      <IndustrySwitcher />
-      <Capabilities locale={locale} />
-      <Architecture />
-      <ProductionHeartbeat />
-      <BentoShowcase />
-      <StackPanel />
-      <ProductShowcase variant="finance" />
-      <CodeSample />
-      <ProductShowcase variant="gaming" reverse />
-      <CustomerNumbers />
-      <Manifesto />
-      <StudioGallery />
+      <FeatureGrid />
+      <HowItWorks />
       <SelectedWork />
-      <ScrollSequence />
-      <CustomerJourney />
-      <DeploymentPipeline />
-      <DeploymentGlobe />
-      <HappyClients />
       <Testimonials />
-      <FAQ />
-      <ScreenshotMarquee />
-      <CTASection />
+      <CosmicCTA />
     </>
   );
 }
