@@ -209,7 +209,6 @@ export function AiroMascot({ className, staticMode = false }: Props) {
                 />
                 <video
                   ref={videoRef}
-                  src="/airo-hero.mp4"
                   autoPlay
                   loop
                   muted
@@ -226,7 +225,10 @@ export function AiroMascot({ className, staticMode = false }: Props) {
                     WebkitMaskImage:
                       'radial-gradient(ellipse 92% 96% at 50% 50%, black 62%, transparent 96%)',
                   }}
-                />
+                >
+                  <source src="/airo-hero.webm" type="video/webm" />
+                  <source src="/airo-hero.mp4" type="video/mp4" />
+                </video>
                 {/* Inner edge vignette to soften any remaining seam */}
                 <div
                   aria-hidden
