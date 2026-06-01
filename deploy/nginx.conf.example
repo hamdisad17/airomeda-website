@@ -93,6 +93,13 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
+        # Tell Next.js the real public host + port so middleware
+        # locale redirects don't leak the internal :3010 port.
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Port $server_port;
+        # Emergency strip — if Next.js still emits a port-bearing
+        # Location header, rewrite it back to airomeda.com.
+        proxy_redirect ~^https?://[^/]+:\d+(/.*)$ https://airomeda.com$1;
         proxy_cache_bypass $http_upgrade;
         proxy_read_timeout 300s;
     }
@@ -110,6 +117,13 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
+        # Tell Next.js the real public host + port so middleware
+        # locale redirects don't leak the internal :3010 port.
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Port $server_port;
+        # Emergency strip — if Next.js still emits a port-bearing
+        # Location header, rewrite it back to airomeda.com.
+        proxy_redirect ~^https?://[^/]+:\d+(/.*)$ https://airomeda.com$1;
         proxy_cache_bypass $http_upgrade;
         proxy_read_timeout 300s;
     }
