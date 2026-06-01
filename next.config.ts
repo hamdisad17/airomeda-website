@@ -30,6 +30,7 @@ const CSP_DIRECTIVES = [
   "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://images.unsplash.com https://api.dicebear.com",
+  "media-src 'self' blob:",
   "font-src 'self' data:",
   "connect-src 'self' https://challenges.cloudflare.com https://*.sentry.io https://*.ingest.sentry.io",
   "frame-src https://challenges.cloudflare.com",
