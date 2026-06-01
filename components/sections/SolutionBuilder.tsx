@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { Container } from '@/components/layout/Container';
 import { AiroMascot } from '@/components/visuals/AiroMascot';
+import { Galaxy } from '@/components/visuals/Galaxy';
 import { Link } from '@/i18n/navigation';
 
 type ModuleId = 'seo' | 'social' | 'crm' | 'web' | 'ecom' | 'finance' | 'gaming' | 'integration';
@@ -146,8 +147,8 @@ export function SolutionBuilder() {
   };
 
   return (
-    <section className="relative cosmic-bg shooting-stars py-24 md:py-32 overflow-hidden">
-      <div aria-hidden className="absolute inset-0 stars-bg opacity-50 pointer-events-none" />
+    <section className="relative py-24 md:py-32 overflow-hidden">
+      <Galaxy density="normal" />
 
       <Container as="div" className="relative">
         <div className="text-center max-w-3xl mx-auto">

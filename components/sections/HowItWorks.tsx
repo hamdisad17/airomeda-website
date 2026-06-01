@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
 import { Container } from '@/components/layout/Container';
+import { Galaxy } from '@/components/visuals/Galaxy';
 
 type Step = {
   num: string;
@@ -33,8 +34,8 @@ const STEPS: Step[] = [
 
 export function HowItWorks() {
   return (
-    <section className="relative cosmic-bg py-24 md:py-32 overflow-hidden">
-      <div aria-hidden className="absolute inset-0 stars-bg opacity-50 pointer-events-none" />
+    <section className="relative py-24 md:py-32 overflow-hidden">
+      <Galaxy density="normal" />
 
       {/* Floating glow blobs */}
       <div

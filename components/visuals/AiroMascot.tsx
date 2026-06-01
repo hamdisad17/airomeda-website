@@ -188,9 +188,14 @@ export function AiroMascot({ className, staticMode = false }: Props) {
       ))}
 
       <div ref={tiltRef} className="relative will-change-transform" style={{ transformStyle: 'preserve-3d' }}>
-        <div style={{ animation: staticMode ? undefined : 'airo-dolly 5s ease-in-out infinite' }}>
-          <div style={{ animation: staticMode ? undefined : 'airo-breathe 3.5s ease-in-out infinite' }}>
-            <AiroSvg leftPupilRef={leftPupilRef} rightPupilRef={rightPupilRef} animated={!staticMode} />
+        {/* Step-out — Airo periodically lunges toward viewer and rocks side to side */}
+        <div style={{ animation: staticMode ? undefined : 'airo-stepout 14s ease-in-out infinite' }}>
+          {/* Dolly camera zoom */}
+          <div style={{ animation: staticMode ? undefined : 'airo-dolly 5s ease-in-out infinite' }}>
+            {/* Breathe */}
+            <div style={{ animation: staticMode ? undefined : 'airo-breathe 3.5s ease-in-out infinite' }}>
+              <AiroSvg leftPupilRef={leftPupilRef} rightPupilRef={rightPupilRef} animated={!staticMode} />
+            </div>
           </div>
         </div>
       </div>
@@ -203,6 +208,29 @@ export function AiroMascot({ className, staticMode = false }: Props) {
         @keyframes airo-breathe {
           0%, 100% { transform: scaleY(1) translateY(0); }
           50%      { transform: scaleY(1.025) translateY(-2px); }
+        }
+        /* Step-out: Airo lunges out of the page periodically, rocks
+           side-to-side, then settles. Combined with the dolly + tilt
+           you get true 3D presence. */
+        @keyframes airo-stepout {
+          0%, 100% {
+            transform: translate3d(0, 0, 0) rotateZ(0deg);
+          }
+          15% {
+            transform: translate3d(-10px, -4px, 0) rotateZ(-3deg) scale(1.04);
+          }
+          30% {
+            transform: translate3d(8px, 2px, 0) rotateZ(2deg) scale(1.10);
+          }
+          45% {
+            transform: translate3d(-4px, -8px, 0) rotateZ(-2deg) scale(1.06);
+          }
+          60% {
+            transform: translate3d(0, -2px, 0) rotateZ(0deg) scale(1.02);
+          }
+          75% {
+            transform: translate3d(6px, 4px, 0) rotateZ(3deg) scale(1.05);
+          }
         }
         @keyframes airo-floor {
           0%, 100% { opacity: 0.7; transform: translateX(-50%) scaleX(1); }
@@ -445,7 +473,7 @@ function AiroSvg({
         <circle cx="68" cy="278" r="6" fill="url(#eye-flare)" filter="url(#strong-glow)" />
       </g>
 
-      {/* Right arm — WAVES periodically (every 9s) */}
+      {/* === RIGHT ARM with real mechanical hand === */}
       <g>
         {animated && (
           <animateTransform
@@ -454,11 +482,11 @@ function AiroSvg({
             type="rotate"
             values="0 242 220;
                     0 242 220;
-                    -45 242 220;
+                    -50 242 220;
                     -30 242 220;
-                    -60 242 220;
+                    -70 242 220;
                     -30 242 220;
-                    -45 242 220;
+                    -55 242 220;
                     0 242 220;
                     0 242 220"
             keyTimes="0;0.55;0.62;0.69;0.76;0.83;0.90;0.97;1"
@@ -466,16 +494,128 @@ function AiroSvg({
             repeatCount="indefinite"
           />
         )}
-        <ellipse cx="242" cy="245" rx="12" ry="32" fill="url(#body-chrome)" transform="rotate(12 242 245)" />
-        <circle cx="252" cy="278" r="11" fill="#3a4566" />
-        <circle cx="252" cy="278" r="6" fill="url(#eye-flare-violet)" filter="url(#strong-glow)" />
-        <g transform="translate(252 278)">
-          <circle cx="0" cy="-4" r="2" fill="#a8b4d6" />
-          <circle cx="-4" cy="-2" r="2" fill="#a8b4d6" />
-          <circle cx="4" cy="-2" r="2" fill="#a8b4d6" />
+
+        {/* Upper arm (shoulder + biceps) */}
+        <ellipse cx="242" cy="240" rx="13" ry="30" fill="url(#body-chrome)" transform="rotate(12 242 240)" />
+        {/* Elbow joint with neon ring */}
+        <circle cx="248" cy="268" r="8" fill="#3a4566" stroke="rgba(0,212,255,0.5)" strokeWidth="1" />
+        <circle cx="248" cy="268" r="3" fill="url(#eye-flare)" filter="url(#strong-glow)" />
+        {/* Forearm */}
+        <ellipse cx="256" cy="290" rx="9" ry="22" fill="url(#body-chrome)" transform="rotate(18 256 290)" />
+
+        {/* === Wrist === */}
+        <g transform="translate(266 314)">
+          <circle r="9" fill="#3a4566" stroke="rgba(168,85,247,0.6)" strokeWidth="1.5" />
+          <circle r="5" fill="url(#eye-flare-violet)" filter="url(#strong-glow)">
+            {animated && <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />}
+          </circle>
+        </g>
+
+        {/* === Hand with fingers — fingers spread when waving === */}
+        <g transform="translate(266 314)">
+          {/* Palm — domed mechanical plate */}
+          <path
+            d="M -9 0 Q -10 14 -4 22 L 12 24 Q 18 22 18 12 Q 17 4 12 -3 Z"
+            fill="url(#body-chrome)"
+            stroke="rgba(168,85,247,0.4)"
+            strokeWidth="0.5"
+          />
+          {/* Inner palm shadow */}
+          <path
+            d="M -7 4 Q -7 16 0 22 L 12 22 Q 16 18 15 10"
+            fill="rgba(0,0,30,0.35)"
+          />
+
+          {/* === 5 fingers === */}
+          {/* Each finger: 3 segments (proximal, middle, distal) + neon tip */}
+          {/* Thumb (short, angled left) */}
+          <g>
+            {animated && (
+              <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="rotate"
+                values="0 -6 8; 0 -6 8; -30 -6 8; -10 -6 8; -30 -6 8; 0 -6 8; 0 -6 8"
+                keyTimes="0;0.55;0.65;0.75;0.85;0.95;1"
+                dur="9s"
+                repeatCount="indefinite"
+              />
+            )}
+            <rect x="-12" y="6" width="6" height="10" rx="3" fill="#5a6593" transform="rotate(-25 -9 11)" />
+            <circle cx="-13" cy="6" r="2" fill="#3a4566" />
+            <circle cx="-13" cy="6" r="1" fill="#00d4ff" />
+          </g>
+
+          {/* Index finger */}
+          {finger({ baseX: -2, color: '#00d4ff', restAngle: -8, openAngle: -45, animated })}
+
+          {/* Middle finger (longest) */}
+          {finger({ baseX: 3, color: '#a855f7', restAngle: 0, openAngle: 0, length: 1.15, animated })}
+
+          {/* Ring finger */}
+          {finger({ baseX: 8, color: '#ec4899', restAngle: 6, openAngle: 30, animated })}
+
+          {/* Pinky (smaller) */}
+          {finger({ baseX: 13, color: '#22d3a4', restAngle: 12, openAngle: 50, length: 0.8, animated })}
         </g>
       </g>
     </svg>
+  );
+}
+
+/** A mechanical finger: 3 segments with joints + neon tip.
+ *  Animates rotation between rest and open positions during the wave. */
+function finger({
+  baseX,
+  color,
+  restAngle,
+  openAngle,
+  length = 1,
+  animated,
+}: {
+  baseX: number;
+  color: string;
+  restAngle: number;
+  openAngle: number;
+  length?: number;
+  animated: boolean;
+}) {
+  const len1 = 8 * length;
+  const len2 = 7 * length;
+  const len3 = 5 * length;
+
+  return (
+    <g transform={`translate(${baseX} -2)`}>
+      {animated && (
+        <animateTransform
+          attributeName="transform"
+          attributeType="XML"
+          type="rotate"
+          values={`${restAngle} 0 0; ${restAngle} 0 0; ${openAngle} 0 0; ${openAngle - 10} 0 0; ${openAngle + 5} 0 0; ${openAngle} 0 0; ${restAngle} 0 0`}
+          keyTimes="0;0.55;0.65;0.75;0.85;0.95;1"
+          dur="9s"
+          repeatCount="indefinite"
+          additive="sum"
+        />
+      )}
+      {/* Knuckle joint */}
+      <circle cx="0" cy="0" r="2.2" fill="#3a4566" stroke={color} strokeWidth="0.4" opacity="0.8" />
+      {/* Proximal segment */}
+      <rect x="-1.8" y={-len1} width="3.6" height={len1} rx="1.4" fill="#5a6593" stroke="rgba(0,0,30,0.5)" strokeWidth="0.3" />
+      {/* Middle joint */}
+      <circle cx="0" cy={-len1} r="1.8" fill="#3a4566" />
+      {/* Middle segment */}
+      <rect x="-1.6" y={-len1 - len2} width="3.2" height={len2} rx="1.2" fill="#5a6593" stroke="rgba(0,0,30,0.5)" strokeWidth="0.3" />
+      {/* Distal joint */}
+      <circle cx="0" cy={-len1 - len2} r="1.4" fill="#3a4566" />
+      {/* Distal segment + neon tip */}
+      <rect x="-1.3" y={-len1 - len2 - len3} width="2.6" height={len3} rx="1" fill="#5a6593" />
+      <circle cx="0" cy={-len1 - len2 - len3} r="1.6" fill={color}>
+        {animated && (
+          <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite" />
+        )}
+      </circle>
+    </g>
   );
 }
 
