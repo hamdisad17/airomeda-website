@@ -26,6 +26,14 @@
   --glow-accent: 173 80% 45%;
   --glow-accent-2: 239 84% 74%;
 
+  /* === Neon palette — for image-#10-style aggressive cyan + violet === */
+  --color-neon-cyan: #00d4ff;
+  --color-neon-cyan-soft: #38d6ff;
+  --color-neon-violet: #a855f7;
+  --color-neon-violet-soft: #c084fc;
+  --color-neon-pink: #ec4899;
+  --gradient-neon: linear-gradient(120deg, var(--color-neon-cyan) 0%, var(--color-neon-violet) 100%);
+
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-heading: var(--font-manrope), var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-inter), system-ui, sans-serif;
@@ -157,6 +165,74 @@ main, header, footer { position: relative; z-index: 2; }
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
+}
+
+/* Neon gradient text — punchier cyan → violet for callouts (image #10) */
+@utility text-neon {
+  background: var(--gradient-neon);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+@utility text-neon-violet {
+  background: linear-gradient(120deg, #c084fc 0%, #a855f7 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glass-panel — translucent card with hover gradient halo (image #10 cards) */
+@utility glass-panel {
+  position: relative;
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.04) 0%, rgb(255 255 255 / 0.01) 100%);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  transition: border-color 350ms var(--ease-out-quint), box-shadow 350ms var(--ease-out-quint);
+}
+.glass-panel:hover {
+  border-color: rgb(0 212 255 / 0.30);
+  box-shadow: 0 0 32px -8px rgb(0 212 255 / 0.35), 0 0 64px -16px rgb(168 85 247 / 0.25);
+}
+
+/* Gradient border using double-background trick — no pseudo-element */
+@utility neon-border {
+  background:
+    linear-gradient(var(--color-elevated), var(--color-elevated)) padding-box,
+    var(--gradient-neon) border-box;
+  border: 1px solid transparent;
+}
+
+/* Neon glow shadows in two intensities + two hues */
+@utility glow-cyan-sm   { box-shadow: 0 0 20px -4px rgb(0 212 255 / 0.45); }
+@utility glow-cyan-md   { box-shadow: 0 0 40px -8px rgb(0 212 255 / 0.55), 0 0 80px -20px rgb(0 212 255 / 0.30); }
+@utility glow-cyan-lg   { box-shadow: 0 0 60px -10px rgb(0 212 255 / 0.65), 0 0 120px -30px rgb(0 212 255 / 0.40); }
+@utility glow-violet-sm { box-shadow: 0 0 20px -4px rgb(168 85 247 / 0.45); }
+@utility glow-violet-md { box-shadow: 0 0 40px -8px rgb(168 85 247 / 0.55), 0 0 80px -20px rgb(168 85 247 / 0.30); }
+@utility glow-violet-lg { box-shadow: 0 0 60px -10px rgb(168 85 247 / 0.65), 0 0 120px -30px rgb(168 85 247 / 0.40); }
+
+/* Mesh background — deep navy with violet + cyan radial blobs (hero hero) */
+@utility mesh-bg {
+  background-image:
+    radial-gradient(ellipse 60% 50% at 15% 25%, rgb(168 85 247 / 0.20), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 65%, rgb(0 212 255 / 0.16), transparent 60%),
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgb(168 85 247 / 0.10), transparent 70%);
+}
+
+/* Animated grid backdrop */
+@keyframes grid-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+@utility neon-grid {
+  background-image:
+    linear-gradient(rgb(0 212 255 / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(0 212 255 / 0.07) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 80%);
+  animation: grid-pulse 6s ease-in-out infinite;
 }
 
 /* Elevated surface with depth + hairline top highlight (glass-lite).

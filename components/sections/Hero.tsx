@@ -11,9 +11,32 @@ import { RecentShipments } from '@/components/sections/RecentShipments';
 export async function Hero() {
   const t = await getTranslations();
   return (
-    <section id="hero" className="relative overflow-hidden border-b border-border">
+    <section
+      id="hero"
+      className="relative overflow-hidden border-b border-border mesh-bg"
+    >
+      {/* Animated neon grid + brand flow field + particles, layered */}
+      <div aria-hidden className="absolute inset-0 neon-grid pointer-events-none" />
       <FlowField />
       <ParticleField />
+
+      {/* Glow blobs add image-#10-style violet+cyan depth */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgb(168 85 247 / 0.30), transparent 70%)',
+          filter: 'blur(40px)',
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-1/3 -right-24 h-[28rem] w-[28rem] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgb(0 212 255 / 0.22), transparent 70%)',
+          filter: 'blur(50px)',
+        }}
+      />
 
       <Container as="div" className="relative pt-16 pb-20 md:pt-32 md:pb-36">
         <div className="grid items-center gap-10 lg:gap-16 lg:grid-cols-2">
@@ -80,9 +103,20 @@ export async function Hero() {
             <RecentShipments />
           </div>
 
-          {/* Terminal demo */}
+          {/* Terminal demo — wrapped in glass + neon halo (image #10 vibe) */}
           <div className="relative">
-            <TerminalDemo />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-8 rounded-3xl opacity-60"
+              style={{
+                background:
+                  'radial-gradient(ellipse 70% 70% at 50% 50%, rgb(0 212 255 / 0.28), rgb(168 85 247 / 0.20) 50%, transparent 75%)',
+                filter: 'blur(30px)',
+              }}
+            />
+            <div className="relative glass-panel rounded-2xl overflow-hidden glow-cyan-sm">
+              <TerminalDemo />
+            </div>
           </div>
         </div>
       </Container>
