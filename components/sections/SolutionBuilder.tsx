@@ -1,7 +1,6 @@
 'use client';
 import * as React from 'react';
 import { Container } from '@/components/layout/Container';
-import { AiroMascot } from '@/components/visuals/AiroMascot';
 import { Link } from '@/i18n/navigation';
 
 type ModuleId = 'seo' | 'social' | 'crm' | 'web' | 'ecom' | 'finance' | 'gaming' | 'integration';
@@ -267,7 +266,23 @@ export function SolutionBuilder() {
                 style={{ animation: 'fade-in 400ms ease-out both' }}
               >
                 <div className="flex-shrink-0">
-                  <AiroMascot className="w-20 h-20" staticMode />
+                  <div
+                    aria-hidden
+                    className="relative w-16 h-16 rounded-full flex items-center justify-center"
+                    style={{
+                      background:
+                        'radial-gradient(circle at 35% 30%, rgba(0,212,255,0.55), rgba(168,85,247,0.35) 60%, rgba(2,5,18,0.95) 100%)',
+                      boxShadow:
+                        '0 0 24px -4px rgba(0,212,255,0.6), inset 0 0 20px rgba(168,85,247,0.3)',
+                    }}
+                  >
+                    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round">
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M3 12h18" />
+                      <path d="M12 3a14 14 0 0 1 0 18" />
+                      <path d="M12 3a14 14 0 0 0 0 18" />
+                    </svg>
+                  </div>
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-xs uppercase tracking-wider text-neon font-semibold">

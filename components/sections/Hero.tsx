@@ -3,7 +3,7 @@ import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
 import { MagneticButton } from '@/components/motion/MagneticButton';
 import { KineticHeadline } from '@/components/sections/KineticHeadline';
-import { AiroMascot } from '@/components/visuals/AiroMascot';
+import { Globe } from '@/components/visuals/Globe';
 
 export async function Hero() {
   const t = await getTranslations();
@@ -103,7 +103,7 @@ export async function Hero() {
 
           {/* Mascot — Airo character with cosmic halo */}
           <div className="relative flex items-center justify-center">
-            <AiroMascot className="w-72 h-72 md:w-96 md:h-96" />
+            <Globe className="w-72 h-72 md:w-96 md:h-96" />
           </div>
         </div>
       </Container>
