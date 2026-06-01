@@ -7,6 +7,7 @@ import { getTranslations } from 'next-intl/server';
 import { Hero } from '@/components/sections/Hero';
 import { FeatureGrid } from '@/components/sections/FeatureGrid';
 import { HowItWorks } from '@/components/sections/HowItWorks';
+import { SolutionBuilder } from '@/components/sections/SolutionBuilder';
 import { SelectedWork } from '@/components/sections/SelectedWork';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { CosmicCTA } from '@/components/sections/CosmicCTA';
@@ -39,6 +40,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <Hero />
       <FeatureGrid />
       <HowItWorks />
+      <SolutionBuilder />
       <SelectedWork />
       <Testimonials />
       <CosmicCTA />
