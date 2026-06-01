@@ -58,12 +58,12 @@ echo "≡ building Next.js (standalone output)"
 # Build-time public envs — match deploy.yml
 export NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-https://${PUBLIC_HOST}}
 # NEXT_PUBLIC_TURNSTILE_SITE_KEY is read from .env.production via PM2 at runtime,
-# but it's also baked into the client bundle at build time — pick it up here:
+# but it's also baked into the client bundle at build time. We copy the shared
+# env file into the build dir so Next.js's own (lenient) dotenv parser loads it
+# during `next build`. Sourcing it via bash (set -a; . file) breaks on values
+# that aren't valid shell syntax — quotes, spaces, parens, '&', etc.
 if [ -f "${APP_ROOT}/shared/.env.production" ]; then
-  set -a
-  # shellcheck disable=SC1091
-  . "${APP_ROOT}/shared/.env.production"
-  set +a
+  cp "${APP_ROOT}/shared/.env.production" .env.production
 fi
 npm run build
 
