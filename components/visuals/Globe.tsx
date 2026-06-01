@@ -57,14 +57,19 @@ export function Globe({ className }: Props) {
       width: width * 2,
       height: width * 2,
       phi: 0,
-      theta: 0.28,
+      theta: 0.32,
       dark: 1,
-      diffuse: 1.2,
+      diffuse: 1.4,
       mapSamples: 16000,
-      mapBrightness: 6,
-      baseColor: [0.04, 0.06, 0.16],
-      markerColor: [0, 0.83, 1],
-      glowColor: [0.66, 0.33, 0.97],
+      // mapBrightness controls how bright the continent dots are.
+      // baseColor is the OCEAN colour; the continent dots draw multiplied
+      // against baseColor and brightened by mapBrightness. We need a
+      // visible ocean tone + high enough brightness for crisp landmasses.
+      mapBrightness: 7,
+      mapBaseBrightness: 0.05,
+      baseColor: [0.15, 0.22, 0.42],
+      markerColor: [0.49, 1, 1],
+      glowColor: [0.4, 0.55, 1],
       markers: CITIES.map(([lat, lng, size]) => ({ location: [lat, lng], size })),
       onRender: (state) => {
         if (pointerInteracting.current === null) phi += 0.0035;

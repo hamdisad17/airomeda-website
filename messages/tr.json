@@ -25,6 +25,7 @@
   },
   "home": {
     "hero": {
+      "eyebrow": "Yapay zekâ destekli yazılım ortağı",
       "title": "Karmaşık olanı, basit hale getiriyoruz.",
       "subtitle": "2014'ten beri işletmelerin güvenle tercih ettiği yazılım ortağı. İşinize odaklanın, teknolojiyi bize bırakın.",
       "kinetic_words": ["Finans", "iGaming", "E-Ticaret", "Entegrasyon", "SEO & Reklam", "CRM"],
