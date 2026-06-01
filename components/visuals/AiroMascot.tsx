@@ -2,14 +2,11 @@
 import * as React from 'react';
 
 /**
- * Airo V4 — "Sentinel" — alien-tech mascot, deliberately non-humanoid.
- * Single horizontal visor slit (not two cute eyes), crystalline floating
- * head disconnected from body, hex chest with visible energy core,
- * asymmetric arms (left = mechanical claw, right = holographic), and a
- * hover ring instead of legs.
- *
- * Behaviour stays: mouse-tracked sensor dots inside the visor, blink,
- * breathe, dolly, step-out, periodic wave + speech bubble.
+ * Airo V5 — "Cyborg" — humanoid 3/4 profile portrait inspired by a
+ * chrome-and-neon character study. Anatomical face silhouette, single
+ * glowing eye (mouse-tracked iris), mechanical exhaust disc replacing
+ * the ear, neon plate seams revealing internal mechanism beneath the
+ * chrome armour. No arms — bust-style portrait composition.
  */
 
 type Props = {
@@ -51,12 +48,12 @@ export function AiroMascot({ className, staticMode = false }: Props) {
       const r = wrap.getBoundingClientRect();
       const dx = (e.clientX - (r.left + r.width / 2)) / window.innerWidth;
       const dy = (e.clientY - (r.top + r.height / 2)) / window.innerHeight;
-      tX = dx * 18;
-      tY = dy * -14;
+      tX = dx * 14;
+      tY = dy * -10;
       const pdx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / 200));
       const pdy = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / 200));
-      tpX = pdx * 4.5;
-      tpY = pdy * 1.8;
+      tpX = pdx * 3.5;
+      tpY = pdy * 2;
     };
 
     const tick = () => {
@@ -66,12 +63,12 @@ export function AiroMascot({ className, staticMode = false }: Props) {
       pX += (tpX - pX) * 0.15;
       pY += (tpY - pY) * 0.15;
       if (lp) {
-        lp.setAttribute('cx', String(140 + pX));
-        lp.setAttribute('cy', String(100 + pY));
+        lp.setAttribute('cx', String(118 + pX));
+        lp.setAttribute('cy', String(115 + pY));
       }
       if (rp) {
-        rp.setAttribute('cx', String(180 + pX));
-        rp.setAttribute('cy', String(100 + pY));
+        rp.setAttribute('cx', String(-100));
+        rp.setAttribute('cy', String(-100));
       }
       raf = requestAnimationFrame(tick);
     };
@@ -245,372 +242,393 @@ function AiroSvg({
   animated: boolean;
 }) {
   return (
-    <svg viewBox="0 0 320 380" className="relative w-full h-full" aria-label="Airo sentinel">
+    <svg viewBox="0 0 320 380" className="relative w-full h-full" aria-label="Airo cyborg">
       <defs>
-        <linearGradient id="crystal-face" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="rgba(195,220,255,0.85)" />
-          <stop offset="35%" stopColor="rgba(70,90,170,0.7)" />
-          <stop offset="100%" stopColor="rgba(8,12,40,0.95)" />
+        <linearGradient id="chrome-plate" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#f0f4ff" />
+          <stop offset="30%" stopColor="#b8c4e0" />
+          <stop offset="65%" stopColor="#5a6593" />
+          <stop offset="100%" stopColor="#1a2046" />
         </linearGradient>
-        <linearGradient id="crystal-rim" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id="chrome-side" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#384266" />
+          <stop offset="50%" stopColor="#a8b4d6" />
+          <stop offset="100%" stopColor="#384266" />
+        </linearGradient>
+        <linearGradient id="neon-edge" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#00d4ff" />
-          <stop offset="50%" stopColor="#ffffff" />
+          <stop offset="50%" stopColor="#7dffff" />
           <stop offset="100%" stopColor="#a855f7" />
         </linearGradient>
-        <radialGradient id="visor-slit" cx="50%" cy="50%" r="50%">
+        <linearGradient id="violet-edge" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#a855f7" />
+          <stop offset="100%" stopColor="#ec4899" />
+        </linearGradient>
+        <radialGradient id="eye-glow-bright" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#ffffff" />
           <stop offset="15%" stopColor="#7dffff" />
           <stop offset="40%" stopColor="#00d4ff" />
-          <stop offset="80%" stopColor="#0a1640" />
-          <stop offset="100%" stopColor="#020514" />
+          <stop offset="85%" stopColor="#0055aa" />
+          <stop offset="100%" stopColor="rgba(0,0,0,0)" />
         </radialGradient>
-        <linearGradient id="hex-body" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#5060a0" />
-          <stop offset="50%" stopColor="#2a3268" />
-          <stop offset="100%" stopColor="#0a0e26" />
-        </linearGradient>
-        <radialGradient id="core-glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="20%" stopColor="#7dffff" />
-          <stop offset="50%" stopColor="#00d4ff" />
-          <stop offset="80%" stopColor="#5028a8" />
-          <stop offset="100%" stopColor="rgba(0,0,30,0)" />
+        <radialGradient id="internal-mech" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stopColor="#1a0a3a" />
+          <stop offset="100%" stopColor="#02050f" />
         </radialGradient>
-        <radialGradient id="hologram-grad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="rgba(125,255,255,0.8)" />
-          <stop offset="50%" stopColor="rgba(0,212,255,0.5)" />
-          <stop offset="100%" stopColor="rgba(0,212,255,0)" />
-        </radialGradient>
-        <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="4" />
-        </filter>
-        <filter id="strong-glow" x="-100%" y="-100%" width="300%" height="300%">
-          <feGaussianBlur stdDeviation="2" result="blur" />
+        <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="1.8" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
-        <filter id="visor-blur" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="1.2" />
+        <filter id="strong-glow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="3.5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
         </filter>
-        <clipPath id="visor-clip">
-          <rect x="116" y="93" width="88" height="14" rx="7" />
+        <filter id="soft-blur" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" />
+        </filter>
+        <filter id="wide-blur" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="8" />
+        </filter>
+        <clipPath id="eye-clip">
+          <ellipse cx="118" cy="115" rx="14" ry="8" />
         </clipPath>
       </defs>
 
-      <ellipse cx="160" cy="360" rx="70" ry="8" fill="url(#core-glow)" opacity="0.5" filter="url(#soft-glow)" />
+      {/* Floor / ambient shadow under bust */}
+      <ellipse cx="160" cy="368" rx="95" ry="9" fill="url(#eye-glow-bright)" opacity="0.35" filter="url(#wide-blur)" />
 
-      {/* === Floating halo ring above the head === */}
+      {/* === INNER MECH SHEET behind the chest (dark base) === */}
+      <path
+        d="M 50 250 L 100 240 L 220 238 L 270 252 L 280 380 L 40 380 Z"
+        fill="url(#internal-mech)"
+      />
+
+      {/* Scattered red/violet pinpoints visible through plate seams (internal wiring) */}
       <g>
-        <ellipse cx="160" cy="22" rx="46" ry="9" fill="none" stroke="url(#crystal-rim)" strokeWidth="1.8" opacity="0.9">
-          {animated && (
-            <animate attributeName="opacity" values="0.65;1;0.65" dur="3s" repeatCount="indefinite" />
-          )}
-        </ellipse>
-        <ellipse cx="160" cy="22" rx="46" ry="9" fill="none" stroke="rgba(125,255,255,0.4)" strokeWidth="0.6" filter="url(#soft-glow)" />
-        <g>
-          {animated && (
-            <animateTransform
-              attributeName="transform"
-              type="rotate"
-              from="0 160 22"
-              to="360 160 22"
-              dur="9s"
-              repeatCount="indefinite"
-            />
-          )}
-          <circle cx="206" cy="22" r="2.6" fill="#00d4ff" filter="url(#strong-glow)" />
-          <circle cx="114" cy="22" r="2.6" fill="#a855f7" filter="url(#strong-glow)" />
-          <circle cx="160" cy="13" r="2" fill="#ec4899" filter="url(#strong-glow)" />
-        </g>
-      </g>
-
-      {/* === Floating crystal head (disconnected from body) === */}
-      <g>
-        {animated && (
-          <animateTransform
-            attributeName="transform"
-            type="translate"
-            values="0 0; 0 -2; 0 2; 0 0"
-            dur="4.5s"
-            repeatCount="indefinite"
-          />
-        )}
-        <polygon
-          points="160,50 215,75 215,125 160,150 105,125 105,75"
-          fill="url(#crystal-face)"
-          stroke="url(#crystal-rim)"
-          strokeWidth="1.6"
-        />
-        <g stroke="rgba(125,255,255,0.20)" strokeWidth="0.6" fill="none">
-          <line x1="160" y1="50" x2="160" y2="150" />
-          <line x1="105" y1="75" x2="215" y2="125" />
-          <line x1="215" y1="75" x2="105" y2="125" />
-        </g>
-        <polygon points="160,50 215,75 160,90 105,75" fill="rgba(255,255,255,0.13)" />
-        <polygon points="105,125 160,150 215,125" fill="rgba(0,0,40,0.35)" />
-
-        {/* Visor slit */}
-        <g>
-          <rect x="116" y="93" width="88" height="14" rx="7" fill="#020514" stroke="rgba(0,212,255,0.75)" strokeWidth="1.2" />
-          <rect x="119" y="95" width="82" height="10" rx="5" fill="url(#visor-slit)" filter="url(#visor-blur)" />
-          {animated && (
-            <line x1="119" y1="100" x2="201" y2="100" stroke="rgba(255,255,255,0.9)" strokeWidth="0.4" filter="url(#strong-glow)">
-              <animate attributeName="y1" values="95;105;95" dur="2.4s" repeatCount="indefinite" />
-              <animate attributeName="y2" values="95;105;95" dur="2.4s" repeatCount="indefinite" />
-            </line>
-          )}
-          <g clipPath="url(#visor-clip)">
-            <circle cx="160" cy="100" r="2.5" fill="#ffffff" filter="url(#strong-glow)" opacity="0.9">
-              {animated && (
-                <animate attributeName="opacity" values="0.6;1;0.6" dur="1.6s" repeatCount="indefinite" />
-              )}
-            </circle>
-            <circle ref={leftPupilRef} cx="140" cy="100" r="2.2" fill="#7dffff" filter="url(#strong-glow)" />
-            <circle ref={rightPupilRef} cx="180" cy="100" r="2.2" fill="#ddaaff" filter="url(#strong-glow)" />
-          </g>
-          {/* Slit blink — periodic dark sweep covers slit briefly */}
-          {animated && (
-            <rect x="119" y="95" width="82" height="0" rx="5" fill="#020514">
+        {[
+          [72, 270], [88, 295], [105, 320], [85, 345],
+          [148, 268], [160, 295], [142, 330], [165, 355],
+          [205, 270], [225, 300], [240, 335], [218, 360],
+        ].map(([x, y], i) => (
+          <circle
+            key={`mech-${i}`}
+            cx={x}
+            cy={y}
+            r="0.9"
+            fill={i % 2 === 0 ? '#a855f7' : '#ec4899'}
+            filter="url(#neon-glow)"
+            opacity="0.7"
+          >
+            {animated && (
               <animate
-                attributeName="height"
-                values="0;0;0;0;0;0;0;10;0"
-                keyTimes="0;0.6;0.7;0.75;0.8;0.85;0.9;0.95;1"
-                dur="6s"
+                attributeName="opacity"
+                values="0.3;1;0.3"
+                dur={`${1.4 + (i % 4) * 0.3}s`}
+                begin={`${i * 0.18}s`}
                 repeatCount="indefinite"
               />
+            )}
+          </circle>
+        ))}
+      </g>
+
+      {/* === NECK MECH PILLAR (visible spine between collar plates) === */}
+      <g>
+        <rect x="130" y="195" width="44" height="80" fill="url(#internal-mech)" />
+        {[200, 215, 230, 245, 260].map((y, i) => (
+          <g key={`vert-${i}`}>
+            <rect x="138" y={y} width="28" height="6" rx="2" fill="#2a3268" stroke="rgba(0,212,255,0.55)" strokeWidth="0.4" />
+            <circle cx="152" cy={y + 3} r="1.1" fill="#00d4ff" filter="url(#neon-glow)">
+              {animated && (
+                <animate
+                  attributeName="opacity"
+                  values="0.4;1;0.4"
+                  dur={`${1.2 + i * 0.2}s`}
+                  begin={`${i * 0.15}s`}
+                  repeatCount="indefinite"
+                />
+              )}
+            </circle>
+          </g>
+        ))}
+        {/* Side neck collar plates */}
+        <path d="M 102 218 L 132 213 L 132 268 L 100 280 Z" fill="url(#chrome-plate)" stroke="#00d4ff" strokeWidth="1.2" filter="url(#neon-glow)" />
+        <path d="M 218 218 L 188 213 L 188 268 L 220 280 Z" fill="url(#chrome-plate)" stroke="#00d4ff" strokeWidth="1.2" filter="url(#neon-glow)" />
+        <line x1="115" y1="240" x2="125" y2="240" stroke="rgba(255,255,255,0.5)" strokeWidth="0.8" />
+        <line x1="195" y1="240" x2="205" y2="240" stroke="rgba(255,255,255,0.5)" strokeWidth="0.8" />
+      </g>
+
+      {/* === SHOULDER PAULDRONS === */}
+      <g>
+        {/* Left pauldron */}
+        <path
+          d="M 48 240 Q 65 218 100 222 L 108 275 L 78 282 L 45 268 Z"
+          fill="url(#chrome-plate)"
+          stroke="url(#violet-edge)"
+          strokeWidth="1.6"
+          filter="url(#neon-glow)"
+        />
+        <path d="M 58 234 Q 75 226 96 230" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.2" />
+        <line x1="68" y1="258" x2="92" y2="262" stroke="#a855f7" strokeWidth="1" filter="url(#neon-glow)" />
+
+        {/* Right pauldron */}
+        <path
+          d="M 272 240 Q 255 218 220 222 L 212 275 L 242 282 L 275 268 Z"
+          fill="url(#chrome-plate)"
+          stroke="url(#violet-edge)"
+          strokeWidth="1.6"
+          filter="url(#neon-glow)"
+        />
+        <path d="M 262 234 Q 245 226 224 230" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.2" />
+        <line x1="252" y1="258" x2="228" y2="262" stroke="#a855f7" strokeWidth="1" filter="url(#neon-glow)" />
+      </g>
+
+      {/* === CHEST PLATES === */}
+      <g>
+        {/* Left pectoral */}
+        <path
+          d="M 80 270 Q 100 258 145 262 L 158 290 Q 158 308 148 318 L 102 322 Q 80 312 78 296 Z"
+          fill="url(#chrome-plate)"
+          stroke="url(#neon-edge)"
+          strokeWidth="1.6"
+          filter="url(#neon-glow)"
+        />
+        <path d="M 92 274 Q 110 268 138 270" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.4" />
+        {/* small vent slot */}
+        <rect x="108" y="298" width="22" height="3" rx="1.2" fill="#0a0a20" stroke="#00d4ff" strokeWidth="0.4" />
+
+        {/* Right pectoral */}
+        <path
+          d="M 175 262 Q 220 258 240 270 L 242 296 Q 240 312 218 322 L 172 318 Q 162 308 162 290 Z"
+          fill="url(#chrome-plate)"
+          stroke="url(#neon-edge)"
+          strokeWidth="1.6"
+          filter="url(#neon-glow)"
+        />
+        <path d="M 182 270 Q 210 268 228 274" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.4" />
+        <rect x="190" y="298" width="22" height="3" rx="1.2" fill="#0a0a20" stroke="#00d4ff" strokeWidth="0.4" />
+
+        {/* Central sternum seam */}
+        <line x1="160" y1="265" x2="160" y2="320" stroke="#a855f7" strokeWidth="0.9" filter="url(#neon-glow)" />
+        <circle cx="160" cy="282" r="1.4" fill="#7dffff" filter="url(#neon-glow)">
+          {animated && <animate attributeName="opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite" />}
+        </circle>
+        <circle cx="160" cy="305" r="1.4" fill="#a855f7" filter="url(#neon-glow)">
+          {animated && <animate attributeName="opacity" values="0.5;1;0.5" dur="2.2s" begin="0.4s" repeatCount="indefinite" />}
+        </circle>
+
+        {/* Upper-abdomen plate band */}
+        <path
+          d="M 100 326 L 220 326 L 215 348 L 105 348 Z"
+          fill="url(#chrome-plate)"
+          stroke="#00d4ff"
+          strokeWidth="1.3"
+          filter="url(#neon-glow)"
+        />
+        <line x1="160" y1="328" x2="160" y2="346" stroke="rgba(168,85,247,0.6)" strokeWidth="0.8" filter="url(#neon-glow)" />
+        <path d="M 108 330 Q 160 326 212 330" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1" />
+
+        {/* Lower-abdomen plate band */}
+        <path
+          d="M 110 351 L 210 351 L 205 372 L 115 372 Z"
+          fill="url(#chrome-plate)"
+          stroke="#00d4ff"
+          strokeWidth="1.3"
+          filter="url(#neon-glow)"
+        />
+        <line x1="160" y1="353" x2="160" y2="370" stroke="rgba(168,85,247,0.6)" strokeWidth="0.8" filter="url(#neon-glow)" />
+        <path d="M 118 355 Q 160 352 202 355" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1" />
+      </g>
+
+      {/* === HEAD (anatomical 3/4 profile, facing left) === */}
+      <g>
+        {/* Outer head silhouette */}
+        <path
+          d="M 148 36
+             C 184 32, 216 56, 220 100
+             C 224 130, 216 158, 200 174
+             L 196 188
+             C 196 200, 178 208, 162 205
+             L 140 200
+             L 115 188
+             L 100 175
+             L 92 158
+             L 86 145
+             L 80 132
+             L 74 120
+             L 76 105
+             L 82 92
+             L 90 82
+             L 96 70
+             L 104 60
+             C 112 48, 128 38, 148 36 Z"
+          fill="url(#chrome-plate)"
+          stroke="url(#neon-edge)"
+          strokeWidth="1.8"
+          filter="url(#neon-glow)"
+        />
+
+        {/* Cranium dome high-gloss highlight */}
+        <path d="M 130 50 Q 165 38 200 62" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="2.6" strokeLinecap="round" />
+        <path d="M 138 54 Q 168 44 195 64" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="1.2" />
+
+        {/* Mid-cranium parting seam (front to back) */}
+        <path d="M 152 40 Q 168 100 178 170" fill="none" stroke="#0a0a20" strokeWidth="1.1" opacity="0.85" />
+        <path d="M 152 40 Q 168 100 178 170" fill="none" stroke="rgba(0,212,255,0.5)" strokeWidth="0.4" filter="url(#neon-glow)" />
+
+        {/* Side cranium plate seam (separates frontal plate from helmet) */}
+        <path d="M 100 88 Q 130 96 155 102" fill="none" stroke="#0a0a20" strokeWidth="1.4" />
+        <path d="M 100 88 Q 130 96 155 102" fill="none" stroke="#00d4ff" strokeWidth="0.5" filter="url(#neon-glow)" />
+
+        {/* Forehead horizontal seam */}
+        <path d="M 100 80 L 200 76" stroke="#0a0a20" strokeWidth="0.8" opacity="0.75" />
+        <circle cx="112" cy="78" r="1.2" fill="#3a4566" />
+        <circle cx="150" cy="74" r="1.2" fill="#3a4566" />
+        <circle cx="188" cy="78" r="1.2" fill="#3a4566" />
+
+        {/* Brow ridge shadow */}
+        <path d="M 95 105 Q 115 100 138 106" fill="none" stroke="rgba(0,0,30,0.55)" strokeWidth="3" />
+
+        {/* === EYE SOCKET + glowing mouse-tracked iris === */}
+        <g>
+          {/* Deep socket cup */}
+          <ellipse cx="118" cy="115" rx="18" ry="11" fill="#02050f" />
+          {/* Inner socket trim */}
+          <ellipse cx="118" cy="115" rx="15" ry="9" fill="#0a0a20" stroke="rgba(0,212,255,0.7)" strokeWidth="0.8" />
+          <g clipPath="url(#eye-clip)">
+            {/* Outer glow halo */}
+            <circle cx="118" cy="115" r="9" fill="url(#eye-glow-bright)" filter="url(#strong-glow)">
+              {animated && <animate attributeName="r" values="8;10;8" dur="2.4s" repeatCount="indefinite" />}
+            </circle>
+            {/* Mouse-tracked iris */}
+            <circle ref={leftPupilRef} cx="118" cy="115" r="5" fill="#ffffff" filter="url(#neon-glow)" />
+            {/* Pupil */}
+            <circle cx="118" cy="115" r="1.4" fill="#02050f" opacity="0.85" />
+          </g>
+          {/* Periodic chrome-shutter blink */}
+          {animated && (
+            <rect x="100" y="107" width="36" height="0" fill="url(#chrome-plate)" stroke="rgba(0,212,255,0.4)" strokeWidth="0.5">
               <animate
-                attributeName="y"
-                values="100;100;100;100;100;100;100;95;100"
+                attributeName="height"
+                values="0;0;0;0;0;0;0;16;0"
                 keyTimes="0;0.6;0.7;0.75;0.8;0.85;0.9;0.95;1"
-                dur="6s"
+                dur="5.5s"
                 repeatCount="indefinite"
               />
             </rect>
           )}
         </g>
 
-        {/* Tiny chin indicator */}
-        <polygon points="155,138 165,138 160,148" fill="url(#crystal-rim)" filter="url(#strong-glow)" opacity="0.85" />
-      </g>
+        {/* Hidden ref for prop compat (rightPupilRef unused in V5) */}
+        <circle ref={rightPupilRef} cx="-100" cy="-100" r="0" opacity="0" />
 
-      {/* === Energy arc connecting floating head to body === */}
-      <g>
-        <line x1="160" y1="155" x2="160" y2="178" stroke="rgba(125,255,255,0.8)" strokeWidth="2" filter="url(#strong-glow)">
-          {animated && (
-            <animate attributeName="opacity" values="0.5;1;0.6;1;0.5" dur="0.8s" repeatCount="indefinite" />
-          )}
-        </line>
-        <path d="M 158 158 L 162 165 L 158 172 L 162 178" stroke="#00d4ff" strokeWidth="0.7" fill="none" opacity="0.85">
-          {animated && (
-            <animate attributeName="opacity" values="0.4;1;0.4" dur="0.5s" repeatCount="indefinite" />
-          )}
-        </path>
-      </g>
+        {/* Cheekbone glowing seam */}
+        <path d="M 108 132 L 92 162 L 105 185" fill="none" stroke="#00d4ff" strokeWidth="1.8" filter="url(#neon-glow)" />
 
-      {/* === Floating pauldrons (disconnected shoulders) === */}
-      <g>
-        {animated && (
-          <animateTransform
-            attributeName="transform"
-            type="translate"
-            values="0 0; 0 -1.5; 0 1.5; 0 0"
-            dur="5s"
-            repeatCount="indefinite"
-          />
-        )}
-        <polygon points="62,196 84,188 94,210 80,222 62,216" fill="url(#hex-body)" stroke="url(#crystal-rim)" strokeWidth="1" />
-        <line x1="80" y1="210" x2="92" y2="212" stroke="rgba(0,212,255,0.75)" strokeWidth="1.5" filter="url(#strong-glow)" />
-        <polygon points="258,196 236,188 226,210 240,222 258,216" fill="url(#hex-body)" stroke="url(#crystal-rim)" strokeWidth="1" />
-        <line x1="226" y1="212" x2="240" y2="210" stroke="rgba(168,85,247,0.75)" strokeWidth="1.5" filter="url(#strong-glow)" />
-      </g>
+        {/* Cheek plate inset shadow */}
+        <path d="M 100 145 Q 95 165 105 180" fill="rgba(0,0,30,0.35)" />
 
-      {/* === Hex body with visible energy core === */}
-      <g>
-        <polygon
-          points="160,180 232,210 232,278 160,308 88,278 88,210"
-          fill="url(#hex-body)"
-          stroke="url(#crystal-rim)"
-          strokeWidth="1.8"
-        />
-        <g stroke="rgba(0,212,255,0.2)" strokeWidth="0.5" fill="none">
-          <polygon points="160,200 212,222 212,268 160,290 108,268 108,222" />
-          <line x1="160" y1="180" x2="160" y2="200" />
-          <line x1="160" y1="290" x2="160" y2="308" />
-        </g>
-        <polyline points="160,180 232,210 232,232" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
+        {/* Nose ridge highlight */}
+        <path d="M 86 95 L 78 118 L 80 128" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.4" strokeLinecap="round" />
+        <ellipse cx="84" cy="134" rx="2" ry="1.2" fill="#0a0a20" />
 
-        {/* Core window */}
-        <polygon
-          points="160,212 200,232 200,266 160,286 120,266 120,232"
-          fill="rgba(2,5,18,0.95)"
-          stroke="rgba(0,212,255,0.6)"
-          strokeWidth="1.2"
-        />
-        {/* Rotating inner diamond core */}
+        {/* Mouth seam */}
+        <path d="M 95 152 Q 110 160 128 157" fill="none" stroke="url(#neon-edge)" strokeWidth="1.8" filter="url(#strong-glow)" />
+        <path d="M 95 152 Q 110 160 128 157" fill="none" stroke="#ffffff" strokeWidth="0.5" />
+
+        {/* Jaw separator seam */}
+        <path d="M 105 178 Q 138 188 172 188" fill="none" stroke="#a855f7" strokeWidth="1.3" filter="url(#neon-glow)" opacity="0.85" />
+
+        {/* Internal jaw mech glints */}
+        <circle cx="120" cy="187" r="1" fill="#a855f7" filter="url(#neon-glow)">
+          {animated && <animate attributeName="opacity" values="0.4;1;0.4" dur="1.6s" repeatCount="indefinite" />}
+        </circle>
+        <circle cx="148" cy="190" r="1" fill="#ec4899" filter="url(#neon-glow)">
+          {animated && <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" begin="0.3s" repeatCount="indefinite" />}
+        </circle>
+
+        {/* === MECHANICAL EXHAUST DISC (replaces ear) === */}
         <g>
-          {animated && (
-            <animateTransform
-              attributeName="transform"
-              type="rotate"
-              from="0 160 249"
-              to="360 160 249"
-              dur="7s"
-              repeatCount="indefinite"
-            />
-          )}
-          <polygon points="160,228 178,249 160,270 142,249" fill="url(#core-glow)" opacity="0.9" />
-        </g>
-        <circle cx="160" cy="249" r="14" fill="url(#core-glow)" filter="url(#strong-glow)">
-          {animated && (
-            <animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite" />
-          )}
-        </circle>
-        <circle cx="160" cy="249" r="4" fill="#ffffff">
-          {animated && (
-            <animate attributeName="opacity" values="0.6;1;0.6" dur="1.4s" repeatCount="indefinite" />
-          )}
-        </circle>
-
-        {/* Side telemetry LEDs */}
-        <circle cx="100" cy="240" r="2" fill="#00d4ff" filter="url(#strong-glow)">
-          {animated && <animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite" />}
-        </circle>
-        <circle cx="100" cy="252" r="2" fill="#a855f7" filter="url(#strong-glow)">
-          {animated && <animate attributeName="opacity" values="1;0.2;1" dur="1.8s" begin="0.5s" repeatCount="indefinite" />}
-        </circle>
-        <circle cx="100" cy="264" r="2" fill="#7dffff" filter="url(#strong-glow)">
-          {animated && <animate attributeName="opacity" values="1;0.2;1" dur="1.4s" begin="1s" repeatCount="indefinite" />}
-        </circle>
-        <circle cx="220" cy="240" r="2" fill="#ec4899" filter="url(#strong-glow)">
-          {animated && <animate attributeName="opacity" values="1;0.2;1" dur="2s" begin="0.8s" repeatCount="indefinite" />}
-        </circle>
-        <circle cx="220" cy="252" r="2" fill="#22d3a4" filter="url(#strong-glow)">
-          {animated && <animate attributeName="opacity" values="1;0.2;1" dur="1.7s" begin="1.2s" repeatCount="indefinite" />}
-        </circle>
-        <circle cx="220" cy="264" r="2" fill="#a855f7" filter="url(#strong-glow)">
-          {animated && <animate attributeName="opacity" values="1;0.2;1" dur="1.9s" begin="0.3s" repeatCount="indefinite" />}
-        </circle>
-      </g>
-
-      {/* === LEFT mechanical claw arm === */}
-      <g>
-        <ellipse cx="78" cy="240" rx="9" ry="22" fill="url(#hex-body)" transform="rotate(-15 78 240)" />
-        <circle cx="68" cy="268" r="6" fill="#1a2050" stroke="rgba(0,212,255,0.7)" strokeWidth="1" />
-        <circle cx="68" cy="268" r="2.5" fill="url(#core-glow)" filter="url(#strong-glow)" />
-        <ellipse cx="62" cy="294" rx="7" ry="18" fill="url(#hex-body)" transform="rotate(8 62 294)" />
-        <g transform="translate(62 318)">
-          <circle r="6" fill="#1a2050" stroke="rgba(0,212,255,0.6)" strokeWidth="1" />
-          <circle r="3" fill="url(#core-glow)" filter="url(#strong-glow)" />
-          <path d="M -5 4 L -9 14 L -7 16" fill="none" stroke="#5060a0" strokeWidth="2.2" strokeLinecap="round" />
-          <path d="M 0 5 L 0 17" fill="none" stroke="#5060a0" strokeWidth="2.2" strokeLinecap="round" />
-          <path d="M 5 4 L 9 14 L 7 16" fill="none" stroke="#5060a0" strokeWidth="2.2" strokeLinecap="round" />
-          <circle cy="17" r="1.4" fill="#00d4ff" filter="url(#strong-glow)" />
-          <circle cx="-7" cy="16" r="1.2" fill="#a855f7" filter="url(#strong-glow)" />
-          <circle cx="7" cy="16" r="1.2" fill="#ec4899" filter="url(#strong-glow)" />
-        </g>
-      </g>
-
-      {/* === RIGHT holographic arm (waves periodically) === */}
-      <g>
-        {animated && (
-          <animateTransform
-            attributeName="transform"
-            attributeType="XML"
-            type="rotate"
-            values="0 240 220; 0 240 220; -45 240 220; -25 240 220; -60 240 220; -25 240 220; -50 240 220; 0 240 220; 0 240 220"
-            keyTimes="0;0.55;0.62;0.69;0.76;0.83;0.90;0.97;1"
-            dur="9s"
-            repeatCount="indefinite"
-          />
-        )}
-        <ellipse
-          cx="242" cy="240" rx="10" ry="26"
-          fill="url(#hologram-grad)"
-          stroke="rgba(125,255,255,0.75)" strokeWidth="1"
-          opacity="0.75"
-          transform="rotate(12 242 240)"
-        />
-        <g stroke="rgba(125,255,255,0.6)" strokeWidth="0.4" opacity="0.7">
-          <line x1="235" y1="222" x2="251" y2="222" />
-          <line x1="234" y1="232" x2="252" y2="232" />
-          <line x1="234" y1="242" x2="252" y2="242" />
-          <line x1="235" y1="252" x2="251" y2="252" />
-        </g>
-        <circle cx="248" cy="266" r="6" fill="rgba(125,255,255,0.3)" stroke="rgba(125,255,255,0.9)" strokeWidth="1" filter="url(#strong-glow)">
-          {animated && (
-            <animate attributeName="opacity" values="0.7;1;0.7" dur="1.8s" repeatCount="indefinite" />
-          )}
-        </circle>
-        <ellipse
-          cx="256" cy="290" rx="8" ry="20"
-          fill="url(#hologram-grad)"
-          stroke="rgba(125,255,255,0.75)" strokeWidth="1"
-          opacity="0.7"
-          transform="rotate(18 256 290)"
-        />
-        <g stroke="rgba(125,255,255,0.6)" strokeWidth="0.4" opacity="0.7">
-          <line x1="248" y1="280" x2="266" y2="284" />
-          <line x1="247" y1="290" x2="265" y2="294" />
-          <line x1="246" y1="300" x2="264" y2="304" />
-        </g>
-        {/* Wireframe holographic hand */}
-        <g transform="translate(266 314)">
-          <path
-            d="M -9 0 Q -10 14 -2 22 L 14 22 Q 18 18 18 8 Q 17 -2 12 -4 Z"
-            fill="rgba(125,255,255,0.18)"
-            stroke="rgba(125,255,255,0.9)"
-            strokeWidth="1"
-          />
-          <line x1="-6" y1="6" x2="14" y2="8" stroke="rgba(125,255,255,0.5)" strokeWidth="0.4" />
-          <line x1="-5" y1="14" x2="14" y2="16" stroke="rgba(125,255,255,0.5)" strokeWidth="0.4" />
-          {[-3, 2, 7, 12].map((bx, i) => (
-            <g key={i}>
-              <rect
-                x={bx - 1.5} y={-22} width="3" height="22" rx="1.5"
-                fill="rgba(125,255,255,0.25)"
-                stroke="rgba(125,255,255,0.85)"
-                strokeWidth="0.5"
-              />
-              <circle cx={bx} cy={-22} r="1.6" fill="#7dffff" filter="url(#strong-glow)">
+          {/* Outer ring */}
+          <circle cx="180" cy="120" r="28" fill="#1a2046" stroke="rgba(0,212,255,0.7)" strokeWidth="1.5" />
+          <circle cx="180" cy="120" r="28" fill="none" stroke="rgba(168,85,247,0.5)" strokeWidth="0.5" filter="url(#neon-glow)" />
+          {/* Mid ring */}
+          <circle cx="180" cy="120" r="20" fill="#02050f" stroke="rgba(0,212,255,0.9)" strokeWidth="1" />
+          {/* Inner well */}
+          <circle cx="180" cy="120" r="12" fill="url(#internal-mech)" stroke="rgba(125,255,255,0.7)" strokeWidth="0.6" />
+          {/* Pulsing core */}
+          <circle cx="180" cy="120" r="6" fill="url(#eye-glow-bright)" filter="url(#strong-glow)">
+            {animated && <animate attributeName="r" values="5;7;5" dur="2.2s" repeatCount="indefinite" />}
+          </circle>
+          <circle cx="180" cy="120" r="1.6" fill="#ffffff" />
+          {/* 6 small dots around middle ring */}
+          {Array.from({ length: 6 }).map((_, i) => {
+            const a = (i * 60) * Math.PI / 180;
+            const x = 180 + Math.cos(a) * 16;
+            const y = 120 + Math.sin(a) * 16;
+            return (
+              <circle key={`vent-${i}`} cx={x} cy={y} r="1.3" fill="#a855f7" filter="url(#neon-glow)">
                 {animated && (
-                  <animate attributeName="opacity" values="0.6;1;0.6" dur="1.4s" begin={`${i * 0.15}s`} repeatCount="indefinite" />
+                  <animate
+                    attributeName="opacity"
+                    values="0.4;1;0.4"
+                    dur={`${1.5 + (i % 3) * 0.3}s`}
+                    begin={`${i * 0.15}s`}
+                    repeatCount="indefinite"
+                  />
                 )}
               </circle>
+            );
+          })}
+          {/* Slow rotating turbine spokes */}
+          {animated && (
+            <g>
+              <animateTransform attributeName="transform" type="rotate" from="0 180 120" to="360 180 120" dur="14s" repeatCount="indefinite" />
+              <line x1="180" y1="102" x2="180" y2="107" stroke="rgba(125,255,255,0.55)" strokeWidth="0.6" />
+              <line x1="180" y1="133" x2="180" y2="138" stroke="rgba(125,255,255,0.55)" strokeWidth="0.6" />
+              <line x1="162" y1="120" x2="167" y2="120" stroke="rgba(125,255,255,0.55)" strokeWidth="0.6" />
+              <line x1="193" y1="120" x2="198" y2="120" stroke="rgba(125,255,255,0.55)" strokeWidth="0.6" />
             </g>
-          ))}
-          <rect
-            x="-14" y="2" width="3" height="12" rx="1.5"
-            fill="rgba(125,255,255,0.25)"
-            stroke="rgba(125,255,255,0.85)"
-            strokeWidth="0.5"
-            transform="rotate(-25 -13 8)"
-          />
+          )}
         </g>
+
+        {/* Back-of-head plate seam (vertical line behind exhaust disc) */}
+        <path d="M 210 70 Q 218 130 200 180" fill="none" stroke="#0a0a20" strokeWidth="1" opacity="0.7" />
+        <path d="M 210 70 Q 218 130 200 180" fill="none" stroke="rgba(0,212,255,0.4)" strokeWidth="0.4" filter="url(#neon-glow)" />
+
+        {/* White highlights — porcelain reflections */}
+        <ellipse cx="160" cy="56" rx="35" ry="6" fill="white" opacity="0.45" filter="url(#soft-blur)" />
+        <ellipse cx="100" cy="135" rx="6" ry="14" fill="white" opacity="0.28" filter="url(#soft-blur)" transform="rotate(-15 100 135)" />
+        <ellipse cx="140" cy="178" rx="14" ry="3" fill="white" opacity="0.25" filter="url(#soft-blur)" />
       </g>
 
-      {/* === Hover base — anti-grav ring instead of legs === */}
-      <g>
-        <ellipse cx="160" cy="338" rx="38" ry="6" fill="rgba(0,212,255,0.55)" filter="url(#soft-glow)">
-          {animated && (
-            <animate attributeName="ry" values="5;9;5" dur="2.2s" repeatCount="indefinite" />
-          )}
-        </ellipse>
-        <ellipse cx="160" cy="320" rx="50" ry="10" fill="rgba(0,212,255,0.16)" />
-        <ellipse cx="160" cy="320" rx="50" ry="10" fill="none" stroke="url(#crystal-rim)" strokeWidth="2" />
-        <ellipse cx="160" cy="320" rx="44" ry="8" fill="none" stroke="rgba(125,255,255,0.6)" strokeWidth="0.6" />
-        {/* 3 energy thruster beams */}
-        <line x1="135" y1="328" x2="125" y2="358" stroke="rgba(0,212,255,0.75)" strokeWidth="1.3" filter="url(#strong-glow)" opacity="0.85">
-          {animated && <animate attributeName="opacity" values="0.4;1;0.4" dur="1.6s" repeatCount="indefinite" />}
-        </line>
-        <line x1="160" y1="328" x2="160" y2="362" stroke="rgba(168,85,247,0.8)" strokeWidth="1.5" filter="url(#strong-glow)" opacity="0.9">
-          {animated && <animate attributeName="opacity" values="0.4;1;0.4" dur="1.4s" begin="0.4s" repeatCount="indefinite" />}
-        </line>
-        <line x1="185" y1="328" x2="195" y2="358" stroke="rgba(236,72,153,0.75)" strokeWidth="1.3" filter="url(#strong-glow)" opacity="0.85">
-          {animated && <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" begin="0.8s" repeatCount="indefinite" />}
-        </line>
-      </g>
+      {/* Floating particles around head */}
+      {animated && (
+        <g opacity="0.75">
+          <circle cx="248" cy="78" r="1.6" fill="#00d4ff" filter="url(#strong-glow)">
+            <animate attributeName="cy" values="78;62;78" dur="3.6s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="3.6s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="52" cy="100" r="1.6" fill="#a855f7" filter="url(#strong-glow)">
+            <animate attributeName="cy" values="100;82;100" dur="4s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="40" cy="200" r="1.4" fill="#ec4899" filter="url(#strong-glow)">
+            <animate attributeName="cy" values="200;185;200" dur="4.5s" begin="1s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="4.5s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="278" cy="190" r="1.4" fill="#7dffff" filter="url(#strong-glow)">
+            <animate attributeName="cy" values="190;175;190" dur="4.2s" begin="1.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="4.2s" repeatCount="indefinite" />
+          </circle>
+        </g>
+      )}
     </svg>
   );
 }
