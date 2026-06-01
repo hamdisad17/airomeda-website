@@ -2,10 +2,14 @@
 import * as React from 'react';
 
 /**
- * Airo V3 — actually-alive alien-tech mascot.
- * Combines SMIL animation, CSS keyframes, mouse tracking. Blinks,
- * smiles, waves periodically, breathes, dollies in/out, eyes follow
- * cursor, antenna sparks, and emits speech bubbles.
+ * Airo V4 — "Sentinel" — alien-tech mascot, deliberately non-humanoid.
+ * Single horizontal visor slit (not two cute eyes), crystalline floating
+ * head disconnected from body, hex chest with visible energy core,
+ * asymmetric arms (left = mechanical claw, right = holographic), and a
+ * hover ring instead of legs.
+ *
+ * Behaviour stays: mouse-tracked sensor dots inside the visor, blink,
+ * breathe, dolly, step-out, periodic wave + speech bubble.
  */
 
 type Props = {
@@ -51,8 +55,8 @@ export function AiroMascot({ className, staticMode = false }: Props) {
       tY = dy * -14;
       const pdx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / 200));
       const pdy = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / 200));
-      tpX = pdx * 3.5;
-      tpY = pdy * 3.5;
+      tpX = pdx * 4.5;
+      tpY = pdy * 1.8;
     };
 
     const tick = () => {
@@ -62,12 +66,12 @@ export function AiroMascot({ className, staticMode = false }: Props) {
       pX += (tpX - pX) * 0.15;
       pY += (tpY - pY) * 0.15;
       if (lp) {
-        lp.setAttribute('cx', String(130 + pX));
-        lp.setAttribute('cy', String(118 + pY));
+        lp.setAttribute('cx', String(140 + pX));
+        lp.setAttribute('cy', String(100 + pY));
       }
       if (rp) {
-        rp.setAttribute('cx', String(190 + pX));
-        rp.setAttribute('cy', String(118 + pY));
+        rp.setAttribute('cx', String(180 + pX));
+        rp.setAttribute('cy', String(100 + pY));
       }
       raf = requestAnimationFrame(tick);
     };
@@ -188,11 +192,8 @@ export function AiroMascot({ className, staticMode = false }: Props) {
       ))}
 
       <div ref={tiltRef} className="relative will-change-transform" style={{ transformStyle: 'preserve-3d' }}>
-        {/* Step-out — Airo periodically lunges toward viewer and rocks side to side */}
         <div style={{ animation: staticMode ? undefined : 'airo-stepout 14s ease-in-out infinite' }}>
-          {/* Dolly camera zoom */}
           <div style={{ animation: staticMode ? undefined : 'airo-dolly 5s ease-in-out infinite' }}>
-            {/* Breathe */}
             <div style={{ animation: staticMode ? undefined : 'airo-breathe 3.5s ease-in-out infinite' }}>
               <AiroSvg leftPupilRef={leftPupilRef} rightPupilRef={rightPupilRef} animated={!staticMode} />
             </div>
@@ -209,28 +210,13 @@ export function AiroMascot({ className, staticMode = false }: Props) {
           0%, 100% { transform: scaleY(1) translateY(0); }
           50%      { transform: scaleY(1.025) translateY(-2px); }
         }
-        /* Step-out: Airo lunges out of the page periodically, rocks
-           side-to-side, then settles. Combined with the dolly + tilt
-           you get true 3D presence. */
         @keyframes airo-stepout {
-          0%, 100% {
-            transform: translate3d(0, 0, 0) rotateZ(0deg);
-          }
-          15% {
-            transform: translate3d(-10px, -4px, 0) rotateZ(-3deg) scale(1.04);
-          }
-          30% {
-            transform: translate3d(8px, 2px, 0) rotateZ(2deg) scale(1.10);
-          }
-          45% {
-            transform: translate3d(-4px, -8px, 0) rotateZ(-2deg) scale(1.06);
-          }
-          60% {
-            transform: translate3d(0, -2px, 0) rotateZ(0deg) scale(1.02);
-          }
-          75% {
-            transform: translate3d(6px, 4px, 0) rotateZ(3deg) scale(1.05);
-          }
+          0%, 100% { transform: translate3d(0, 0, 0) rotateZ(0deg); }
+          15%      { transform: translate3d(-10px, -4px, 0) rotateZ(-3deg) scale(1.04); }
+          30%      { transform: translate3d(8px, 2px, 0) rotateZ(2deg) scale(1.10); }
+          45%      { transform: translate3d(-4px, -8px, 0) rotateZ(-2deg) scale(1.06); }
+          60%      { transform: translate3d(0, -2px, 0) rotateZ(0deg) scale(1.02); }
+          75%      { transform: translate3d(6px, 4px, 0) rotateZ(3deg) scale(1.05); }
         }
         @keyframes airo-floor {
           0%, 100% { opacity: 0.7; transform: translateX(-50%) scaleX(1); }
@@ -259,363 +245,373 @@ function AiroSvg({
   animated: boolean;
 }) {
   return (
-    <svg viewBox="0 0 320 380" className="relative w-full h-full" aria-label="Airo mascot">
+    <svg viewBox="0 0 320 380" className="relative w-full h-full" aria-label="Airo sentinel">
       <defs>
-        <radialGradient id="head-glass" cx="40%" cy="30%" r="80%">
-          <stop offset="0%" stopColor="#f0f5ff" />
-          <stop offset="35%" stopColor="#c5cee8" />
-          <stop offset="70%" stopColor="#7a85aa" />
-          <stop offset="100%" stopColor="#3a4566" />
-        </radialGradient>
-        <linearGradient id="head-rim" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgba(255,255,255,0.95)" />
-          <stop offset="20%" stopColor="rgba(255,255,255,0.4)" />
-          <stop offset="50%" stopColor="rgba(0,212,255,0.0)" />
-          <stop offset="80%" stopColor="rgba(168,85,247,0.3)" />
-          <stop offset="100%" stopColor="rgba(168,85,247,0.6)" />
+        <linearGradient id="crystal-face" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="rgba(195,220,255,0.85)" />
+          <stop offset="35%" stopColor="rgba(70,90,170,0.7)" />
+          <stop offset="100%" stopColor="rgba(8,12,40,0.95)" />
         </linearGradient>
-        <radialGradient id="visor-deep" cx="50%" cy="42%" r="65%">
-          <stop offset="0%" stopColor="rgba(0,212,255,0.95)" />
-          <stop offset="22%" stopColor="rgba(0,156,255,0.7)" />
-          <stop offset="55%" stopColor="rgba(50,30,120,0.85)" />
-          <stop offset="100%" stopColor="rgba(5,9,26,1)" />
-        </radialGradient>
-        <radialGradient id="eye-flare" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="20%" stopColor="#7dffff" />
-          <stop offset="50%" stopColor="#00d4ff" />
-          <stop offset="80%" stopColor="#0066ff" />
-          <stop offset="100%" stopColor="rgba(0,0,40,0)" />
-        </radialGradient>
-        <radialGradient id="eye-flare-violet" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="20%" stopColor="#ddaaff" />
-          <stop offset="50%" stopColor="#a855f7" />
-          <stop offset="80%" stopColor="#6a00cc" />
-          <stop offset="100%" stopColor="rgba(40,0,80,0)" />
-        </radialGradient>
-        <linearGradient id="body-chrome" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#e8edff" />
-          <stop offset="25%" stopColor="#a8b4d6" />
-          <stop offset="55%" stopColor="#5a6593" />
-          <stop offset="100%" stopColor="#2a3258" />
-        </linearGradient>
-        <linearGradient id="body-edge" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgba(0,212,255,0.7)" />
-          <stop offset="100%" stopColor="rgba(168,85,247,0.7)" />
-        </linearGradient>
-        <linearGradient id="neon-strip" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id="crystal-rim" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#00d4ff" />
           <stop offset="50%" stopColor="#ffffff" />
           <stop offset="100%" stopColor="#a855f7" />
         </linearGradient>
-        <radialGradient id="antenna-tip" cx="50%" cy="50%" r="50%">
+        <radialGradient id="visor-slit" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="15%" stopColor="#7dffff" />
           <stop offset="40%" stopColor="#00d4ff" />
-          <stop offset="100%" stopColor="rgba(0,80,255,0)" />
+          <stop offset="80%" stopColor="#0a1640" />
+          <stop offset="100%" stopColor="#020514" />
+        </radialGradient>
+        <linearGradient id="hex-body" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#5060a0" />
+          <stop offset="50%" stopColor="#2a3268" />
+          <stop offset="100%" stopColor="#0a0e26" />
+        </linearGradient>
+        <radialGradient id="core-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="20%" stopColor="#7dffff" />
+          <stop offset="50%" stopColor="#00d4ff" />
+          <stop offset="80%" stopColor="#5028a8" />
+          <stop offset="100%" stopColor="rgba(0,0,30,0)" />
+        </radialGradient>
+        <radialGradient id="hologram-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="rgba(125,255,255,0.8)" />
+          <stop offset="50%" stopColor="rgba(0,212,255,0.5)" />
+          <stop offset="100%" stopColor="rgba(0,212,255,0)" />
         </radialGradient>
         <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="4" />
         </filter>
-        <filter id="strong-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="2.5" result="blur" />
+        <filter id="strong-glow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="2" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+        <filter id="visor-blur" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="1.2" />
+        </filter>
+        <clipPath id="visor-clip">
+          <rect x="116" y="93" width="88" height="14" rx="7" />
+        </clipPath>
       </defs>
 
-      <ellipse cx="160" cy="355" rx="90" ry="10" fill="url(#eye-flare)" opacity="0.35" filter="url(#soft-glow)" />
+      <ellipse cx="160" cy="360" rx="70" ry="8" fill="url(#core-glow)" opacity="0.5" filter="url(#soft-glow)" />
 
-      {/* Antenna — pulsing spark */}
+      {/* === Floating halo ring above the head === */}
       <g>
-        <line x1="160" y1="30" x2="160" y2="60" stroke="#5a6593" strokeWidth="4" strokeLinecap="round" />
-        <circle cx="160" cy="22" r="16" fill="url(#antenna-tip)" filter="url(#soft-glow)">
-          {animated && <animate attributeName="r" values="16;22;14;16" dur="1.4s" repeatCount="indefinite" />}
-        </circle>
-        <circle cx="160" cy="22" r="8" fill="url(#antenna-tip)" />
-        <circle cx="160" cy="22" r="3.5" fill="#ffffff">
-          {animated && <animate attributeName="opacity" values="1;0.4;1" dur="1.2s" repeatCount="indefinite" />}
-        </circle>
-        <g opacity="0.7">
-          <line x1="148" y1="14" x2="142" y2="8" stroke="#00d4ff" strokeWidth="1.5" strokeLinecap="round" />
-          <line x1="172" y1="14" x2="178" y2="8" stroke="#a855f7" strokeWidth="1.5" strokeLinecap="round" />
-          <line x1="160" y1="6" x2="160" y2="0" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-        </g>
-      </g>
-
-      {/* Head */}
-      <g>
-        <ellipse cx="160" cy="120" rx="95" ry="82" fill="url(#head-glass)" />
-        <ellipse cx="160" cy="120" rx="95" ry="82" fill="none" stroke="url(#head-rim)" strokeWidth="2.5" />
-        <ellipse cx="135" cy="80" rx="50" ry="20" fill="white" opacity="0.35" filter="url(#soft-glow)" />
-        <ellipse cx="135" cy="80" rx="30" ry="8" fill="white" opacity="0.7" />
-      </g>
-
-      <g>
-        <ellipse cx="55" cy="125" rx="14" ry="22" fill="#3a4566" />
-        <ellipse cx="55" cy="125" rx="9" ry="16" fill="url(#visor-deep)" />
-        <circle cx="55" cy="125" r="5" fill="url(#eye-flare)" filter="url(#strong-glow)" />
-        <ellipse cx="265" cy="125" rx="14" ry="22" fill="#3a4566" />
-        <ellipse cx="265" cy="125" rx="9" ry="16" fill="url(#visor-deep)" />
-        <circle cx="265" cy="125" r="5" fill="url(#eye-flare-violet)" filter="url(#strong-glow)" />
-      </g>
-
-      {/* Visor */}
-      <g>
-        <ellipse cx="160" cy="125" rx="72" ry="55" fill="url(#visor-deep)" />
-        <ellipse cx="160" cy="125" rx="72" ry="55" fill="none" stroke="rgba(0,212,255,0.7)" strokeWidth="1.8" />
-        <line x1="92" x2="228" y1="100" y2="100" stroke="rgba(0,255,255,0.6)" strokeWidth="1">
-          {animated && <animate attributeName="y1" values="80;170;80" dur="4s" repeatCount="indefinite" />}
-          {animated && <animate attributeName="y2" values="80;170;80" dur="4s" repeatCount="indefinite" />}
-        </line>
-        <g opacity="0.15" stroke="rgba(0,255,255,0.9)" strokeWidth="0.5">
-          <line x1="92" y1="100" x2="228" y2="100" />
-          <line x1="92" y1="115" x2="228" y2="115" />
-          <line x1="92" y1="130" x2="228" y2="130" />
-          <line x1="92" y1="145" x2="228" y2="145" />
-          <line x1="92" y1="160" x2="228" y2="160" />
-        </g>
-
-        {/* Eyes — blink */}
-        <g>
-          <circle cx="130" cy="118" r="18" fill="url(#eye-flare)" filter="url(#soft-glow)" />
-          <circle cx="130" cy="118" r="9" fill="url(#eye-flare)">
-            {animated && (
-              <animate
-                attributeName="r"
-                values="9;9;9;9;9;9;9;0.1;9"
-                keyTimes="0;0.6;0.65;0.7;0.75;0.8;0.85;0.92;1"
-                dur="5s"
-                repeatCount="indefinite"
-              />
-            )}
-          </circle>
-          <circle ref={leftPupilRef} cx="130" cy="118" r="3.5" fill="#ffffff" />
-
-          <circle cx="190" cy="118" r="18" fill="url(#eye-flare-violet)" filter="url(#soft-glow)" />
-          <circle cx="190" cy="118" r="9" fill="url(#eye-flare-violet)">
-            {animated && (
-              <animate
-                attributeName="r"
-                values="9;9;9;9;9;9;9;0.1;9"
-                keyTimes="0;0.6;0.65;0.7;0.75;0.8;0.85;0.92;1"
-                dur="5s"
-                repeatCount="indefinite"
-              />
-            )}
-          </circle>
-          <circle ref={rightPupilRef} cx="190" cy="118" r="3.5" fill="#ffffff" />
-        </g>
-
-        {/* Smile — morphs */}
-        <path
-          d="M 128 148 Q 160 168 192 148"
-          fill="none"
-          stroke="url(#neon-strip)"
-          strokeWidth="3"
-          strokeLinecap="round"
-          filter="url(#strong-glow)"
-        >
+        <ellipse cx="160" cy="22" rx="46" ry="9" fill="none" stroke="url(#crystal-rim)" strokeWidth="1.8" opacity="0.9">
           {animated && (
-            <animate
-              attributeName="d"
-              values="M 128 148 Q 160 168 192 148;
-                      M 128 148 Q 160 178 192 148;
-                      M 128 148 Q 160 162 192 148;
-                      M 128 150 Q 160 174 192 150;
-                      M 128 148 Q 160 168 192 148"
-              dur="6s"
+            <animate attributeName="opacity" values="0.65;1;0.65" dur="3s" repeatCount="indefinite" />
+          )}
+        </ellipse>
+        <ellipse cx="160" cy="22" rx="46" ry="9" fill="none" stroke="rgba(125,255,255,0.4)" strokeWidth="0.6" filter="url(#soft-glow)" />
+        <g>
+          {animated && (
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0 160 22"
+              to="360 160 22"
+              dur="9s"
               repeatCount="indefinite"
             />
           )}
-        </path>
-        <circle cx="160" cy="160" r="1.6" fill="white" opacity="0.7" />
+          <circle cx="206" cy="22" r="2.6" fill="#00d4ff" filter="url(#strong-glow)" />
+          <circle cx="114" cy="22" r="2.6" fill="#a855f7" filter="url(#strong-glow)" />
+          <circle cx="160" cy="13" r="2" fill="#ec4899" filter="url(#strong-glow)" />
+        </g>
       </g>
 
-      <rect x="148" y="195" width="24" height="14" rx="3" fill="#3a4566" />
-      <rect x="148" y="195" width="24" height="3" rx="1.5" fill="url(#neon-strip)" />
-
-      {/* Body */}
+      {/* === Floating crystal head (disconnected from body) === */}
       <g>
-        <path d="M 90 215 Q 160 205 230 215 L 234 305 Q 160 315 86 305 Z" fill="url(#body-chrome)" />
-        <path d="M 90 215 Q 160 205 230 215" fill="none" stroke="url(#body-edge)" strokeWidth="2" filter="url(#soft-glow)" />
-        <rect x="155" y="217" width="10" height="92" rx="5" fill="url(#neon-strip)" opacity="0.85" filter="url(#strong-glow)">
-          {animated && <animate attributeName="opacity" values="0.65;1;0.65" dur="2.5s" repeatCount="indefinite" />}
-        </rect>
+        {animated && (
+          <animateTransform
+            attributeName="transform"
+            type="translate"
+            values="0 0; 0 -2; 0 2; 0 0"
+            dur="4.5s"
+            repeatCount="indefinite"
+          />
+        )}
+        <polygon
+          points="160,50 215,75 215,125 160,150 105,125 105,75"
+          fill="url(#crystal-face)"
+          stroke="url(#crystal-rim)"
+          strokeWidth="1.6"
+        />
+        <g stroke="rgba(125,255,255,0.20)" strokeWidth="0.6" fill="none">
+          <line x1="160" y1="50" x2="160" y2="150" />
+          <line x1="105" y1="75" x2="215" y2="125" />
+          <line x1="215" y1="75" x2="105" y2="125" />
+        </g>
+        <polygon points="160,50 215,75 160,90 105,75" fill="rgba(255,255,255,0.13)" />
+        <polygon points="105,125 160,150 215,125" fill="rgba(0,0,40,0.35)" />
 
-        <circle cx="160" cy="253" r="22" fill="rgba(5,9,26,0.92)" stroke="url(#body-edge)" strokeWidth="2.5" />
-        <circle cx="160" cy="253" r="14" fill="url(#visor-deep)" />
-        <circle cx="160" cy="253" r="7" fill="url(#eye-flare)" filter="url(#strong-glow)">
-          {animated && <animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite" />}
+        {/* Visor slit */}
+        <g>
+          <rect x="116" y="93" width="88" height="14" rx="7" fill="#020514" stroke="rgba(0,212,255,0.75)" strokeWidth="1.2" />
+          <rect x="119" y="95" width="82" height="10" rx="5" fill="url(#visor-slit)" filter="url(#visor-blur)" />
+          {animated && (
+            <line x1="119" y1="100" x2="201" y2="100" stroke="rgba(255,255,255,0.9)" strokeWidth="0.4" filter="url(#strong-glow)">
+              <animate attributeName="y1" values="95;105;95" dur="2.4s" repeatCount="indefinite" />
+              <animate attributeName="y2" values="95;105;95" dur="2.4s" repeatCount="indefinite" />
+            </line>
+          )}
+          <g clipPath="url(#visor-clip)">
+            <circle cx="160" cy="100" r="2.5" fill="#ffffff" filter="url(#strong-glow)" opacity="0.9">
+              {animated && (
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="1.6s" repeatCount="indefinite" />
+              )}
+            </circle>
+            <circle ref={leftPupilRef} cx="140" cy="100" r="2.2" fill="#7dffff" filter="url(#strong-glow)" />
+            <circle ref={rightPupilRef} cx="180" cy="100" r="2.2" fill="#ddaaff" filter="url(#strong-glow)" />
+          </g>
+          {/* Slit blink — periodic dark sweep covers slit briefly */}
+          {animated && (
+            <rect x="119" y="95" width="82" height="0" rx="5" fill="#020514">
+              <animate
+                attributeName="height"
+                values="0;0;0;0;0;0;0;10;0"
+                keyTimes="0;0.6;0.7;0.75;0.8;0.85;0.9;0.95;1"
+                dur="6s"
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="y"
+                values="100;100;100;100;100;100;100;95;100"
+                keyTimes="0;0.6;0.7;0.75;0.8;0.85;0.9;0.95;1"
+                dur="6s"
+                repeatCount="indefinite"
+              />
+            </rect>
+          )}
+        </g>
+
+        {/* Tiny chin indicator */}
+        <polygon points="155,138 165,138 160,148" fill="url(#crystal-rim)" filter="url(#strong-glow)" opacity="0.85" />
+      </g>
+
+      {/* === Energy arc connecting floating head to body === */}
+      <g>
+        <line x1="160" y1="155" x2="160" y2="178" stroke="rgba(125,255,255,0.8)" strokeWidth="2" filter="url(#strong-glow)">
+          {animated && (
+            <animate attributeName="opacity" values="0.5;1;0.6;1;0.5" dur="0.8s" repeatCount="indefinite" />
+          )}
+        </line>
+        <path d="M 158 158 L 162 165 L 158 172 L 162 178" stroke="#00d4ff" strokeWidth="0.7" fill="none" opacity="0.85">
+          {animated && (
+            <animate attributeName="opacity" values="0.4;1;0.4" dur="0.5s" repeatCount="indefinite" />
+          )}
+        </path>
+      </g>
+
+      {/* === Floating pauldrons (disconnected shoulders) === */}
+      <g>
+        {animated && (
+          <animateTransform
+            attributeName="transform"
+            type="translate"
+            values="0 0; 0 -1.5; 0 1.5; 0 0"
+            dur="5s"
+            repeatCount="indefinite"
+          />
+        )}
+        <polygon points="62,196 84,188 94,210 80,222 62,216" fill="url(#hex-body)" stroke="url(#crystal-rim)" strokeWidth="1" />
+        <line x1="80" y1="210" x2="92" y2="212" stroke="rgba(0,212,255,0.75)" strokeWidth="1.5" filter="url(#strong-glow)" />
+        <polygon points="258,196 236,188 226,210 240,222 258,216" fill="url(#hex-body)" stroke="url(#crystal-rim)" strokeWidth="1" />
+        <line x1="226" y1="212" x2="240" y2="210" stroke="rgba(168,85,247,0.75)" strokeWidth="1.5" filter="url(#strong-glow)" />
+      </g>
+
+      {/* === Hex body with visible energy core === */}
+      <g>
+        <polygon
+          points="160,180 232,210 232,278 160,308 88,278 88,210"
+          fill="url(#hex-body)"
+          stroke="url(#crystal-rim)"
+          strokeWidth="1.8"
+        />
+        <g stroke="rgba(0,212,255,0.2)" strokeWidth="0.5" fill="none">
+          <polygon points="160,200 212,222 212,268 160,290 108,268 108,222" />
+          <line x1="160" y1="180" x2="160" y2="200" />
+          <line x1="160" y1="290" x2="160" y2="308" />
+        </g>
+        <polyline points="160,180 232,210 232,232" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
+
+        {/* Core window */}
+        <polygon
+          points="160,212 200,232 200,266 160,286 120,266 120,232"
+          fill="rgba(2,5,18,0.95)"
+          stroke="rgba(0,212,255,0.6)"
+          strokeWidth="1.2"
+        />
+        {/* Rotating inner diamond core */}
+        <g>
+          {animated && (
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0 160 249"
+              to="360 160 249"
+              dur="7s"
+              repeatCount="indefinite"
+            />
+          )}
+          <polygon points="160,228 178,249 160,270 142,249" fill="url(#core-glow)" opacity="0.9" />
+        </g>
+        <circle cx="160" cy="249" r="14" fill="url(#core-glow)" filter="url(#strong-glow)">
+          {animated && (
+            <animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite" />
+          )}
         </circle>
-        <circle cx="158" cy="251" r="2.5" fill="white" />
+        <circle cx="160" cy="249" r="4" fill="#ffffff">
+          {animated && (
+            <animate attributeName="opacity" values="0.6;1;0.6" dur="1.4s" repeatCount="indefinite" />
+          )}
+        </circle>
 
-        <circle cx="108" cy="248" r="2.5" fill="#00d4ff" filter="url(#strong-glow)">
+        {/* Side telemetry LEDs */}
+        <circle cx="100" cy="240" r="2" fill="#00d4ff" filter="url(#strong-glow)">
           {animated && <animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite" />}
         </circle>
-        <circle cx="108" cy="260" r="2.5" fill="#a855f7" filter="url(#strong-glow)">
+        <circle cx="100" cy="252" r="2" fill="#a855f7" filter="url(#strong-glow)">
           {animated && <animate attributeName="opacity" values="1;0.2;1" dur="1.8s" begin="0.5s" repeatCount="indefinite" />}
         </circle>
-        <circle cx="212" cy="248" r="2.5" fill="#ec4899" filter="url(#strong-glow)">
+        <circle cx="100" cy="264" r="2" fill="#7dffff" filter="url(#strong-glow)">
+          {animated && <animate attributeName="opacity" values="1;0.2;1" dur="1.4s" begin="1s" repeatCount="indefinite" />}
+        </circle>
+        <circle cx="220" cy="240" r="2" fill="#ec4899" filter="url(#strong-glow)">
           {animated && <animate attributeName="opacity" values="1;0.2;1" dur="2s" begin="0.8s" repeatCount="indefinite" />}
         </circle>
-        <circle cx="212" cy="260" r="2.5" fill="#00d4ff" filter="url(#strong-glow)">
-          {animated && <animate attributeName="opacity" values="1;0.2;1" dur="1.5s" begin="1.2s" repeatCount="indefinite" />}
+        <circle cx="220" cy="252" r="2" fill="#22d3a4" filter="url(#strong-glow)">
+          {animated && <animate attributeName="opacity" values="1;0.2;1" dur="1.7s" begin="1.2s" repeatCount="indefinite" />}
+        </circle>
+        <circle cx="220" cy="264" r="2" fill="#a855f7" filter="url(#strong-glow)">
+          {animated && <animate attributeName="opacity" values="1;0.2;1" dur="1.9s" begin="0.3s" repeatCount="indefinite" />}
         </circle>
       </g>
 
-      {/* Left arm */}
+      {/* === LEFT mechanical claw arm === */}
       <g>
-        <ellipse cx="78" cy="245" rx="12" ry="32" fill="url(#body-chrome)" transform="rotate(-12 78 245)" />
-        <circle cx="68" cy="278" r="11" fill="#3a4566" />
-        <circle cx="68" cy="278" r="6" fill="url(#eye-flare)" filter="url(#strong-glow)" />
+        <ellipse cx="78" cy="240" rx="9" ry="22" fill="url(#hex-body)" transform="rotate(-15 78 240)" />
+        <circle cx="68" cy="268" r="6" fill="#1a2050" stroke="rgba(0,212,255,0.7)" strokeWidth="1" />
+        <circle cx="68" cy="268" r="2.5" fill="url(#core-glow)" filter="url(#strong-glow)" />
+        <ellipse cx="62" cy="294" rx="7" ry="18" fill="url(#hex-body)" transform="rotate(8 62 294)" />
+        <g transform="translate(62 318)">
+          <circle r="6" fill="#1a2050" stroke="rgba(0,212,255,0.6)" strokeWidth="1" />
+          <circle r="3" fill="url(#core-glow)" filter="url(#strong-glow)" />
+          <path d="M -5 4 L -9 14 L -7 16" fill="none" stroke="#5060a0" strokeWidth="2.2" strokeLinecap="round" />
+          <path d="M 0 5 L 0 17" fill="none" stroke="#5060a0" strokeWidth="2.2" strokeLinecap="round" />
+          <path d="M 5 4 L 9 14 L 7 16" fill="none" stroke="#5060a0" strokeWidth="2.2" strokeLinecap="round" />
+          <circle cy="17" r="1.4" fill="#00d4ff" filter="url(#strong-glow)" />
+          <circle cx="-7" cy="16" r="1.2" fill="#a855f7" filter="url(#strong-glow)" />
+          <circle cx="7" cy="16" r="1.2" fill="#ec4899" filter="url(#strong-glow)" />
+        </g>
       </g>
 
-      {/* === RIGHT ARM with real mechanical hand === */}
+      {/* === RIGHT holographic arm (waves periodically) === */}
       <g>
         {animated && (
           <animateTransform
             attributeName="transform"
             attributeType="XML"
             type="rotate"
-            values="0 242 220;
-                    0 242 220;
-                    -50 242 220;
-                    -30 242 220;
-                    -70 242 220;
-                    -30 242 220;
-                    -55 242 220;
-                    0 242 220;
-                    0 242 220"
+            values="0 240 220; 0 240 220; -45 240 220; -25 240 220; -60 240 220; -25 240 220; -50 240 220; 0 240 220; 0 240 220"
             keyTimes="0;0.55;0.62;0.69;0.76;0.83;0.90;0.97;1"
             dur="9s"
             repeatCount="indefinite"
           />
         )}
-
-        {/* Upper arm (shoulder + biceps) */}
-        <ellipse cx="242" cy="240" rx="13" ry="30" fill="url(#body-chrome)" transform="rotate(12 242 240)" />
-        {/* Elbow joint with neon ring */}
-        <circle cx="248" cy="268" r="8" fill="#3a4566" stroke="rgba(0,212,255,0.5)" strokeWidth="1" />
-        <circle cx="248" cy="268" r="3" fill="url(#eye-flare)" filter="url(#strong-glow)" />
-        {/* Forearm */}
-        <ellipse cx="256" cy="290" rx="9" ry="22" fill="url(#body-chrome)" transform="rotate(18 256 290)" />
-
-        {/* === Wrist === */}
-        <g transform="translate(266 314)">
-          <circle r="9" fill="#3a4566" stroke="rgba(168,85,247,0.6)" strokeWidth="1.5" />
-          <circle r="5" fill="url(#eye-flare-violet)" filter="url(#strong-glow)">
-            {animated && <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />}
-          </circle>
+        <ellipse
+          cx="242" cy="240" rx="10" ry="26"
+          fill="url(#hologram-grad)"
+          stroke="rgba(125,255,255,0.75)" strokeWidth="1"
+          opacity="0.75"
+          transform="rotate(12 242 240)"
+        />
+        <g stroke="rgba(125,255,255,0.6)" strokeWidth="0.4" opacity="0.7">
+          <line x1="235" y1="222" x2="251" y2="222" />
+          <line x1="234" y1="232" x2="252" y2="232" />
+          <line x1="234" y1="242" x2="252" y2="242" />
+          <line x1="235" y1="252" x2="251" y2="252" />
         </g>
-
-        {/* === Hand with fingers — fingers spread when waving === */}
+        <circle cx="248" cy="266" r="6" fill="rgba(125,255,255,0.3)" stroke="rgba(125,255,255,0.9)" strokeWidth="1" filter="url(#strong-glow)">
+          {animated && (
+            <animate attributeName="opacity" values="0.7;1;0.7" dur="1.8s" repeatCount="indefinite" />
+          )}
+        </circle>
+        <ellipse
+          cx="256" cy="290" rx="8" ry="20"
+          fill="url(#hologram-grad)"
+          stroke="rgba(125,255,255,0.75)" strokeWidth="1"
+          opacity="0.7"
+          transform="rotate(18 256 290)"
+        />
+        <g stroke="rgba(125,255,255,0.6)" strokeWidth="0.4" opacity="0.7">
+          <line x1="248" y1="280" x2="266" y2="284" />
+          <line x1="247" y1="290" x2="265" y2="294" />
+          <line x1="246" y1="300" x2="264" y2="304" />
+        </g>
+        {/* Wireframe holographic hand */}
         <g transform="translate(266 314)">
-          {/* Palm — domed mechanical plate */}
           <path
-            d="M -9 0 Q -10 14 -4 22 L 12 24 Q 18 22 18 12 Q 17 4 12 -3 Z"
-            fill="url(#body-chrome)"
-            stroke="rgba(168,85,247,0.4)"
-            strokeWidth="0.5"
+            d="M -9 0 Q -10 14 -2 22 L 14 22 Q 18 18 18 8 Q 17 -2 12 -4 Z"
+            fill="rgba(125,255,255,0.18)"
+            stroke="rgba(125,255,255,0.9)"
+            strokeWidth="1"
           />
-          {/* Inner palm shadow */}
-          <path
-            d="M -7 4 Q -7 16 0 22 L 12 22 Q 16 18 15 10"
-            fill="rgba(0,0,30,0.35)"
-          />
-
-          {/* === 5 fingers === */}
-          {/* Each finger: 3 segments (proximal, middle, distal) + neon tip */}
-          {/* Thumb (short, angled left) */}
-          <g>
-            {animated && (
-              <animateTransform
-                attributeName="transform"
-                attributeType="XML"
-                type="rotate"
-                values="0 -6 8; 0 -6 8; -30 -6 8; -10 -6 8; -30 -6 8; 0 -6 8; 0 -6 8"
-                keyTimes="0;0.55;0.65;0.75;0.85;0.95;1"
-                dur="9s"
-                repeatCount="indefinite"
+          <line x1="-6" y1="6" x2="14" y2="8" stroke="rgba(125,255,255,0.5)" strokeWidth="0.4" />
+          <line x1="-5" y1="14" x2="14" y2="16" stroke="rgba(125,255,255,0.5)" strokeWidth="0.4" />
+          {[-3, 2, 7, 12].map((bx, i) => (
+            <g key={i}>
+              <rect
+                x={bx - 1.5} y={-22} width="3" height="22" rx="1.5"
+                fill="rgba(125,255,255,0.25)"
+                stroke="rgba(125,255,255,0.85)"
+                strokeWidth="0.5"
               />
-            )}
-            <rect x="-12" y="6" width="6" height="10" rx="3" fill="#5a6593" transform="rotate(-25 -9 11)" />
-            <circle cx="-13" cy="6" r="2" fill="#3a4566" />
-            <circle cx="-13" cy="6" r="1" fill="#00d4ff" />
-          </g>
-
-          {/* Index finger */}
-          {finger({ baseX: -2, color: '#00d4ff', restAngle: -8, openAngle: -45, animated })}
-
-          {/* Middle finger (longest) */}
-          {finger({ baseX: 3, color: '#a855f7', restAngle: 0, openAngle: 0, length: 1.15, animated })}
-
-          {/* Ring finger */}
-          {finger({ baseX: 8, color: '#ec4899', restAngle: 6, openAngle: 30, animated })}
-
-          {/* Pinky (smaller) */}
-          {finger({ baseX: 13, color: '#22d3a4', restAngle: 12, openAngle: 50, length: 0.8, animated })}
+              <circle cx={bx} cy={-22} r="1.6" fill="#7dffff" filter="url(#strong-glow)">
+                {animated && (
+                  <animate attributeName="opacity" values="0.6;1;0.6" dur="1.4s" begin={`${i * 0.15}s`} repeatCount="indefinite" />
+                )}
+              </circle>
+            </g>
+          ))}
+          <rect
+            x="-14" y="2" width="3" height="12" rx="1.5"
+            fill="rgba(125,255,255,0.25)"
+            stroke="rgba(125,255,255,0.85)"
+            strokeWidth="0.5"
+            transform="rotate(-25 -13 8)"
+          />
         </g>
       </g>
+
+      {/* === Hover base — anti-grav ring instead of legs === */}
+      <g>
+        <ellipse cx="160" cy="338" rx="38" ry="6" fill="rgba(0,212,255,0.55)" filter="url(#soft-glow)">
+          {animated && (
+            <animate attributeName="ry" values="5;9;5" dur="2.2s" repeatCount="indefinite" />
+          )}
+        </ellipse>
+        <ellipse cx="160" cy="320" rx="50" ry="10" fill="rgba(0,212,255,0.16)" />
+        <ellipse cx="160" cy="320" rx="50" ry="10" fill="none" stroke="url(#crystal-rim)" strokeWidth="2" />
+        <ellipse cx="160" cy="320" rx="44" ry="8" fill="none" stroke="rgba(125,255,255,0.6)" strokeWidth="0.6" />
+        {/* 3 energy thruster beams */}
+        <line x1="135" y1="328" x2="125" y2="358" stroke="rgba(0,212,255,0.75)" strokeWidth="1.3" filter="url(#strong-glow)" opacity="0.85">
+          {animated && <animate attributeName="opacity" values="0.4;1;0.4" dur="1.6s" repeatCount="indefinite" />}
+        </line>
+        <line x1="160" y1="328" x2="160" y2="362" stroke="rgba(168,85,247,0.8)" strokeWidth="1.5" filter="url(#strong-glow)" opacity="0.9">
+          {animated && <animate attributeName="opacity" values="0.4;1;0.4" dur="1.4s" begin="0.4s" repeatCount="indefinite" />}
+        </line>
+        <line x1="185" y1="328" x2="195" y2="358" stroke="rgba(236,72,153,0.75)" strokeWidth="1.3" filter="url(#strong-glow)" opacity="0.85">
+          {animated && <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" begin="0.8s" repeatCount="indefinite" />}
+        </line>
+      </g>
     </svg>
-  );
-}
-
-/** A mechanical finger: 3 segments with joints + neon tip.
- *  Animates rotation between rest and open positions during the wave. */
-function finger({
-  baseX,
-  color,
-  restAngle,
-  openAngle,
-  length = 1,
-  animated,
-}: {
-  baseX: number;
-  color: string;
-  restAngle: number;
-  openAngle: number;
-  length?: number;
-  animated: boolean;
-}) {
-  const len1 = 8 * length;
-  const len2 = 7 * length;
-  const len3 = 5 * length;
-
-  return (
-    <g transform={`translate(${baseX} -2)`}>
-      {animated && (
-        <animateTransform
-          attributeName="transform"
-          attributeType="XML"
-          type="rotate"
-          values={`${restAngle} 0 0; ${restAngle} 0 0; ${openAngle} 0 0; ${openAngle - 10} 0 0; ${openAngle + 5} 0 0; ${openAngle} 0 0; ${restAngle} 0 0`}
-          keyTimes="0;0.55;0.65;0.75;0.85;0.95;1"
-          dur="9s"
-          repeatCount="indefinite"
-          additive="sum"
-        />
-      )}
-      {/* Knuckle joint */}
-      <circle cx="0" cy="0" r="2.2" fill="#3a4566" stroke={color} strokeWidth="0.4" opacity="0.8" />
-      {/* Proximal segment */}
-      <rect x="-1.8" y={-len1} width="3.6" height={len1} rx="1.4" fill="#5a6593" stroke="rgba(0,0,30,0.5)" strokeWidth="0.3" />
-      {/* Middle joint */}
-      <circle cx="0" cy={-len1} r="1.8" fill="#3a4566" />
-      {/* Middle segment */}
-      <rect x="-1.6" y={-len1 - len2} width="3.2" height={len2} rx="1.2" fill="#5a6593" stroke="rgba(0,0,30,0.5)" strokeWidth="0.3" />
-      {/* Distal joint */}
-      <circle cx="0" cy={-len1 - len2} r="1.4" fill="#3a4566" />
-      {/* Distal segment + neon tip */}
-      <rect x="-1.3" y={-len1 - len2 - len3} width="2.6" height={len3} rx="1" fill="#5a6593" />
-      <circle cx="0" cy={-len1 - len2 - len3} r="1.6" fill={color}>
-        {animated && (
-          <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite" />
-        )}
-      </circle>
-    </g>
   );
 }
 
