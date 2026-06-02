@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/layout/Container';
-import { Globe } from '@/components/visuals/Globe';
+import { AiroOrb } from '@/components/visuals/AiroOrb';
 
 export async function CosmicCTA() {
   const t = await getTranslations();
@@ -62,7 +62,7 @@ export async function CosmicCTA() {
           </div>
 
           <div className="relative flex items-center justify-center">
-            <Globe className="w-64 h-64 md:w-80 md:h-80" />
+            <AiroOrb className="w-64 h-64 md:w-80 md:h-80" />
           </div>
         </div>
       </Container>
