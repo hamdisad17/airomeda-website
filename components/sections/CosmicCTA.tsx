@@ -62,7 +62,7 @@ export async function CosmicCTA() {
           </div>
 
           <div className="relative flex items-center justify-center">
-            <AiroOrb className="w-72 h-72 md:w-[26rem] md:h-[26rem]" />
+            <AiroOrb className="w-80 h-80 md:w-[30rem] md:h-[30rem]" />
           </div>
         </div>
       </Container>

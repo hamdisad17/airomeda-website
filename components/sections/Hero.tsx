@@ -103,7 +103,7 @@ export async function Hero() {
 
           {/* Mascot — Airo character with cosmic halo */}
           <div className="relative flex items-center justify-center">
-            <AiroOrb className="w-[22rem] h-[22rem] md:w-[34rem] md:h-[34rem]" />
+            <AiroOrb className="w-[24rem] h-[24rem] md:w-[40rem] md:h-[40rem]" />
           </div>
         </div>
       </Container>

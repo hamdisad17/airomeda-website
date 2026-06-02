@@ -31,13 +31,18 @@ type Props = {
   className?: string;
 };
 
-const PARTICLE_COUNT = 2200;
+const PARTICLE_COUNT = 3500;
 const SHAPE_COUNT = 4;
-// Density fade: particles are at full alpha well inside the swarm and
-// gently dissolve into the void as they drift out. Shapes live around
-// r ≈ 1.3–1.5, so the fade band wraps the swarm with a long soft tail.
-const FADE_INNER = 1.5;
-const FADE_OUTER = 2.85;
+// Global state machine durations — hold + morph = one full shape change
+// cycle. User asked max 4 s, so 2.0 + 1.5 = 3.5 s.
+const HOLD_S = 2.0;
+const MORPH_S = 1.5;
+// Density fade: particles at full alpha well inside the swarm, then
+// dissolve into the void. Shapes live around r ≈ 1.65–1.9; the fade
+// band wraps with a long soft tail so the silhouette never reads as a
+// hard edge even when the cursor pushes particles outwards.
+const FADE_INNER = 1.85;
+const FADE_OUTER = 3.20;
 
 function hash(i: number): number {
   const s = Math.sin(i * 127.1) * 43758.5453;
@@ -50,18 +55,18 @@ function hash(i: number): number {
 function makeGalaxy(): Float32Array {
   const out = new Float32Array(PARTICLE_COUNT * 3);
   const arms = 3;
-  const armSpread = 0.42;
-  const maxR = 1.5;
+  const armSpread = 0.40;
+  const maxR = 1.85;
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     const rNorm = Math.sqrt(hash(i + 11));
     const r = rNorm * maxR;
     const arm = Math.floor(hash(i + 19) * arms);
     const armAngle = (arm / arms) * Math.PI * 2;
-    const spiral = r * 2.4;
+    const spiral = r * 2.6;
     const angle = armAngle + spiral + (hash(i + 23) - 0.5) * armSpread;
     const x = Math.cos(angle) * r;
     const z = Math.sin(angle) * r;
-    const thickness = (1 - rNorm * 0.7) * 0.30;
+    const thickness = (1 - rNorm * 0.7) * 0.36;
     const y = (hash(i + 37) - 0.5) * thickness;
     out[i * 3] = x;
     out[i * 3 + 1] = y;
@@ -70,14 +75,13 @@ function makeGalaxy(): Float32Array {
   return out;
 }
 
-// Earth — fibonacci sphere whose surface is shaped by 3D continent
-// noise. Land-side particles sit on the surface; ocean-side particles
-// sink slightly inwards so the eye reads continents and oceans as
-// alternating densities, like a dotted globe.
+// Earth — fibonacci sphere shaped by 3D continent noise. Pronounced
+// land/ocean radius difference makes continents read clearly during the
+// hold phase.
 function makeEarth(): Float32Array {
   const out = new Float32Array(PARTICLE_COUNT * 3);
   const phi = Math.PI * (Math.sqrt(5) - 1);
-  const baseR = 1.30;
+  const baseR = 1.65;
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     const y = 1 - (i / (PARTICLE_COUNT - 1)) * 2;
     const rad = Math.sqrt(1 - y * y);
@@ -85,16 +89,14 @@ function makeEarth(): Float32Array {
     const sx = Math.cos(theta) * rad;
     const sy = y;
     const sz = Math.sin(theta) * rad;
-    // Multi-octave continent noise — three sin/cos passes produces
-    // believable continent-sized blobs without a heavy noise lib.
     const cont =
       Math.sin(sx * 3.1 + 0.7) * Math.cos(sy * 2.6 - 0.4) +
       Math.sin(sx * 5.8 + sz * 4.2) * 0.45 +
       Math.cos(sy * 7.4 + sz * 3.1) * 0.40 +
       Math.sin(sx * 11.0 + sy * 9.0) * 0.18;
-    const isLand = cont > 0.3;
-    // Land sits on the surface, ocean slightly inset.
-    const rMul = isLand ? 1.0 : 0.90;
+    const isLand = cont > 0.2;
+    // Stronger land/ocean radius gap so the globe reads distinct.
+    const rMul = isLand ? 1.0 : 0.82;
     out[i * 3]     = sx * baseR * rMul;
     out[i * 3 + 1] = sy * baseR * rMul;
     out[i * 3 + 2] = sz * baseR * rMul;
@@ -105,15 +107,15 @@ function makeEarth(): Float32Array {
 function makeBrain(): Float32Array {
   const out = new Float32Array(PARTICLE_COUNT * 3);
   const phi = Math.PI * (Math.sqrt(5) - 1);
-  const baseR = 1.32;
+  const baseR = 1.65;
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     const y = 1 - (i / (PARTICLE_COUNT - 1)) * 2;
     const rad = Math.sqrt(1 - y * y);
     const theta = phi * i;
     const bumps =
-      Math.sin(theta * 6) * 0.18 +
-      Math.cos(y * 9) * 0.15 +
-      Math.sin(theta * 3 + y * 4) * 0.10;
+      Math.sin(theta * 6) * 0.24 +
+      Math.cos(y * 9) * 0.20 +
+      Math.sin(theta * 3 + y * 4) * 0.13;
     const rr = baseR + bumps;
     out[i * 3] = Math.cos(theta) * rad * rr;
     out[i * 3 + 1] = y * rr;
@@ -124,7 +126,7 @@ function makeBrain(): Float32Array {
 
 function makeLetterA(): Float32Array {
   const out = new Float32Array(PARTICLE_COUNT * 3);
-  const scale = 1.55;
+  const scale = 1.90;
   const apex: [number, number] = [0, 1];
   const bl: [number, number] = [-0.7, -1];
   const br: [number, number] = [0.7, -1];
@@ -191,8 +193,8 @@ function makeSizes(): Float32Array {
   const out = new Float32Array(PARTICLE_COUNT);
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     const r = hash(i + 79);
-    // Mostly very small dust; only the rarest become bright pinpoints.
-    out[i] = 0.35 + Math.pow(r, 5) * 1.2;
+    // Smaller, more uniform dust — minimal pixel pinpoints.
+    out[i] = 0.22 + Math.pow(r, 5) * 0.85;
   }
   return out;
 }
@@ -227,12 +229,10 @@ const FRAGMENT_SHADER = /* glsl */ `
     vec2 d = gl_PointCoord - 0.5;
     float r2 = dot(d, d);
     if (r2 > 0.25) discard;
-    // Crisp soft-edged disc. No halo glow ring — that was the source of
-    // the 'parıltı' (sparkle) effect. Just clean particles with smooth
-    // anti-aliased edges; AdditiveBlending still gives them luminosity
-    // where they overlap, without the sparkly halo.
-    float disc = smoothstep(0.25, 0.04, r2);
-    float a = disc * 0.55 * vDistFade;
+    // Tight pinpoint with anti-aliased edge. Lower alpha keeps the
+    // swarm minimal even with denser additive overlap.
+    float disc = smoothstep(0.25, 0.06, r2);
+    float a = disc * 0.42 * vDistFade;
     gl_FragColor = vec4(vColor, a);
   }
 `;
@@ -254,20 +254,13 @@ function Swarm() {
     const velocities = new Float32Array(PARTICLE_COUNT * 3);
     const colors = makeColors();
     const sizes = makeSizes();
-    const fromIdx = new Uint8Array(PARTICLE_COUNT);
-    const toIdx = new Uint8Array(PARTICLE_COUNT);
-    const morphT = new Float32Array(PARTICLE_COUNT);
-    const morphSpeed = new Float32Array(PARTICLE_COUNT);
+    // Per-particle stagger — each particle delays its start of the
+    // morph phase by up to 25% of MORPH_S. Keeps the morph flowing
+    // (not lockstep) while still letting the swarm converge to a clean
+    // shape during the hold phase.
+    const stagger = new Float32Array(PARTICLE_COUNT);
     for (let i = 0; i < PARTICLE_COUNT; i++) {
-      // Each particle starts in the middle of a random morph already so
-      // the swarm boots in a flowing state instead of a perfect galaxy.
-      const start = Math.floor(hash(i + 101) * SHAPE_COUNT);
-      const next = (start + 1) % SHAPE_COUNT;
-      fromIdx[i] = start;
-      toIdx[i] = next;
-      morphT[i] = hash(i + 113);
-      // 2–4 s per morph (user-capped maximum). Each particle's own pace.
-      morphSpeed[i] = 1 / (2 + hash(i + 127) * 2);
+      stagger[i] = hash(i + 113) * 0.25;
     }
     return {
       shapes,
@@ -275,17 +268,23 @@ function Swarm() {
       velocities,
       colors,
       sizes,
-      fromIdx,
-      toIdx,
-      morphT,
-      morphSpeed,
+      stagger,
     };
   }, []);
+
+  // Global state machine — drives the synchronized hold↔morph cycle.
+  const phase = React.useRef({
+    fromIdx: 0,
+    toIdx: 1,
+    mode: 'hold' as 'hold' | 'morph',
+    startedAt: 0,
+    initialised: false,
+  });
 
   const uniforms = React.useMemo(
     () => ({
       uPixelRatio: { value: typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1 },
-      uBaseSize: { value: 36 },
+      uBaseSize: { value: 26 },
       uFadeInner: { value: FADE_INNER },
       uFadeOuter: { value: FADE_OUTER },
     }),
@@ -336,10 +335,37 @@ function Swarm() {
 
     const shapes = data.shapes;
     const velocities = data.velocities;
-    const fromIdx = data.fromIdx;
-    const toIdx = data.toIdx;
-    const morphT = data.morphT;
-    const morphSpeed = data.morphSpeed;
+    const stagger = data.stagger;
+
+    // Drive the global state machine — hold 2 s where the shape reads
+    // clearly, then morph 1.5 s to the next shape, repeat.
+    const t = rs.clock.elapsedTime;
+    if (!phase.current.initialised) {
+      phase.current.startedAt = t;
+      phase.current.initialised = true;
+    }
+    const elapsed = t - phase.current.startedAt;
+    let globalMorphT: number;
+    if (phase.current.mode === 'hold') {
+      if (elapsed >= HOLD_S) {
+        phase.current.mode = 'morph';
+        phase.current.startedAt = t;
+      }
+      globalMorphT = 0;
+    } else {
+      if (elapsed >= MORPH_S) {
+        phase.current.mode = 'hold';
+        phase.current.startedAt = t;
+        phase.current.fromIdx = phase.current.toIdx;
+        phase.current.toIdx = (phase.current.toIdx + 1) % SHAPE_COUNT;
+        globalMorphT = 0;
+      } else {
+        globalMorphT = elapsed / MORPH_S;
+      }
+    }
+
+    const fromShape = shapes[phase.current.fromIdx]!;
+    const toShape = shapes[phase.current.toIdx]!;
 
     const cursorActive = hit !== null && cursorHas.current;
     const cx = cursorActive ? cursor3D.x : 0;
@@ -349,28 +375,21 @@ function Swarm() {
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       const i3 = i * 3;
 
-      // Advance per-particle morph progress and loop shape sequence.
-      let mt = morphT[i]!;
-      mt += morphSpeed[i]! * dt;
-      while (mt >= 1) {
-        mt -= 1;
-        fromIdx[i] = toIdx[i]!;
-        toIdx[i] = (toIdx[i]! + 1) % SHAPE_COUNT;
-        // Re-roll morph speed each cycle for organic variation.
-        morphSpeed[i] = 1 / (2 + hash(i + 131 + Math.floor(rs.clock.elapsedTime * 13)) * 2);
-      }
-      morphT[i] = mt;
+      // Per-particle stagger inside the morph window — particle waits
+      // up to 25% of the morph time before starting its own transition,
+      // so the swarm 'flows' into the new shape instead of snapping.
+      const delay = stagger[i]!;
+      const denom = 1 - delay;
+      const localRaw = denom > 0.0001 ? (globalMorphT - delay) / denom : 1;
+      const localT = localRaw < 0 ? 0 : localRaw > 1 ? 1 : localRaw;
+      const tEase = localT * localT * (3 - 2 * localT);
 
-      const e = mt;
-      const tEase = e * e * (3 - 2 * e);
-      const from = shapes[fromIdx[i]!]!;
-      const to = shapes[toIdx[i]!]!;
-      const fx = from[i3]!;
-      const fy = from[i3 + 1]!;
-      const fz = from[i3 + 2]!;
-      const tx = fx + (to[i3]! - fx) * tEase;
-      const ty = fy + (to[i3 + 1]! - fy) * tEase;
-      const tz = fz + (to[i3 + 2]! - fz) * tEase;
+      const fx = fromShape[i3]!;
+      const fy = fromShape[i3 + 1]!;
+      const fz = fromShape[i3 + 2]!;
+      const tx = fx + (toShape[i3]! - fx) * tEase;
+      const ty = fy + (toShape[i3 + 1]! - fy) * tEase;
+      const tz = fz + (toShape[i3 + 2]! - fz) * tEase;
 
       const px = positions[i3]!;
       const py = positions[i3 + 1]!;
