@@ -31,8 +31,14 @@ type Props = {
   className?: string;
 };
 
-const PARTICLE_COUNT = 4000;
+const PARTICLE_COUNT = 3200;
 const SHAPE_COUNT = 4;
+// Beyond this radius (world units) a particle's alpha fully fades to 0.
+// Inside FADE_INNER it is fully visible. Between, smoothstep fade. This
+// is what kills the visible 'edge' the user reported — particles pushed
+// outwards by the cursor fade out smoothly instead of hitting a mask.
+const FADE_INNER = 1.7;
+const FADE_OUTER = 2.7;
 
 function hash(i: number): number {
   const s = Math.sin(i * 127.1) * 43758.5453;
@@ -142,20 +148,23 @@ function makeLetterA(): Float32Array {
 }
 
 function makeColors(): Float32Array {
+  // Disciplined palette — overwhelmingly cyan/teal with quiet violet
+  // accents. Drops the pink. Reads as one coherent material rather
+  // than a rainbow swarm.
   const out = new Float32Array(PARTICLE_COUNT * 3);
   const palette: Array<[number, number, number]> = [
     [0.0, 0.83, 1.0],   // cyan
     [0.49, 1.0, 1.0],   // ice cyan
-    [0.66, 0.33, 0.97], // violet
-    [0.93, 0.28, 0.6],  // pink
+    [0.42, 0.78, 1.0],  // pale azure
+    [0.66, 0.45, 0.95], // soft violet
     [1.0, 1.0, 1.0],    // white sparkle
   ];
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     const r = hash(i + 5);
     const idx =
-      r < 0.45 ? 0 :
-      r < 0.72 ? 1 :
-      r < 0.90 ? 2 :
+      r < 0.50 ? 0 :
+      r < 0.78 ? 1 :
+      r < 0.92 ? 2 :
       r < 0.98 ? 3 : 4;
     const c = palette[idx] ?? palette[0]!;
     out[i * 3] = c[0];
@@ -169,8 +178,10 @@ function makeSizes(): Float32Array {
   const out = new Float32Array(PARTICLE_COUNT);
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     const r = hash(i + 79);
-    // Bias toward small dust, occasional bright stars.
-    out[i] = 0.7 + Math.pow(r, 3) * 2.4;
+    // Bias toward fine dust; only the rarest particles get to be bright
+    // stars. Smaller average → looks like a sophisticated nebula rather
+    // than a chaotic cloud of marbles.
+    out[i] = 0.5 + Math.pow(r, 4) * 1.7;
   }
   return out;
 }
@@ -181,16 +192,26 @@ const VERTEX_SHADER = /* glsl */ `
   uniform float uPixelRatio;
   uniform float uBaseSize;
   varying vec3 vColor;
+  varying float vDistFade;
+  uniform float uFadeInner;
+  uniform float uFadeOuter;
   void main() {
     vec4 mv = modelViewMatrix * vec4(position, 1.0);
     gl_PointSize = aSize * uBaseSize * uPixelRatio * (1.0 / -mv.z);
     gl_Position = projectionMatrix * mv;
     vColor = aColor;
+    // Smooth alpha fade beyond uFadeInner; fully gone past uFadeOuter.
+    // This is what gives the swarm a soft 'fog of war' silhouette so
+    // when the cursor pushes a particle outward it dissolves naturally
+    // instead of clipping against a mask.
+    float d = length(position);
+    vDistFade = 1.0 - smoothstep(uFadeInner, uFadeOuter, d);
   }
 `;
 
 const FRAGMENT_SHADER = /* glsl */ `
   varying vec3 vColor;
+  varying float vDistFade;
   void main() {
     vec2 d = gl_PointCoord - 0.5;
     float r2 = dot(d, d);
@@ -198,7 +219,7 @@ const FRAGMENT_SHADER = /* glsl */ `
     // Soft radial glow — bright tight core, soft halo out to the edge.
     float core = exp(-r2 * 14.0);
     float halo = exp(-r2 * 4.0);
-    float a = core + halo * 0.45;
+    float a = (core + halo * 0.42) * vDistFade;
     gl_FragColor = vec4(vColor, a);
   }
 `;
@@ -232,8 +253,8 @@ function Swarm() {
       fromIdx[i] = start;
       toIdx[i] = next;
       morphT[i] = hash(i + 113);
-      // 3–6 s per morph, each particle has its own rate.
-      morphSpeed[i] = 1 / (3 + hash(i + 127) * 3);
+      // 6–12 s per morph — calm, meditative pace. Each particle's own.
+      morphSpeed[i] = 1 / (6 + hash(i + 127) * 6);
     }
     return {
       shapes,
@@ -251,7 +272,9 @@ function Swarm() {
   const uniforms = React.useMemo(
     () => ({
       uPixelRatio: { value: typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1 },
-      uBaseSize: { value: 70 },
+      uBaseSize: { value: 56 },
+      uFadeInner: { value: FADE_INNER },
+      uFadeOuter: { value: FADE_OUTER },
     }),
     [],
   );
@@ -289,12 +312,12 @@ function Swarm() {
     raycaster.setFromCamera(pointer, camera);
     const hit = raycaster.ray.intersectPlane(cursorPlane, cursor3D);
 
-    // Tunable physics
-    const SPRING = 4.5;      // attraction strength to morph target
-    const FRICTION = 0.86;   // velocity damping per frame (60fps base)
-    const REPEL_R = 0.95;    // radius of mouse influence
+    // Tunable physics — calmer, more honeyed than v4.
+    const SPRING = 3.2;      // softer pull toward morph target
+    const FRICTION = 0.90;   // longer hang time, smoother recovery
+    const REPEL_R = 0.85;    // gentle influence radius
     const REPEL_R2 = REPEL_R * REPEL_R;
-    const REPEL_STR = 9.0;   // mouse force strength
+    const REPEL_STR = 6.5;   // softer push, swarm parts gracefully
 
     const frictionFrame = Math.pow(FRICTION, dt * 60);
 
@@ -321,7 +344,7 @@ function Swarm() {
         fromIdx[i] = toIdx[i]!;
         toIdx[i] = (toIdx[i]! + 1) % SHAPE_COUNT;
         // Re-roll morph speed each cycle for organic variation.
-        morphSpeed[i] = 1 / (3 + hash(i + 131 + Math.floor(rs.clock.elapsedTime * 13)) * 3);
+        morphSpeed[i] = 1 / (6 + hash(i + 131 + Math.floor(rs.clock.elapsedTime * 13)) * 6);
       }
       morphT[i] = mt;
 
@@ -378,13 +401,13 @@ function Swarm() {
 
     posAttr.needsUpdate = true;
 
-    // Whole-swarm slow rotation for a sense of life.
-    points.rotation.y += dt * 0.08;
-    points.rotation.x = Math.sin(rs.clock.elapsedTime * 0.18) * 0.12;
+    // Very slow whole-swarm drift — sub-1-rpm.
+    points.rotation.y += dt * 0.03;
+    points.rotation.x = Math.sin(rs.clock.elapsedTime * 0.12) * 0.06;
 
     // Keep pixel ratio + size in sync with window resizes.
     uniforms.uPixelRatio.value = Math.min(rs.gl.getPixelRatio(), 2);
-    uniforms.uBaseSize.value = Math.max(48, Math.min(size.height, size.width) * 0.13);
+    uniforms.uBaseSize.value = Math.max(40, Math.min(size.height, size.width) * 0.105);
   });
 
   return (
@@ -412,37 +435,33 @@ export function AiroOrb({ className }: Props) {
   return (
     <div className={`relative ${className ?? ''}`}>
       <div className="relative w-full" style={{ aspectRatio: '1 / 1' }}>
-        {/* Single soft glow disc behind the swarm. */}
+        {/* Soft glow disc behind the swarm — sets the atmosphere. */}
         <div
           aria-hidden
-          className="absolute inset-[-10%] pointer-events-none"
+          className="absolute inset-[-12%] pointer-events-none"
           style={{
             background:
-              'radial-gradient(circle, rgba(0,170,255,0.30) 0%, rgba(144,70,232,0.18) 32%, rgba(236,72,153,0.08) 55%, transparent 75%)',
-            filter: 'blur(36px)',
+              'radial-gradient(circle, rgba(0,170,255,0.22) 0%, rgba(120,90,220,0.12) 38%, transparent 72%)',
+            filter: 'blur(42px)',
             borderRadius: '50%',
           }}
         />
 
-        {/* Radial alpha mask kills any visible canvas rectangle. */}
-        <div
+        {/*
+          No mask on the canvas wrapper any more — the soft fade in the
+          shader (smoothstep from FADE_INNER to FADE_OUTER) handles the
+          silhouette so particles never clip against a visible edge.
+          The empty corners of the WebGL canvas are simply transparent.
+        */}
+        <Canvas
           className="absolute inset-0"
-          style={{
-            maskImage:
-              'radial-gradient(circle at 50% 50%, black 60%, transparent 96%)',
-            WebkitMaskImage:
-              'radial-gradient(circle at 50% 50%, black 60%, transparent 96%)',
-          }}
+          camera={{ position: [0, 0, 4.4], fov: 45 }}
+          gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+          dpr={[1, 2]}
+          style={{ background: 'transparent' }}
         >
-          <Canvas
-            camera={{ position: [0, 0, 4.4], fov: 45 }}
-            gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-            dpr={[1, 2]}
-            style={{ background: 'transparent' }}
-          >
-            <Swarm />
-          </Canvas>
-        </div>
+          <Swarm />
+        </Canvas>
       </div>
     </div>
   );
