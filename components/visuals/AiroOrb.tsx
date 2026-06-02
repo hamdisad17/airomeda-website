@@ -33,9 +33,10 @@ type Props = {
 
 const PARTICLE_COUNT = 4000;
 const SHAPE_COUNT = 4;
-// Global state machine — favouring HOLD over MORPH so shapes are
-// recognisable for longer. Total cycle 3.5 s, under user's 4 s cap.
-const HOLD_S = 2.3;
+// Global state machine — total cycle 4 s, user's hard cap. HOLD takes
+// the lion's share so each shape is fully formed and visible for
+// 2.8 s before the next morph begins.
+const HOLD_S = 2.8;
 const MORPH_S = 1.2;
 // Density fade: particles at full alpha well inside the swarm, then
 // dissolve into the void. Shapes live around r ≈ 1.65–1.9; the fade
@@ -321,14 +322,15 @@ function Swarm() {
     raycaster.setFromCamera(pointer, camera);
     const hit = raycaster.ray.intersectPlane(cursorPlane, cursor3D);
 
-    // Stronger spring so particles SNAP to their target shape — the
-    // hold phase reads as a clear formed silhouette rather than a
-    // wobbling cloud.
-    const SPRING = 5.5;
-    const FRICTION = 0.85;   // a bit more damping to prevent overshoot
+    // Strong spring so particles fully reach their target during the
+    // 1.2 s morph window and the shape is locked in for the entire
+    // 2.8 s hold. Time constant τ ≈ 1/7 = 0.14 s → fully settled in
+    // ~0.7 s, well within the morph.
+    const SPRING = 7.0;
+    const FRICTION = 0.84;   // more damping so the snap doesn't overshoot
     const REPEL_R = 0.80;
     const REPEL_R2 = REPEL_R * REPEL_R;
-    const REPEL_STR = 6.5;   // boosted slightly so mouse parting still reads
+    const REPEL_STR = 7.5;   // boosted to stay visible against the stronger spring
 
     const frictionFrame = Math.pow(FRICTION, dt * 60);
 
