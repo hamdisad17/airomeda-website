@@ -31,14 +31,14 @@ type Props = {
   className?: string;
 };
 
-const PARTICLE_COUNT = 3200;
+const PARTICLE_COUNT = 1800;
 const SHAPE_COUNT = 4;
-// Beyond this radius (world units) a particle's alpha fully fades to 0.
-// Inside FADE_INNER it is fully visible. Between, smoothstep fade. This
-// is what kills the visible 'edge' the user reported — particles pushed
-// outwards by the cursor fade out smoothly instead of hitting a mask.
-const FADE_INNER = 1.7;
-const FADE_OUTER = 2.7;
+// Density fade: particles are at full alpha well inside the swarm and
+// gently dissolve into the void as they drift out. Shapes themselves
+// live at radius ~0.9–1.1, so the FADE band wraps the whole swarm with
+// soft falloff. No hard silhouette anywhere.
+const FADE_INNER = 1.05;
+const FADE_OUTER = 2.20;
 
 function hash(i: number): number {
   const s = Math.sin(i * 127.1) * 43758.5453;
@@ -52,20 +52,17 @@ function makeGalaxy(): Float32Array {
   const out = new Float32Array(PARTICLE_COUNT * 3);
   const arms = 3;
   const armSpread = 0.42;
-  const maxR = 1.85;
+  const maxR = 1.05;
   for (let i = 0; i < PARTICLE_COUNT; i++) {
-    // Radius pulled with bias toward outer arms (sqrt for area-uniform).
     const rNorm = Math.sqrt(hash(i + 11));
     const r = rNorm * maxR;
     const arm = Math.floor(hash(i + 19) * arms);
     const armAngle = (arm / arms) * Math.PI * 2;
-    // Spiral winds tighter as radius grows.
     const spiral = r * 2.4;
     const angle = armAngle + spiral + (hash(i + 23) - 0.5) * armSpread;
     const x = Math.cos(angle) * r;
     const z = Math.sin(angle) * r;
-    // Disk thickness — denser core, thinner outer.
-    const thickness = (1 - rNorm * 0.7) * 0.32;
+    const thickness = (1 - rNorm * 0.7) * 0.20;
     const y = (hash(i + 37) - 0.5) * thickness;
     out[i * 3] = x;
     out[i * 3 + 1] = y;
@@ -77,7 +74,7 @@ function makeGalaxy(): Float32Array {
 function makeSphere(): Float32Array {
   const out = new Float32Array(PARTICLE_COUNT * 3);
   const phi = Math.PI * (Math.sqrt(5) - 1);
-  const r = 1.4;
+  const r = 0.88;
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     const y = 1 - (i / (PARTICLE_COUNT - 1)) * 2;
     const rad = Math.sqrt(1 - y * y);
@@ -92,15 +89,15 @@ function makeSphere(): Float32Array {
 function makeBrain(): Float32Array {
   const out = new Float32Array(PARTICLE_COUNT * 3);
   const phi = Math.PI * (Math.sqrt(5) - 1);
-  const baseR = 1.55;
+  const baseR = 0.95;
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     const y = 1 - (i / (PARTICLE_COUNT - 1)) * 2;
     const rad = Math.sqrt(1 - y * y);
     const theta = phi * i;
     const bumps =
-      Math.sin(theta * 6) * 0.20 +
-      Math.cos(y * 9) * 0.16 +
-      Math.sin(theta * 3 + y * 4) * 0.12;
+      Math.sin(theta * 6) * 0.13 +
+      Math.cos(y * 9) * 0.10 +
+      Math.sin(theta * 3 + y * 4) * 0.07;
     const rr = baseR + bumps;
     out[i * 3] = Math.cos(theta) * rad * rr;
     out[i * 3 + 1] = y * rr;
@@ -111,7 +108,7 @@ function makeBrain(): Float32Array {
 
 function makeLetterA(): Float32Array {
   const out = new Float32Array(PARTICLE_COUNT * 3);
-  const scale = 1.7;
+  const scale = 1.05;
   const apex: [number, number] = [0, 1];
   const bl: [number, number] = [-0.7, -1];
   const br: [number, number] = [0.7, -1];
@@ -178,10 +175,8 @@ function makeSizes(): Float32Array {
   const out = new Float32Array(PARTICLE_COUNT);
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     const r = hash(i + 79);
-    // Bias toward fine dust; only the rarest particles get to be bright
-    // stars. Smaller average → looks like a sophisticated nebula rather
-    // than a chaotic cloud of marbles.
-    out[i] = 0.5 + Math.pow(r, 4) * 1.7;
+    // Mostly very small dust; only the rarest become bright pinpoints.
+    out[i] = 0.35 + Math.pow(r, 5) * 1.2;
   }
   return out;
 }
@@ -216,10 +211,12 @@ const FRAGMENT_SHADER = /* glsl */ `
     vec2 d = gl_PointCoord - 0.5;
     float r2 = dot(d, d);
     if (r2 > 0.25) discard;
-    // Soft radial glow — bright tight core, soft halo out to the edge.
-    float core = exp(-r2 * 14.0);
-    float halo = exp(-r2 * 4.0);
-    float a = (core + halo * 0.42) * vDistFade;
+    // Quiet pinpoint with a whisper of halo. Low brightness per particle
+    // so AdditiveBlending doesn't blow out the swarm centre into a hot
+    // mass — the eye sees fine dust, not a glowing fireball.
+    float core = exp(-r2 * 22.0) * 0.55;
+    float halo = exp(-r2 * 5.0)  * 0.12;
+    float a = (core + halo) * vDistFade;
     gl_FragColor = vec4(vColor, a);
   }
 `;
@@ -272,7 +269,7 @@ function Swarm() {
   const uniforms = React.useMemo(
     () => ({
       uPixelRatio: { value: typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1 },
-      uBaseSize: { value: 56 },
+      uBaseSize: { value: 30 },
       uFadeInner: { value: FADE_INNER },
       uFadeOuter: { value: FADE_OUTER },
     }),
@@ -312,12 +309,12 @@ function Swarm() {
     raycaster.setFromCamera(pointer, camera);
     const hit = raycaster.ray.intersectPlane(cursorPlane, cursor3D);
 
-    // Tunable physics — calmer, more honeyed than v4.
-    const SPRING = 3.2;      // softer pull toward morph target
-    const FRICTION = 0.90;   // longer hang time, smoother recovery
-    const REPEL_R = 0.85;    // gentle influence radius
+    // Tunable physics. Scaled for the new ~1.0-radius shapes.
+    const SPRING = 3.6;      // pulls dust home gently
+    const FRICTION = 0.90;   // long settle for honeyed recovery
+    const REPEL_R = 0.55;    // small cursor field so the parting reads
     const REPEL_R2 = REPEL_R * REPEL_R;
-    const REPEL_STR = 6.5;   // softer push, swarm parts gracefully
+    const REPEL_STR = 4.5;   // soft push — dust drifts aside, not bursts
 
     const frictionFrame = Math.pow(FRICTION, dt * 60);
 
@@ -435,14 +432,15 @@ export function AiroOrb({ className }: Props) {
   return (
     <div className={`relative ${className ?? ''}`}>
       <div className="relative w-full" style={{ aspectRatio: '1 / 1' }}>
-        {/* Soft glow disc behind the swarm — sets the atmosphere. */}
+        {/* A whisper of glow behind the swarm — barely perceptible
+            atmosphere, not a competing element. */}
         <div
           aria-hidden
-          className="absolute inset-[-12%] pointer-events-none"
+          className="absolute inset-[12%] pointer-events-none"
           style={{
             background:
-              'radial-gradient(circle, rgba(0,170,255,0.22) 0%, rgba(120,90,220,0.12) 38%, transparent 72%)',
-            filter: 'blur(42px)',
+              'radial-gradient(circle, rgba(0,170,255,0.14) 0%, rgba(120,90,220,0.06) 45%, transparent 75%)',
+            filter: 'blur(48px)',
             borderRadius: '50%',
           }}
         />
