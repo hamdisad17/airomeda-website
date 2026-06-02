@@ -266,8 +266,8 @@ function Swarm() {
       fromIdx[i] = start;
       toIdx[i] = next;
       morphT[i] = hash(i + 113);
-      // 6–12 s per morph — calm, meditative pace. Each particle's own.
-      morphSpeed[i] = 1 / (6 + hash(i + 127) * 6);
+      // 2–4 s per morph (user-capped maximum). Each particle's own pace.
+      morphSpeed[i] = 1 / (2 + hash(i + 127) * 2);
     }
     return {
       shapes,
@@ -357,7 +357,7 @@ function Swarm() {
         fromIdx[i] = toIdx[i]!;
         toIdx[i] = (toIdx[i]! + 1) % SHAPE_COUNT;
         // Re-roll morph speed each cycle for organic variation.
-        morphSpeed[i] = 1 / (6 + hash(i + 131 + Math.floor(rs.clock.elapsedTime * 13)) * 6);
+        morphSpeed[i] = 1 / (2 + hash(i + 131 + Math.floor(rs.clock.elapsedTime * 13)) * 2);
       }
       morphT[i] = mt;
 
