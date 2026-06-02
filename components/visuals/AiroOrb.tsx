@@ -31,12 +31,12 @@ type Props = {
   className?: string;
 };
 
-const PARTICLE_COUNT = 3500;
+const PARTICLE_COUNT = 4000;
 const SHAPE_COUNT = 4;
-// Global state machine durations — hold + morph = one full shape change
-// cycle. User asked max 4 s, so 2.0 + 1.5 = 3.5 s.
-const HOLD_S = 2.0;
-const MORPH_S = 1.5;
+// Global state machine — favouring HOLD over MORPH so shapes are
+// recognisable for longer. Total cycle 3.5 s, under user's 4 s cap.
+const HOLD_S = 2.3;
+const MORPH_S = 1.2;
 // Density fade: particles at full alpha well inside the swarm, then
 // dissolve into the void. Shapes live around r ≈ 1.65–1.9; the fade
 // band wraps with a long soft tail so the silhouette never reads as a
@@ -95,8 +95,8 @@ function makeEarth(): Float32Array {
       Math.cos(sy * 7.4 + sz * 3.1) * 0.40 +
       Math.sin(sx * 11.0 + sy * 9.0) * 0.18;
     const isLand = cont > 0.2;
-    // Stronger land/ocean radius gap so the globe reads distinct.
-    const rMul = isLand ? 1.0 : 0.82;
+    // Pronounced land/ocean gap — continents really stand out.
+    const rMul = isLand ? 1.0 : 0.74;
     out[i * 3]     = sx * baseR * rMul;
     out[i * 3 + 1] = sy * baseR * rMul;
     out[i * 3 + 2] = sz * baseR * rMul;
@@ -229,10 +229,9 @@ const FRAGMENT_SHADER = /* glsl */ `
     vec2 d = gl_PointCoord - 0.5;
     float r2 = dot(d, d);
     if (r2 > 0.25) discard;
-    // Tight pinpoint with anti-aliased edge. Lower alpha keeps the
-    // swarm minimal even with denser additive overlap.
-    float disc = smoothstep(0.25, 0.06, r2);
-    float a = disc * 0.42 * vDistFade;
+    // Slightly more defined pinpoint — a touch brighter and sharper.
+    float disc = smoothstep(0.25, 0.04, r2);
+    float a = disc * 0.52 * vDistFade;
     gl_FragColor = vec4(vColor, a);
   }
 `;
@@ -254,13 +253,11 @@ function Swarm() {
     const velocities = new Float32Array(PARTICLE_COUNT * 3);
     const colors = makeColors();
     const sizes = makeSizes();
-    // Per-particle stagger — each particle delays its start of the
-    // morph phase by up to 25% of MORPH_S. Keeps the morph flowing
-    // (not lockstep) while still letting the swarm converge to a clean
-    // shape during the hold phase.
+    // Tighter stagger (0–15% of MORPH_S) so the swarm reaches the new
+    // shape promptly — shape outline becomes recognisable faster.
     const stagger = new Float32Array(PARTICLE_COUNT);
     for (let i = 0; i < PARTICLE_COUNT; i++) {
-      stagger[i] = hash(i + 113) * 0.25;
+      stagger[i] = hash(i + 113) * 0.15;
     }
     return {
       shapes,
@@ -284,7 +281,7 @@ function Swarm() {
   const uniforms = React.useMemo(
     () => ({
       uPixelRatio: { value: typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1 },
-      uBaseSize: { value: 26 },
+      uBaseSize: { value: 32 },
       uFadeInner: { value: FADE_INNER },
       uFadeOuter: { value: FADE_OUTER },
     }),
@@ -324,12 +321,14 @@ function Swarm() {
     raycaster.setFromCamera(pointer, camera);
     const hit = raycaster.ray.intersectPlane(cursorPlane, cursor3D);
 
-    // Tunable physics — scaled for the new ~1.4-radius shapes.
-    const SPRING = 3.4;      // pulls dust home gently
-    const FRICTION = 0.90;   // long settle for honeyed recovery
-    const REPEL_R = 0.80;    // cursor field large enough to read clearly
+    // Stronger spring so particles SNAP to their target shape — the
+    // hold phase reads as a clear formed silhouette rather than a
+    // wobbling cloud.
+    const SPRING = 5.5;
+    const FRICTION = 0.85;   // a bit more damping to prevent overshoot
+    const REPEL_R = 0.80;
     const REPEL_R2 = REPEL_R * REPEL_R;
-    const REPEL_STR = 6.0;   // soft push — dust drifts aside, not bursts
+    const REPEL_STR = 6.5;   // boosted slightly so mouse parting still reads
 
     const frictionFrame = Math.pow(FRICTION, dt * 60);
 
