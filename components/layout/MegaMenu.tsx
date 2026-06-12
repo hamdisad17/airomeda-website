@@ -16,7 +16,7 @@ export async function MegaMenu({ locale }: { locale: Locale }) {
       >
         {t('services')} <span className="text-xs transition-transform duration-300 group-hover:rotate-180">▾</span>
       </button>
-      <div className="invisible absolute left-1/2 z-50 mt-3 w-[640px] -translate-x-1/2 translate-y-1 rounded-2xl border border-border bg-elevated/98 p-3 opacity-0 shadow-2xl shadow-black/40 backdrop-blur-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+      <div className="invisible absolute left-1/2 z-50 mt-3 w-[640px] -translate-x-1/2 translate-y-1 rounded-2xl border border-border bg-elevated p-3 opacity-0 shadow-2xl shadow-black/60 ring-1 ring-black/20 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
         <ul className="grid grid-cols-2 gap-1">
           {services.map((s) => (
             <li key={s.slug}>
