@@ -147,7 +147,12 @@ body::after {
   100% { transform: translate3d(4%, -2%, 0) scale(1.04); }
 }
 
-main, header, footer { position: relative; z-index: 2; }
+/* Lift page content above the fixed decorative glow layers (body::before/after).
+   The header is intentionally excluded — it must keep its own sticky + z-40
+   from utilities, otherwise this unlayered rule overrides them (cascade layers:
+   unlayered beats Tailwind's layered utilities) and the nav/mega-menu ends up
+   below page content. */
+main, footer { position: relative; z-index: 2; }
 
 ::selection { background: var(--color-accent); color: var(--color-accent-foreground); }
 
