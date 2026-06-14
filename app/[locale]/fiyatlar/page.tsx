@@ -59,7 +59,7 @@ const CATEGORY_ORDER: PricingCategory[] = ['yazilim', 'web', 'pazarlama'];
 // Explicit service order *within* each category. Drives what a visitor sees
 // first: entegrasyon + e-ticaret, then oyun + finans, … SEO dead last.
 const SERVICE_ORDER: Record<PricingCategory, string[]> = {
-  yazilim: ['entegrasyon', 'e-ticaret', 'sans-oyunlari', 'finans'],
+  yazilim: ['fastpay', 'entegrasyon', 'e-ticaret', 'sans-oyunlari', 'finans'],
   web: ['kurumsal-web'],
   pazarlama: ['sosyal-medya', 'crm', 'seo-reklam'],
 };

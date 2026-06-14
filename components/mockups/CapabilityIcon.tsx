@@ -2,6 +2,13 @@ type Props = { slug: string; className?: string };
 
 export function CapabilityIcon({ slug, className }: Props) {
   const ICONS: Record<string, React.ReactNode> = {
+    fastpay: (
+      <>
+        <rect x="2" y="5" width="20" height="14" rx="2"/>
+        <path d="M2 10h20"/>
+        <path d="M13 13l-3 4h3l-1 3"/>
+      </>
+    ),
     finans: <path d="M3 3v18h18M7 14l3-3 3 3 5-5"/>,
     finance: <path d="M3 3v18h18M7 14l3-3 3 3 5-5"/>,
     'sans-oyunlari': (

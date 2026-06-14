@@ -11,7 +11,7 @@ export async function submitDemoRequest(input: {
   email: string;
   company?: string;
   message: string;
-  service: 'finance' | 'gaming' | 'ecommerce' | 'integration' | 'seo-ads' | 'social-media' | 'crm' | 'corporate-web';
+  service: 'finance' | 'gaming' | 'ecommerce' | 'integration' | 'seo-ads' | 'social-media' | 'crm' | 'corporate-web' | 'fastpay';
   turnstileToken: string;
 }): Promise<FormActionResult> {
   return runFormAction({

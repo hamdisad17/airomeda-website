@@ -15,6 +15,55 @@ export interface ServicePackage {
 }
 
 export const PACKAGES_BY_SLUG: Record<string, ServicePackage[]> = {
+  fastpay: [
+    {
+      name: 'Standart',
+      desc: 'Tek işletme için hazır ödeme paneli ve checkout.',
+      price: 'Özel Teklif',
+      priceNote: 'Fiyat için iletişime geçiniz',
+      features: [
+        'Kart ile tahsilat (Stripe/iyzico hazır)',
+        'Ödeme ekranı + ödeme linki & QR',
+        'İşlem & müşteri yönetimi',
+        'Temel analitik & raporlama',
+        'Otomatik e-posta makbuzu',
+      ],
+      cta: 'İletişime Geç',
+      highlight: false,
+    },
+    {
+      name: 'Profesyonel',
+      desc: 'Büyüyen işletmeler için tam donanımlı ödeme yönetimi.',
+      price: 'Özel Teklif',
+      priceNote: 'Fiyat için iletişime geçiniz',
+      features: [
+        'Standart’taki her şey',
+        'IBAN / havale-EFT tahsilatı',
+        'Abonelik, taksit & dunning',
+        'Çoklu para birimi & kupon',
+        'Gelişmiş analitik (MRR/ARR/LTV, churn)',
+        'Bildirim merkezi & müşteri portalı',
+      ],
+      cta: 'En çok tercih edilen',
+      highlight: true,
+    },
+    {
+      name: 'Kurumsal',
+      desc: 'Çoklu ekip, API entegrasyonu ve beyaz etiket.',
+      price: 'Özel Teklif',
+      priceNote: 'Fiyat için iletişime geçiniz',
+      features: [
+        'Profesyonel’deki her şey',
+        'Rol bazlı erişim, 2FA & denetim günlüğü',
+        'Risk/kara liste, fraud skoru & itiraz yönetimi',
+        'REST API, API anahtarları & webhook',
+        'AI Copilot & otomasyon',
+        'Beyaz etiket + özel entegrasyon',
+      ],
+      cta: 'İletişime Geç',
+      highlight: false,
+    },
+  ],
   finans: [
     {
       name: 'Başlangıç',
@@ -462,6 +511,7 @@ export const DEFAULT_PACKAGES: ServicePackage[] = [
 export type PricingCategory = 'pazarlama' | 'yazilim' | 'web';
 
 export const SERVICE_LABELS: Record<string, string> = {
+  fastpay: 'FastPay — Ödeme Paneli',
   finans: 'Finans Yazılımı',
   'sans-oyunlari': 'Şans Oyunları & iGaming',
   'e-ticaret': 'E-Ticaret',
@@ -473,6 +523,7 @@ export const SERVICE_LABELS: Record<string, string> = {
 };
 
 export const SERVICE_CATEGORY: Record<string, PricingCategory> = {
+  fastpay: 'yazilim',
   'seo-reklam': 'pazarlama',
   'sosyal-medya': 'pazarlama',
   crm: 'pazarlama',

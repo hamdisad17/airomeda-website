@@ -18,6 +18,7 @@ export const DemoRequestSchema = ContactFormSchema.extend({
     'social-media',
     'crm',
     'corporate-web',
+    'fastpay',
   ]),
 });
 

@@ -12,6 +12,7 @@ interface ServiceMatrixProps {
 }
 
 const SERVICE_METRICS: Record<string, { value: string; label: string }> = {
+  fastpay: { value: '16+', label: 'hazır özellik' },
   finans: { value: '11 yıl', label: 'finans deneyimi' },
   'sans-oyunlari': { value: '12+', label: 'ülkede aktif' },
   'e-ticaret': { value: '+34%', label: 'satış artışı' },
