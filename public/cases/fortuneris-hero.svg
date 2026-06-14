@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Fortuneris yatırım platformu">
+  <defs>
+    <linearGradient id="fbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0e151d"/>
+    </linearGradient>
+    <linearGradient id="farea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#14B8A6" stop-opacity="0.45"/><stop offset="1" stop-color="#14B8A6" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#fbg)"/>
+  <!-- top bar -->
+  <rect x="0" y="0" width="640" height="40" fill="#0c1219"/>
+  <circle cx="22" cy="20" r="4" fill="#2b3340"/><circle cx="38" cy="20" r="4" fill="#2b3340"/><circle cx="54" cy="20" r="4" fill="#14B8A6"/>
+  <text x="300" y="24" text-anchor="middle" fill="#7c8794" font-family="Arial" font-size="12" font-weight="700" letter-spacing="1">FORTUNERIS</text>
+  <!-- sidebar -->
+  <rect x="0" y="40" width="116" height="320" fill="#0b1117"/>
+  <rect x="16" y="64" width="84" height="10" rx="3" fill="#14B8A6" opacity="0.85"/>
+  <rect x="16" y="92" width="64" height="8" rx="3" fill="#26303c"/>
+  <rect x="16" y="112" width="74" height="8" rx="3" fill="#26303c"/>
+  <rect x="16" y="132" width="54" height="8" rx="3" fill="#26303c"/>
+  <rect x="16" y="152" width="70" height="8" rx="3" fill="#26303c"/>
+  <!-- stat cards -->
+  <g font-family="Arial">
+    <rect x="136" y="60" width="148" height="64" rx="8" fill="#111922" stroke="#1d2632"/>
+    <text x="152" y="84" fill="#6b7682" font-size="10">Portföy Değeri</text>
+    <text x="152" y="108" fill="#e6edf3" font-size="20" font-weight="700">₺48,2M</text>
+    <rect x="296" y="60" width="148" height="64" rx="8" fill="#111922" stroke="#1d2632"/>
+    <text x="312" y="84" fill="#6b7682" font-size="10">Günlük Getiri</text>
+    <text x="312" y="108" fill="#34d399" font-size="20" font-weight="700">+%3,4</text>
+    <rect x="456" y="60" width="168" height="64" rx="8" fill="#111922" stroke="#1d2632"/>
+    <text x="472" y="84" fill="#6b7682" font-size="10">Aktif Yatırımcı</text>
+    <text x="472" y="108" fill="#e6edf3" font-size="20" font-weight="700">12.480</text>
+  </g>
+  <!-- chart -->
+  <rect x="136" y="140" width="488" height="196" rx="8" fill="#0f161e" stroke="#1d2632"/>
+  <polyline points="160,300 200,280 240,288 280,250 320,262 360,220 400,232 440,196 480,206 520,168 560,180 600,150"
+    fill="none" stroke="#14B8A6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polygon points="160,300 200,280 240,288 280,250 320,262 360,220 400,232 440,196 480,206 520,168 560,180 600,150 600,320 160,320" fill="url(#farea)"/>
+  <g stroke="#1a232e" stroke-width="1">
+    <line x1="136" y1="200" x2="624" y2="200"/><line x1="136" y1="250" x2="624" y2="250"/><line x1="136" y1="300" x2="624" y2="300"/>
+  </g>
+  <circle cx="600" cy="150" r="4" fill="#fff" stroke="#14B8A6" stroke-width="3"/>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Airomeda Markets pazaryeri">
+  <defs>
+    <linearGradient id="mbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0e1620"/></linearGradient>
+    <linearGradient id="marea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14B8A6" stop-opacity="0.4"/><stop offset="1" stop-color="#14B8A6" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#mbg)"/>
+  <rect x="0" y="0" width="640" height="40" fill="#0c1219"/>
+  <circle cx="22" cy="20" r="4" fill="#2b3340"/><circle cx="38" cy="20" r="4" fill="#2b3340"/><circle cx="54" cy="20" r="4" fill="#14B8A6"/>
+  <text x="300" y="24" text-anchor="middle" fill="#7c8794" font-family="Arial" font-size="12" font-weight="700" letter-spacing="1">AIROMEDA MARKETS</text>
+  <!-- left: sales card -->
+  <g font-family="Arial">
+    <rect x="20" y="58" width="244" height="120" rx="8" fill="#111922" stroke="#1d2632"/>
+    <text x="36" y="82" fill="#6b7682" font-size="10">Aylık Satış</text>
+    <text x="36" y="108" fill="#e6edf3" font-size="22" font-weight="700">₺2,7M</text>
+    <text x="150" y="108" fill="#34d399" font-size="12" font-weight="700">+%18</text>
+    <polyline points="36,160 64,150 92,156 120,138 148,144 176,120 204,128 232,104 250,112" fill="none" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="36,160 64,150 92,156 120,138 148,144 176,120 204,128 232,104 250,112 250,170 36,170" fill="url(#marea)"/>
+    <rect x="20" y="190" width="244" height="146" rx="8" fill="#111922" stroke="#1d2632"/>
+    <text x="36" y="214" fill="#6b7682" font-size="10">En çok satanlar</text>
+    <g>
+      <rect x="36" y="228" width="212" height="26" rx="5" fill="#0f161e"/><circle cx="50" cy="241" r="7" fill="#14B8A6" opacity="0.5"/><rect x="64" y="237" width="90" height="8" rx="3" fill="#2a3540"/><text x="232" y="246" text-anchor="end" fill="#cfd8e0" font-size="11" font-weight="700">1.204</text>
+      <rect x="36" y="262" width="212" height="26" rx="5" fill="#0f161e"/><circle cx="50" cy="275" r="7" fill="#14B8A6" opacity="0.35"/><rect x="64" y="271" width="70" height="8" rx="3" fill="#2a3540"/><text x="232" y="280" text-anchor="end" fill="#cfd8e0" font-size="11" font-weight="700">980</text>
+      <rect x="36" y="296" width="212" height="26" rx="5" fill="#0f161e"/><circle cx="50" cy="309" r="7" fill="#14B8A6" opacity="0.25"/><rect x="64" y="305" width="104" height="8" rx="3" fill="#2a3540"/><text x="232" y="314" text-anchor="end" fill="#cfd8e0" font-size="11" font-weight="700">742</text>
+    </g>
+  </g>
+  <!-- right: product grid -->
+  <text x="284" y="74" fill="#e6edf3" font-family="Arial" font-size="13" font-weight="700">Ürün Kataloğu · 40.000+</text>
+  <g>
+    <!-- 3x3 product tiles -->
+    <g fill="#111922" stroke="#1d2632">
+      <rect x="284" y="86" width="106" height="78" rx="8"/><rect x="400" y="86" width="106" height="78" rx="8"/><rect x="516" y="86" width="106" height="78" rx="8"/>
+      <rect x="284" y="172" width="106" height="78" rx="8"/><rect x="400" y="172" width="106" height="78" rx="8"/><rect x="516" y="172" width="106" height="78" rx="8"/>
+      <rect x="284" y="258" width="106" height="78" rx="8"/><rect x="400" y="258" width="106" height="78" rx="8"/><rect x="516" y="258" width="106" height="78" rx="8"/>
+    </g>
+    <g fill="#14B8A6" opacity="0.18">
+      <rect x="294" y="96" width="86" height="38" rx="5"/><rect x="410" y="96" width="86" height="38" rx="5"/><rect x="526" y="96" width="86" height="38" rx="5"/>
+      <rect x="294" y="182" width="86" height="38" rx="5"/><rect x="410" y="182" width="86" height="38" rx="5"/><rect x="526" y="182" width="86" height="38" rx="5"/>
+      <rect x="294" y="268" width="86" height="38" rx="5"/><rect x="410" y="268" width="86" height="38" rx="5"/><rect x="526" y="268" width="86" height="38" rx="5"/>
+    </g>
+    <g fill="#2a3540">
+      <rect x="294" y="140" width="60" height="7" rx="3"/><rect x="410" y="140" width="60" height="7" rx="3"/><rect x="526" y="140" width="60" height="7" rx="3"/>
+      <rect x="294" y="226" width="60" height="7" rx="3"/><rect x="410" y="226" width="60" height="7" rx="3"/><rect x="526" y="226" width="60" height="7" rx="3"/>
+      <rect x="294" y="312" width="60" height="7" rx="3"/><rect x="410" y="312" width="60" height="7" rx="3"/><rect x="526" y="312" width="60" height="7" rx="3"/>
+    </g>
+    <g fill="#14B8A6"><rect x="294" y="152" width="34" height="7" rx="3"/><rect x="410" y="152" width="34" height="7" rx="3"/><rect x="526" y="152" width="34" height="7" rx="3"/>
+      <rect x="294" y="238" width="34" height="7" rx="3"/><rect x="410" y="238" width="34" height="7" rx="3"/><rect x="526" y="238" width="34" height="7" rx="3"/>
+      <rect x="294" y="324" width="34" height="7" rx="3"/><rect x="410" y="324" width="34" height="7" rx="3"/><rect x="526" y="324" width="34" height="7" rx="3"/></g>
+  </g>
+</svg>

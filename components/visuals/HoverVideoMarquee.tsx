@@ -4,10 +4,10 @@ import Image from 'next/image';
 
 interface MarqueeItem { src: string; title: string; client: string; duration: string; }
 const ITEMS: MarqueeItem[] = [
-  { src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80', title: 'Yatırım Platformu', client: 'Fortuneris', duration: '3:42' },
-  { src: 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=600&q=80', title: 'iGaming Platformu', client: 'TopRateBet', duration: '4:12' },
-  { src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80', title: 'Pazaryeri SaaS', client: 'Airomeda Markets', duration: '2:48' },
-  { src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80', title: 'Lead Bulma Platformu', client: 'Airomedata', duration: '3:18' },
+  { src: '/cases/fortuneris-hero.svg', title: 'Yatırım Platformu', client: 'Fortuneris', duration: '3:42' },
+  { src: '/cases/topratebet-hero.svg', title: 'iGaming Platformu', client: 'TopRateBet', duration: '4:12' },
+  { src: '/cases/airomeda-markets-hero.svg', title: 'Pazaryeri SaaS', client: 'Airomeda Markets', duration: '2:48' },
+  { src: '/cases/airomedata-hero.svg', title: 'Lead Bulma Platformu', client: 'Airomedata', duration: '3:18' },
 ];
 
 export function HoverVideoMarquee() {
@@ -17,7 +17,7 @@ export function HoverVideoMarquee() {
         {[...ITEMS, ...ITEMS].map((it, i) => (
           <div key={i} className="group relative w-80 flex-shrink-0 cursor-pointer border border-border bg-background overflow-hidden">
             <div className="relative aspect-video overflow-hidden">
-              <Image src={it.src} alt="" fill className="object-cover grayscale-[50%] transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110" sizes="320px" unoptimized/>
+              <Image src={it.src} alt={`${it.client} — ${it.title}`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="320px" unoptimized/>
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="h-14 w-14 border-2 border-accent bg-elevated/60 backdrop-blur-md flex items-center justify-center">
                   <span className="ml-1" style={{ borderLeft: '10px solid #14B8A6', borderTop: '6px solid transparent', borderBottom: '6px solid transparent' }}/>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Airomedata lead platformu">
+  <defs><linearGradient id="dbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0e1620"/></linearGradient></defs>
+  <rect width="640" height="360" fill="url(#dbg)"/>
+  <rect x="0" y="0" width="640" height="40" fill="#0c1219"/>
+  <circle cx="22" cy="20" r="4" fill="#2b3340"/><circle cx="38" cy="20" r="4" fill="#2b3340"/><circle cx="54" cy="20" r="4" fill="#14B8A6"/>
+  <text x="300" y="24" text-anchor="middle" fill="#7c8794" font-family="Arial" font-size="12" font-weight="700" letter-spacing="1">AIROMEDATA</text>
+  <g font-family="Arial">
+    <!-- KPI row -->
+    <rect x="20" y="58" width="190" height="60" rx="8" fill="#111922" stroke="#1d2632"/>
+    <text x="36" y="80" fill="#6b7682" font-size="10">Bulunan Lead</text><text x="36" y="104" fill="#e6edf3" font-size="20" font-weight="700">86.400</text>
+    <rect x="225" y="58" width="190" height="60" rx="8" fill="#111922" stroke="#1d2632"/>
+    <text x="241" y="80" fill="#6b7682" font-size="10">Dönüşüm</text><text x="241" y="104" fill="#34d399" font-size="20" font-weight="700">%24,8</text>
+    <rect x="430" y="58" width="190" height="60" rx="8" fill="#111922" stroke="#1d2632"/>
+    <text x="446" y="80" fill="#6b7682" font-size="10">Aktif Kampanya</text><text x="446" y="104" fill="#e6edf3" font-size="20" font-weight="700">37</text>
+
+    <!-- funnel -->
+    <rect x="20" y="132" width="270" height="204" rx="8" fill="#0f161e" stroke="#1d2632"/>
+    <text x="36" y="156" fill="#6b7682" font-size="10">Dönüşüm Hunisi</text>
+    <rect x="40" y="170" width="230" height="30" rx="4" fill="#14B8A6" opacity="0.85"/><text x="52" y="190" fill="#04221f" font-size="11" font-weight="700">Ziyaret · 86.400</text>
+    <rect x="62" y="210" width="186" height="30" rx="4" fill="#14B8A6" opacity="0.6"/><text x="74" y="230" fill="#04221f" font-size="11" font-weight="700">İlgilenen · 41.200</text>
+    <rect x="86" y="250" width="138" height="30" rx="4" fill="#14B8A6" opacity="0.4"/><text x="98" y="270" fill="#eafaf7" font-size="11" font-weight="700">Nitelikli · 21.400</text>
+    <rect x="112" y="290" width="86" height="30" rx="4" fill="#14B8A6" opacity="0.25"/><text x="124" y="310" fill="#bfeee7" font-size="11" font-weight="700">Müşteri</text>
+
+    <!-- data table -->
+    <rect x="300" y="132" width="320" height="204" rx="8" fill="#0f161e" stroke="#1d2632"/>
+    <text x="316" y="156" fill="#6b7682" font-size="10">Lead Listesi</text>
+    <line x1="300" y1="166" x2="620" y2="166" stroke="#1a232e"/>
+    <g>
+      <g><rect x="316" y="176" width="10" height="10" rx="2" fill="#14B8A6"/><rect x="336" y="178" width="120" height="7" rx="3" fill="#2a3540"/><rect x="556" y="178" width="48" height="7" rx="3" fill="#1f6b62"/></g>
+      <g transform="translate(0,26)"><rect x="316" y="176" width="10" height="10" rx="2" fill="#26303c"/><rect x="336" y="178" width="150" height="7" rx="3" fill="#2a3540"/><rect x="556" y="178" width="48" height="7" rx="3" fill="#243038"/></g>
+      <g transform="translate(0,52)"><rect x="316" y="176" width="10" height="10" rx="2" fill="#14B8A6"/><rect x="336" y="178" width="100" height="7" rx="3" fill="#2a3540"/><rect x="556" y="178" width="48" height="7" rx="3" fill="#1f6b62"/></g>
+      <g transform="translate(0,78)"><rect x="316" y="176" width="10" height="10" rx="2" fill="#26303c"/><rect x="336" y="178" width="140" height="7" rx="3" fill="#2a3540"/><rect x="556" y="178" width="48" height="7" rx="3" fill="#243038"/></g>
+      <g transform="translate(0,104)"><rect x="316" y="176" width="10" height="10" rx="2" fill="#26303c"/><rect x="336" y="178" width="110" height="7" rx="3" fill="#2a3540"/><rect x="556" y="178" width="48" height="7" rx="3" fill="#243038"/></g>
+      <g transform="translate(0,130)"><rect x="316" y="176" width="10" height="10" rx="2" fill="#14B8A6"/><rect x="336" y="178" width="160" height="7" rx="3" fill="#2a3540"/><rect x="556" y="178" width="48" height="7" rx="3" fill="#1f6b62"/></g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="TopRateBet iGaming platformu">
+  <defs>
+    <linearGradient id="tbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0d1620"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#tbg)"/>
+  <rect x="0" y="0" width="640" height="40" fill="#0c1219"/>
+  <circle cx="22" cy="20" r="4" fill="#2b3340"/><circle cx="38" cy="20" r="4" fill="#2b3340"/><circle cx="54" cy="20" r="4" fill="#14B8A6"/>
+  <text x="300" y="24" text-anchor="middle" fill="#7c8794" font-family="Arial" font-size="12" font-weight="700" letter-spacing="1">TOPRATEBET · CANLI</text>
+  <!-- live badge -->
+  <rect x="500" y="58" width="120" height="22" rx="11" fill="#14B8A6" opacity="0.12"/>
+  <circle cx="516" cy="69" r="4" fill="#34d399"/>
+  <text x="528" y="73" fill="#34d399" font-family="Arial" font-size="11" font-weight="700">CANLI · 248 maç</text>
+  <text x="20" y="73" fill="#e6edf3" font-family="Arial" font-size="15" font-weight="700">Maç Oranları</text>
+  <!-- match rows -->
+  <g font-family="Arial">
+    <!-- row template -->
+    <g>
+      <rect x="20" y="92" width="600" height="50" rx="8" fill="#111922" stroke="#1d2632"/>
+      <text x="36" y="114" fill="#e6edf3" font-size="13" font-weight="600">Galatasaray — Fenerbahçe</text>
+      <text x="36" y="132" fill="#6b7682" font-size="10">Süper Lig · 67'</text>
+      <rect x="360" y="104" width="76" height="28" rx="6" fill="#0f161e" stroke="#26303c"/><text x="398" y="123" text-anchor="middle" fill="#cfd8e0" font-size="13" font-weight="700">2.10</text>
+      <rect x="446" y="104" width="76" height="28" rx="6" fill="#14B8A6"/><text x="484" y="123" text-anchor="middle" fill="#04221f" font-size="13" font-weight="800">3.25</text>
+      <rect x="532" y="104" width="76" height="28" rx="6" fill="#0f161e" stroke="#26303c"/><text x="570" y="123" text-anchor="middle" fill="#cfd8e0" font-size="13" font-weight="700">2.80</text>
+    </g>
+    <g transform="translate(0,58)">
+      <rect x="20" y="92" width="600" height="50" rx="8" fill="#111922" stroke="#1d2632"/>
+      <text x="36" y="114" fill="#e6edf3" font-size="13" font-weight="600">Beşiktaş — Trabzonspor</text>
+      <text x="36" y="132" fill="#6b7682" font-size="10">Süper Lig · 23'</text>
+      <rect x="360" y="104" width="76" height="28" rx="6" fill="#0f161e" stroke="#26303c"/><text x="398" y="123" text-anchor="middle" fill="#cfd8e0" font-size="13" font-weight="700">1.95</text>
+      <rect x="446" y="104" width="76" height="28" rx="6" fill="#0f161e" stroke="#26303c"/><text x="484" y="123" text-anchor="middle" fill="#cfd8e0" font-size="13" font-weight="700">3.40</text>
+      <rect x="532" y="104" width="76" height="28" rx="6" fill="#14B8A6"/><text x="570" y="123" text-anchor="middle" fill="#04221f" font-size="13" font-weight="800">3.10</text>
+    </g>
+    <g transform="translate(0,116)">
+      <rect x="20" y="92" width="600" height="50" rx="8" fill="#111922" stroke="#1d2632"/>
+      <text x="36" y="114" fill="#e6edf3" font-size="13" font-weight="600">Real Madrid — Barcelona</text>
+      <text x="36" y="132" fill="#6b7682" font-size="10">La Liga · İlk yarı</text>
+      <rect x="360" y="104" width="76" height="28" rx="6" fill="#14B8A6"/><text x="398" y="123" text-anchor="middle" fill="#04221f" font-size="13" font-weight="800">2.05</text>
+      <rect x="446" y="104" width="76" height="28" rx="6" fill="#0f161e" stroke="#26303c"/><text x="484" y="123" text-anchor="middle" fill="#cfd8e0" font-size="13" font-weight="700">3.30</text>
+      <rect x="532" y="104" width="76" height="28" rx="6" fill="#0f161e" stroke="#26303c"/><text x="570" y="123" text-anchor="middle" fill="#cfd8e0" font-size="13" font-weight="700">3.60</text>
+    </g>
+    <rect x="20" y="324" width="600" height="20" rx="6" fill="#0f161e"/>
+    <rect x="20" y="324" width="380" height="20" rx="6" fill="#14B8A6" opacity="0.25"/>
+    <text x="32" y="338" fill="#8aa" font-size="9">Kupon · 3 maç · olası kazanç ₺1.240</text>
+  </g>
+</svg>
